@@ -1,0 +1,6 @@
+Following are assumed to hold
+---------------------
+Labels of nodes are [0,|L-1|]
+space delimiter for the cost file
+vertices in db files start with v and edges start with e
+

@@ -1,0 +1,5 @@
+DB ../data/test.txt
+SIM ../data/testSim.txt
+WALKS 10
+ALPHA 0.5
+MINSUP 2
