@@ -7,20 +7,27 @@
 
 namespace rwalk {
     void random_walk(Store& st);
-    void initialize_walk(Store& st, Embedding& embeds, pattern& pat) {
+
+    Embedding* initialize_walk(Store& st, pattern& pat) {
         types::label_t lab;
         types::vlist_t vlist;
         st.get_random_l1(lab, vlist);
+        pat.add_fwd_vertex(lab);
         INFO(*logger, lab << " and vlist size is" << vlist);
         /*
          * Create level 1 embeddings depending on the type of the algorithm that
          * we are running; gapprox_embedding to test GAPPROX method
          */
+        Embedding* embeds;
         if(true) {
-            GApprox::GApproxEmbedding gap_embed;
-            embeds = gap_embed;
-            embeds.init_embeddings(lab, vlist);
+            // complete enumeration of all the embeddings of the candidate
+            // pattern
+            embeds = new GApprox::GApproxEmbedding();
         }
+        else {
+            // Store the embeddings using the representative sets
+        }
+        return embeds;
     }
     void walks(Store& st) {
         int numwalks = st.get_num_walks();
@@ -30,7 +37,7 @@ namespace rwalk {
     }
     void random_walk(Store& st) {
         pattern pat;
-        Embedding embeds;
+        Embedding* embeds = initialize_walk(st, pat);
         Janitor jtr;
         int toss;
         bool result;
@@ -38,7 +45,7 @@ namespace rwalk {
         } // end while
     }
 
-    bool fwd_extension(Janitor& jtr,pattern& pat,Embedding& embeds, Store& st) {
+    bool fwd_extension(Janitor& jtr,pattern& pat,Embedding* embeds, Store& st) {
         /* Shuffle the list of vertices from which the extension is tried and
          * the labels with which the extensions are tried from a given vertex
          * in the pattern
@@ -57,8 +64,8 @@ namespace rwalk {
                 if(jtr.is_failed_label(*it,*it2))
                     continue;
                 else {
-                    Embedding extend_embed = embeds.extend_fwd(st, *it2);
-                    int sup = extend_embed.compute_support();
+                    Embedding* extend_embed = embeds->extend_fwd(st, *it2);
+                    int sup = extend_embed->compute_support();
                     if(!sup) {
                         jtr.add_failed_label(*it,*it2);
                     }
@@ -72,9 +79,10 @@ namespace rwalk {
         return false;
     }
 
-    bool back_extension(Janitor& jtr,pattern& pat,Embedding& embeds, Store& st) {
-        types::pat_e
-        tr(vp,it) {
+    bool back_extension(Janitor& jtr, pattern& pat, Embedding* embeds, Store& st) {
+        types::pat_elist_t pat_edges;
+        st.myran.myshuffle(pat_edges);
+        tr(pat_edges, it) {
             if(jtr.is_back_fail(it->first,it->second))
                 continue;
             else {
