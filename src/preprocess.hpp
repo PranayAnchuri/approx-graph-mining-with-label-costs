@@ -9,5 +9,5 @@
  * from the arguments specified in
  * conf
  */
-void read_inp(Config conf, Store st);
-void preprocess(Config conf, Store st);
+void read_inp(Config& conf, Store& st);
+void preprocess(Config& conf, Store& st);

@@ -27,6 +27,8 @@ namespace types {
 
 
   typedef int label_t;
+  typedef int pat_vertex_t;
+  typedef int db_vertex_t;
   typedef std::vector<int> vlist_t;
   typedef std::set<int> set_vlist_t;
   typedef std::map<int, label_t> vmap_t;
@@ -34,7 +36,12 @@ namespace types {
   typedef std::map<label_t, vlist_t> lmap_t;
   typedef double cost_t;
 
+  typedef std::vector<pat_vertex_t> pat_vlist_t;
+  typedef std::vector<std::pair<pat_vertex_t, pat_vertex_t> > pat_elist_t;
   // GAPPROX
-  typedef std::vector<std::vector<int> > gapprox_embed_t;
+  // one embedding
+  typedef std::pair<types::cost_t, pat_vlist_t> gapprox_em_t;
+  // list of all embeddings for a given pattern
+  typedef std::vector<gapprox_em_t> gapprox_embed_t;
 } // namespace types
 

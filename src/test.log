@@ -1,0 +1,6 @@
+0 [0] [INFO] [Mon Feb 04 18:56:06] [MAIN] [store.cpp@85] - 4
+0 [1] [INFO] [Mon Feb 04 18:56:06] [MAIN] [store.cpp@104] - Level 1 Vertices with alpha and minsup0.5 and 2
+0 [2] [INFO] [Mon Feb 04 18:56:06] [MAIN] [store.cpp@118] - 0 reps size is 4
+0 [3] [INFO] [Mon Feb 04 18:56:06] [MAIN] [store.cpp@118] - 1 reps size is 4
+0 [4] [INFO] [Mon Feb 04 18:56:06] [MAIN] [store.cpp@118] - 2 reps size is 4
+0 [5] [INFO] [Mon Feb 04 18:56:06] [MAIN] [store.cpp@118] - 3 reps size is 4

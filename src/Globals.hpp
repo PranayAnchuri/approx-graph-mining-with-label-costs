@@ -27,6 +27,8 @@
 #include "types.hpp"
 #include "utils.hpp"
 #include "utils1.hpp"
+#include "logger.hpp"
+#include "prand.hpp"
 
 /*#include <unordered_set>
 #include <unordered_map>*/
@@ -96,7 +98,7 @@ void print_vd(const vd& x);
 void print_vvi(const vvi& x);
 // set of integers
 typedef set<int> si;
-typedef unordered_set<int> usi;
+//typedef unordered_set<int> usi;
 
 float RangeFloat(float min, float max);
 void split(const std::string &s,vector<string>& words, char delim );
@@ -104,8 +106,7 @@ string convertInt(int number);
 int convertToInt(string num);
 double convertToDouble(string num);
 
-struct compare2nd
-{
+struct compare2nd {
     template <typename T>
         bool operator()(const T& pLhs, const T& pRhs)
         {

@@ -1,13 +1,37 @@
 #include "store.hpp"
 
-void Store::add_vertex(int id, types::label_t label) {
+
+Store::Store() {
+    logger = Logger::get_logger("MAIN");
+    myran.set_seed(42);
+}
+void Store::add_vertex(const int& id, const types::label_t& label) {
     vmap[id] = label;
     lmap[label].push_back(id);
 }
 
-void Store::add_edge(int id1, int id2) {
+void Store::add_edge(const int& id1, const int& id2) {
     gr[id1].insert(id2);
     gr[id2].insert(id1);
+}
+
+void Store::get_random_l1(types::label_t& lab, types::vlist_t& vlist) {
+    typeof(l1pats.begin()) it = l1pats.begin();
+    int r = myran.det_number(l1pats.size());
+    advance(it, r);
+    lab = it->first;
+    vlist = it->second;
+}
+
+void Store::copy_numeric_args(map<string,types::double_t>& numeric_args) {
+    tr(numeric_args, it) {
+        if(!it->first.compare("MINSUP"))
+            minsup = it->second;
+        else if(!it->first.compare("ALPHA"))
+            alpha = it->second;
+        else if(!it->first.compare("WALKS"))
+            walks = it->second;
+    }
 }
 
 void Store::read_db(string file) {
@@ -56,11 +80,12 @@ void Store::read_cost(string file) {
     string line;
     vector<string> words;
     getline(infile,line); // read the header of the file
-    split(line,words,'\t');
+    split(line,words,delim);
     vector<string> header = words;
     // Number of classes in the header of the file
     int rsize = words.size();
-    num_labels = rsize;
+    this->num_labels = rsize;
+    INFO(*logger, num_labels);
     simvals.reserve(rsize*rsize);
     while(getline(infile,line)) {
         // words from the line
@@ -70,15 +95,16 @@ void Store::read_cost(string file) {
         REP(i,1,words.size()) {
             //simvalues_.push_back(1-convertToDouble(words[i]));
             double cost = convertToDouble(words[i]);
-            cout<<cost<<endl;
             simvals.push_back(cost);
         }
         words.clear();
     } // While loop for the entire file
 }
 
+
 void Store::get_frequent_vertices(types::cost_t alpha, int minsup) {
     // for each vertex compute the cost of matching with other vertex
+    INFO(*logger, "Level 1 Vertices with alpha and minsup" << alpha << " and " << minsup);
     REP(i,0,num_labels) {
         // Iterate over all the vertices in the graph
         types::vlist_t reps; // valid representatives of the label i
@@ -92,6 +118,13 @@ void Store::get_frequent_vertices(types::cost_t alpha, int minsup) {
         if( reps.size() >= minsup) {
             // label i is frequent
             l1pats[i] = reps;
+            freq_labels.push_back(i);
+            INFO(*logger, i << " reps size is " << reps.size());
         }
     }
 }
+
+void Store::get_labels(vector<types::label_t>& labels) {
+    labels = freq_labels;
+}
+
