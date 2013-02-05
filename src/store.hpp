@@ -20,8 +20,9 @@ class Store {
         inline types::label_t get_label(int id) { return vmap[id];}
         inline void get_labels(vector<types::label_t>& labels);
         inline int get_num_labels() { return num_labels;}
+        inline bool is_valid_edge(const int& id1, const int& id2) { return present(gr[id1], id2);}
         void get_random_l1(types::label_t& lab, types::vlist_t& vlist); // for initializing random walk
-        void copy_numeric_args(map<string,types::double_t>& numeric_args);
+        void copy_numeric_args(map<string, types::double_t>& numeric_args);
         map<types::label_t, types::vlist_t> l1pats;
         vector<types::cost_t> simvals;
         Prand myran;

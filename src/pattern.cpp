@@ -9,7 +9,7 @@ void pattern::add_edge(int id1, int id2) {
 }
 
 void pattern::get_vertices(types::pat_vlist_t& vertices) {
-    REP(i,0, pat_vmap.size()) {
+    REP(i, 0, pat_vmap.size()) {
         vertices.push_back(i);
     }
 }

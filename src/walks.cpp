@@ -7,6 +7,8 @@
 
 namespace rwalk {
     void random_walk(Store& st);
+    bool fwd_extension(Janitor& jtr, pattern& pat, Embedding* embeds, Store& st);
+    bool back_extension(Janitor& jtr, pattern& pat, Embedding* embeds, Store& st);
 
     Embedding* initialize_walk(Store& st, pattern& pat) {
         types::label_t lab;
@@ -40,12 +42,28 @@ namespace rwalk {
         Embedding* embeds = initialize_walk(st, pat);
         Janitor jtr;
         int toss;
-        bool result;
         while(true) {
-        } // end while
+            bool result = false;
+            toss = st.myran.det_toss();
+            vi tries;
+            tries.push_back(toss); tries.push_back(1-toss);
+            tr(tries,it) {
+                if(*it) {
+                    result = fwd_extension(jtr, pat, embeds,  st);
+                }
+                else {
+                    result = back_extension(jtr, pat, embeds,  st);
+                }
+                if(result) {
+                    break;
+                }
+            }
+            if(!result)
+                break;
+        }
     }
 
-    bool fwd_extension(Janitor& jtr,pattern& pat,Embedding* embeds, Store& st) {
+    bool fwd_extension(Janitor& jtr, pattern& pat, Embedding* embeds, Store& st) {
         /* Shuffle the list of vertices from which the extension is tried and
          * the labels with which the extensions are tried from a given vertex
          * in the pattern
@@ -57,19 +75,23 @@ namespace rwalk {
         st.myran.myshuffle(vertices);
         st.myran.myshuffle(labels);
         // Iterate over the complete set of possible extensions
-        tr(vertices,it) {
+        tr(vertices, it) {
             if(jtr.is_expired(*it))
                 continue;
-            tr(labels,it2) {
-                if(jtr.is_failed_label(*it,*it2))
+            tr(labels, it2) {
+                if(jtr.is_failed_label(*it, *it2))
                     continue;
                 else {
                     Embedding* extend_embed = embeds->extend_fwd(st, *it2);
                     int sup = extend_embed->compute_support();
                     if(!sup) {
-                        jtr.add_failed_label(*it,*it2);
+                        jtr.add_failed_label(*it, *it2);
+                        delete extend_embed;
                     }
                     else {
+                        // update the set of embeddings
+                        delete embeds;
+                        embeds = extend_embed;
                         return true;
                     }
                 }
@@ -83,7 +105,7 @@ namespace rwalk {
         types::pat_elist_t pat_edges;
         st.myran.myshuffle(pat_edges);
         tr(pat_edges, it) {
-            if(jtr.is_back_fail(it->first,it->second))
+            if(jtr.is_back_fail(it->first, it->second))
                 continue;
             else {
                 int sup = 0; //TODO

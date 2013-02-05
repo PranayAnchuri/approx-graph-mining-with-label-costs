@@ -44,9 +44,9 @@ class Prand
                  { 
                      // Pointer to random number function
                      // Randomize the container using my own random number function
-                     //random_shuffle(cont.begin(),cont.end(),p_myrandom);
+                     //random_shuffle(cont.begin(), cont.end(), p_myrandom);
                      Prand p;
-                     random_shuffle(cont.begin(),cont.end(),p);
+                     random_shuffle(cont.begin(), cont.end(), p);
                  }
     private:
              ptrdiff_t myrandom(ptrdiff_t i)
@@ -54,5 +54,5 @@ class Prand
                  return det_number(i);
              }
     public:
-     int m_z,m_w;
+     int m_z, m_w;
 };

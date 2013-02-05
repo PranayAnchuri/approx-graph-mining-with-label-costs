@@ -264,7 +264,7 @@ Logger *Logger::get_logger(string component, string format, streambuf *obuf)
   Logger *logger = 0;
 
   if(loggers->find(component) == loggers->end()) {
-    logger = loggers->insert(pair<string,Logger*>(component, new Logger(component, format.c_str(), ll, 0, obuf))).first->second;
+    logger = loggers->insert(pair<string, Logger*>(component, new Logger(component, format.c_str(), ll, 0, obuf))).first->second;
   } else {
     logger = loggers->find(component)->second;
   }
@@ -310,7 +310,7 @@ log_level_t Logger::get_loglevel_from_env(string logger) {
     ll_env = getenv("LOG_LEVEL");
     if(ll_env == 0) return DEFAULT_LOG_LEVEL;
     std::vector<string> tokens;
-    split(ll_env, tokens, ",");
+    split(ll_env, tokens, ", ");
 
     if(log_levels == 0) log_levels = new map<string, log_level_t>();
     for(std::vector<string>::iterator itV = tokens.begin();

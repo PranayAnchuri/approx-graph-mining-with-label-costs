@@ -13,7 +13,7 @@ Logger* init_logger(string file) {
     return lg; 
 }
 
-int main(int argc,char** argv)
+int main(int argc, char** argv)
 {
     init_logger(argv[2]);
     Config conf(argv[1]);

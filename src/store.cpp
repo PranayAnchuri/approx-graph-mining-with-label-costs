@@ -23,7 +23,7 @@ void Store::get_random_l1(types::label_t& lab, types::vlist_t& vlist) {
     vlist = it->second;
 }
 
-void Store::copy_numeric_args(map<string,types::double_t>& numeric_args) {
+void Store::copy_numeric_args(map<string, types::double_t>& numeric_args) {
     tr(numeric_args, it) {
         if(!it->first.compare("MINSUP"))
             minsup = it->second;
@@ -41,9 +41,9 @@ void Store::read_db(string file) {
     string line;
     vector<string> words;
     string token;
-    int id1,id2;
-    getline(infile,line); // read the header of the file
-    while(getline(infile,line))
+    int id1, id2;
+    getline(infile, line); // read the header of the file
+    while(getline(infile, line))
     {
         istringstream iss(line);
         while ( getline(iss, token, ' ') )
@@ -79,20 +79,20 @@ void Store::read_cost(string file) {
     infile.open((char*)file.c_str());
     string line;
     vector<string> words;
-    getline(infile,line); // read the header of the file
-    split(line,words,delim);
+    getline(infile, line); // read the header of the file
+    split(line, words, delim);
     vector<string> header = words;
     // Number of classes in the header of the file
     int rsize = words.size();
     this->num_labels = rsize;
     INFO(*logger, num_labels);
     simvals.reserve(rsize*rsize);
-    while(getline(infile,line)) {
+    while(getline(infile, line)) {
         // words from the line
-        split(line,words,delim);
+        split(line, words, delim);
         // Starting from 1 add the values to sim values 
         string key = words[0];
-        REP(i,1,words.size()) {
+        REP(i, 1, words.size()) {
             //simvalues_.push_back(1-convertToDouble(words[i]));
             double cost = convertToDouble(words[i]);
             simvals.push_back(cost);
@@ -105,7 +105,7 @@ void Store::read_cost(string file) {
 void Store::get_frequent_vertices(types::cost_t alpha, int minsup) {
     // for each vertex compute the cost of matching with other vertex
     INFO(*logger, "Level 1 Vertices with alpha and minsup" << alpha << " and " << minsup);
-    REP(i,0,num_labels) {
+    REP(i, 0, num_labels) {
         // Iterate over all the vertices in the graph
         types::vlist_t reps; // valid representatives of the label i
         tr(vmap, it) {

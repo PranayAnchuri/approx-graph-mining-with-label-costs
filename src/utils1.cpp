@@ -9,7 +9,7 @@ float RangeFloat(float min, float max)
     return (random*range) + min;
 }
 
-void split(const std::string &s,std::vector<std::string>& words, char delim ) {
+void split(const std::string &s, std::vector<std::string>& words, char delim ) {
     words.clear();
     std::stringstream iss(s);
     std::string item;

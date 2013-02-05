@@ -26,7 +26,7 @@ std::string trim(const std::string& s, const std::string& drop)
 {
   string r = s;
   r.erase(r.find_last_not_of(drop)+1);
-  return r.erase(0,r.find_first_not_of(drop));
+  return r.erase(0, r.find_first_not_of(drop));
 }
 
 /** 'str' must be trimmed !!!!

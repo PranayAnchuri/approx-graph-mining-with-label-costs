@@ -4,7 +4,7 @@ namespace GApprox{
     GApproxEmbedding::GApproxEmbedding() {
         supfunc = &GApproxEmbedding::min_node_sup;
     }
-    void GApproxEmbedding::init_embeddings(Store& st, const types::label_t& lab,\
+    void GApproxEmbedding::init_embeddings(Store& st, const types::label_t& lab, \
             const types::vlist_t& vids) {
         int num_labels = st.get_num_labels();
         tr(vids, it) {
@@ -12,7 +12,7 @@ namespace GApprox{
             types::cost_t cost = st.simvals[lab*num_labels + rep_label];
             types::vlist_t vlist;
             vlist.push_back(*it);
-            embeds.push_back(make_pair(cost,vlist));
+            embeds.push_back(make_pair(cost, vlist));
         }
     }
     std::string GApproxEmbedding::to_string() {
@@ -26,7 +26,7 @@ namespace GApprox{
         return ss.str();
     }
 
-    Embedding* GApproxEmbedding::extend_fwd(Store& st, types::pat_vertex_t src,\
+    Embedding* GApproxEmbedding::extend_fwd(Store& st, types::pat_vertex_t src, \
                                             types::label_t lab) {
         GApproxEmbedding* next_embeds = new GApproxEmbedding();
         int num_labels = st.get_num_labels();
@@ -53,6 +53,23 @@ namespace GApprox{
         }
         return (Embedding*)next_embeds;
     }
+
+    Embedding* GApproxEmbedding::extend_back(Store& st, types::pat_vertex_t src, \
+                                            types::pat_vertex_t des) {
+        // for each embedding check if there exists an edge between src and back
+        // mappings of the pattern vertex
+        GApproxEmbedding* next_embeds = new GApproxEmbedding();
+        tr(embeds, it) {
+            types::pat_vertex_t src_v = it->second[src];
+            types::pat_vertex_t des_v = it->second[des];
+            // check if there is an edge between src_v and des_v
+            if(st.is_valid_edge(src_v, des_v)) {
+                // add the embedding to the next set of embeddings
+                next_embeds->add_embedding(*it);
+            }
+        }
+        return (Embedding*)next_embeds;
+    }
     int min_node_sup(map<types::pat_vertex_t, types::set_vlist_t>& unique_reps) {
         vector<int> sizes;
         tr(unique_reps, it) {
@@ -62,7 +79,7 @@ namespace GApprox{
     }
 
     int GApproxEmbedding::compute_support() {
-        map<types::pat_vertex_t,types::set_vlist_t> unique_reps;
+        map<types::pat_vertex_t, types::set_vlist_t> unique_reps;
         tr(embeds, it) {
             for(int index =0 ; index<it->second.size(); index++) {
                 unique_reps[index].insert(it->second[index]);
