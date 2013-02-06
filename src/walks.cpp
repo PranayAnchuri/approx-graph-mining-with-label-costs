@@ -86,8 +86,9 @@ namespace rwalk {
                 else {
                     Embedding* extend_embed = embeds->extend_fwd(st, *it,  *it2);
                     INFO(*(st.get_logger()), extend_embed->to_string());
-                    return false;
                     int sup = extend_embed->compute_support();
+                    INFO(*(st.get_logger()), " sup " << sup);
+                    return false;
                     if(st.is_frequent(sup)) {
                         jtr.add_failed_label(*it, *it2);
                         delete extend_embed;

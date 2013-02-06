@@ -1,21 +1,22 @@
-0 [0] [INFO] [Tue Feb 05 22:20:30] [MAIN] [store.cpp@100] - 4
-0 [1] [INFO] [Tue Feb 05 22:20:30] [MAIN] [store.cpp@36] - Num Arg ALPHA Val is 0.5
-0 [2] [INFO] [Tue Feb 05 22:20:30] [MAIN] [store.cpp@36] - Num Arg MINSUP Val is 3
-0 [3] [INFO] [Tue Feb 05 22:20:30] [MAIN] [store.cpp@36] - Num Arg SEED Val is 1729
-0 [4] [INFO] [Tue Feb 05 22:20:30] [MAIN] [store.cpp@36] - Num Arg WALKS Val is 1
-0 [5] [INFO] [Tue Feb 05 22:20:30] [MAIN] [store.cpp@119] - Level 1 Vertices with alpha and minsup0.5 and 3
-0 [6] [INFO] [Tue Feb 05 22:20:30] [MAIN] [store.cpp@134] - 1 reps size is 6
-0 [7] [INFO] [Tue Feb 05 22:20:30] [MAIN] [store.cpp@134] - 2 reps size is 6
-0 [8] [INFO] [Tue Feb 05 22:20:30] [MAIN] [walks.cpp@44] - 
+0 [0] [INFO] [Tue Feb 05 22:22:34] [MAIN] [store.cpp@100] - 4
+0 [1] [INFO] [Tue Feb 05 22:22:34] [MAIN] [store.cpp@36] - Num Arg ALPHA Val is 0.5
+0 [2] [INFO] [Tue Feb 05 22:22:34] [MAIN] [store.cpp@36] - Num Arg MINSUP Val is 3
+0 [3] [INFO] [Tue Feb 05 22:22:34] [MAIN] [store.cpp@36] - Num Arg SEED Val is 1729
+0 [4] [INFO] [Tue Feb 05 22:22:34] [MAIN] [store.cpp@36] - Num Arg WALKS Val is 1
+0 [5] [INFO] [Tue Feb 05 22:22:34] [MAIN] [store.cpp@119] - Level 1 Vertices with alpha and minsup0.5 and 3
+0 [6] [INFO] [Tue Feb 05 22:22:34] [MAIN] [store.cpp@134] - 1 reps size is 6
+0 [7] [INFO] [Tue Feb 05 22:22:34] [MAIN] [store.cpp@134] - 2 reps size is 6
+0 [8] [INFO] [Tue Feb 05 22:22:34] [MAIN] [walks.cpp@44] - 
 Cost 0 - 2 
 Cost 0.3 - 3 
 Cost 0 - 5 
 Cost 0 - 6 
 Cost 0.3 - 7 
 Cost 0.3 - 8 
-0 [9] [INFO] [Tue Feb 05 22:20:30] [MAIN] [walks.cpp@88] - 
+0 [9] [INFO] [Tue Feb 05 22:22:34] [MAIN] [walks.cpp@88] - 
 Cost 0 - 2 3 
 Cost 0.3 - 5 6 
 Cost 0.3 - 6 5 
 Cost 0 - 6 7 
 Cost 0 - 6 8 
+0 [10] [INFO] [Tue Feb 05 22:22:34] [MAIN] [walks.cpp@90] -  sup 3
