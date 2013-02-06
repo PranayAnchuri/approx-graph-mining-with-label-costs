@@ -28,6 +28,7 @@ class Store {
         vector<types::cost_t> simvals;
         Logger* get_logger() { return logger;}
         Prand myran;
+        inline bool is_frequent(int sup) { return sup >= minsup; }
     private:
         void add_vertex(const int& id, const types::label_t& label);
         void add_edge(const int& id1, const int& id2);

@@ -79,6 +79,7 @@ void Store::read_db(string file) {
             id1 = atoi(words[1].c_str());
             id2 = atoi(words[2].c_str());
             add_edge(id1, id2);
+            add_edge(id2, id1);
         }
         words.clear();
     }

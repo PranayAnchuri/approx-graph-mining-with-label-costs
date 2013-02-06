@@ -29,6 +29,7 @@ namespace rwalk {
         else {
             // Store the embeddings using the representative sets
         }
+        embeds->init_embeddings(st, lab, st.l1pats[lab] );
         return embeds;
     }
     void walks(Store& st) {
@@ -44,7 +45,6 @@ namespace rwalk {
         Janitor jtr;
         int toss;
         while(true) {
-            break;
             bool result = false;
             toss = st.myran.det_toss();
             vi tries;
@@ -85,8 +85,10 @@ namespace rwalk {
                     continue;
                 else {
                     Embedding* extend_embed = embeds->extend_fwd(st, *it,  *it2);
+                    INFO(*(st.get_logger()), extend_embed->to_string());
+                    return false;
                     int sup = extend_embed->compute_support();
-                    if(!sup) {
+                    if(st.is_frequent(sup)) {
                         jtr.add_failed_label(*it, *it2);
                         delete extend_embed;
                     }
@@ -111,7 +113,7 @@ namespace rwalk {
                 continue;
             else {
                 int sup = 0; //TODO
-                if(!sup) {
+                if(st.is_frequent(sup)) {
                 }
                 else {
                     return true;

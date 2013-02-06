@@ -18,7 +18,6 @@ class Embedding{
                                             types::pat_vertex_t back) = 0;
         virtual int compute_support() = 0;
         virtual std::string to_string() = 0;
-        void test();
     private:
         /*virtual void extend_embeddings(const types::label_t& lab, \
                 const types::vlist_t& vids) =0;

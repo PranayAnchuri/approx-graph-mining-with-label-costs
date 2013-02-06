@@ -18,9 +18,10 @@ namespace GApprox{
     std::string GApproxEmbedding::to_string() {
         std::stringstream ss;
         for(int i=0; i< embeds.size(); i++) {
+            ss << endl;
             ss << "Cost " << embeds[i].first<< " - ";
             for(int vertex=0; vertex<embeds[i].second.size(); vertex++) {
-                ss << embeds[i].second[vertex];
+                ss << embeds[i].second[vertex] << " ";
             }
         }
         return ss.str();
@@ -37,6 +38,13 @@ namespace GApprox{
             types::cost_t curr_cost = it->first;
             // iterate over all the representative vertices for the new label
             tr(st.l1pats[lab], rep) {
+                // the vertex is not used up already in the embedding
+                if( cpresent(it->second, *rep))
+                    continue;
+                // there is an edge between the vertices in the original db
+                if(!st.is_valid_edge(it->second[src], *rep)) {
+                    continue;
+                }
                 // label of the new vertex that will be added to the embedding
                 types::label_t src_label = st.get_label(*rep);
                 // cost between label in the pattern and label of the new vertex
