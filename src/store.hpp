@@ -1,10 +1,11 @@
-#pragma once
 
 /*
  * Contains the adjacency representation of the graph,
  * vertex to label map, set of labels, set of edges in the
  * graph
  */
+
+#pragma once
 
 #include "Globals.hpp"
 
@@ -14,17 +15,18 @@ class Store {
         void read_db(string file);
         void read_cost(string file);
         void get_frequent_vertices(types::cost_t alpha, int minsup);
-        inline types::cost_t get_alpha() { return alpha;}
-        inline int get_minsup() { return minsup;}
-        inline int get_num_walks() { return walks;}
-        inline types::label_t get_label(int id) { return vmap[id];}
-        inline void get_labels(vector<types::label_t>& labels);
-        inline int get_num_labels() { return num_labels;}
-        inline bool is_valid_edge(const int& id1, const int& id2) { return present(gr[id1], id2);}
+        types::cost_t get_alpha() { return alpha;}
+        int get_minsup(){return minsup;}
+        int get_num_labels() { return num_labels;}
+        int get_num_walks() {return walks;}
+        types::label_t get_label(int id) { return vmap[id];}
+        void get_labels(vector<types::label_t>& labels) { labels = freq_labels;}
+        bool is_valid_edge(const int& id1, const int& id2) { return present(gr[id1], id2);}
         void get_random_l1(types::label_t& lab, types::vlist_t& vlist); // for initializing random walk
         void copy_numeric_args(map<string, types::double_t>& numeric_args);
         map<types::label_t, types::vlist_t> l1pats;
         vector<types::cost_t> simvals;
+        Logger* get_logger() { return logger;}
         Prand myran;
     private:
         void add_vertex(const int& id, const types::label_t& label);

@@ -5,6 +5,14 @@ Store::Store() {
     logger = Logger::get_logger("MAIN");
     myran.set_seed(42);
 }
+
+/*types::cost_t Store::get_alpha() { return alpha;}
+int Store::get_minsup() { return minsup;}
+int Store::get_num_walks() { return walks;}
+types::label_t Store::get_label(int id) { return vmap[id];}
+int Store::get_num_labels() { return num_labels;}
+bool Store::is_valid_edge(const int& id1, const int& id2) { return present(gr[id1], id2);}*/
+
 void Store::add_vertex(const int& id, const types::label_t& label) {
     vmap[id] = label;
     lmap[label].push_back(id);
@@ -25,12 +33,15 @@ void Store::get_random_l1(types::label_t& lab, types::vlist_t& vlist) {
 
 void Store::copy_numeric_args(map<string, types::double_t>& numeric_args) {
     tr(numeric_args, it) {
+        INFO(*logger, "Num Arg " << it->first << " Val is "<< it->second);
         if(!it->first.compare("MINSUP"))
             minsup = it->second;
         else if(!it->first.compare("ALPHA"))
             alpha = it->second;
         else if(!it->first.compare("WALKS"))
             walks = it->second;
+        else if(!it->first.compare("SEED"))
+            myran.set_seed(it->second);
     }
 }
 
@@ -124,7 +135,7 @@ void Store::get_frequent_vertices(types::cost_t alpha, int minsup) {
     }
 }
 
-void Store::get_labels(vector<types::label_t>& labels) {
+/*void Store::get_labels(vector<types::label_t>& labels) {
     labels = freq_labels;
-}
+}*/
 

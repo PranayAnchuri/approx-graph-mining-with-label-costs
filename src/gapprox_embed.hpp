@@ -20,7 +20,8 @@ namespace GApprox {
         private:
         types::gapprox_embed_t embeds;
         // check this http://bit.ly/Xd for function pointers in objects
-        int (GApproxEmbedding::*supfunc)(map<types::pat_vertex_t, \
+        typedef int (GApproxEmbedding::*fptr)(map<types::pat_vertex_t, \
                 types::set_vlist_t>& unique_reps);
+        fptr supfunc;
     };
 }

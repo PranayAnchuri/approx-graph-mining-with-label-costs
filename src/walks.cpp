@@ -15,7 +15,7 @@ namespace rwalk {
         types::vlist_t vlist;
         st.get_random_l1(lab, vlist);
         pat.add_fwd_vertex(lab);
-        INFO(*logger, lab << " and vlist size is" << vlist);
+        //INFO(*logger, lab << " and vlist size is" << vlist.size());
         /*
          * Create level 1 embeddings depending on the type of the algorithm that
          * we are running; gapprox_embedding to test GAPPROX method
@@ -33,16 +33,18 @@ namespace rwalk {
     }
     void walks(Store& st) {
         int numwalks = st.get_num_walks();
-        for(int walk=0; walk < numwalks; walk) {
+        for(int walk=0; walk < numwalks; walk++) {
             random_walk(st);
         }
     }
     void random_walk(Store& st) {
         pattern pat;
         Embedding* embeds = initialize_walk(st, pat);
+        INFO(*(st.get_logger()), embeds->to_string());
         Janitor jtr;
         int toss;
         while(true) {
+            break;
             bool result = false;
             toss = st.myran.det_toss();
             vi tries;
@@ -82,7 +84,7 @@ namespace rwalk {
                 if(jtr.is_failed_label(*it, *it2))
                     continue;
                 else {
-                    Embedding* extend_embed = embeds->extend_fwd(st, *it2);
+                    Embedding* extend_embed = embeds->extend_fwd(st, *it,  *it2);
                     int sup = extend_embed->compute_support();
                     if(!sup) {
                         jtr.add_failed_label(*it, *it2);

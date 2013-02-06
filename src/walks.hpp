@@ -9,5 +9,5 @@
 namespace rwalk {
     map<types::label_t, types::vlist_t> initialize_walk(Store& st);
     void walks(Store& st);
-    Logger* logger = Logger::get_logger("MAIN");
+    //Logger* logger = Logger::get_logger("MAIN");
 }

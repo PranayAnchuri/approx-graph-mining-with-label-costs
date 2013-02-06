@@ -70,7 +70,7 @@ namespace GApprox{
         }
         return (Embedding*)next_embeds;
     }
-    int min_node_sup(map<types::pat_vertex_t, types::set_vlist_t>& unique_reps) {
+    int GApproxEmbedding::min_node_sup(map<types::pat_vertex_t, types::set_vlist_t>& unique_reps) {
         vector<int> sizes;
         tr(unique_reps, it) {
             sizes.push_back(it->second.size());
