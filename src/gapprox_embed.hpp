@@ -3,7 +3,7 @@
 #include "types.hpp"
 
 namespace GApprox {
-    static Logger* logger = Logger::get_logger("EMBEDDINGS");
+    static Logger* logger = Logger::get_logger("MAIN");
     class GApproxEmbedding : public Embedding {
         public:
         GApproxEmbedding();

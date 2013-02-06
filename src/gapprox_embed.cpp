@@ -32,6 +32,9 @@ namespace GApprox{
         GApproxEmbedding* next_embeds = new GApproxEmbedding();
         int num_labels = st.get_num_labels();
         types::cost_t max_cost = st.get_alpha();
+
+        Logger* logger = st.get_logger();
+
         // iterate over all the existing embeddings
         tr(embeds, it) {
             // budget used up already
@@ -48,7 +51,9 @@ namespace GApprox{
                 // label of the new vertex that will be added to the embedding
                 types::label_t src_label = st.get_label(*rep);
                 // cost between label in the pattern and label of the new vertex
+                INFO(*logger, "getting label cost");
                 types::cost_t cost = st.simvals[num_labels*src_label + lab];
+                INFO(*logger, " cost " << cost );
                 // copy the existing embedding
                 types::pat_vlist_t embed_vertices = it->second;
                 // push the new vertex
@@ -83,7 +88,10 @@ namespace GApprox{
         tr(unique_reps, it) {
             sizes.push_back(it->second.size());
         }
-        return *min_element(all(sizes));
+        if(sizes.empty())
+            return 0;
+        int sup =  *min_element(all(sizes));
+        return sup;
     }
 
     int GApproxEmbedding::compute_support() {

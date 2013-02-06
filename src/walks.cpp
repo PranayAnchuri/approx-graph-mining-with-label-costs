@@ -7,8 +7,8 @@
 
 namespace rwalk {
     void random_walk(Store& st);
-    bool fwd_extension(Janitor& jtr, pattern& pat, Embedding* embeds, Store& st);
-    bool back_extension(Janitor& jtr, pattern& pat, Embedding* embeds, Store& st);
+    Embedding* fwd_extension(Janitor& jtr, pattern& pat, Embedding* embeds, Store& st);
+    Embedding* back_extension(Janitor& jtr, pattern& pat, Embedding* embeds, Store& st);
 
     Embedding* initialize_walk(Store& st, pattern& pat) {
         types::label_t lab;
@@ -41,11 +41,12 @@ namespace rwalk {
     void random_walk(Store& st) {
         pattern pat;
         Embedding* embeds = initialize_walk(st, pat);
-        INFO(*(st.get_logger()), embeds->to_string());
+        Logger* logger = st.get_logger();
+        INFO(*logger, embeds->to_string());
         Janitor jtr;
         int toss;
         while(true) {
-            bool result = false;
+            Embedding* result =  0; // next set of embeddings
             toss = st.myran.det_toss();
             vi tries;
             tries.push_back(toss); tries.push_back(1-toss);
@@ -57,6 +58,8 @@ namespace rwalk {
                     result = back_extension(jtr, pat, embeds,  st);
                 }
                 if(result) {
+                    embeds = result;
+                    INFO(*logger, "after extension " << embeds->to_string());
                     break;
                 }
             }
@@ -65,17 +68,20 @@ namespace rwalk {
         }
     }
 
-    bool fwd_extension(Janitor& jtr, pattern& pat, Embedding* embeds, Store& st) {
+    Embedding* fwd_extension(Janitor& jtr, pattern& pat, Embedding* embeds, Store& st) {
         /* Shuffle the list of vertices from which the extension is tried and
          * the labels with which the extensions are tried from a given vertex
          * in the pattern
          */
+        if(!embeds)
+            throw std::runtime_error(" Embedding is null");
         types::pat_vlist_t vertices;
         vector<types::label_t> labels;
         pat.get_vertices(vertices);
         st.get_labels(labels);
         st.myran.myshuffle(vertices);
         st.myran.myshuffle(labels);
+        Logger* logger = st.get_logger();
         // Iterate over the complete set of possible extensions
         tr(vertices, it) {
             if(jtr.is_expired(*it))
@@ -84,29 +90,32 @@ namespace rwalk {
                 if(jtr.is_failed_label(*it, *it2))
                     continue;
                 else {
+                    INFO(*logger, "src " << *it << "label " << *it2);
                     Embedding* extend_embed = embeds->extend_fwd(st, *it,  *it2);
-                    INFO(*(st.get_logger()), extend_embed->to_string());
+                    INFO(*logger, "computed extensions");
+                    INFO(*logger, extend_embed->to_string());
                     int sup = extend_embed->compute_support();
-                    INFO(*(st.get_logger()), " sup " << sup);
-                    return false;
-                    if(st.is_frequent(sup)) {
+                    INFO(*logger, "computed support");
+                    if( !st.is_frequent(sup)) {
                         jtr.add_failed_label(*it, *it2);
+                        INFO(*logger, "infrequent extension");
                         delete extend_embed;
                     }
                     else {
                         // update the set of embeddings
+                        pat.add_fwd_vertex(*it2);
                         delete embeds;
-                        embeds = extend_embed;
-                        return true;
+                        INFO(*logger, "frequent extension");
+                        return extend_embed;
                     }
                 }
             }
             jtr.add_expired_vertex(*it);
         }
-        return false;
+        return 0; // return a null pointer if none of the extensions are frquent
     }
 
-    bool back_extension(Janitor& jtr, pattern& pat, Embedding* embeds, Store& st) {
+    Embedding* back_extension(Janitor& jtr, pattern& pat, Embedding* embeds, Store& st) {
         types::pat_elist_t pat_edges;
         st.myran.myshuffle(pat_edges);
         tr(pat_edges, it) {
@@ -117,7 +126,7 @@ namespace rwalk {
                 if(st.is_frequent(sup)) {
                 }
                 else {
-                    return true;
+                    return embeds;
                 }
             }
         }
