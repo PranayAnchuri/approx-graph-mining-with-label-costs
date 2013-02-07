@@ -4,6 +4,7 @@ namespace LabelPruning{
     RepEmbedding::RepEmbedding() {
         supfunc = &RepEmbedding::min_node_sup;
     }
+
     void RepEmbedding::init_embeddings(Store& st, const types::label_t& lab, \
             const types::vlist_t& vids) {
         int num_labels = st.get_num_labels();
@@ -13,6 +14,8 @@ namespace LabelPruning{
             types::cost_t cost = st.simvals[lab*num_labels + rep_label];
             rep_s.insert(make_pair(*it, Repr(*it, cost)));
         }
+        // add the representatives for the first vertex
+        embeds[0] = rep_s;
     }
 
     std::string RepEmbedding::to_string() {
@@ -41,11 +44,10 @@ namespace LabelPruning{
 
     bool RepEmbedding::prune_reps(const pattern& pat, Store& st) {
         // prune the embeddings based on the pattern
-        pat_hops_t phops; // key is the pat vertex and value is hop label
-        db_hops_t dhops;
+        pat_hops_t phops = pat.get_hops(); // key is the pat vertex and value is hop label
         int minsup = st.get_minsup();
-        //pat.get_hops(phops);
-        //db_hops_t dhops = st.get_db_hops();
+        // Dont modify this object for god's sake
+        db_hops_t& dhops = st.db_hops;
         // Get max level for which pruning is done
         //int mxlevel = st.get_maxkhop();
         int maxlevel = 0;
@@ -57,7 +59,7 @@ namespace LabelPruning{
                 types::pat_vertex_t pat_v = it->first;
                 tr(it->second, rep_it) {
                     // if the database label doesnt dominates pattern label
-                    if( !pat_hop.is_less(&dhops[rep_it->first])) {
+                    if( !pat_hop.is_less(&dhops[rep_it->first][level])) {
                         // remove the vertex from the representative set
                         invalid[pat_v].insert(rep_it->first);
                     }
@@ -148,6 +150,22 @@ namespace LabelPruning{
         }
     }
 
+    void RepEmbedding::retain_only_valid(types::bare_embeds_t& valid) {
+        // Retain only these k
+        tr(embeds, patv) {
+            typeof(embeds[patv->first].begin()) reps = embeds[patv->first].begin();
+            while(reps != embeds[patv->first].end()) {
+                // can we remove this candidate vertex
+                if(!present(valid[patv->first], reps->first)) {
+                    embeds[patv->first].erase(reps++);
+                }
+                else {
+                    reps++;
+                }
+            }
+        }
+    }
+
     // Function to cover all the vertices in an embedding so that
     // complete enumeration from the corresponding vertices can
     // be avoided
@@ -221,8 +239,11 @@ namespace LabelPruning{
         }
     }
 
-    /* Verify the candidate representative vertices by exhaustive enumeration*/
-    bool RepEmbedding::verify_support(Store& st, pattern& pat) {
+    /* Verify the candidate representative vertices by exhaustive enumeration
+     * valid is the compressed embedding without the Repr objects that are
+     * verified to be valid
+     */
+    bool RepEmbedding::verify_support(Store& st, pattern& pat, types::bare_embeds_t& valid) {
         int numlabels = st.get_num_labels();
         int minsup = st.get_minsup();
         types::cost_t alpha = st.get_alpha();
@@ -233,7 +254,6 @@ namespace LabelPruning{
         vector<types::cost_t>& costvalues = st.simvals; // TODO : change simvals to costvals
 
         // 2) Store the true approximate embeddings that are enumerated
-        types::bare_embeds_t valid; // these vertices are verified to have atleast one
 
 
         // 3) process all the representative sets
@@ -268,5 +288,6 @@ namespace LabelPruning{
             if(sup < minsup)
                 return false;
         }
+        return true;
     }
 }

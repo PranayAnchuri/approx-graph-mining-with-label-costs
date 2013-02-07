@@ -9,6 +9,7 @@
 #include "types.hpp"
 #include "repr.hpp"
 #include "khop.hpp"
+#include "read_hop.hpp"
 
 namespace LabelPruning {
     static Logger* logger = Logger::get_logger("MAIN");
@@ -26,11 +27,13 @@ namespace LabelPruning {
         virtual Embedding* extend_back(Store& st, const pattern& pat, types::pat_vertex_t src, \
                                             types::pat_vertex_t back);
         void add_reps(const types::pat_vertex_t& pat_v, const map<types::db_vertex_t, Repr>& rep );
+
         private:
         // key is the pattern vertex and the value is the rep object
         void remove_invalid(map<types::pat_vertex_t, set<types::db_vertex_t> >& invalid);
         bool prune_reps(const pattern& pat, Store& st);
-        bool verify_support(Store& st, pattern& pat);
+        void retain_only_valid(types::bare_embeds_t& valid);
+        bool verify_support(Store& st, pattern& pat, types::bare_embeds_t& valid);
         RepEmbedding* pruning(RepEmbedding* next_embeds, Store& st, const pattern& pat);
         bool enumerate(Store& st, pattern& pat, const vector<types::pat_edge_t>& path, int eindex, \
                                      types::cost_t threshold, const int& numlabels, vector<types::pat_edge_t>& epath,\
@@ -44,7 +47,7 @@ namespace LabelPruning {
         typedef int (RepEmbedding::*fptr)(map<types::pat_vertex_t, \
                 types::set_vlist_t>& unique_reps);
         fptr supfunc;
-        typedef map<types::pat_vertex_t, KhopLabel> pat_hops_t;
-        typedef map<types::db_vertex_t , KhopLabel> db_hops_t;
+        typedef map<types::pat_vertex_t, map<int, KhopLabel> > pat_hops_t;
+        typedef map<types::db_vertex_t , map<int, KhopLabel> > db_hops_t;
     };
 }

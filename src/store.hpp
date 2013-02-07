@@ -9,6 +9,8 @@
 
 #include "Globals.hpp"
 #include "repr.hpp"
+#include "read_hop.hpp"
+#include "khop.hpp"
 
 class Store {
     public:
@@ -32,6 +34,8 @@ class Store {
         Prand myran;
         inline bool is_frequent(int sup) { return sup >= minsup; }
         types::set_vlist_t adjacent(const types::db_vertex_t& v) { return gr[v];}
+        void read_hops(string file);
+        map<types::db_vertex_t, map<int, KhopLabel> > db_hops;
     private:
         void add_vertex(const int& id, const types::label_t& label);
         void add_edge(const int& id1, const int& id2);

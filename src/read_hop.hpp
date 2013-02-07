@@ -15,6 +15,6 @@ namespace Hops {
 
     void read_hop(string filename, db_hops_t& dbhops);
     void get_hops(const types::pat_elist_t& edges, const types::pat_vlist_t& vertices,\
-                                types::vmap_t& labels, pat_hops_t& hopsets);
+                                const types::vmap_t& labels, pat_hops_t& hopsets);
     std::string to_string(db_hops_t& dbhops);
 }

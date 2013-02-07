@@ -113,6 +113,10 @@ void Store::read_cost(string file) {
     } // While loop for the entire file
 }
 
+void Store::read_hops(string file) {
+    // read the khops of the database graph
+    Hops::read_hop(file, db_hops);
+}
 
 void Store::get_frequent_vertices(types::cost_t alpha, int minsup) {
     // for each vertex compute the cost of matching with other vertex
