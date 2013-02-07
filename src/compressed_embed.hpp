@@ -30,7 +30,13 @@ namespace LabelPruning {
         // key is the pattern vertex and the value is the rep object
         void remove_invalid(map<types::pat_vertex_t, set<types::db_vertex_t> >& invalid);
         bool prune_reps(const pattern& pat, Store& st);
+        bool verify_support(Store& st, pattern& pat);
         RepEmbedding* pruning(RepEmbedding* next_embeds, Store& st, const pattern& pat);
+        bool enumerate(Store& st, pattern& pat, const vector<types::pat_edge_t>& path, int eindex, \
+                                     types::cost_t threshold, const int& numlabels, vector<types::pat_edge_t>& epath,\
+                                    map<types::pat_vertex_t,types::db_vertex_t>& covered, set<types::db_vertex_t>& tabu);
+            // Store the candidate representative vertices for each vertex in the
+            // pattern
         typedef map<types::db_vertex_t, Repr> RepSet;
         typedef map<types::pat_vertex_t, RepSet> RepEmbeds;
         RepEmbeds embeds;

@@ -97,7 +97,7 @@ namespace LabelPruning{
     }
 
     Embedding* RepEmbedding::extend_fwd(Store& st, const pattern& pat, types::pat_vertex_t src, \
-                                            types::label_t lab) {
+            types::label_t lab) {
         // Add the candidate representatives for the next set and prune
         RepEmbedding* next_embeds = new RepEmbedding();
         *next_embeds = *this;
@@ -110,7 +110,7 @@ namespace LabelPruning{
     }
 
     Embedding* RepEmbedding::extend_back(Store& st, const pattern& pat, types::pat_vertex_t src, \
-                                            types::pat_vertex_t des) {
+            types::pat_vertex_t des) {
         RepEmbedding* next_embeds = new RepEmbedding();
         *next_embeds = *this;
         // prune the representative vertices
@@ -136,5 +136,137 @@ namespace LabelPruning{
             }
         }
         return (this->*supfunc)(unique_reps);
+    }
+
+    /***************************************** VERIFICATION *****************/
+
+    void get_paths(map<types::pat_vertex_t, types::pat_elist_t>& paths, pattern& pat) {
+        types::pat_vlist_t vertices;
+        pat.get_vertices(vertices);
+        tr(vertices, it) {
+            paths[*it] = pat.get_edge_path(*it);
+        }
+    }
+
+    // Function to cover all the vertices in an embedding so that
+    // complete enumeration from the corresponding vertices can
+    // be avoided
+    inline void add_valid(map<types::pat_vertex_t, types::db_vertex_t>& covered,\
+            types::bare_embeds_t& valid) {
+        tr(covered,it) {
+            valid[it->first].insert(it->second);
+        }
+    }
+
+
+    // try a complete enumeration from a candidate vertex
+    bool RepEmbedding::enumerate(Store& st, pattern& pat, const vector<types::pat_edge_t>& path, int eindex, \
+            types::cost_t threshold, const int& numlabels, vector<types::pat_edge_t>& epath, \
+            map<types::pat_vertex_t,types::db_vertex_t>& covered, set<types::db_vertex_t>& tabu) {
+        // try to enumerate a pattern starting from "vertex" and following the
+        // epath is the exact path and covered are the mappings for the vertices
+        if(threshold<0){
+            return false;
+        }
+        if(eindex==path.size())
+            return true;
+        types::pat_edge_t ed = path[eindex];
+        if(present(covered,ed.first) && present(covered,ed.second)) {
+            // make sure that the edge is present in the graph and continue
+            if(st.is_valid_edge( covered[ed.first], covered[ed.second])) {
+                epath.push_back(ii(covered[ed.first], covered[ed.second]));
+                return enumerate(st, pat, path,eindex+1,threshold, numlabels,\
+                        epath, covered, tabu);
+            }
+            else {
+                return false;
+            }
+
+        }
+        else if(present(covered,ed.first) && !present(covered,ed.second)){
+            // Fwd edge : get the neighbors of the current mapping 
+            types::db_vertex_t v = covered[ed.first];
+            types::label_t src_lab = pat.get_label(ed.second);
+            // get the neighbors of v
+            types::set_vlist_t ad = st.adjacent(v);
+            // intersect adj list with the representatives of the vert ed.second
+            //types::set_vlist_t common;
+            //set_intersection(all(ad),all(em[ed.second]), inserter(common, common.end()));
+            // recurse on each of the element
+            tr(embeds[ed.second], rep) {
+                if(!present(ad, rep->first ))
+                    continue;
+                types::label_t des_lab = st.get_label(rep->first);
+                types::cost_t cost = st.simvals[src_lab*numlabels + des_lab];
+                if(threshold<cost || present(tabu,rep->first)) {
+                    continue;
+                }
+                epath.push_back(types::pat_edge_t(v,rep->first));
+                covered[ed.second] = rep->first;
+                tabu.insert(rep->first);
+                bool res = enumerate(st,pat, path, eindex+1, threshold-cost, numlabels,  epath, covered, tabu);
+                if(res)
+                    return true;
+                else {
+                    epath.pop_back();
+                    covered.erase(ed.second);
+                    tabu.erase(rep->first);
+                }
+            }
+            return false;
+        }
+        else {
+            cerr << "Error :  cannot get the coverings of the vertices in the path"<<endl;
+            abort();
+        }
+    }
+
+    /* Verify the candidate representative vertices by exhaustive enumeration*/
+    bool RepEmbedding::verify_support(Store& st, pattern& pat) {
+        int numlabels = st.get_num_labels();
+        int minsup = st.get_minsup();
+        types::cost_t alpha = st.get_alpha();
+        // 1) Get the paths that each vertex in the pattern has to follow
+        map<types::pat_vertex_t, types::pat_elist_t > paths;
+        get_paths(paths, pat);
+
+        vector<types::cost_t>& costvalues = st.simvals; // TODO : change simvals to costvals
+
+        // 2) Store the true approximate embeddings that are enumerated
+        types::bare_embeds_t valid; // these vertices are verified to have atleast one
+
+
+        // 3) process all the representative sets
+        tr(embeds, it) {
+            // key is the pattern vertex and the value is the representative
+            // vertices for the pattern vertex
+            types::pat_vertex_t pat_v = it->first;
+            tr(it->second, rep) { // key is db vertex and value is repr object
+                if(present(valid[pat_v], rep->first))
+                    continue; // vertex verified already
+                // can we enumerate a pattern starting from *v
+                // returns vertices if successful o/w empty
+                map<types::pat_vertex_t, types::db_vertex_t> covered;
+                vector<types::pat_edge_t> epath;
+                covered[pat_v] = rep->first;
+                // reduce the threshold if the label for the initial vertex also
+                types::label_t patlabel = pat.get_label(pat_v);
+                types::label_t vlabel = st.get_label(rep->first);
+                double cost = costvalues[numlabels*patlabel + vlabel];
+                set<types::db_vertex_t> tabu;
+                tabu.insert(rep->first);
+                bool res = enumerate(st, pat, paths[it->first], 0, alpha-cost, numlabels, epath, covered, tabu);
+                if(res) {
+                    add_valid(covered, valid);
+                    // get the string corresponding to this
+                    //if(st.num_embeds() > embeddings.size())
+                    //embeddings.push_back(covered_to_string(covered, pat, st));
+                }
+            }
+
+            int sup = compute_support();
+            if(sup < minsup)
+                return false;
+        }
     }
 }

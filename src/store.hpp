@@ -20,7 +20,7 @@ class Store {
         int get_minsup(){return minsup;}
         int get_num_labels() { return num_labels;}
         int get_num_walks() {return walks;}
-        types::label_t get_label(int id) { return vmap[id];}
+        types::label_t get_label(const types::db_vertex_t& id) { return vmap[id];}
         void get_labels(vector<types::label_t>& labels) { labels = freq_labels;}
         bool is_valid_edge(const int& id1, const int& id2) { return present(gr[id1], id2);}
         void get_random_l1(types::label_t& lab, types::vlist_t& vlist); // for initializing random walk
@@ -31,6 +31,7 @@ class Store {
         Logger* get_logger() { return logger;}
         Prand myran;
         inline bool is_frequent(int sup) { return sup >= minsup; }
+        types::set_vlist_t adjacent(const types::db_vertex_t& v) { return gr[v];}
     private:
         void add_vertex(const int& id, const types::label_t& label);
         void add_edge(const int& id1, const int& id2);

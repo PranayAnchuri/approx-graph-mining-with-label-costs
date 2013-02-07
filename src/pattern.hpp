@@ -12,7 +12,10 @@ class pattern {
         types::pat_vertex_t get_fwd_id() const { return pat_vmap.size();} 
         types::vmap_t get_vmap() { return pat_vmap;}
         string to_string();
+        types::pat_elist_t get_edge_path(const types::pat_vertex_t& id);
+        types::label_t get_label(const types::pat_vertex_t& pat_v) { return pat_vmap[pat_v];}
     private:
         map<int, types::label_t> pat_vmap;
         types::pat_elist_t pat_edges;
+        types::graph_t get_adj();
 };
