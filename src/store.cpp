@@ -120,17 +120,20 @@ void Store::get_frequent_vertices(types::cost_t alpha, int minsup) {
     REP(i, 0, num_labels) {
         // Iterate over all the vertices in the graph
         types::vlist_t reps; // valid representatives of the label i
+        map<types::db_vertex_t, Repr> rep_ob; // objects of rep type
         tr(vmap, it) {
             // cost of the corresponding labels
             types::cost_t cost = simvals[num_labels*i+it->second];
             if(cost <= alpha) {
                 reps.push_back(it->first);
+                rep_ob.insert( make_pair(it->first, Repr(it->first, cost)));
             }
         }
         if( reps.size() >= minsup) {
             // label i is frequent
             l1pats[i] = reps;
             freq_labels.push_back(i);
+            freq_reps[i] = rep_ob;
             INFO(*logger, i << " reps size is " << reps.size());
         }
     }

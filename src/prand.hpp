@@ -4,6 +4,7 @@
  * A simple random number generator based on Marsaglia's MWC
  */
 #include <iostream>
+#include <cstddef>
 
 class Prand;
 class Prand

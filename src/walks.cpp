@@ -91,12 +91,14 @@ namespace rwalk {
                     continue;
                 else {
                     INFO(*logger, "src " << *it << "label " << *it2);
-                    Embedding* extend_embed = embeds->extend_fwd(st, *it,  *it2);
+                    Embedding* extend_embed = embeds->extend_fwd(st, pat, *it,  *it2);
+                    if(!extend_embed)
+                        continue;
                     INFO(*logger, "computed extensions");
                     INFO(*logger, extend_embed->to_string());
                     int sup = extend_embed->compute_support();
                     INFO(*logger, "computed support");
-                    if( !st.is_frequent(sup)) {
+                    if( ! !st.is_frequent(sup)) {
                         jtr.add_failed_label(*it, *it2);
                         INFO(*logger, "infrequent extension");
                         delete extend_embed;

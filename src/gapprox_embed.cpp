@@ -27,7 +27,7 @@ namespace GApprox{
         return ss.str();
     }
 
-    Embedding* GApproxEmbedding::extend_fwd(Store& st, types::pat_vertex_t src, \
+    Embedding* GApproxEmbedding::extend_fwd(Store& st, const pattern& pat, types::pat_vertex_t src, \
                                             types::label_t lab) {
         GApproxEmbedding* next_embeds = new GApproxEmbedding();
         int num_labels = st.get_num_labels();
@@ -67,7 +67,7 @@ namespace GApprox{
         return (Embedding*)next_embeds;
     }
 
-    Embedding* GApproxEmbedding::extend_back(Store& st, types::pat_vertex_t src, \
+    Embedding* GApproxEmbedding::extend_back(Store& st, const pattern& pat, types::pat_vertex_t src, \
                                             types::pat_vertex_t des) {
         // for each embedding check if there exists an edge between src and back
         // mappings of the pattern vertex

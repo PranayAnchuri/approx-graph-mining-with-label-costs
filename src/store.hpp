@@ -8,6 +8,7 @@
 #pragma once
 
 #include "Globals.hpp"
+#include "repr.hpp"
 
 class Store {
     public:
@@ -24,6 +25,7 @@ class Store {
         bool is_valid_edge(const int& id1, const int& id2) { return present(gr[id1], id2);}
         void get_random_l1(types::label_t& lab, types::vlist_t& vlist); // for initializing random walk
         void copy_numeric_args(map<string, types::double_t>& numeric_args);
+        inline map<types::db_vertex_t, Repr> get_rep(const types::label_t lab) { return freq_reps[lab];}
         map<types::label_t, types::vlist_t> l1pats;
         vector<types::cost_t> simvals;
         Logger* get_logger() { return logger;}
@@ -36,6 +38,7 @@ class Store {
         types::vmap_t vmap;
         types::lmap_t lmap;
         vector<types::label_t> freq_labels;
+        map<types::label_t, map<types::db_vertex_t, Repr> > freq_reps;
         int num_labels;
         int minsup;
         int walks;

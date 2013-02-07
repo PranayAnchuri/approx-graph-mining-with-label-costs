@@ -38,7 +38,10 @@ namespace types {
 
   typedef std::vector<pat_vertex_t> pat_vlist_t;
   typedef std::vector<std::pair<pat_vertex_t, pat_vertex_t> > pat_elist_t;
+  // Pattern in the form of a graph 
+  typedef std::map<pat_vertex_t, pat_vlist_t> pat_graph_t;
   // GAPPROX
+
   // one embedding
   typedef std::pair<types::cost_t, pat_vlist_t> gapprox_em_t;
   // list of all embeddings for a given pattern
