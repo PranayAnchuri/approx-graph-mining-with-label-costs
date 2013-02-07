@@ -20,6 +20,8 @@ TEST(Hop, HopComp) {
     pat.add_fwd_vertex(2);
     pat.add_fwd_vertex(5);
     pat.add_edge(0,2);
+    pat.add_edge(1,2);
+    pat.add_edge(0,1);
     cout << pat.to_string();
     types::pat_vlist_t pat_v;
     pat_v.push_back(0);
