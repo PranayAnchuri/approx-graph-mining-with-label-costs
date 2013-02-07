@@ -4,9 +4,9 @@ namespace Hops {
     std::string to_string(db_hops_t& dbhops) {
         std::stringstream ss;
         tr(dbhops, it) {
-            ss << " Vertex " << it->first;
+            ss << " Vertex " << it->first <<endl;
             tr(it->second, lhops) {
-                ss << "Level " << lhops->first << " - " << lhops->second.to_string() << std::endl;
+                ss << "\t Level " << lhops->first << " - " << lhops->second.to_string() << std::endl;
             }
         }
         return ss.str();

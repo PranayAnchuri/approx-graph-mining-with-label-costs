@@ -17,3 +17,14 @@ void pattern::get_vertices(types::pat_vlist_t& vertices) {
 void pattern::get_edges(types::pat_elist_t& edges) {
     edges = pat_edges;
 }
+
+string pattern::to_string() {
+    stringstream ss;
+    tr(pat_vmap, it) {
+        ss << " v " << it->first << " " <<it->second << endl;
+    }
+    tr(pat_edges, it) {
+        ss << "e " << it->first << " " << it->second << endl;
+    }
+    return ss.str();
+}
