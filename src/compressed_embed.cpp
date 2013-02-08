@@ -21,11 +21,11 @@ namespace LabelPruning{
     std::string RepEmbedding::to_string() {
         std::stringstream ss;
         tr(embeds, it) {
-            ss << " P V - " << it->first << " -- R ";
+            ss << " \n P V - " << it->first << " -- R ";
             tr(it->second, rep_it) {
                 ss << rep_it->second.to_string();
             }
-            ss << std::endl;
+            //ss << std::endl;
         }
         return ss.str();
     }
@@ -44,7 +44,8 @@ namespace LabelPruning{
 
     bool RepEmbedding::prune_reps(pattern& pat, Store& st) {
         // prune the embeddings based on the pattern
-        pat_hops_t phops = pat.get_hops(); // key is the pat vertex and value is hop label
+        INFO(*logger, "Embeddings before pruning " << to_string());
+        pat_hops_t phops = pat.get_hops(); // key is the pat vertex and value is hop label;
         int minsup = st.get_minsup();
         // Dont modify this object for god's sake
         db_hops_t& dhops = st.db_hops;
@@ -66,24 +67,28 @@ namespace LabelPruning{
                     if(!present(dhops[rep_it->first], level))
                         continue;
                     types::cost_t flowval = pat_hop.distance(dhops[rep_it->first][level], num_labels, st.simvals);
+                    //INFO(*logger, "S "<< pat_v << " D "<< rep_it->first<<" C "<<flowval);
                     /*
                      * Returns -1 if the capacity constraints are not met
                      * total cost otherwise */
                     if( flowval < 0 || flowval > alpha)
                         // remove the vertex from the representative set
                         invalid[pat_v].insert(rep_it->first);
-                    }
-                    // check if the hop label is still valid
-                    //if()
                 }
+                // check if the hop label is still valid
+                //if()
             }
             // remove invalid vertices and compute the support
             remove_invalid(invalid);
             int sup = compute_support();
             if(sup < minsup) {
                 // terminate the process
+                INFO(*logger, "failed after pruning");
+                INFO(*logger, "embeddings " << to_string());
                 return 0;
             }
+        } // end of the for loop
+        INFO(*logger, "success after pruning " << to_string());
         return 1;
     }
 
@@ -118,11 +123,10 @@ namespace LabelPruning{
         *next_embeds = *this;
         // get the id of the next vertex that will be added to the embeddings
         types::pat_vertex_t des = pat.get_fwd_id();
+        INFO(*logger, "pat size" << pat.get_pat_size());
         // Add the embedding for the new vertex
         next_embeds->add_reps(des, st.get_rep(lab));
-        INFO(*logger, "Embeddings for the new vertex" );
-        INFO(*logger, next_embeds->to_string());
-        throw std::runtime_error(" check");
+        //throw std::runtime_error(" check");
         // prune the representative sets
         return pruning(next_embeds, st, pat);
     }

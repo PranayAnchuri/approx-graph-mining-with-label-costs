@@ -15,7 +15,7 @@ namespace rwalk {
         types::label_t lab;
         types::vlist_t vlist;
         st.get_random_l1(lab, vlist);
-        pat.add_fwd_vertex(lab);
+        pat.add_fwd_label(lab);
         //INFO(*logger, lab << " and vlist size is" << vlist.size());
         /*
          * Create level 1 embeddings depending on the type of the algorithm that
@@ -94,21 +94,25 @@ namespace rwalk {
                     continue;
                 else {
                     INFO(*logger, "src " << *it << "label " << *it2);
+                    pat.add_fwd(*it, *it2);
                     Embedding* extend_embed = embeds->extend_fwd(st, pat, *it,  *it2);
-                    if(!extend_embed)
+                    if(!extend_embed) {
+                        pat.undo_fwd();
                         continue;
+                    }
                     INFO(*logger, "computed extensions");
                     INFO(*logger, extend_embed->to_string());
                     int sup = extend_embed->compute_support();
                     INFO(*logger, "computed support");
-                    if( ! !st.is_frequent(sup)) {
+                    if( !st.is_frequent(sup)) {
                         jtr.add_failed_label(*it, *it2);
+                        pat.undo_fwd();
                         INFO(*logger, "infrequent extension");
                         delete extend_embed;
                     }
                     else {
                         // update the set of embeddings
-                        pat.add_fwd_vertex(*it2);
+                        //pat.add_fwd_vertex(*it2);
                         delete embeds;
                         INFO(*logger, "frequent extension");
                         return extend_embed;
@@ -127,11 +131,25 @@ namespace rwalk {
             if(jtr.is_back_fail(it->first, it->second))
                 continue;
             else {
-                int sup = 0; //TODO
-                if(st.is_frequent(sup)) {
+                // add edge to the pattern
+                INFO(*logger, "Back extension " << it->first << " , " << it->second);
+                pat.add_back(it->first, it->second);
+                Embedding* extend_embed =\
+                           embeds->extend_back(st, pat, it->first, it->second);
+                if(!extend_embed) {
+                    pat.undo_back();
+                    continue;
+                }
+                int sup = extend_embed->compute_support();
+                if(!st.is_frequent(sup)) {
+                    INFO(*logger, "frequent extension");
+                    pat.undo_back();
+                    delete extend_embed;
                 }
                 else {
-                    return embeds;
+                    delete embeds;
+                    INFO(*logger, "frequent extension");
+                    return extend_embed;
                 }
             }
         }

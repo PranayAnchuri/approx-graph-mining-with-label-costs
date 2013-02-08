@@ -1,8 +1,5 @@
 #include "pattern.hpp"
 
-void pattern::add_fwd_vertex(types::label_t lab) {
-    pat_vmap[pat_vmap.size()] = lab;
-}
 
 void pattern::add_edge(int id1, int id2) {
     pat_edges.push_back(ii(id1, id2));
@@ -85,7 +82,6 @@ types::pat_vlist_t pattern::get_vertices() const {
     vector<types::pat_vertex_t> vertices;
     tr(pat_vmap, it) {
         vertices.push_back(it->first);
-        INFO(*logger, it->first);
     }
     return vertices;
 }
@@ -95,6 +91,29 @@ map<types::pat_vertex_t, map<int,KhopLabel> > pattern::get_hops() const {
     map<types::pat_vertex_t, map<int,KhopLabel> > hopsets;
     Hops::get_hops(pat_edges, vertices, pat_vmap,  hopsets);
     return hopsets;
+}
+
+void pattern::add_fwd(const types::pat_vertex_t& src, const types::label_t& lab) {
+    types::pat_vertex_t des = pat_vmap.size();
+    pat_vmap[des] = lab;
+    pat_edges.push_back(make_pair(src, des));
+}
+
+void pattern::add_back(const types::pat_vertex_t& src, const types::pat_vertex_t& des) {
+    pat_edges.push_back(make_pair(src, des));
+}
+
+void pattern::undo_fwd() {
+    // remove the last vertex that was added to the pattern and also the
+    // corresponding edge
+    types::pat_vertex_t prev_id = get_fwd_id();
+    assert(prev_id>=0);
+    pat_vmap.erase(prev_id);
+    pat_edges.pop_back();
+}
+
+void pattern::undo_back() {
+    pat_edges.pop_back();
 }
 
 void pattern::set_sup(const int& sup){
