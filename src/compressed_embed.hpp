@@ -22,19 +22,19 @@ namespace LabelPruning {
         virtual std::string to_string();
         virtual int compute_support();
         int min_node_sup(map<types::pat_vertex_t, types::set_vlist_t>& unique_reps);
-        virtual Embedding* extend_fwd(Store& st, const pattern& pat,\
+        virtual Embedding* extend_fwd(Store& st, pattern& pat,\
                 types::pat_vertex_t src, types::label_t lab);
-        virtual Embedding* extend_back(Store& st, const pattern& pat, types::pat_vertex_t src, \
+        virtual Embedding* extend_back(Store& st, pattern& pat, types::pat_vertex_t src, \
                                             types::pat_vertex_t back);
         void add_reps(const types::pat_vertex_t& pat_v, const map<types::db_vertex_t, Repr>& rep );
 
         private:
         // key is the pattern vertex and the value is the rep object
         void remove_invalid(map<types::pat_vertex_t, set<types::db_vertex_t> >& invalid);
-        bool prune_reps(const pattern& pat, Store& st);
+        bool prune_reps(pattern& pat, Store& st);
         void retain_only_valid(types::bare_embeds_t& valid);
         bool verify_support(Store& st, pattern& pat, types::bare_embeds_t& valid);
-        RepEmbedding* pruning(RepEmbedding* next_embeds, Store& st, const pattern& pat);
+        RepEmbedding* pruning(RepEmbedding* next_embeds, Store& st, pattern& pat);
         bool enumerate(Store& st, pattern& pat, const vector<types::pat_edge_t>& path, int eindex, \
                                      types::cost_t threshold, const int& numlabels, vector<types::pat_edge_t>& epath,\
                                     map<types::pat_vertex_t,types::db_vertex_t>& covered, set<types::db_vertex_t>& tabu);

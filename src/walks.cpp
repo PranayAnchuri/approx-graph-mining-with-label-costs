@@ -4,6 +4,7 @@
 #include "gapprox_embed.hpp"
 #include "trash_keeper.hpp"
 #include "pattern.hpp"
+#include "compressed_embed.hpp"
 
 namespace rwalk {
     void random_walk(Store& st);
@@ -21,13 +22,14 @@ namespace rwalk {
          * we are running; gapprox_embedding to test GAPPROX method
          */
         Embedding* embeds;
-        if(true) {
+        if(!true) {
             // complete enumeration of all the embeddings of the candidate
             // pattern
             embeds = new GApprox::GApproxEmbedding();
         }
         else {
             // Store the embeddings using the representative sets
+            embeds = new LabelPruning::RepEmbedding();
         }
         embeds->init_embeddings(st, lab, st.l1pats[lab] );
         return embeds;

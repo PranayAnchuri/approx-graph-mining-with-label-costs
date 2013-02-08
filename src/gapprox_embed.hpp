@@ -13,9 +13,9 @@ namespace GApprox {
         virtual std::string to_string();
         virtual int compute_support();
         int min_node_sup(map<types::pat_vertex_t, types::set_vlist_t>& unique_reps);
-        virtual Embedding* extend_fwd(Store& st,  const pattern& pat,\
+        virtual Embedding* extend_fwd(Store& st,  pattern& pat,\
                 types::pat_vertex_t src, types::label_t lab);
-        virtual Embedding* extend_back(Store& st, const pattern& pat, types::pat_vertex_t src, \
+        virtual Embedding* extend_back(Store& st, pattern& pat, types::pat_vertex_t src, \
                                             types::pat_vertex_t back);
         virtual inline void add_embedding(const types::gapprox_em_t em) { embeds.push_back(em);}
         private:

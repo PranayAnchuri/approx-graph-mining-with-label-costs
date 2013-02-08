@@ -18,6 +18,7 @@ class pattern {
         types::label_t get_label(const types::pat_vertex_t& pat_v) { return pat_vmap[pat_v];}
         vector<types::pat_vertex_t> get_vertices() const;
         map<types::pat_vertex_t, map<int,KhopLabel> > get_hops() const;
+        inline int get_pat_size() const { return pat_vmap.size();} ;
     private:
         map<int, types::label_t> pat_vmap;
         types::pat_elist_t pat_edges;

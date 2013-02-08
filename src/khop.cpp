@@ -45,7 +45,10 @@ types::cost_t KhopLabel::distance(KhopLabel& dbhop, const int& num_labels,\
     }
     pair<types::cost_t, types::cost_t> res;
     res = network.GetMaxFlow(src,dest);
-    return res.first;
+    // if it network satisfy the flow requirements
+    if(res.first != src_out)
+        return -1;
+    return res.second;
 } 
 
 std::string KhopLabel::to_string() {

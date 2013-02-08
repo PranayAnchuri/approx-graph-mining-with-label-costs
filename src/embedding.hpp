@@ -13,9 +13,9 @@ class Embedding{
         Embedding(){};
         virtual void init_embeddings(Store& st, const types::label_t& lab, \
                 const types::vlist_t& vids) = 0;
-        virtual Embedding* extend_fwd(Store& st, const pattern& pat,\
+        virtual Embedding* extend_fwd(Store& st, pattern& pat,\
                 types::pat_vertex_t src, types::label_t lab) = 0;
-        virtual Embedding* extend_back(Store& st, const pattern& pat, types::pat_vertex_t src, \
+        virtual Embedding* extend_back(Store& st, pattern& pat, types::pat_vertex_t src, \
                                             types::pat_vertex_t back) = 0;
         virtual int compute_support() = 0;
         virtual std::string to_string() = 0;

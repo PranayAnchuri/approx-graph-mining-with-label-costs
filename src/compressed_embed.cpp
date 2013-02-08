@@ -21,7 +21,7 @@ namespace LabelPruning{
     std::string RepEmbedding::to_string() {
         std::stringstream ss;
         tr(embeds, it) {
-            ss << " P Vertex - " << it->first << " ";
+            ss << " P V - " << it->first << " -- R ";
             tr(it->second, rep_it) {
                 ss << rep_it->second.to_string();
             }
@@ -42,7 +42,7 @@ namespace LabelPruning{
         }
     }
 
-    bool RepEmbedding::prune_reps(const pattern& pat, Store& st) {
+    bool RepEmbedding::prune_reps(pattern& pat, Store& st) {
         // prune the embeddings based on the pattern
         pat_hops_t phops = pat.get_hops(); // key is the pat vertex and value is hop label
         int minsup = st.get_minsup();
@@ -50,16 +50,26 @@ namespace LabelPruning{
         db_hops_t& dhops = st.db_hops;
         // Get max level for which pruning is done
         //int mxlevel = st.get_maxkhop();
-        int maxlevel = 0;
+        int maxlevel = pat.get_pat_size();
+        int num_labels = st.get_num_labels();
+        types::cost_t alpha = st.get_alpha();
         map<types::pat_vertex_t, set<types::db_vertex_t> > invalid;
         for(int level=0; level < maxlevel; level++) {
             tr(embeds, it) {
                 // key is the pattern vertex
-                KhopLabel pat_hop;
+                if(!present(phops[it->first], level))
+                    continue;
+                KhopLabel pat_hop = phops[it->first][level];
                 types::pat_vertex_t pat_v = it->first;
                 tr(it->second, rep_it) {
                     // if the database label doesnt dominates pattern label
-                    if( !pat_hop.is_less(&dhops[rep_it->first][level])) {
+                    if(!present(dhops[rep_it->first], level))
+                        continue;
+                    types::cost_t flowval = pat_hop.distance(dhops[rep_it->first][level], num_labels, st.simvals);
+                    /*
+                     * Returns -1 if the capacity constraints are not met
+                     * total cost otherwise */
+                    if( flowval <0 | flowval > alpha)
                         // remove the vertex from the representative set
                         invalid[pat_v].insert(rep_it->first);
                     }
@@ -74,14 +84,12 @@ namespace LabelPruning{
                 // terminate the process
                 return 0;
             }
-        }
         return 1;
     }
 
 
-    RepEmbedding* RepEmbedding::pruning(RepEmbedding* next_embeds, Store& st, const pattern& pat) {
+    RepEmbedding* RepEmbedding::pruning(RepEmbedding* next_embeds, Store& st, pattern& pat) {
         bool res = next_embeds->prune_reps(pat, st);
-        int minsup = st.get_minsup();
         if(!res) {
             delete next_embeds;
             return 0;
@@ -89,16 +97,20 @@ namespace LabelPruning{
         else {
             // post pruning
             //next_embeds->complete_enumeration(st, pat);
-            if(next_embeds->compute_support() < minsup) {
+            types::bare_embeds_t valid;
+            bool res = next_embeds->verify_support(st, pat, valid );
+            if(!res) {
                 delete next_embeds;
                 return 0;
             }
-            else
+            else{
+                next_embeds->retain_only_valid(valid);
                 return next_embeds;
+            }
         }
     }
 
-    Embedding* RepEmbedding::extend_fwd(Store& st, const pattern& pat, types::pat_vertex_t src, \
+    Embedding* RepEmbedding::extend_fwd(Store& st, pattern& pat, types::pat_vertex_t src, \
             types::label_t lab) {
         // Add the candidate representatives for the next set and prune
         RepEmbedding* next_embeds = new RepEmbedding();
@@ -111,7 +123,7 @@ namespace LabelPruning{
         return pruning(next_embeds, st, pat);
     }
 
-    Embedding* RepEmbedding::extend_back(Store& st, const pattern& pat, types::pat_vertex_t src, \
+    Embedding* RepEmbedding::extend_back(Store& st, pattern& pat, types::pat_vertex_t src, \
             types::pat_vertex_t des) {
         RepEmbedding* next_embeds = new RepEmbedding();
         *next_embeds = *this;
