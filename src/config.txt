@@ -1,5 +1,6 @@
 DB ../data/test.txt
 SIM ../data/testSim.txt
+HOPS ../data/test.khops
 WALKS 1
 ALPHA 0.2
 MINSUP 3

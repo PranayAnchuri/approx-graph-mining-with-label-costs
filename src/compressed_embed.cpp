@@ -69,7 +69,7 @@ namespace LabelPruning{
                     /*
                      * Returns -1 if the capacity constraints are not met
                      * total cost otherwise */
-                    if( flowval <0 | flowval > alpha)
+                    if( flowval < 0 || flowval > alpha)
                         // remove the vertex from the representative set
                         invalid[pat_v].insert(rep_it->first);
                     }
@@ -113,12 +113,14 @@ namespace LabelPruning{
     Embedding* RepEmbedding::extend_fwd(Store& st, pattern& pat, types::pat_vertex_t src, \
             types::label_t lab) {
         // Add the candidate representatives for the next set and prune
+        INFO(*logger, "Compressed Embedding forward extension");
+        throw std::runtime_error(" check");
         RepEmbedding* next_embeds = new RepEmbedding();
         *next_embeds = *this;
         // get the id of the next vertex that will be added to the embeddings
         types::pat_vertex_t des = pat.get_fwd_id();
         // Add the embedding for the new vertex
-        next_embeds->add_reps(src, st.get_rep(lab));
+        next_embeds->add_reps(des, st.get_rep(lab));
         // prune the representative sets
         return pruning(next_embeds, st, pat);
     }
@@ -127,6 +129,7 @@ namespace LabelPruning{
             types::pat_vertex_t des) {
         RepEmbedding* next_embeds = new RepEmbedding();
         *next_embeds = *this;
+        // the candidate set of representative vertices dont change
         // prune the representative vertices
         return pruning(next_embeds, st, pat);
     }

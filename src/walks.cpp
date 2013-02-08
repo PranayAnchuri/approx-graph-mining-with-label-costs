@@ -45,6 +45,7 @@ namespace rwalk {
         Embedding* embeds = initialize_walk(st, pat);
         Logger* logger = st.get_logger();
         INFO(*logger, embeds->to_string());
+        INFO(*logger, Hops::to_string(st.db_hops));
         Janitor jtr;
         int toss;
         while(true) {

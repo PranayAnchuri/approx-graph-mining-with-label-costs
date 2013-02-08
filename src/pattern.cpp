@@ -80,7 +80,7 @@ types::pat_elist_t pattern::get_edge_path(const types::pat_vertex_t& id){
     return path;
 }
 
-vector<types::pat_vertex_t> pattern::get_vertices() const {
+types::pat_vlist_t pattern::get_vertices() const {
     // return the vertices present in the pattern
     vector<types::pat_vertex_t> vertices;
     tr(pat_vmap, it) {
@@ -88,9 +88,14 @@ vector<types::pat_vertex_t> pattern::get_vertices() const {
     }
     return vertices;
 }
+
 map<types::pat_vertex_t, map<int,KhopLabel> > pattern::get_hops() const {
-    vector<types::pat_vertex_t> vertices = get_vertices();
+    types::pat_vlist_t vertices = get_vertices();
     map<types::pat_vertex_t, map<int,KhopLabel> > hopsets;
     Hops::get_hops(pat_edges, vertices, pat_vmap,  hopsets);
     return hopsets;
+}
+
+void pattern::set_sup(const int& sup){
+    this->pat_sup = sup;
 }

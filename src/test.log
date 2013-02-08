@@ -1,10 +1,43 @@
-0 [0] [INFO] [Thu Feb 07 15:43:13] [MAIN] [store.cpp@100] - 4
-0 [1] [INFO] [Thu Feb 07 15:43:13] [MAIN] [store.cpp@36] - Num Arg ALPHA Val is 0.2
-0 [2] [INFO] [Thu Feb 07 15:43:13] [MAIN] [store.cpp@36] - Num Arg MINSUP Val is 3
-0 [3] [INFO] [Thu Feb 07 15:43:13] [MAIN] [store.cpp@36] - Num Arg SEED Val is 1729
-0 [4] [INFO] [Thu Feb 07 15:43:13] [MAIN] [store.cpp@36] - Num Arg WALKS Val is 1
-0 [5] [INFO] [Thu Feb 07 15:43:13] [MAIN] [store.cpp@123] - Level 1 Vertices with alpha and minsup0.2 and 3
-0 [6] [INFO] [Thu Feb 07 15:43:13] [MAIN] [store.cpp@141] - 1 reps size is 3
-0 [7] [INFO] [Thu Feb 07 15:43:13] [MAIN] [store.cpp@141] - 2 reps size is 3
-0 [8] [INFO] [Thu Feb 07 15:43:13] [MAIN] [walks.cpp@47] -  P V - 0 -- R 2 5 6 
+0 [0] [INFO] [Fri Feb 08 00:54:41] [MAIN] [store.cpp@100] - 4
+0 [1] [INFO] [Fri Feb 08 00:54:41] [MAIN] [store.cpp@36] - Num Arg ALPHA Val is 0.2
+0 [2] [INFO] [Fri Feb 08 00:54:41] [MAIN] [store.cpp@36] - Num Arg MINSUP Val is 3
+0 [3] [INFO] [Fri Feb 08 00:54:41] [MAIN] [store.cpp@36] - Num Arg SEED Val is 1729
+0 [4] [INFO] [Fri Feb 08 00:54:41] [MAIN] [store.cpp@36] - Num Arg WALKS Val is 1
+0 [5] [INFO] [Fri Feb 08 00:54:41] [MAIN] [store.cpp@123] - Level 1 Vertices with alpha and minsup0.2 and 3
+0 [6] [INFO] [Fri Feb 08 00:54:41] [MAIN] [store.cpp@141] - 1 reps size is 3
+0 [7] [INFO] [Fri Feb 08 00:54:41] [MAIN] [store.cpp@141] - 2 reps size is 3
+0 [8] [INFO] [Fri Feb 08 00:54:41] [MAIN] [walks.cpp@47] -  P V - 0 -- R 2 5 6 
 
+0 [9] [INFO] [Fri Feb 08 00:54:41] [MAIN] [walks.cpp@48] -  Vertex 1
+	 Level 0 - (0, 1) 
+	 Level 1 - (1, 1) 
+	 Level 2 - (2, 1) (3, 1) 
+ Vertex 2
+	 Level 0 - (1, 1) 
+	 Level 1 - (0, 1) (2, 1) (3, 1) 
+ Vertex 3
+	 Level 0 - (2, 1) 
+	 Level 1 - (1, 1) 
+	 Level 2 - (0, 1) (3, 1) 
+ Vertex 4
+	 Level 0 - (3, 1) 
+	 Level 1 - (1, 1) 
+	 Level 2 - (0, 1) (2, 1) 
+ Vertex 5
+	 Level 0 - (1, 1) 
+	 Level 1 - (1, 1) 
+	 Level 2 - (2, 2) 
+ Vertex 6
+	 Level 0 - (1, 1) 
+	 Level 1 - (1, 1) (2, 2) 
+ Vertex 7
+	 Level 0 - (2, 1) 
+	 Level 1 - (1, 1) 
+	 Level 2 - (1, 1) (2, 1) 
+ Vertex 8
+	 Level 0 - (2, 1) 
+	 Level 1 - (1, 1) 
+	 Level 2 - (1, 1) (2, 1) 
+
+0 [10] [INFO] [Fri Feb 08 00:54:41] [MAIN] [walks.cpp@96] - src 0label 2
+0 [11] [INFO] [Fri Feb 08 00:54:41] [MAIN] [compressed_embed.cpp@116] - Compressed Embedding forward extension
