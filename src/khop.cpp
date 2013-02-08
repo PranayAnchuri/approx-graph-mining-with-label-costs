@@ -33,6 +33,7 @@ types::cost_t KhopLabel::distance(KhopLabel& dbhop, const int& num_labels,\
         des_out += it->second;
         cnt++;
     }
+    cout<<" Count" << cnt<<endl;
     // Edges from the pattenr vertices and the database vertices
     tr(hops, it) {
         types::cost_t minsim=1.0; // minimum similarity to vertex on other side
