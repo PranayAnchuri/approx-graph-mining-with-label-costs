@@ -85,6 +85,7 @@ types::pat_vlist_t pattern::get_vertices() const {
     vector<types::pat_vertex_t> vertices;
     tr(pat_vmap, it) {
         vertices.push_back(it->first);
+        INFO(*logger, it->first);
     }
     return vertices;
 }

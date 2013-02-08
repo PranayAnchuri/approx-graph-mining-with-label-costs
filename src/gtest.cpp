@@ -12,6 +12,19 @@ char** my_argv;
 Store st;
 Config* conf;
 Logger* logger = Logger::get_logger("MAIN");
+pattern pat;
+
+void initialize() {
+    // initialize datastrucutures used by various tests
+    pat.add_fwd_vertex(0);
+    pat.add_fwd_vertex(1);
+    pat.add_fwd_vertex(2);
+    pat.add_fwd_vertex(3);
+    pat.add_edge(0,1);
+    pat.add_edge(0,3);
+    pat.add_edge(3,1);
+    pat.add_edge(1,2);
+}
 
 TEST(Hop,HopRead) {
     Hops::db_hops_t dbhops;
@@ -21,37 +34,15 @@ TEST(Hop,HopRead) {
 
 TEST(Hop, HopComp) {
     // check if the pattern hops are computed correctly
-    pattern pat;
-    pat.add_fwd_vertex(0);
-    pat.add_fwd_vertex(2);
-    pat.add_fwd_vertex(5);
-    pat.add_edge(0,2);
-    pat.add_edge(1,2);
-    pat.add_edge(0,1);
-    cout << pat.to_string();
-    types::pat_vlist_t pat_v;
-    pat_v.push_back(0);
-    pat_v.push_back(1);
-    pat_v.push_back(2);
-    Hops::pat_hops_t pathops;
-    types::pat_elist_t pat_e;
-    pat.get_edges(pat_e);
-    types::vmap_t pat_vmap = pat.get_vmap();
-    Hops::get_hops(pat_e , pat_v, pat_vmap, pathops );
-    cout << Hops::to_string(pathops);
+    //INFO(*logger, pat.to_string());
+    Hops::pat_hops_t pathops = pat.get_hops();
+    KhopLabel lab = pathops[3][0];
+    INFO(*logger, Hops::to_string(pathops));
+    INFO(*logger, lab.to_string());
 }
 
 TEST(Hop, HopDistance) {
     // compute the distance between two khop objects
-    pattern pat;
-    pat.add_fwd_vertex(0);
-    pat.add_fwd_vertex(1);
-    pat.add_fwd_vertex(2);
-    pat.add_fwd_vertex(3);
-    pat.add_edge(0,1);
-    pat.add_edge(0,3);
-    pat.add_edge(1,3);
-    pat.add_edge(1,2);
     Hops::pat_hops_t pathops = pat.get_hops();
     INFO(*logger, Hops::to_string(pathops));
     Hops::db_hops_t dbhops = st.db_hops;
@@ -63,6 +54,7 @@ TEST(Hop, HopDistance) {
 }
 
 int main(int argc,char** argv) {
+    initialize();
     ::testing::InitGoogleTest(&argc,argv);
     my_argc = argc;
     my_argv = argv;

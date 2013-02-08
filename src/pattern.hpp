@@ -4,6 +4,7 @@
 #include "khop.hpp"
 #include "read_hop.hpp"
 
+extern Logger* logger;
 class pattern {
     public:
         void add_fwd_vertex(types::label_t label);

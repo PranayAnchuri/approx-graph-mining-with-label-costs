@@ -3,8 +3,9 @@
 #include "types.hpp"
 #include "pattern.hpp"
 
+extern Logger* logger;
+
 namespace GApprox {
-    static Logger* logger = Logger::get_logger("MAIN");
     class GApproxEmbedding : public Embedding {
         public:
         GApproxEmbedding();

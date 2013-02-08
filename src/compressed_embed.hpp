@@ -11,8 +11,8 @@
 #include "khop.hpp"
 #include "read_hop.hpp"
 
+extern Logger* logger;
 namespace LabelPruning {
-    static Logger* logger = Logger::get_logger("MAIN");
     // Representative embedding
     class RepEmbedding : public Embedding {
         public:

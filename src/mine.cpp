@@ -3,14 +3,16 @@
 #include "preprocess.hpp"
 #include "walks.hpp"
 
+Logger* logger;
+
 Logger* init_logger(string file) {
-    Logger *lg = Logger::get_logger("MAIN");
+    logger = Logger::get_logger("MAIN");
     std::filebuf *fbuf = new std::filebuf();
     fbuf->open(file.c_str(), std::ios::out | std::ios::trunc);
     Logger::set_global_streambuf(fbuf, true);
     //INFO(*lg, "test message: " << var);
     //DEBUG(*lg, "test message: " << tst);
-    return lg; 
+    return logger; 
 }
 
 int main(int argc, char** argv)
