@@ -123,8 +123,8 @@ void Store::init_stats() {
 }
 
 void Store::end_stats() {
-    INFO(*stat_logger, "---\t Statistics\n" << stat->to_string());
-    INFO(*stat_logger, "---\t Max Pats");
+    INFO(*stat_logger, "---\t Statistics" << stat->to_string());
+    INFO(*stat_logger, "\n---\t Max Pats");
     tr(maxpats, it) {
         INFO(*stat_logger, it->to_string());
     }

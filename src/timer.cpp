@@ -33,10 +33,10 @@ std::string Timer::to_string() {
     std::stringstream ss;
     if(!stored_times.empty()) {
         double total = accumulate(all(stored_times), 0.0);
-        ss << total/float(stored_times.size()) << "-";
+        ss << "Avg\t" << total/float(stored_times.size()) << "\t";
     }
     for(int i=0;i<stored_times.size();i++) {
-        ss << stored_times[i] << ",";
+        ss << stored_times[i] << "\t";
     }
     return ss.str();
 }

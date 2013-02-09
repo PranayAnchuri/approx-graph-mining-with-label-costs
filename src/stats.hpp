@@ -19,11 +19,13 @@ class Stats {
         void store(const string& param);
         void inc(string param, const int& val);
         std::string to_string();
+        void push_mem(const string& memtype, const int& usage);
     private:
         void add_timer(string param);
         void add_counter(string param);
         map<string,Timer> timers;
         map<string,Counter> counters;
+        map<string, vector<int> > mem_usage; // store mem usage before each max pat is enumerated
         std::string delim;
 };
 

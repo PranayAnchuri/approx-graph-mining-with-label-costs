@@ -38,11 +38,22 @@ std::string Stats::to_string() {
     // get the string representation of all the timers and the counters
     stringstream ss;
     tr(timers, it) {
-        ss << it->first << delim << it->second.to_string();
+        ss << endl << it->first << delim << it->second.to_string();
     }
     tr(counters, it) {
-        ss << it->first << delim <<  it->second.to_string();
+        ss << endl << it->first << delim <<  it->second.to_string();
+    }
+    tr(mem_usage, types) {
+        int s = accumulate(all(types->second), 0);
+        ss << "\n" << types->first << "\tAvg\t" << s/float(types->second.size()) << "\t";
+        tr(types->second, mem) {
+            ss << *mem << "\t";
+        } 
     }
     return ss.str();
+}
+
+void Stats::push_mem(const string& memtype, const int& usage) {
+    mem_usage[memtype].push_back(usage);
 }
 

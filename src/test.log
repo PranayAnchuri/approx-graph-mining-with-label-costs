@@ -39,7 +39,7 @@ MAIN 5 walks.cpp-48	 Vertex 1
 	 Level 1 - (1, 1) 
 	 Level 2 - (1, 1) (2, 1) 
 
-MAIN 6 walks.cpp-97	src 0label 2
+MAIN 6 walks.cpp-103	src 0label 2
 MAIN 7 gapprox_embed.cpp-54	getting label cost
 MAIN 8 gapprox_embed.cpp-56	 cost 0
 MAIN 9 gapprox_embed.cpp-54	getting label cost
@@ -52,14 +52,14 @@ MAIN 15 gapprox_embed.cpp-54	getting label cost
 MAIN 16 gapprox_embed.cpp-56	 cost 0
 MAIN 17 gapprox_embed.cpp-54	getting label cost
 MAIN 18 gapprox_embed.cpp-56	 cost 0.2
-MAIN 19 walks.cpp-104	computed extensions
-MAIN 20 walks.cpp-105	
+MAIN 19 walks.cpp-110	computed extensions
+MAIN 20 walks.cpp-111	
 Cost 0 - 2 3 
 Cost 0 - 2 4 
 Cost 0 - 6 7 
-MAIN 21 walks.cpp-107	computed support
-MAIN 22 walks.cpp-111	infrequent extension
-MAIN 23 walks.cpp-97	src 0label 1
+MAIN 21 walks.cpp-113	computed support
+MAIN 22 walks.cpp-117	infrequent extension
+MAIN 23 walks.cpp-103	src 0label 1
 MAIN 24 gapprox_embed.cpp-54	getting label cost
 MAIN 25 gapprox_embed.cpp-56	 cost 0.2
 MAIN 26 gapprox_embed.cpp-54	getting label cost
@@ -72,49 +72,49 @@ MAIN 32 gapprox_embed.cpp-54	getting label cost
 MAIN 33 gapprox_embed.cpp-56	 cost 0.2
 MAIN 34 gapprox_embed.cpp-54	getting label cost
 MAIN 35 gapprox_embed.cpp-56	 cost 0
-MAIN 36 walks.cpp-104	computed extensions
-MAIN 37 walks.cpp-105	
+MAIN 36 walks.cpp-110	computed extensions
+MAIN 37 walks.cpp-111	
 Cost 0.2 - 2 3 
 Cost 0.2 - 2 4 
 Cost 0.2 - 3 2 
 Cost 0.2 - 4 2 
 Cost 0.2 - 6 7 
 Cost 0.2 - 7 6 
-MAIN 38 walks.cpp-107	computed support
-MAIN 39 walks.cpp-118	frequent extension
-MAIN 40 walks.cpp-65	after extension 
+MAIN 38 walks.cpp-113	computed support
+MAIN 39 walks.cpp-124	frequent extension
+MAIN 40 walks.cpp-67	after extension 
 Cost 0.2 - 2 3 
 Cost 0.2 - 2 4 
 Cost 0.2 - 3 2 
 Cost 0.2 - 4 2 
 Cost 0.2 - 6 7 
 Cost 0.2 - 7 6 
-MAIN 41 walks.cpp-97	src 1label 2
+MAIN 41 walks.cpp-103	src 1label 2
 MAIN 42 gapprox_embed.cpp-54	getting label cost
 MAIN 43 gapprox_embed.cpp-56	 cost 0
 MAIN 44 gapprox_embed.cpp-54	getting label cost
 MAIN 45 gapprox_embed.cpp-56	 cost 0
-MAIN 46 walks.cpp-104	computed extensions
-MAIN 47 walks.cpp-105	
+MAIN 46 walks.cpp-110	computed extensions
+MAIN 47 walks.cpp-111	
 Cost 0.2 - 3 2 4 
 Cost 0.2 - 4 2 3 
-MAIN 48 walks.cpp-107	computed support
-MAIN 49 walks.cpp-111	infrequent extension
-MAIN 50 walks.cpp-97	src 1label 1
+MAIN 48 walks.cpp-113	computed support
+MAIN 49 walks.cpp-117	infrequent extension
+MAIN 50 walks.cpp-103	src 1label 1
 MAIN 51 gapprox_embed.cpp-54	getting label cost
 MAIN 52 gapprox_embed.cpp-56	 cost 0.2
 MAIN 53 gapprox_embed.cpp-54	getting label cost
 MAIN 54 gapprox_embed.cpp-56	 cost 0.2
-MAIN 55 walks.cpp-104	computed extensions
-MAIN 56 walks.cpp-105	
-MAIN 57 walks.cpp-107	computed support
-MAIN 58 walks.cpp-111	infrequent extension
-MAIN 59 walks.cpp-97	src 0label 1
+MAIN 55 walks.cpp-110	computed extensions
+MAIN 56 walks.cpp-111	
+MAIN 57 walks.cpp-113	computed support
+MAIN 58 walks.cpp-117	infrequent extension
+MAIN 59 walks.cpp-103	src 0label 1
 MAIN 60 gapprox_embed.cpp-54	getting label cost
 MAIN 61 gapprox_embed.cpp-56	 cost 0.2
 MAIN 62 gapprox_embed.cpp-54	getting label cost
 MAIN 63 gapprox_embed.cpp-56	 cost 0.2
-MAIN 64 walks.cpp-104	computed extensions
-MAIN 65 walks.cpp-105	
-MAIN 66 walks.cpp-107	computed support
-MAIN 67 walks.cpp-111	infrequent extension
+MAIN 64 walks.cpp-110	computed extensions
+MAIN 65 walks.cpp-111	
+MAIN 66 walks.cpp-113	computed support
+MAIN 67 walks.cpp-117	infrequent extension

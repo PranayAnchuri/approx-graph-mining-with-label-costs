@@ -48,6 +48,8 @@ namespace rwalk {
         INFO(*logger, Hops::to_string(st.db_hops));
         Janitor jtr;
         int toss;
+        int physical = get_physicalmem();
+        int virt = get_virtualmem();
         while(true) {
             Embedding* result =  0; // next set of embeddings
             toss = st.myran.det_toss();
@@ -63,12 +65,16 @@ namespace rwalk {
                 if(result) {
                     embeds = result;
                     INFO(*logger, "after extension " << embeds->to_string());
+                    virt = get_virtualmem();
+                    physical = get_physicalmem();
                     break;
                 }
             }
             if(!result)
                 break;
         }
+        st.stat->push_mem("Physical Memory", physical);
+        st.stat->push_mem("Virtual Memory", virt);
         st.add_max_pat(pat);
     }
 

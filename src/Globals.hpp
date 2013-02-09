@@ -29,6 +29,7 @@
 #include "utils1.hpp"
 #include "logger.hpp"
 #include "prand.hpp"
+#include "memusage.hpp"
 #include <typeinfo>
 
 /*#include <unordered_set>
