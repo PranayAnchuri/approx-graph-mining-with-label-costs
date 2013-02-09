@@ -6,6 +6,7 @@
 #include "store.hpp"
 #include "preprocess.hpp"
 #include "types.hpp"
+#include "compressed_embed.hpp"
 
 int my_argc;
 char** my_argv;
@@ -26,13 +27,13 @@ void initialize() {
     pat.add_edge(1,2);
 }
 
-TEST(Hop,HopRead) {
+TEST(Label,HopRead) {
     Hops::db_hops_t dbhops;
     Hops::read_hop(string("../data/test.khops"), dbhops);
     cout << Hops::to_string(dbhops);
 }
 
-TEST(Hop, HopComp) {
+TEST(Label, HopComp) {
     // check if the pattern hops are computed correctly
     //INFO(*logger, pat.to_string());
     Hops::pat_hops_t pathops = pat.get_hops();
@@ -41,7 +42,7 @@ TEST(Hop, HopComp) {
     INFO(*logger, lab.to_string());
 }
 
-TEST(Hop, HopDistance) {
+TEST(Label, HopDistance) {
     // compute the distance between two khop objects
     Hops::pat_hops_t pathops = pat.get_hops();
     INFO(*logger, Hops::to_string(pathops));
@@ -51,6 +52,11 @@ TEST(Hop, HopDistance) {
     INFO(*logger, "matching cost" << mcost);
     mcost = dbhops[1][0].distance(dbhops[5][0], 4, st.simvals);
     INFO(*logger, "matching cost" << mcost);
+}
+
+TEST(Label, NbrMatch) {
+    // check if there is a one-to-one matching between the nbrs
+    //RepEmbedding* embeds = new LabelPruning::RepEmbedding();
 }
 
 int main(int argc,char** argv) {

@@ -26,9 +26,10 @@ class pattern {
         void set_sup(const int& sup);
         void undo_fwd();
         inline void undo_back();
+        types::pat_graph_t get_adj_list() const;
     private:
+        types::graph_t get_adj();
         map<int, types::label_t> pat_vmap;
         types::pat_elist_t pat_edges;
-        types::graph_t get_adj();
         int pat_sup;
 };

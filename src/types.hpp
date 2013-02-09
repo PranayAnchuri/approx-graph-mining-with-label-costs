@@ -32,7 +32,7 @@ namespace types {
   typedef std::vector<types::db_vertex_t> vlist_t;
   typedef std::set<types::db_vertex_t> set_vlist_t;
   typedef std::map<int, label_t> vmap_t;
-  typedef std::map<int, set_vlist_t > graph_t;
+  typedef std::map<types::db_vertex_t, set_vlist_t > graph_t;
   typedef std::map<label_t, vlist_t> lmap_t;
   typedef double cost_t;
 

@@ -36,10 +36,10 @@ class Store {
         types::set_vlist_t adjacent(const types::db_vertex_t& v) { return gr[v];}
         void read_hops(string file);
         Hops::db_hops_t db_hops;
+        types::graph_t gr;
     private:
         void add_vertex(const int& id, const types::label_t& label);
         void add_edge(const int& id1, const int& id2);
-        types::graph_t gr;
         types::vmap_t vmap;
         types::lmap_t lmap;
         vector<types::label_t> freq_labels;

@@ -28,10 +28,20 @@ string pattern::to_string() {
 
 types::graph_t pattern::get_adj() {
     // get the pattern graph in adjacency list format
+    // gives a set based adjacency list
     types::graph_t adj;
     tr(pat_edges,it) {
        adj[it->first].insert(it->second);
        adj[it->second].insert(it->first);
+    }
+    return adj;
+}
+
+types::pat_graph_t pattern::get_adj_list() const {
+    types::pat_graph_t adj;
+    tr(pat_edges,it) {
+       adj[it->first].push_back(it->second);
+       adj[it->second].push_back(it->first);
     }
     return adj;
 }

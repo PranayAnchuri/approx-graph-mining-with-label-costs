@@ -41,6 +41,33 @@ namespace LabelPruning{
             }
         }
     }
+    bool RepEmbedding::match_nbrs(const types::vlist_t& pat_nbrs, Store& st,\
+                                    types::bare_embeds_t& invalid,\
+                                    const types::db_vertex_t des) {
+        // is there a 1-1 matching between the vertices in the pattern and the
+        // vertices in the db
+        int psize = pat_nbrs.size();
+        types::set_vlist_t& db_nbrs = st.gr[des];
+        int gsize = db_nbrs.size();
+        if(psize > gsize)
+            return false;
+        VVI adj(psize,VI(gsize)); // edges in the bipartite matching
+        int row=0;
+        tr(pat_nbrs,pn) {
+            int col=0;
+            tr(db_nbrs, gn) {
+                if(!present(invalid[*pn], *gn)) {
+                    adj[row][col] = 1;
+                }
+                col++;
+            }
+            row++;
+        }
+        VI row_match(psize);
+        VI col_match(gsize);
+        int msize = MyMatch::BipartiteMatching(adj, row_match, col_match);
+        return msize==psize;
+    }
 
     bool RepEmbedding::prune_reps(pattern& pat, Store& st) {
         // prune the embeddings based on the pattern
@@ -49,12 +76,16 @@ namespace LabelPruning{
         int minsup = st.get_minsup();
         // Dont modify this object for god's sake
         db_hops_t& dhops = st.db_hops;
+        // Compute the neighbors for each vertex which is used in the nbr
+        // matching
+        types::pat_graph_t pat_adj = pat.get_adj_list();
         // Get max level for which pruning is done
         //int mxlevel = st.get_maxkhop();
         int maxlevel = pat.get_pat_size();
         int num_labels = st.get_num_labels();
         types::cost_t alpha = st.get_alpha();
         map<types::pat_vertex_t, set<types::db_vertex_t> > invalid;
+        // TODO: try rearranging the for loops
         for(int level=0; level < maxlevel; level++) {
             tr(embeds, it) {
                 // key is the pattern vertex
@@ -66,14 +97,24 @@ namespace LabelPruning{
                     // if the database label doesnt dominates pattern label
                     if(!present(dhops[rep_it->first], level))
                         continue;
-                    types::cost_t flowval = pat_hop.distance(dhops[rep_it->first][level], num_labels, st.simvals);
-                    //INFO(*logger, "S "<< pat_v << " D "<< rep_it->first<<" C "<<flowval);
                     /*
                      * Returns -1 if the capacity constraints are not met
                      * total cost otherwise */
-                    if( flowval < 0 || flowval > alpha)
+                    types::cost_t flowval = pat_hop.distance(dhops[rep_it->first][level],\
+                            num_labels, st.simvals);
+                    //INFO(*logger, "S "<< pat_v << " D "<< rep_it->first<<" C "<<flowval);
+                    if( flowval < 0 || flowval > alpha){
                         // remove the vertex from the representative set
                         invalid[pat_v].insert(rep_it->first);
+                        continue;
+                    }
+
+                    /**** check if there is a 1-1 mapping between the neighbors of ****/
+                    bool nbrs_match = match_nbrs(pat_adj[it->first], st,\
+                                                    invalid, rep_it->first);
+                    if(!nbrs_match) {
+                        invalid[pat_v].insert(rep_it->first);
+                    }
                 }
                 // check if the hop label is still valid
                 //if()

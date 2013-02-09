@@ -10,6 +10,7 @@
 #include "repr.hpp"
 #include "khop.hpp"
 #include "read_hop.hpp"
+#include "mymatch.hpp"
 
 extern Logger* logger;
 namespace LabelPruning {
@@ -38,6 +39,12 @@ namespace LabelPruning {
         bool enumerate(Store& st, pattern& pat, const vector<types::pat_edge_t>& path, int eindex, \
                                      types::cost_t threshold, const int& numlabels, vector<types::pat_edge_t>& epath,\
                                     map<types::pat_vertex_t,types::db_vertex_t>& covered, set<types::db_vertex_t>& tabu);
+        /*bool match_nbrs(const types::vlist_t& pat_nbrs,\
+                                        const types::bare_embeds_t& invalid,\
+                                        const types::db_vertex_t des);*/
+        bool match_nbrs(const types::vlist_t& pat_nbrs, Store& st,\
+                                    types::bare_embeds_t& invalid,\
+                                    const types::db_vertex_t des);
             // Store the candidate representative vertices for each vertex in the
             // pattern
         typedef map<types::db_vertex_t, Repr> RepSet;
