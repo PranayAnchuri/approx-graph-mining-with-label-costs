@@ -1,14 +1,10 @@
-0 [0] [INFO] [Fri Feb 08 22:44:31] [MAIN] [store.cpp@100] - 4
-0 [1] [INFO] [Fri Feb 08 22:44:31] [MAIN] [store.cpp@36] - Num Arg ALPHA Val is 0.2
-0 [2] [INFO] [Fri Feb 08 22:44:31] [MAIN] [store.cpp@36] - Num Arg MINSUP Val is 3
-0 [3] [INFO] [Fri Feb 08 22:44:31] [MAIN] [store.cpp@36] - Num Arg SEED Val is 1729
-0 [4] [INFO] [Fri Feb 08 22:44:31] [MAIN] [store.cpp@36] - Num Arg WALKS Val is 1
-0 [5] [INFO] [Fri Feb 08 22:44:31] [MAIN] [store.cpp@123] - Level 1 Vertices with alpha and minsup0.2 and 3
-0 [6] [INFO] [Fri Feb 08 22:44:31] [MAIN] [store.cpp@141] - 1 reps size is 3
-0 [7] [INFO] [Fri Feb 08 22:44:31] [MAIN] [store.cpp@141] - 2 reps size is 3
-0 [8] [INFO] [Fri Feb 08 22:44:31] [MAIN] [walks.cpp@47] -  
- P V - 0 -- R 2 5 6 
-0 [9] [INFO] [Fri Feb 08 22:44:31] [MAIN] [walks.cpp@48] -  Vertex 1
+MAIN 1 store.cpp-100	4
+MAIN 2 store.cpp-123	Level 1 Vertices with alpha and minsup0.2 and 3
+MAIN 3 store.cpp-141	1 reps size is 5
+MAIN 4 store.cpp-141	2 reps size is 5
+MAIN 5 walks.cpp-47	 
+ P V - 0 -- R 2 3 4 6 7 
+MAIN 6 walks.cpp-48	 Vertex 1
 	 Level 0 - (0, 1) 
 	 Level 1 - (1, 1) 
 	 Level 2 - (2, 1) (3, 1) 
@@ -39,23 +35,72 @@
 	 Level 1 - (1, 1) 
 	 Level 2 - (1, 1) (2, 1) 
 
-0 [10] [INFO] [Fri Feb 08 22:44:31] [MAIN] [walks.cpp@96] - src 0label 2
-0 [11] [INFO] [Fri Feb 08 22:44:31] [MAIN] [compressed_embed.cpp@162] - Compressed Embedding forward extension
-0 [12] [INFO] [Fri Feb 08 22:44:31] [MAIN] [compressed_embed.cpp@167] - pat size2
-0 [13] [INFO] [Fri Feb 08 22:44:31] [MAIN] [compressed_embed.cpp@74] - Embeddings before pruning  
- P V - 0 -- R 2 5 6  
- P V - 1 -- R 3 7 8 
-0 [14] [INFO] [Fri Feb 08 22:44:31] [MAIN] [compressed_embed.cpp@127] - failed after pruning
-0 [15] [INFO] [Fri Feb 08 22:44:31] [MAIN] [compressed_embed.cpp@128] - embeddings  
+MAIN 7 walks.cpp-96	src 0label 2
+MAIN 8 compressed_embed.cpp-162	Compressed Embedding forward extension
+MAIN 9 compressed_embed.cpp-167	pat size2
+MAIN 10 compressed_embed.cpp-74	Embeddings before pruning  
+ P V - 0 -- R 2 3 4 6 7  
+ P V - 1 -- R 2 3 4 6 7 
+MAIN 11 compressed_embed.cpp-132	success after pruning  
+ P V - 0 -- R 2 3 6 7  
+ P V - 1 -- R 2 3 6 7 
+MAIN 12 walks.cpp-103	computed extensions
+MAIN 13 walks.cpp-104	 
  P V - 0 -- R 2 6  
- P V - 1 -- R 3 7 8 
-0 [16] [INFO] [Fri Feb 08 22:44:31] [MAIN] [walks.cpp@96] - src 0label 1
-0 [17] [INFO] [Fri Feb 08 22:44:31] [MAIN] [compressed_embed.cpp@162] - Compressed Embedding forward extension
-0 [18] [INFO] [Fri Feb 08 22:44:31] [MAIN] [compressed_embed.cpp@167] - pat size2
-0 [19] [INFO] [Fri Feb 08 22:44:31] [MAIN] [compressed_embed.cpp@74] - Embeddings before pruning  
- P V - 0 -- R 2 5 6  
- P V - 1 -- R 2 5 6 
-0 [20] [INFO] [Fri Feb 08 22:44:31] [MAIN] [compressed_embed.cpp@127] - failed after pruning
-0 [21] [INFO] [Fri Feb 08 22:44:31] [MAIN] [compressed_embed.cpp@128] - embeddings  
- P V - 0 -- R 5 6  
- P V - 1 -- R 5 6 
+ P V - 1 -- R 3 7 
+MAIN 14 walks.cpp-106	computed support
+MAIN 15 walks.cpp-110	infrequent extension
+MAIN 16 walks.cpp-96	src 0label 1
+MAIN 17 compressed_embed.cpp-162	Compressed Embedding forward extension
+MAIN 18 compressed_embed.cpp-167	pat size2
+MAIN 19 compressed_embed.cpp-74	Embeddings before pruning  
+ P V - 0 -- R 2 3 4 6 7  
+ P V - 1 -- R 2 3 4 6 7 
+MAIN 20 compressed_embed.cpp-132	success after pruning  
+ P V - 0 -- R 2 3 6 7  
+ P V - 1 -- R 2 3 6 7 
+MAIN 21 walks.cpp-103	computed extensions
+MAIN 22 walks.cpp-104	 
+ P V - 0 -- R 2 3 6 7  
+ P V - 1 -- R 2 3 6 7 
+MAIN 23 walks.cpp-106	computed support
+MAIN 24 walks.cpp-117	frequent extension
+MAIN 25 walks.cpp-65	after extension  
+ P V - 0 -- R 2 3 6 7  
+ P V - 1 -- R 2 3 6 7 
+MAIN 26 walks.cpp-96	src 1label 2
+MAIN 27 compressed_embed.cpp-162	Compressed Embedding forward extension
+MAIN 28 compressed_embed.cpp-167	pat size3
+MAIN 29 compressed_embed.cpp-74	Embeddings before pruning  
+ P V - 0 -- R 2 3 6 7  
+ P V - 1 -- R 2 3 6 7  
+ P V - 2 -- R 2 3 4 6 7 
+MAIN 30 compressed_embed.cpp-127	failed after pruning
+MAIN 31 compressed_embed.cpp-128	embeddings  
+ P V - 0 -- R 2 3 6 7  
+ P V - 1 -- R 2 6  
+ P V - 2 -- R 2 3 6 7 
+MAIN 32 walks.cpp-96	src 1label 1
+MAIN 33 compressed_embed.cpp-162	Compressed Embedding forward extension
+MAIN 34 compressed_embed.cpp-167	pat size3
+MAIN 35 compressed_embed.cpp-74	Embeddings before pruning  
+ P V - 0 -- R 2 3 6 7  
+ P V - 1 -- R 2 3 6 7  
+ P V - 2 -- R 2 3 4 6 7 
+MAIN 36 compressed_embed.cpp-127	failed after pruning
+MAIN 37 compressed_embed.cpp-128	embeddings  
+ P V - 0 -- R 2 3 6 7  
+ P V - 1 -- R 2 6  
+ P V - 2 -- R 2 3 6 7 
+MAIN 38 walks.cpp-96	src 0label 1
+MAIN 39 compressed_embed.cpp-162	Compressed Embedding forward extension
+MAIN 40 compressed_embed.cpp-167	pat size3
+MAIN 41 compressed_embed.cpp-74	Embeddings before pruning  
+ P V - 0 -- R 2 3 6 7  
+ P V - 1 -- R 2 3 6 7  
+ P V - 2 -- R 2 3 4 6 7 
+MAIN 42 compressed_embed.cpp-127	failed after pruning
+MAIN 43 compressed_embed.cpp-128	embeddings  
+ P V - 0 -- R 2 6  
+ P V - 1 -- R 2 3 6 7  
+ P V - 2 -- R 2 3 6 7 

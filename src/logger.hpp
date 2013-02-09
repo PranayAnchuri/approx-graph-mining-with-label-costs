@@ -73,7 +73,8 @@ using std::pair;
 #define CRITICAL_ERROR(__log__, __message__) (__log__)._CRITICAL_ERROR() << __message__ << std::flush << ele
 #define ERROR(__log__, __message__) (__log__)._ERROR() << __message__ << std::flush << ele
 #define WARNING(__log__, __message__) (__log__)._WARNING() << __message__ << std::flush << ele
-#define INFO(__log__, __message__) (__log__)._INFO() << __message__ << std::flush << ele
+//#define INFO(__log__, __message__) (__log__)._INFO() << __message__ << std::flush << ele
+#define INFO(__log__, __message__) (__log__)._INFO() << __message__ << ele
 //#define DEBUG(__log__, __message__) (__log__)._DEBUG() << __message__ << flush << ele
 //#define TRACE(__log__, __message__) (__log__)._TRACE() << __message__ << flush << ele
 #define LOG_VALUE(__log__, __value_name__, __value__) INFO(__log__, "[" << __value_name__ << "=" << __value__ << "]")

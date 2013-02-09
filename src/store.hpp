@@ -12,6 +12,9 @@
 #include "read_hop.hpp"
 #include "khop.hpp"
 
+extern Logger* logger;
+extern Logger* stat_logger;
+
 class Store {
     public:
         Store();
@@ -48,5 +51,5 @@ class Store {
         int minsup;
         int walks;
         types::cost_t alpha;
-        Logger* logger;
+        //Logger* logger;
 };

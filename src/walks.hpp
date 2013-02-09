@@ -6,6 +6,7 @@
  * Pick a random vertex from the set of frequent
  * vertices
  */
+extern Logger* logger;
 namespace rwalk {
     map<types::label_t, types::vlist_t> initialize_walk(Store& st);
     void walks(Store& st);

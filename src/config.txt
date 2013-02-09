@@ -1,4 +1,4 @@
-DB ../data/test.txt
+DB ../data/test2.txt
 SIM ../data/testSim.txt
 HOPS ../data/test.khops
 WALKS 1

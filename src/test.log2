@@ -1,0 +1,61 @@
+0 [1] [INFO] [Sat Feb 09 01:29:37] [MAIN] [store.cpp@100] - 4
+0 [2] [INFO] [Sat Feb 09 01:29:37] [MAIN] [store.cpp@36] - Num Arg ALPHA Val is 0.2
+0 [3] [INFO] [Sat Feb 09 01:29:37] [MAIN] [store.cpp@36] - Num Arg MINSUP Val is 3
+0 [4] [INFO] [Sat Feb 09 01:29:37] [MAIN] [store.cpp@36] - Num Arg SEED Val is 1729
+0 [5] [INFO] [Sat Feb 09 01:29:37] [MAIN] [store.cpp@36] - Num Arg WALKS Val is 1
+0 [6] [INFO] [Sat Feb 09 01:29:37] [MAIN] [store.cpp@123] - Level 1 Vertices with alpha and minsup0.2 and 3
+0 [7] [INFO] [Sat Feb 09 01:29:37] [MAIN] [store.cpp@141] - 1 reps size is 5
+0 [8] [INFO] [Sat Feb 09 01:29:37] [MAIN] [store.cpp@141] - 2 reps size is 5
+0 [9] [INFO] [Sat Feb 09 01:29:37] [MAIN] [walks.cpp@47] -  
+ P V - 0 -- R 2 3 4 6 7 
+0 [10] [INFO] [Sat Feb 09 01:29:37] [MAIN] [walks.cpp@48] -  Vertex 1
+	 Level 0 - (0, 1) 
+	 Level 1 - (1, 1) 
+	 Level 2 - (2, 1) (3, 1) 
+ Vertex 2
+	 Level 0 - (1, 1) 
+	 Level 1 - (0, 1) (2, 1) (3, 1) 
+ Vertex 3
+	 Level 0 - (2, 1) 
+	 Level 1 - (1, 1) 
+	 Level 2 - (0, 1) (3, 1) 
+ Vertex 4
+	 Level 0 - (3, 1) 
+	 Level 1 - (1, 1) 
+	 Level 2 - (0, 1) (2, 1) 
+ Vertex 5
+	 Level 0 - (1, 1) 
+	 Level 1 - (1, 1) 
+	 Level 2 - (2, 2) 
+ Vertex 6
+	 Level 0 - (1, 1) 
+	 Level 1 - (1, 1) (2, 2) 
+ Vertex 7
+	 Level 0 - (2, 1) 
+	 Level 1 - (1, 1) 
+	 Level 2 - (1, 1) (2, 1) 
+ Vertex 8
+	 Level 0 - (2, 1) 
+	 Level 1 - (1, 1) 
+	 Level 2 - (1, 1) (2, 1) 
+
+0 [11] [INFO] [Sat Feb 09 01:29:37] [MAIN] [walks.cpp@96] - src 0label 2
+0 [16] [INFO] [Sat Feb 09 01:29:37] [MAIN] [walks.cpp@103] - computed extensions
+0 [17] [INFO] [Sat Feb 09 01:29:37] [MAIN] [walks.cpp@104] -  
+ P V - 0 -- R 2 6  
+ P V - 1 -- R 3 7 
+0 [18] [INFO] [Sat Feb 09 01:29:37] [MAIN] [walks.cpp@106] - computed support
+0 [19] [INFO] [Sat Feb 09 01:29:37] [MAIN] [walks.cpp@110] - infrequent extension
+0 [20] [INFO] [Sat Feb 09 01:29:37] [MAIN] [walks.cpp@96] - src 0label 1
+0 [25] [INFO] [Sat Feb 09 01:29:37] [MAIN] [walks.cpp@103] - computed extensions
+0 [26] [INFO] [Sat Feb 09 01:29:37] [MAIN] [walks.cpp@104] -  
+ P V - 0 -- R 2 3 6 7  
+ P V - 1 -- R 2 3 6 7 
+0 [27] [INFO] [Sat Feb 09 01:29:37] [MAIN] [walks.cpp@106] - computed support
+0 [28] [INFO] [Sat Feb 09 01:29:37] [MAIN] [walks.cpp@117] - frequent extension
+0 [29] [INFO] [Sat Feb 09 01:29:37] [MAIN] [walks.cpp@65] - after extension  
+ P V - 0 -- R 2 3 6 7  
+ P V - 1 -- R 2 3 6 7 
+0 [30] [INFO] [Sat Feb 09 01:29:37] [MAIN] [walks.cpp@96] - src 1label 2
+0 [36] [INFO] [Sat Feb 09 01:29:37] [MAIN] [walks.cpp@96] - src 1label 1
+0 [42] [INFO] [Sat Feb 09 01:29:37] [MAIN] [walks.cpp@96] - src 0label 1

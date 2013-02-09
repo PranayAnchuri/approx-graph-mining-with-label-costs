@@ -2,7 +2,7 @@
 
 
 Store::Store() {
-    logger = Logger::get_logger("MAIN");
+    //logger = Logger::get_logger("MAIN");
     myran.set_seed(42);
 }
 
@@ -33,7 +33,7 @@ void Store::get_random_l1(types::label_t& lab, types::vlist_t& vlist) {
 
 void Store::copy_numeric_args(map<string, types::double_t>& numeric_args) {
     tr(numeric_args, it) {
-        INFO(*logger, "Num Arg " << it->first << " Val is "<< it->second);
+        //INFO(*dump_logger, "Num Arg " << it->first << " Val is "<< it->second);
         if(!it->first.compare("MINSUP"))
             minsup = it->second;
         else if(!it->first.compare("ALPHA"))
@@ -71,7 +71,7 @@ void Store::read_db(string file) {
             int id = atoi(words[1].c_str());
             int label = atoi(words[2].c_str());
             add_vertex(id, label);
-            cout<<id<<"and "<<label<<endl;
+            //cout<<id<<"and "<<label<<endl;
         }
         else if(words.size()==4 && ( words[0]=="e" || words[0]=="u"))
         {
