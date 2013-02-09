@@ -22,7 +22,7 @@ namespace rwalk {
          * we are running; gapprox_embedding to test GAPPROX method
          */
         Embedding* embeds;
-        if(!true) {
+        if(true) {
             // complete enumeration of all the embeddings of the candidate
             // pattern
             embeds = new GApprox::GApproxEmbedding();
@@ -69,6 +69,7 @@ namespace rwalk {
             if(!result)
                 break;
         }
+        st.add_max_pat(pat);
     }
 
     Embedding* fwd_extension(Janitor& jtr, pattern& pat, Embedding* embeds, Store& st) {
@@ -115,6 +116,7 @@ namespace rwalk {
                         //pat.add_fwd_vertex(*it2);
                         delete embeds;
                         INFO(*logger, "frequent extension");
+                        //INFO(*stat_logger, "Max pat \n" << pat.to_string());
                         return extend_embed;
                     }
                 }

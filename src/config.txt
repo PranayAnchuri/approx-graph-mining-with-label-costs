@@ -2,6 +2,6 @@ DB ../data/test2.txt
 SIM ../data/testSim.txt
 HOPS ../data/test.khops
 WALKS 1
-ALPHA 0.2
+ALPHA 0.3
 MINSUP 3
 SEED 1729

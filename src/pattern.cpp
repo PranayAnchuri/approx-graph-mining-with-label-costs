@@ -18,7 +18,7 @@ void pattern::get_edges(types::pat_elist_t& edges) {
 string pattern::to_string() {
     stringstream ss;
     tr(pat_vmap, it) {
-        ss << " v " << it->first << " " <<it->second << endl;
+        ss << "v " << it->first << " " <<it->second << endl;
     }
     tr(pat_edges, it) {
         ss << "e " << it->first << " " << it->second << endl;

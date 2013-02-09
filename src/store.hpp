@@ -11,6 +11,8 @@
 #include "repr.hpp"
 #include "read_hop.hpp"
 #include "khop.hpp"
+#include "stats.hpp"
+#include "pattern.hpp"
 
 extern Logger* logger;
 extern Logger* stat_logger;
@@ -40,6 +42,11 @@ class Store {
         void read_hops(string file);
         Hops::db_hops_t db_hops;
         types::graph_t gr;
+        // collect statistics for the experiments
+        void init_stats();
+        void end_stats();
+        inline void add_max_pat(const pattern& pat) { maxpats.push_back(pat);}
+        Stats* stat;
     private:
         void add_vertex(const int& id, const types::label_t& label);
         void add_edge(const int& id1, const int& id2);
@@ -51,5 +58,6 @@ class Store {
         int minsup;
         int walks;
         types::cost_t alpha;
+        vector<pattern> maxpats;
         //Logger* logger;
 };

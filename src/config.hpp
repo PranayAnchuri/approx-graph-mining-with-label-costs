@@ -6,6 +6,7 @@
  * Accepts a file that contains all the parameters for the mining program
  * in key value format
  */
+extern Logger* stat_logger;
 class Config {
     public:
         Config(string inpfile);

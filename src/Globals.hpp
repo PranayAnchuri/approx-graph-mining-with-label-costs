@@ -47,15 +47,15 @@ using namespace std;
 #define STR(x) STR_HELPER(x)
 #define PR(x) cout<<STR(x)<<":"<<x<<" [ "<<__FUNCTION__<<", "<<__FILE__<<", "<<__LINE__<<"]"<<endl;
 #define RP(x) cout<<x<<endl;
-#define START(x) do{ st.measures.start(x);} while(0)
-#define STOP(x) do{ st.measures.stop(x);} while(0)
+#define START(x) do{ st.stat->start(x);} while(0)
+#define STOP(x) do{ st.stat->store(x);} while(0)
 #define GAP
 //#define START(x) do{ prog_args->st.start(x);} while(0)
 //#define SSTART(x, y) do{ strg.st->add_counter(x, y); strg.st->start_stat(x);} while(0)
 //#define STOP(x) do{ prog_args->st.stop(x);} while(0)
 //#define SSTOP(x) do{ prog_args->st.stop(x);prog_args->st.store(x);} while(0)
 #define MEASURE(x, y) do{START(x);y;STOP(x);}while(0)
-#define CMEASURE(x, y) do{st.measures.inc(x, y);}while(0)
+#define CMEASURE(x, y) do{st.stat->inc(x, y);}while(0)
 #define PURGE(x) do{st.measures.store(x);}while(0)
 
 #define ISBITSET(x, i) ((x[i>>3] & (1<<(i&7)))!=0)

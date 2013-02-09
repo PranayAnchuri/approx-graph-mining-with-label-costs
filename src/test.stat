@@ -1,1 +1,15 @@
-STAT 0 mine.cpp-29	test
+--- 	 Parameters
+DB	../data/test2.txt
+SIM	../data/testSim.txt
+HOPS	../data/test.khops
+WALKS	1
+ALPHA	0.3
+MINSUP	3
+SEED	1729
+---	 Statistics
+Walk	0.001004-0.001004,
+---	 Max Pats
+v 0 1
+v 1 1
+e 0 1
+

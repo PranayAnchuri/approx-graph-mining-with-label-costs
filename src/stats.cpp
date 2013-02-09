@@ -1,0 +1,48 @@
+#include "stats.hpp"
+
+Stats::Stats() {
+    delim = '\t';
+}
+
+void Stats::start(const string& param){
+    if(!present(timers, param)) {
+        add_timer(param);
+    }
+    timers[param].start();
+}
+
+void Stats::stop(const string& param){
+    timers[param].stop();
+    //INFO(*stat_logger, to_string());
+}
+
+void Stats::store(const string& param) {
+    timers[param].store();
+}
+
+void Stats::add_timer(string param) {
+    timers[param] = Timer();
+}
+
+void Stats::add_counter(string param) {
+    counters[param] = Counter(0);
+}
+
+void Stats::inc(string param, const int& val) {
+    if(!present(counters, param))
+        add_counter(param);
+    counters[param].add(val);
+}
+
+std::string Stats::to_string() {
+    // get the string representation of all the timers and the counters
+    stringstream ss;
+    tr(timers, it) {
+        ss << it->first << delim << it->second.to_string();
+    }
+    tr(counters, it) {
+        ss << it->first << delim <<  it->second.to_string();
+    }
+    return ss.str();
+}
+

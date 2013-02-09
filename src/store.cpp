@@ -4,6 +4,7 @@
 Store::Store() {
     //logger = Logger::get_logger("MAIN");
     myran.set_seed(42);
+    stat = new Stats();
 }
 
 /*types::cost_t Store::get_alpha() { return alpha;}
@@ -116,6 +117,17 @@ void Store::read_cost(string file) {
 void Store::read_hops(string file) {
     // read the khops of the database graph
     Hops::read_hop(file, db_hops);
+}
+
+void Store::init_stats() {
+}
+
+void Store::end_stats() {
+    INFO(*stat_logger, "---\t Statistics\n" << stat->to_string());
+    INFO(*stat_logger, "---\t Max Pats");
+    tr(maxpats, it) {
+        INFO(*stat_logger, it->to_string());
+    }
 }
 
 void Store::get_frequent_vertices(types::cost_t alpha, int minsup) {
