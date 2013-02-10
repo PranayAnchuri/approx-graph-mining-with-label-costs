@@ -20,7 +20,7 @@ int main(int argc, char** argv)
     Store st;
     read_inp(conf, st);
     preprocess(conf, st);
-    MEASURE("Walk", rwalk::walks(st));
+    MEASURE("Total Walk", rwalk::walks(st));
     st.end_stats();
     return 0;
 }

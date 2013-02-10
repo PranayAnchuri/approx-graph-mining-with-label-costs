@@ -47,7 +47,10 @@ class Store {
         void end_stats();
         inline void add_max_pat(const pattern& pat) { maxpats.push_back(pat);}
         Stats* stat;
+        inline void set_algo(const bool& alg) { algo = alg;}
+        bool get_algo() { return algo;}
     private:
+        bool algo; // 1 is compressed label and 0 is complete enumerate
         void add_vertex(const int& id, const types::label_t& label);
         void add_edge(const int& id1, const int& id2);
         types::vmap_t vmap;

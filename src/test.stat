@@ -2,16 +2,53 @@
 DB	../data/test2.txt
 SIM	../data/testSim.txt
 HOPS	../data/test.khops
-WALKS	1
-ALPHA	0.3
+WALKS	10
+ALPHA	0.2
 MINSUP	3
 SEED	1729
 ---	 Statistics
-Walk	Avg	0.001414	0.001414	
-Physical Memory	Avg	1500	1500	
-Virtual Memory	Avg	3776	3776	
+Total Walk	Avg	0.008221	0.008221	
+Walk	Avg	0.0055741	0.001358	0.002672	0.003969	0.005248	0.005943	0.006359	0.006908	0.007327	0.007753	0.008204	
+Physical Memory	Avg	1514.8	1508	1512	1516	1516	1516	1516	1516	1516	1516	1516	
+Virtual Memory	Avg	3776	3776	3776	3776	3776	3776	3776	3776	3776	3776	3776	
 
 ---	 Max Pats
+v 0 1
+v 1 1
+e 0 1
+
+v 0 1
+v 1 1
+e 0 1
+
+v 0 1
+v 1 1
+e 0 1
+
+v 0 1
+v 1 1
+e 0 1
+
+v 0 1
+v 1 1
+e 0 1
+
+v 0 2
+v 1 2
+e 0 1
+
+v 0 1
+v 1 1
+e 0 1
+
+v 0 2
+v 1 2
+e 0 1
+
+v 0 2
+v 1 2
+e 0 1
+
 v 0 1
 v 1 1
 e 0 1

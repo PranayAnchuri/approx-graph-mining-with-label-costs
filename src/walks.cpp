@@ -22,7 +22,8 @@ namespace rwalk {
          * we are running; gapprox_embedding to test GAPPROX method
          */
         Embedding* embeds;
-        if(true) {
+        bool algo = st.get_algo();
+        if(!algo) {
             // complete enumeration of all the embeddings of the candidate
             // pattern
             embeds = new GApprox::GApproxEmbedding();
@@ -37,7 +38,7 @@ namespace rwalk {
     void walks(Store& st) {
         int numwalks = st.get_num_walks();
         for(int walk=0; walk < numwalks; walk++) {
-            random_walk(st);
+            MEASURE("Walk", random_walk(st));
         }
     }
     void random_walk(Store& st) {
