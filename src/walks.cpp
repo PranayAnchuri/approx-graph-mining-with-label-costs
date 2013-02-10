@@ -105,6 +105,7 @@ namespace rwalk {
                     pat.add_fwd(*it, *it2);
                     Embedding* extend_embed = embeds->extend_fwd(st, pat, *it,  *it2);
                     if(!extend_embed) {
+                        jtr.add_failed_label(*it, *it2);
                         pat.undo_fwd();
                         continue;
                     }
@@ -146,11 +147,13 @@ namespace rwalk {
                 Embedding* extend_embed =\
                            embeds->extend_back(st, pat, it->first, it->second);
                 if(!extend_embed) {
+                    jtr.add_back_fail(it->first, it->second);
                     pat.undo_back();
                     continue;
                 }
                 int sup = extend_embed->compute_support();
                 if(!st.is_frequent(sup)) {
+                    jtr.add_back_fail(it->first, it->second);
                     INFO(*logger, "frequent extension");
                     pat.undo_back();
                     delete extend_embed;

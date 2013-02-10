@@ -8,15 +8,15 @@ def ensure(directory):
     if not os.path.exists(directory):
             os.makedirs(directory)
 
-DS = "../results/test/"
-DB  = "../data/test2.txt"
-SIM  = "../data/testSim.txt"
-HOPS  = "../data/test.khops"
-WALKS = [1, 2]
-ALPHA  = [0.2]
-MINSUP  = [3]
+DS = "../results/CMDB/"
+DB  = "../data/CMDB/l1dmtl.txt"
+SIM  = "../data/CMDB/l1ge.txt"
+HOPS  = "../data/l1hops.txt"
+WALKS = [2]
+ALPHA  = [0.5]
+MINSUP  = [25]
 SEED  = [1729]
-ALGO = [1, 0] # 1 is compressed label and 0 is complete enumeration
+ALGO = [1] # 1 is compressed label and 0 is complete enumeration
 
 
 for walk in WALKS:
@@ -39,7 +39,7 @@ for walk in WALKS:
                     f1.close()
                     cmd = './mine %s %s %s'%(confile, logfile, statfile)
                     print cmd
-                    commands.getstatusoutput(cmd)
+                    #commands.getstatusoutput(cmd)
 
 if __name__ == '__main__':
     pass

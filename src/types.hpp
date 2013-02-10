@@ -32,7 +32,7 @@ namespace types {
   typedef std::vector<types::db_vertex_t> vlist_t;
   typedef std::set<types::db_vertex_t> set_vlist_t;
   typedef std::map<int, label_t> vmap_t;
-  typedef std::map<types::db_vertex_t, set_vlist_t > graph_t;
+  typedef std::map<int, set_vlist_t > graph_t;
   typedef std::map<label_t, vlist_t> lmap_t;
   typedef double cost_t;
 
@@ -49,5 +49,7 @@ namespace types {
   typedef std::pair<types::cost_t, pat_vlist_t> gapprox_em_t;
   // list of all embeddings for a given pattern
   typedef std::vector<gapprox_em_t> gapprox_embed_t;
+  // offsets for the vertices in the database
+  typedef std::vector<int> offsets_t;
 } // namespace types
 

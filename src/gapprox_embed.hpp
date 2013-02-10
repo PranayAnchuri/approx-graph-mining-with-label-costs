@@ -24,6 +24,9 @@ namespace GApprox {
         // check this http://bit.ly/Xd for function pointers in objects
         typedef int (GApproxEmbedding::*fptr)(map<types::pat_vertex_t, \
                 types::set_vlist_t>& unique_reps);
+        typedef int (GApproxEmbedding::*db_sup_t)(map<types::pat_vertex_t, \
+                types::set_vlist_t>& unique_reps, const types::offsets_t& off );
         fptr supfunc;
+        db_sup_t db_sup_func; // compute the support from a database of graphs
     };
 }

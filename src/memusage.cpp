@@ -1,4 +1,3 @@
-#pragma once
 #include "memusage.hpp"
 
 int parseLine(char* line){
