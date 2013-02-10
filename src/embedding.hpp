@@ -17,7 +17,9 @@ class Embedding{
                 types::pat_vertex_t src, types::label_t lab) = 0;
         virtual Embedding* extend_back(Store& st, pattern& pat, types::pat_vertex_t src, \
                                             types::pat_vertex_t back) = 0;
-        virtual int compute_support() = 0;
+        //virtual int compute_support() = 0;
+        //virtual int compute_support(const types::offsets_t& offsets) = 0;
+        virtual int compute_support(const types::offsets_t& = types::offsets_t()) = 0;
         virtual std::string to_string() = 0;
     private:
         /*virtual void extend_embeddings(const types::label_t& lab, \

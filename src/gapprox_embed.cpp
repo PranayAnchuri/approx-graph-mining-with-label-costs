@@ -93,12 +93,35 @@ namespace GApprox{
         int sup =  *min_element(all(sizes));
         return sup;
     }
+    int GApproxEmbedding::compute_support(const types::offsets_t& offsets){
+        // depending on size of the offsets call support helper that either
+        // uses the offsets are not
+        if(offsets.empty()) {
+            return sup_without_offsets();
+        }
+        else {
+            return sup_with_offsets(offsets);
+        }
+    }
 
-    int GApproxEmbedding::compute_support() {
+    int GApproxEmbedding::sup_without_offsets() {
         map<types::pat_vertex_t, types::set_vlist_t> unique_reps;
         tr(embeds, it) {
             for(int index =0 ; index<it->second.size(); index++) {
                 unique_reps[index].insert(it->second[index]);
+            }
+        }
+        return (this->*supfunc)(unique_reps);
+    }
+    int GApproxEmbedding::sup_with_offsets(const types::offsets_t& offsets) {
+        map<types::pat_vertex_t, types::set_vlist_t> unique_reps;
+        tr(embeds, it) {
+            for(int index =0 ; index<it->second.size(); index++) {
+                //unique_reps[index].insert(it->second[index]);
+                // db id of the vertex
+                types::offsets_t::const_iterator lb= lower_bound(all(offsets), it->second[index]);
+                int gid = lb - offsets.begin();
+                unique_reps[index].insert(gid);
             }
         }
         return (this->*supfunc)(unique_reps);

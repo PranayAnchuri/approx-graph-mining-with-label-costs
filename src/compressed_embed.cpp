@@ -192,11 +192,32 @@ namespace LabelPruning{
         return sup;
     }
 
-    int RepEmbedding::compute_support() {
+    int RepEmbedding::compute_support(const types::offsets_t& offsets) {
+        if(offsets.empty()) {
+            return sup_without_offsets();
+        }
+        else {
+            return sup_with_offsets(offsets);
+        }
+    }
+    int RepEmbedding::sup_without_offsets() {
         map<types::pat_vertex_t, types::set_vlist_t> unique_reps;
         tr(embeds, it) {
             tr(it->second, rep_it) {
                 unique_reps[it->first].insert(rep_it->first);
+            }
+        }
+        return (this->*supfunc)(unique_reps);
+    }
+    int RepEmbedding::sup_with_offsets(const types::offsets_t& offsets) {
+        map<types::pat_vertex_t, types::set_vlist_t> unique_reps;
+        tr(embeds, it) {
+            tr(it->second, rep_it) {
+                //unique_reps[it->first].insert(rep_it->first);
+                types::offsets_t::const_iterator lb =\
+                                lower_bound(all(offsets), rep_it->first);
+                int gid = lb - offsets.begin();
+                unique_reps[it->first].insert(gid);
             }
         }
         return (this->*supfunc)(unique_reps);

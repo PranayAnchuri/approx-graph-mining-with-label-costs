@@ -21,7 +21,7 @@ namespace LabelPruning {
         virtual void init_embeddings(Store& st, const types::label_t& lab, \
                 const types::vlist_t& vids);
         virtual std::string to_string();
-        virtual int compute_support();
+        virtual int compute_support(const types::offsets_t& offsets = types::offsets_t());
         int min_node_sup(map<types::pat_vertex_t, types::set_vlist_t>& unique_reps);
         virtual Embedding* extend_fwd(Store& st, pattern& pat,\
                 types::pat_vertex_t src, types::label_t lab);
@@ -35,6 +35,8 @@ namespace LabelPruning {
         bool prune_reps(pattern& pat, Store& st);
         void retain_only_valid(types::bare_embeds_t& valid);
         bool verify_support(Store& st, pattern& pat, types::bare_embeds_t& valid);
+        int sup_with_offsets(const types::offsets_t& offsets);
+        int sup_without_offsets();
         RepEmbedding* pruning(RepEmbedding* next_embeds, Store& st, pattern& pat);
         bool enumerate(Store& st, pattern& pat, const vector<types::pat_edge_t>& path, int eindex, \
                                      types::cost_t threshold, const int& numlabels, vector<types::pat_edge_t>& epath,\
