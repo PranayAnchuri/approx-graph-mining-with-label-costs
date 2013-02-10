@@ -51,9 +51,9 @@ namespace GApprox{
                 // label of the new vertex that will be added to the embedding
                 types::label_t src_label = st.get_label(*rep);
                 // cost between label in the pattern and label of the new vertex
-                INFO(*logger, "getting label cost");
+                //INFO(*logger, "getting label cost");
                 types::cost_t cost = st.simvals[num_labels*src_label + lab];
-                INFO(*logger, " cost " << cost );
+                //INFO(*logger, " cost " << cost );
                 // copy the existing embedding
                 types::pat_vlist_t embed_vertices = it->second;
                 // push the new vertex
