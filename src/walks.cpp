@@ -45,8 +45,8 @@ namespace rwalk {
         pattern pat;
         Embedding* embeds = initialize_walk(st, pat);
         //Logger* logger = st.get_logger();
-        INFO(*logger, embeds->to_string());
-        INFO(*logger, Hops::to_string(st.db_hops));
+        //INFO(*logger, embeds->to_string());
+        //INFO(*logger, Hops::to_string(st.db_hops));
         Janitor jtr;
         int toss;
         int physical = get_physicalmem();
@@ -65,7 +65,7 @@ namespace rwalk {
                 }
                 if(result) {
                     embeds = result;
-                    INFO(*logger, "after extension " << embeds->to_string());
+                    //INFO(*logger, "after extension " << embeds->to_string());
                     virt = get_virtualmem();
                     physical = get_physicalmem();
                     break;
@@ -110,7 +110,7 @@ namespace rwalk {
                         continue;
                     }
                     INFO(*logger, "computed extensions");
-                    INFO(*logger, extend_embed->to_string());
+                    //INFO(*logger, extend_embed->to_string());
                     int sup = extend_embed->compute_support();
                     INFO(*logger, "computed support");
                     if( !st.is_frequent(sup)) {

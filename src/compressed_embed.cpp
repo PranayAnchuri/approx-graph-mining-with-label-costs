@@ -71,7 +71,7 @@ namespace LabelPruning{
 
     bool RepEmbedding::prune_reps(pattern& pat, Store& st) {
         // prune the embeddings based on the pattern
-        INFO(*logger, "Embeddings before pruning " << to_string());
+        //INFO(*logger, "Embeddings before pruning " << to_string());
         pat_hops_t phops = pat.get_hops(); // key is the pat vertex and value is hop label;
         int minsup = st.get_minsup();
         // Dont modify this object for god's sake
@@ -125,11 +125,11 @@ namespace LabelPruning{
             if(sup < minsup) {
                 // terminate the process
                 INFO(*logger, "failed after pruning");
-                INFO(*logger, "embeddings " << to_string());
+                //INFO(*logger, "embeddings " << to_string());
                 return 0;
             }
         } // end of the for loop
-        INFO(*logger, "success after pruning " << to_string());
+        //INFO(*logger, "success after pruning " << to_string());
         return 1;
     }
 

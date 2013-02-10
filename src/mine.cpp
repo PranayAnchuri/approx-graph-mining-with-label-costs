@@ -10,8 +10,8 @@ Logger* logger;
 void init_logger(string logfile, string statfile) {
     //stat_logger = new Logger("STAT", "%n %t %f-%L\t", LG_TRACE, 0, statfile.c_str());
     stat_logger = new Logger("STAT", "", LG_TRACE, 0, statfile.c_str());
-    //logger = new Logger("MAIN", "%n %t %f-%L\t", LG_TRACE, 1, logfile.c_str());
-    logger = new Logger("MAIN", "%n %t %f-%L\t", LG_OFF, 1, logfile.c_str());
+    logger = new Logger("MAIN", "%n %t %f-%L\t", LG_TRACE, 1, logfile.c_str());
+    //logger = new Logger("MAIN", "%n %t %f-%L\t", LG_OFF, 1, logfile.c_str());
 }
 
 int main(int argc, char** argv)
@@ -21,6 +21,8 @@ int main(int argc, char** argv)
     Store st;
     read_inp(conf, st);
     preprocess(conf, st);
+    INFO(*logger, st.get_num_l1());
+    //throw std::runtime_error(" done preprocessing");
     MEASURE("Total Walk", rwalk::walks(st));
     st.end_stats();
     return 0;

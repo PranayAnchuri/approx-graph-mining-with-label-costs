@@ -150,7 +150,7 @@ void Store::get_frequent_vertices(types::cost_t alpha, int minsup) {
             l1pats[i] = reps;
             freq_labels.push_back(i);
             freq_reps[i] = rep_ob;
-            INFO(*logger, i << " reps size is " << reps.size());
+            //INFO(*logger, i << " reps size is " << reps.size());
         }
     }
 }

@@ -49,6 +49,7 @@ class Store {
         Stats* stat;
         inline void set_algo(const bool& alg) { algo = alg;}
         bool get_algo() { return algo;}
+        int get_num_l1() { return freq_labels.size();}
     private:
         bool algo; // 1 is compressed label and 0 is complete enumerate
         void add_vertex(const int& id, const types::label_t& label);
