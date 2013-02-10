@@ -1,0 +1,8 @@
+DB ../data/test2.txt
+SIM ../data/testSim.txt
+HOPS ../data/test.khops
+WALKS 2
+ALPHA 0.2
+SEED 1729
+MINSUP 3
+ALGO 1

@@ -1,0 +1,24 @@
+--- 	 Parameters
+DB	../data/test2.txt
+SIM	../data/testSim.txt
+HOPS	../data/test.khops
+WALKS	2
+ALPHA	0.2
+SEED	1729
+MINSUP	3
+ALGO	0
+---	 Statistics
+Total Walk	Avg	0.002698	0.002698	
+Walk	Avg	0.002069	0.001448	0.00269	
+Physical Memory	Avg	1514	1512	1516	
+Virtual Memory	Avg	3776	3776	3776	
+
+---	 Max Pats
+v 0 1
+v 1 1
+e 0 1
+
+v 0 1
+v 1 1
+e 0 1
+
