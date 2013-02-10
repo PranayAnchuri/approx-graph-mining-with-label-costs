@@ -5,6 +5,7 @@ Store::Store() {
     //logger = Logger::get_logger("MAIN");
     myran.set_seed(42);
     stat = new Stats();
+    is_multi = false;
 }
 
 /*types::cost_t Store::get_alpha() { return alpha;}
@@ -43,6 +44,8 @@ void Store::copy_numeric_args(map<string, types::double_t>& numeric_args) {
             walks = it->second;
         else if(!it->first.compare("SEED"))
             myran.set_seed(it->second);
+        else if(!it->first.compare("MULTI"))
+            is_multi = true;
     }
 }
 
@@ -130,6 +133,23 @@ void Store::end_stats() {
     }
 }
 
+int Store::compute_support_single(const types::vlist_t& reps) {
+    // compute the support of the one length pattern that sarisfy the cose
+    // requirement
+    types::set_vlist_t modified_reps;
+    bool stat = is_multigraph();
+    types::offsets_t::const_iterator lb;
+    types::offsets_t::const_iterator  lb_begin = offsets.begin();
+    tr(reps, it) {
+        int id = *it;
+        if(stat) {
+            lb = lower_bound(all(offsets), id);
+            id = lb - lb_begin;
+        }
+        modified_reps.insert(id);
+    }
+    return modified_reps.size();
+}
 void Store::get_frequent_vertices(types::cost_t alpha, int minsup) {
     // for each vertex compute the cost of matching with other vertex
     INFO(*logger, "Level 1 Vertices with alpha and minsup" << alpha << " and " << minsup);
@@ -145,7 +165,8 @@ void Store::get_frequent_vertices(types::cost_t alpha, int minsup) {
                 rep_ob.insert( make_pair(it->first, Repr(it->first, cost)));
             }
         }
-        if( reps.size() >= minsup) {
+        int sup = compute_support_single(reps);
+        if( sup >= minsup) {
             // label i is frequent
             l1pats[i] = reps;
             freq_labels.push_back(i);

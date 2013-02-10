@@ -50,7 +50,11 @@ class Store {
         inline void set_algo(const bool& alg) { algo = alg;}
         bool get_algo() { return algo;}
         int get_num_l1() { return freq_labels.size();}
+        bool is_multigraph() { return is_multi;}
+        void set_offsets(const types::offsets_t& offsets) { this->offsets = offsets; }
+        types::offsets_t offsets;
     private:
+        int compute_support_single(const types::vlist_t& reps);
         bool algo; // 1 is compressed label and 0 is complete enumerate
         void add_vertex(const int& id, const types::label_t& label);
         void add_edge(const int& id1, const int& id2);
@@ -63,5 +67,7 @@ class Store {
         int walks;
         types::cost_t alpha;
         vector<pattern> maxpats;
+        // is the database a set of graphs instead of a single graph
+        bool is_multi;
         //Logger* logger;
 };

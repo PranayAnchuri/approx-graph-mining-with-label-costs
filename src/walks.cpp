@@ -111,7 +111,7 @@ namespace rwalk {
                     }
                     INFO(*logger, "computed extensions");
                     //INFO(*logger, extend_embed->to_string());
-                    int sup = extend_embed->compute_support();
+                    int sup = extend_embed->compute_support(st.offsets);
                     INFO(*logger, "computed support");
                     if( !st.is_frequent(sup)) {
                         jtr.add_failed_label(*it, *it2);
@@ -151,7 +151,8 @@ namespace rwalk {
                     pat.undo_back();
                     continue;
                 }
-                int sup = extend_embed->compute_support();
+                // if set offsets is a vector of vertex boundaries
+                int sup = extend_embed->compute_support(st.offsets);
                 if(!st.is_frequent(sup)) {
                     jtr.add_back_fail(it->first, it->second);
                     INFO(*logger, "frequent extension");
