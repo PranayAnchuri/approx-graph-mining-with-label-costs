@@ -10,16 +10,17 @@ ALGO	1
 MULTI	1
 OFFSET	../data/SCOP/5F20P/5F20P.off
 ---	 Statistics
-Add Reps	Time	0.006891	
-COPYING	Time	0.000497	
-Enumerate	Time	0.007732	
-Flow Computation	Time	0.142768	
-Pat Hop	Time	0.480015	
-Total Walk	Time	0.662732	
-Verify	Time	0.012803	
-Walk	Time	0.662729	
-nbrs	Time	0.067266	
-Physical Memory	Avg	14488	14488	
+Add Reps	Time	0.006519	
+COPYING	Time	0.000485	
+Enumerate	Time	0.00817	
+Flow Computation	Time	0.083341	
+Pat Hop	Time	0.404644	
+Total Walk	Time	0.58504	
+Verify	Time	0.013301	
+Walk	Time	0.585036	
+nbrs	Time	0.065933	
+# FLow Computations	49942
+Physical Memory	Avg	14484	14484	
 Virtual Memory	Avg	16720	16720	
 
 ---	 Max Pats

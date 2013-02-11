@@ -34,6 +34,8 @@ types::cost_t KhopLabel::distance(KhopLabel& dbhop, const int& num_labels,\
         des_out += it->second;
         cnt++;
     }
+    if(src_out > des_out)
+        return -1;
     // Edges from the pattenr vertices and the database vertices
     /*
      * For each label in the pattern side, multiply the least of 
@@ -60,6 +62,7 @@ types::cost_t KhopLabel::distance(KhopLabel& dbhop, const int& num_labels,\
     }
     pair<types::cost_t, types::cost_t> res;
      MEASURE("Flow Computation", res = network.GetMaxFlow(src,dest));
+     CMEASURE("# FLow Computations", 1);
     // if it network satisfy the flow requirements
     if(res.first != src_out)
         return -1;
