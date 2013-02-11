@@ -7,9 +7,14 @@
 #clean:
 	#rm test
 EXEC = test
-SRC_FILES = gtest.cpp khop.cpp read_hop.cpp utils.cpp utils1.cpp\
+#SRC_FILES = gtest.cpp khop.cpp read_hop.cpp utils.cpp utils1.cpp\
 			pattern.cpp config.cpp store.cpp logger.cpp preprocess.cpp\
-			repr.cpp
+			repr.cpp\
+			stats.cpp Counter.cpp timer.cpp memusage.cpp
+SRC_FILES = gtest.cpp Globals.cpp config.cpp store.cpp preprocess.cpp utils.cpp\
+			utils1.cpp logger.cpp walks.cpp gapprox_embed.cpp pattern.cpp\
+			compressed_embed.cpp khop.cpp read_hop.cpp repr.cpp mymatch.cpp\
+			stats.cpp Counter.cpp timer.cpp memusage.cpp
 CXX = g++ -std=gnu++0x -O3
 CC = $(CXX)
 DEBUG_LEVEL = -g

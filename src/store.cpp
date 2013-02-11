@@ -69,7 +69,7 @@ void Store::read_db(string file) {
             words.clear();
             continue;
         }
-        if(words.size()==3 && words[0]=="v")
+        if(words.size()>=3 && words[0]=="v")
         {
             // if the line corresponds to a vertex
             int id = atoi(words[1].c_str());
@@ -77,7 +77,7 @@ void Store::read_db(string file) {
             add_vertex(id, label);
             //cout<<id<<"and "<<label<<endl;
         }
-        else if(words.size()==4 && ( words[0]=="e" || words[0]=="u"))
+        else if(words.size()>=4 && ( words[0]=="e" || words[0]=="u"))
         {
             // if the line read corresponds to an edge
             id1 = atoi(words[1].c_str());

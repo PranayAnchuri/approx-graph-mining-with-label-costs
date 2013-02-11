@@ -11,7 +11,8 @@ void read_offsets(Config& conf, Store& st) {
             ifstream inp(conf.args[string("OFFSET")].c_str());
             int offset;
             types::offsets_t offsets;
-            while (inp >> offset) {
+            string val;
+            while (inp >> offset >> val) {
                 offsets.push_back(offset);
             }
             st.set_offsets(offsets);
@@ -25,8 +26,9 @@ void read_inp(Config& conf, Store& st) {
     Hops::read_hop(conf.args[string("HOPS")], st.db_hops);
     st.copy_numeric_args(conf.numeric_args);
     st.set_algo(convertToInt(conf.args["ALGO"]));
+    //throw runtime_error("INP");
     // read the offsets file if mining from a set of graphs
-    read_offsets(conf, st);
+    //read_offsets(conf, st);
 }
 
 void preprocess(Config& conf, Store& st) {

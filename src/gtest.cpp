@@ -13,14 +13,15 @@ char** my_argv;
 Store st;
 Config* conf;
 Logger* logger = Logger::get_logger("MAIN");
+Logger* stat_logger = Logger::get_logger("STAT");
 pattern pat;
 
 void initialize() {
     // initialize datastrucutures used by various tests
-    pat.add_fwd_vertex(0);
-    pat.add_fwd_vertex(1);
-    pat.add_fwd_vertex(2);
-    pat.add_fwd_vertex(3);
+    pat.add_fwd_label(0);
+    pat.add_fwd_label(1);
+    pat.add_fwd_label(2);
+    pat.add_fwd_label(3);
     pat.add_edge(0,1);
     pat.add_edge(0,3);
     pat.add_edge(3,1);
@@ -59,13 +60,19 @@ TEST(Label, NbrMatch) {
     //RepEmbedding* embeds = new LabelPruning::RepEmbedding();
 }
 
+TEST(Offset, ORead) {
+    // check if the offsets are read correctly and the initial vertices are
+    // computed
+    1+2;
+}
+
 int main(int argc,char** argv) {
     initialize();
     ::testing::InitGoogleTest(&argc,argv);
     my_argc = argc;
     my_argv = argv;
     conf = new Config(string(argv[1]));
-    read_inp(*conf, st);
+    //read_inp(*conf, st);
     //Args prog_args;
     //parse_args(my_argc,my_argv, prog_args);
     //st.set_args(prog_args);

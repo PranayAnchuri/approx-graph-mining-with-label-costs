@@ -21,9 +21,9 @@ int main(int argc, char** argv)
     Store st;
     read_inp(conf, st);
     preprocess(conf, st);
-    INFO(*logger, st.get_num_l1());
+    //INFO(*logger, st.get_num_l1());
     //throw std::runtime_error(" done preprocessing");
-    MEASURE("Total Walk", rwalk::walks(st));
+    //MEASURE("Total Walk", rwalk::walks(st));
     st.end_stats();
     return 0;
 }
