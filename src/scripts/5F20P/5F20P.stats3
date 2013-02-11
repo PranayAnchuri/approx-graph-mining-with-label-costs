@@ -1,0 +1,4 @@
+-i ../data/datasets/5F20P/5F20P.txt -hp ../data/datasets/5F20P/5F20P.khops -o ../data/datasets/5F20P/5F20P.pats3 -O ../data/datasets/5F20P/5F20P.off -a ../data/datasets/5F20P/5F20P.stats3 -m ../data/datasets/5F20P/5F20P.sim -s 19 -w 200 -t 0.5 -m ../data/normalizedBlosum.txt -e 11230 -g 100 
+(BackNum:0,1551)(BackSuc:0,333)(FwdNum:1,9340)(FwdSuc:0,930)(NbrRate:873,8234)(VerifyRate:2,6242)
+(Nbrs:12.2864)(back:1.85325)(fwd:25.2529)(overall:27.1476)(remove_rep:1.30417)(verify:2.11313)
+(Nbrs:)(back:)(fwd:)(overall:1.05271,2.25849,3.66681,5.6305,6.83542,8.44784,9.58204,10.8319,12.4856,13.8693,14.8977,16.0849,17.5201,18.7817,20.1619,21.2563,22.6978,24.036,25.8151,27.0913,)(remove_rep:)(verify:)

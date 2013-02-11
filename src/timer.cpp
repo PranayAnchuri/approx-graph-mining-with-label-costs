@@ -25,18 +25,19 @@ double Timer::time() {
 
 void Timer::store() {
     stop();
-    stored_times.push_back(curr_time);
+    //stored_times.push_back(curr_time);
     //start();
 }
 
 std::string Timer::to_string() {
     std::stringstream ss;
-    if(!stored_times.empty()) {
+    ss << "Time\t" << curr_time << "\t";
+    /*if(!stored_times.empty()) {
         double total = accumulate(all(stored_times), 0.0);
-        ss << "Avg\t" << total/float(stored_times.size()) << "\t";
+        //ss << "Avg\t" << total/float(stored_times.size()) << "\t";
     }
-    for(int i=0;i<stored_times.size();i++) {
+    for(int i=0;i<stored_times.size() && i <10;i++) {
         ss << stored_times[i] << "\t";
-    }
+    }*/
     return ss.str();
 }

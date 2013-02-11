@@ -137,22 +137,28 @@ int Store::compute_support_single(const types::vlist_t& reps) {
     // compute the support of the one length pattern that sarisfy the cose
     // requirement
     types::set_vlist_t modified_reps;
-    bool stat = is_multigraph();
+    bool multi = is_multigraph();
     types::offsets_t::const_iterator lb;
     types::offsets_t::const_iterator  lb_begin = offsets.begin();
     tr(reps, it) {
         int id = *it;
-        if(stat) {
+        if(multi) {
             lb = lower_bound(all(offsets), id);
             id = lb - lb_begin;
+            if(id > offsets.size()) {
+                INFO(*logger, "vid at failure" << id);
+                throw runtime_error("error in computing the db id of rep");
+            }
         }
         modified_reps.insert(id);
     }
     return modified_reps.size();
 }
+
 void Store::get_frequent_vertices(types::cost_t alpha, int minsup) {
     // for each vertex compute the cost of matching with other vertex
     INFO(*logger, "Level 1 Vertices with alpha and minsup" << alpha << " and " << minsup);
+    INFO(*logger, "MULTI " << is_multi);
     REP(i, 0, num_labels) {
         // Iterate over all the vertices in the graph
         types::vlist_t reps; // valid representatives of the label i
@@ -166,6 +172,7 @@ void Store::get_frequent_vertices(types::cost_t alpha, int minsup) {
             }
         }
         int sup = compute_support_single(reps);
+        INFO(*logger, "Label " << i << " Support " << sup);
         if( sup >= minsup) {
             // label i is frequent
             l1pats[i] = reps;

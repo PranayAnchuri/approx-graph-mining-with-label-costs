@@ -4,6 +4,8 @@
 #include <vector>
 #include <map>
 #include <set>
+#include <unordered_set>
+#include <unordered_map>
 
 namespace types {
 
@@ -51,5 +53,7 @@ namespace types {
   typedef std::vector<gapprox_em_t> gapprox_embed_t;
   // offsets for the vertices in the database
   typedef std::vector<int> offsets_t;
+    //typedef std::unordered_map<types::pat_vertex_t, std::unordered_map<int, KhopLabel> > pat_hops_t;
+    //typedef std::unordered_map<types::db_vertex_t , std::unordered_map<int, KhopLabel> > db_hops_t;
 } // namespace types
 

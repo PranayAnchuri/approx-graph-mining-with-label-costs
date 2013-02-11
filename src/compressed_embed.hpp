@@ -1,4 +1,4 @@
-/*
+/*index*
  * Store the embedddings as a set of representative vertices for each vertex in
  * the pattern
  */

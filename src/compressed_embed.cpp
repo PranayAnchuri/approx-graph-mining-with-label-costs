@@ -86,7 +86,7 @@ namespace LabelPruning{
         types::cost_t alpha = st.get_alpha();
         map<types::pat_vertex_t, set<types::db_vertex_t> > invalid;
         // TODO: try rearranging the for loops
-        for(int level=0; level < maxlevel; level++) {
+        for(int level=0; level < maxlevel && 0; level++) {
             tr(embeds, it) {
                 // key is the pattern vertex
                 if(!present(phops[it->first], level))
@@ -100,20 +100,25 @@ namespace LabelPruning{
                     /*
                      * Returns -1 if the capacity constraints are not met
                      * total cost otherwise */
-                    types::cost_t flowval = pat_hop.distance(dhops[rep_it->first][level],\
-                            num_labels, st.simvals);
-                    //INFO(*logger, "S "<< pat_v << " D "<< rep_it->first<<" C "<<flowval);
+                    types::cost_t flowval;
+                    MEASURE("Pat Hop", flowval = pat_hop.distance(dhops[rep_it->first][level],\
+                            num_labels, st.simvals));
+                    if(level > 1)
+                    INFO(*logger, "S "<< pat_v << " D "<< rep_it->first<<" C "<<flowval << "Level " << level);
                     if( flowval < 0 || flowval > alpha){
                         // remove the vertex from the representative set
                         invalid[pat_v].insert(rep_it->first);
+                        CMEASURE("FLOW", 1);
                         continue;
                     }
 
                     /**** check if there is a 1-1 mapping between the neighbors of ****/
-                    bool nbrs_match = match_nbrs(pat_adj[it->first], st,\
-                                                    invalid, rep_it->first);
+                    bool nbrs_match;
+                    MEASURE("nbrs", nbrs_match = match_nbrs(pat_adj[it->first], st,\
+                                                    invalid, rep_it->first));
                     if(!nbrs_match) {
                         invalid[pat_v].insert(rep_it->first);
+                        CMEASURE("MATCH", 1);
                     }
                 }
                 // check if the hop label is still valid
@@ -124,7 +129,7 @@ namespace LabelPruning{
             int sup = compute_support();
             if(sup < minsup) {
                 // terminate the process
-                INFO(*logger, "failed after pruning");
+                //INFO(*logger, "failed after pruning");
                 //INFO(*logger, "embeddings " << to_string());
                 return 0;
             }
@@ -144,7 +149,8 @@ namespace LabelPruning{
             // post pruning
             //next_embeds->complete_enumeration(st, pat);
             types::bare_embeds_t valid;
-            bool res = next_embeds->verify_support(st, pat, valid );
+            bool res;
+            MEASURE("Verify" , res = next_embeds->verify_support(st, pat, valid ));
             if(!res) {
                 delete next_embeds;
                 return 0;
@@ -159,14 +165,14 @@ namespace LabelPruning{
     Embedding* RepEmbedding::extend_fwd(Store& st, pattern& pat, types::pat_vertex_t src, \
             types::label_t lab) {
         // Add the candidate representatives for the next set and prune
-        INFO(*logger, "Compressed Embedding forward extension");
+        //INFO(*logger, "Compressed Embedding forward extension");
         RepEmbedding* next_embeds = new RepEmbedding();
-        *next_embeds = *this;
+        MEASURE("COPYING", *next_embeds = *this);
         // get the id of the next vertex that will be added to the embeddings
         types::pat_vertex_t des = pat.get_fwd_id();
-        INFO(*logger, "pat size" << pat.get_pat_size());
+        //INFO(*logger, "pat size" << pat.get_pat_size());
         // Add the embedding for the new vertex
-        next_embeds->add_reps(des, st.get_rep(lab));
+        MEASURE("Add Reps", next_embeds->add_reps(des, st.get_rep(lab)));
         //throw std::runtime_error(" check");
         // prune the representative sets
         return pruning(next_embeds, st, pat);
@@ -175,7 +181,7 @@ namespace LabelPruning{
     Embedding* RepEmbedding::extend_back(Store& st, pattern& pat, types::pat_vertex_t src, \
             types::pat_vertex_t des) {
         RepEmbedding* next_embeds = new RepEmbedding();
-        *next_embeds = *this;
+        MEASURE("COPYING", *next_embeds = *this);
         // the candidate set of representative vertices dont change
         // prune the representative vertices
         return pruning(next_embeds, st, pat);
@@ -255,6 +261,10 @@ namespace LabelPruning{
     inline void add_valid(map<types::pat_vertex_t, types::db_vertex_t>& covered,\
             types::bare_embeds_t& valid) {
         tr(covered,it) {
+            if(it->first==0 && it->second==2129) {
+                tr(covered, db)
+                    INFO(*logger, "-----" << db->first << " " << db->second);
+            }
             valid[it->first].insert(it->second);
         }
     }
@@ -335,6 +345,7 @@ namespace LabelPruning{
         get_paths(paths, pat);
 
         vector<types::cost_t>& costvalues = st.simvals; // TODO : change simvals to costvals
+        INFO(*logger, "verifying " << pat.to_string());
 
         // 2) Store the true approximate embeddings that are enumerated
 
@@ -358,7 +369,16 @@ namespace LabelPruning{
                 double cost = costvalues[numlabels*patlabel + vlabel];
                 set<types::db_vertex_t> tabu;
                 tabu.insert(rep->first);
-                bool res = enumerate(st, pat, paths[it->first], 0, alpha-cost, numlabels, epath, covered, tabu);
+                bool res;
+                MEASURE("Enumerate", res = enumerate(st, pat, paths[it->first], 0, alpha-cost, numlabels, epath, covered, tabu));
+                if(rep->first == 2129 && pat_v==0) {
+                    INFO(*logger, "Pat " << pat_v << " Db " << rep->first << res );
+                    tr(covered, it) {
+                        types::label_t patlabel = pat.get_label(it->first);
+                        types::label_t vlabel = st.get_label(it->second);
+                        INFO(*logger, "Pat " << it->first << " Db " << it->second<< costvalues[numlabels*patlabel + vlabel]);
+                    }
+                }
                 if(res) {
                     add_valid(covered, valid);
                     // get the string corresponding to this

@@ -51,6 +51,7 @@ class Store {
         bool get_algo() { return algo;}
         int get_num_l1() { return freq_labels.size();}
         bool is_multigraph() { return is_multi;}
+        void set_multigraph() { is_multi = true;}
         void set_offsets(const types::offsets_t& offsets) { this->offsets = offsets; }
         types::offsets_t offsets;
     private:

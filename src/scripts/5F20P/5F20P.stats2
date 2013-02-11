@@ -1,0 +1,24 @@
+-i ../data/datasets/5F20P/5F20P.txt -hp ../data/datasets/5F20P/5F20P.khops -o ../data/datasets/5F20P/5F20P.pats2 -O ../data/datasets/5F20P/5F20P.off -a ../data/datasets/5F20P/5F20P.stats2 -s 20 -w 200 -t 0.01 -m ../data/normalizedBlosum.txt -e 1729 
+(BackNum:0,855)(BackSuc:0,187)(FwdNum:1,7237)(FwdSuc:0,678)(KhopRate:11,4361)(NbrRate:530,6080)(VerifyRate:0,3925)
+(Nbrs:7.80795)(back:3.43296)(fwd:33.0067)(hops:17.9724)(overall:36.4549)(remove_rep:1.26207)(verify:0.626543)
+(Nbrs:)(back:)(fwd:)(hops:)(overall:1.36667,3.53787,4.65039,6.38543,8.68656,11.0013,13.0637,14.5482,16.4519,17.7792,19.0514,20.7052,22.8183,24.1535,26.1008,28.2808,30.4693,32.2556,34.0279,36.3442,)(remove_rep:)(verify:)
+-i ../data/datasets/5F20P/5F20P.txt -hp ../data/datasets/5F20P/5F20P.khops -o ../data/datasets/5F20P/5F20P.pats2 -O ../data/datasets/5F20P/5F20P.off -a ../data/datasets/5F20P/5F20P.stats2 -s 20 -w 200 -t 0.7 -m ../data/normalizedBlosum.txt -e 1729 
+(BackNum:0,1654)(BackSuc:0,301)(FwdNum:2,2314)(FwdSuc:0,921)(KhopRate:27,8407)(NbrRate:1712,4867)(VerifyRate:3,1659)
+(Nbrs:25.0101)(back:8.613)(fwd:119.611)(hops:65.1913)(overall:128.248)(remove_rep:4.26266)(verify:5.97828)
+(Nbrs:)(back:)(fwd:)(hops:)(overall:5.98396,11.6545,18.7402,25.229,31.8537,38.9263,44.5777,50.1848,56.7255,64.156,68.2279,75.1304,80.9495,87.778,95.4107,101.838,108.69,115.596,120.466,127.821,)(remove_rep:)(verify:)
+-i ../data/datasets/5F20P/5F20P.txt -hp ../data/datasets/5F20P/5F20P.khops -o ../data/datasets/5F20P/5F20P.pats2 -O ../data/datasets/5F20P/5F20P.off -a ../data/datasets/5F20P/5F20P.stats2 -s 20 -w 200 -t 1.0 -m ../data/normalizedBlosum.txt -e 1729 
+(BackNum:0,1491)(BackSuc:0,722)(FwdNum:2,4331)(FwdSuc:0,1078)(KhopRate:65,8271)(NbrRate:13405,1339)(VerifyRate:353,4105)
+(Nbrs:196.512)(back:71.008)(fwd:1179.29)(hops:503.56)(overall:1250.4)(remove_rep:38.2759)(verify:293.989)
+(Nbrs:)(back:)(fwd:)(hops:)(overall:61.4715,123.237,183.549,241.512,309.151,368.447,428.682,479.764,551.738,607.923,670.46,732.445,793.787,863.594,930.833,992.325,1049.9,1116.41,1180.54,1239.9,)(remove_rep:)(verify:)
+-i ../data/datasets/5F20P/5F20P.txt -hp ../data/datasets/5F20P/5F20P.khops -o ../data/datasets/5F20P/5F20P.pats2 -O ../data/datasets/5F20P/5F20P.off -a ../data/datasets/5F20P/5F20P.stats2 -s 20 -w 200 -t 1.5 -m ../data/normalizedBlosum.txt -e 1729 
+(BackNum:0,2598)(BackSuc:0,877)(FwdNum:2,8595)(FwdSuc:0,1295)(KhopRate:58,6012)(NbrRate:15746,9379)(VerifyRate:394,2070)
+(Nbrs:247.533)(back:145.267)(fwd:2053.4)(hops:710.161)(overall:2198.77)(remove_rep:57.4859)(verify:914.69)
+(Nbrs:)(back:)(fwd:)(hops:)(overall:102.618,204.428,344.404,471.176,574.127,658.295,751.922,898.074,988.95,1078.9,1169.17,1252.53,1407.42,1513.48,1656.13,1771.16,1873.74,1988.07,2101.83,2186,)(remove_rep:)(verify:)
+-i ../data/datasets/5F20P/5F20P.txt -hp ../data/datasets/5F20P/5F20P.khops -o ../data/datasets/5F20P/5F20P.pats2 -O ../data/datasets/5F20P/5F20P.off -a ../data/datasets/5F20P/5F20P.stats2 -s 20 -w 200 -t 0.01 -m ../data/normalizedBlosum.txt -e 1729 
+(BackNum:0,855)(BackSuc:0,187)(FwdNum:1,7237)(FwdSuc:0,678)(KhopRate:11,4361)(NbrRate:530,6080)(VerifyRate:0,3925)
+(Nbrs:7.9632)(back:3.44274)(fwd:33.3883)(hops:18.0722)(overall:36.8462)(remove_rep:1.26438)(verify:0.629142)
+(Nbrs:)(back:)(fwd:)(hops:)(overall:1.38061,3.5759,4.70527,6.45158,8.77887,11.1177,13.2014,14.7028,16.6272,17.97,19.2576,20.9297,23.0657,24.4172,26.3872,28.5902,30.8029,32.6065,34.3972,36.7337,)(remove_rep:)(verify:)
+-i ../data/datasets/5F20P/5F20P.txt -hp ../data/datasets/5F20P/5F20P.khops -o ../data/datasets/5F20P/5F20P.pats2 -O ../data/datasets/5F20P/5F20P.off -a ../data/datasets/5F20P/5F20P.stats2 -s 20 -w 200 -t 0.01 -m ../data/normalizedBlosum.txt -e 1729 
+(BackNum:0,855)(BackSuc:0,187)(FwdNum:1,7237)(FwdSuc:0,678)(KhopRate:11,4361)(NbrRate:519,2024)(VerifyRate:0,3925)
+(Nbrs:8.08027)(back:3.47638)(fwd:33.4617)(hops:18.0564)(overall:36.9532)(remove_rep:1.27301)(verify:0.63197)
+(Nbrs:)(back:)(fwd:)(hops:)(overall:1.38293,3.57736,4.70509,6.45513,8.78321,11.1274,13.2217,14.7264,16.6611,18.0107,19.3077,20.9853,23.126,24.4815,26.4605,28.6674,30.8875,32.6947,34.4948,36.8403,)(remove_rep:)(verify:)

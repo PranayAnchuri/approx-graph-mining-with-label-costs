@@ -3,6 +3,7 @@
 #include "Globals.hpp"
 #include "khop.hpp"
 #include "read_hop.hpp"
+#include "types.hpp"
 
 extern Logger* logger;
 class pattern {

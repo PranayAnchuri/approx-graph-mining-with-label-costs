@@ -51,6 +51,7 @@ namespace rwalk {
         int toss;
         int physical = get_physicalmem();
         int virt = get_virtualmem();
+        INFO(*logger, "Num Labels" << st.get_num_labels());
         while(true) {
             Embedding* result =  0; // next set of embeddings
             toss = st.myran.det_toss();
@@ -84,6 +85,8 @@ namespace rwalk {
          * the labels with which the extensions are tried from a given vertex
          * in the pattern
          */
+        if(pat.get_pat_size() > 5)
+            return 0;
         if(!embeds)
             throw std::runtime_error(" Embedding is null");
         types::pat_vlist_t vertices;
@@ -110,9 +113,9 @@ namespace rwalk {
                         continue;
                     }
                     INFO(*logger, "computed extensions");
-                    //INFO(*logger, extend_embed->to_string());
                     int sup = extend_embed->compute_support(st.offsets);
-                    INFO(*logger, "computed support");
+                    INFO(*logger, "computed support" << sup);
+                    INFO(*logger, extend_embed->to_string());
                     if( !st.is_frequent(sup)) {
                         jtr.add_failed_label(*it, *it2);
                         pat.undo_fwd();
@@ -135,6 +138,8 @@ namespace rwalk {
     }
 
     Embedding* back_extension(Janitor& jtr, pattern& pat, Embedding* embeds, Store& st) {
+        if(pat.get_pat_size() > 5)
+            return 0;
         types::pat_elist_t pat_edges;
         st.myran.myshuffle(pat_edges);
         tr(pat_edges, it) {

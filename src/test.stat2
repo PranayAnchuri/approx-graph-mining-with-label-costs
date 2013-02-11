@@ -1,0 +1,24 @@
+--- 	 Parameters
+DB	../data/SCOP/5F20P/5F20P.txt
+SIM	../data/SCOP/5F20P/5F20P.sim
+HOPS	../data/SCOP/5F20P/5F20P.khops
+WALKS	1
+ALPHA	0.5
+MINSUP	15
+SEED	1729
+ALGO	0
+MULTI	1
+OFFSET	../data/SCOP/5F20P/5F20P.off
+---	 Statistics
+Total Walk	Time	0.065471	
+Walk	Time	0.065467	
+Physical Memory	Avg	14352	14352	
+Virtual Memory	Avg	16584	16584	
+
+---	 Max Pats
+v 0 14
+v 1 19
+v 2 7
+e 0 1
+e 1 2
+
