@@ -23,7 +23,7 @@ class Store {
         void read_db(string file);
         void read_cost(string file);
         void get_frequent_vertices(types::cost_t alpha, int minsup);
-        types::cost_t get_alpha() { return alpha;}
+        types::cost_t get_alpha() const { return alpha;}
         int get_minsup(){return minsup;}
         int get_num_labels() { return num_labels;}
         int get_num_walks() {return walks;}

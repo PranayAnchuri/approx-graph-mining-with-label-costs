@@ -1,11 +1,12 @@
 #include "khop.hpp"
+#include "store.hpp"
 
 bool KhopLabel::is_less(DerivedLabel* rhs) {
     KhopLabel* rhs_khop = (KhopLabel*)rhs;
 }
 
 types::cost_t KhopLabel::distance(KhopLabel& dbhop, const int& num_labels,\
-                                    const vector<types::cost_t>& costvalues) {
+                                    const vector<types::cost_t>& costvalues , const Store& st) {
     //  Construct the flow network and compute the max flow min cost algo
     // Create a node for each label present in the pattern multiset and
     // also database multiset
@@ -34,17 +35,31 @@ types::cost_t KhopLabel::distance(KhopLabel& dbhop, const int& num_labels,\
         cnt++;
     }
     // Edges from the pattenr vertices and the database vertices
+    /*
+     * For each label in the pattern side, multiply the least of 
+     * matching this label with a label on the db side with the
+     * actual multiplicity of the pattern label
+     * The sum of such costs for each label is a lower bound on the total
+     * cost of matching
+     */
+    types::cost_t tot_mincost=0;
+    types::cost_t alpha = st.get_alpha();
     tr(hops, it) {
-        types::cost_t minsim=1.0; // minimum similarity to vertex on other side
+        types::cost_t lab_min_cost=1;
         tr(dbhop.hops ,it2) {
             int p = pnodes[it->first];
             int d = dnodes[it2->first];
             types::cost_t matchcost  = costvalues[it->first*num_labels+it2->first];
+            if(matchcost < lab_min_cost)
+                lab_min_cost = matchcost;
             network.AddEdge(p,d,it->second, matchcost);
         }
+        tot_mincost += lab_min_cost* it->second;
+        if(tot_mincost > alpha)
+            return -1;
     }
     pair<types::cost_t, types::cost_t> res;
-    res = network.GetMaxFlow(src,dest);
+     MEASURE("Flow Computation", res = network.GetMaxFlow(src,dest));
     // if it network satisfy the flow requirements
     if(res.first != src_out)
         return -1;

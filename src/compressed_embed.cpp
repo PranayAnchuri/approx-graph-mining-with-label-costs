@@ -86,7 +86,7 @@ namespace LabelPruning{
         types::cost_t alpha = st.get_alpha();
         map<types::pat_vertex_t, set<types::db_vertex_t> > invalid;
         // TODO: try rearranging the for loops
-        for(int level=0; level < maxlevel && 0; level++) {
+        for(int level=0; level < maxlevel ; level++) {
             tr(embeds, it) {
                 // key is the pattern vertex
                 if(!present(phops[it->first], level))
@@ -102,13 +102,13 @@ namespace LabelPruning{
                      * total cost otherwise */
                     types::cost_t flowval;
                     MEASURE("Pat Hop", flowval = pat_hop.distance(dhops[rep_it->first][level],\
-                            num_labels, st.simvals));
-                    if(level > 1)
-                    INFO(*logger, "S "<< pat_v << " D "<< rep_it->first<<" C "<<flowval << "Level " << level);
+                            num_labels, st.simvals, st));
+                    //if(level > 1)
+                    //INFO(*logger, "S "<< pat_v << " D "<< rep_it->first<<" C "<<flowval << "Level " << level);
                     if( flowval < 0 || flowval > alpha){
                         // remove the vertex from the representative set
                         invalid[pat_v].insert(rep_it->first);
-                        CMEASURE("FLOW", 1);
+                        //CMEASURE("FLOW", 1);
                         continue;
                     }
 
@@ -118,7 +118,7 @@ namespace LabelPruning{
                                                     invalid, rep_it->first));
                     if(!nbrs_match) {
                         invalid[pat_v].insert(rep_it->first);
-                        CMEASURE("MATCH", 1);
+                        //CMEASURE("MATCH", 1);
                     }
                 }
                 // check if the hop label is still valid
@@ -261,10 +261,6 @@ namespace LabelPruning{
     inline void add_valid(map<types::pat_vertex_t, types::db_vertex_t>& covered,\
             types::bare_embeds_t& valid) {
         tr(covered,it) {
-            if(it->first==0 && it->second==2129) {
-                tr(covered, db)
-                    INFO(*logger, "-----" << db->first << " " << db->second);
-            }
             valid[it->first].insert(it->second);
         }
     }
@@ -371,14 +367,6 @@ namespace LabelPruning{
                 tabu.insert(rep->first);
                 bool res;
                 MEASURE("Enumerate", res = enumerate(st, pat, paths[it->first], 0, alpha-cost, numlabels, epath, covered, tabu));
-                if(rep->first == 2129 && pat_v==0) {
-                    INFO(*logger, "Pat " << pat_v << " Db " << rep->first << res );
-                    tr(covered, it) {
-                        types::label_t patlabel = pat.get_label(it->first);
-                        types::label_t vlabel = st.get_label(it->second);
-                        INFO(*logger, "Pat " << it->first << " Db " << it->second<< costvalues[numlabels*patlabel + vlabel]);
-                    }
-                }
                 if(res) {
                     add_valid(covered, valid);
                     // get the string corresponding to this
