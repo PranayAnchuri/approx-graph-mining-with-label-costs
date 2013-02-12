@@ -6,7 +6,7 @@ bool KhopLabel::is_less(DerivedLabel* rhs) {
 }
 
 types::cost_t KhopLabel::distance(KhopLabel& dbhop, const int& num_labels,\
-                                    const vector<types::cost_t>& costvalues , const Store& st) {
+                                    const vector<types::cost_t>& costvalues , Store& st) {
     //  Construct the flow network and compute the max flow min cost algo
     // Create a node for each label present in the pattern multiset and
     // also database multiset
@@ -61,8 +61,8 @@ types::cost_t KhopLabel::distance(KhopLabel& dbhop, const int& num_labels,\
             return -1;
     }
     pair<types::cost_t, types::cost_t> res;
-     MEASURE("Flow Computation", res = network.GetMaxFlow(src,dest));
-     CMEASURE("# FLow Computations", 1);
+    MEASURE("Flow Computation", res = network.GetMaxFlow(src,dest));
+    CMEASURE("# FLow Computations", 1);
     // if it network satisfy the flow requirements
     if(res.first != src_out)
         return -1;

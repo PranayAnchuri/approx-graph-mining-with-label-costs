@@ -16,5 +16,5 @@ class KhopLabel : public DerivedLabel {
         map<types::label_t, int> hops; // key is the label and value is the multiplicity
         std::string to_string();
         types::cost_t distance(KhopLabel& dbhop, const int& num_labels,\
-                                    const vector<types::cost_t>& costvalues, const Store& st);
+                                    const vector<types::cost_t>& costvalues, Store& st);
 };

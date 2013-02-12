@@ -129,3 +129,37 @@ void pattern::undo_back() {
 void pattern::set_sup(const int& sup){
     this->pat_sup = sup;
 }
+
+int pattern::sdist(const types::pat_vertex_t& src, const types::pat_vertex_t& des) {
+    // compute the shortest distance between pair of vertices in the pattern
+    // get the shortest distance between the vertices id1 and id2 in the graph
+    if(src == des)
+        return 0;
+    types::graph_t adj = get_adj();
+    types::pat_set_vlist_t discovered;
+    std::queue<types::pat_edge_t> qu;
+    tr(pat_vmap, it) { discovered.insert(it->first);}
+    discovered.erase(src);
+    qu.push(make_pair(src,0));
+    qu.push(make_pair(-1,-1));
+    while(!discovered.empty()) {
+        ii t = qu.front();
+        qu.pop();
+        if(t.first==-1) {
+            if(!qu.empty()) {
+                qu.push(t);
+            }
+        }
+        else{
+            // get the neighbors of t
+            tr(adj[t.first], it) {
+                if(present(discovered, *it)) {
+                    qu.push(make_pair(*it, t.second+1));
+                    if(*it == des)
+                        return t.second+1;
+                }
+            }
+        }
+    }
+    throw runtime_error(" no path between the vertices");
+}

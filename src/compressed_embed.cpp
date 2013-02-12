@@ -1,6 +1,9 @@
 #include "compressed_embed.hpp"
 
 namespace LabelPruning{
+    bool is_fwd(pattern& pat);
+    map<types::pat_vertex_t, int> min_khop_level(pattern& pat);
+
     RepEmbedding::RepEmbedding() {
         supfunc = &RepEmbedding::min_node_sup;
     }
@@ -85,9 +88,20 @@ namespace LabelPruning{
         int num_labels = st.get_num_labels();
         types::cost_t alpha = st.get_alpha();
         map<types::pat_vertex_t, set<types::db_vertex_t> > invalid;
+        /*
+         * Minimum level for each vertex at which the khop comparison
+         * should begin
+         */
+
+        map<types::pat_vertex_t, int> levels = min_khop_level(pat);
         // TODO: try rearranging the for loops
         for(int level=0; level < maxlevel ; level++) {
             tr(embeds, it) {
+                /*
+                 * Should we compare the khop labels at this level
+                 */
+                if(levels[it->first] < level)
+                    continue;
                 // key is the pattern vertex
                 if(!present(phops[it->first], level))
                     continue;
@@ -97,6 +111,15 @@ namespace LabelPruning{
                     // if the database label doesnt dominates pattern label
                     if(!present(dhops[rep_it->first], level))
                         continue;
+                    bool nbrs_match;
+                    MEASURE("nbrs", nbrs_match = match_nbrs(pat_adj[it->first], st,\
+                                                    invalid, rep_it->first));
+                    if(!nbrs_match) {
+                        invalid[pat_v].insert(rep_it->first);
+                        CMEASURE("Nbr Pruning", 1);
+                        continue;
+                        //CMEASURE("MATCH", 1);
+                    }
                     /*
                      * Returns -1 if the capacity constraints are not met
                      * total cost otherwise */
@@ -108,18 +131,12 @@ namespace LabelPruning{
                     if( flowval < 0 || flowval > alpha){
                         // remove the vertex from the representative set
                         invalid[pat_v].insert(rep_it->first);
+                        CMEASURE("Flow Pruning", 1);
                         //CMEASURE("FLOW", 1);
                         continue;
                     }
 
                     /**** check if there is a 1-1 mapping between the neighbors of ****/
-                    bool nbrs_match;
-                    MEASURE("nbrs", nbrs_match = match_nbrs(pat_adj[it->first], st,\
-                                                    invalid, rep_it->first));
-                    if(!nbrs_match) {
-                        invalid[pat_v].insert(rep_it->first);
-                        //CMEASURE("MATCH", 1);
-                    }
                 }
                 // check if the hop label is still valid
                 //if()
@@ -227,6 +244,45 @@ namespace LabelPruning{
             }
         }
         return (this->*supfunc)(unique_reps);
+    }
+
+    /*
+     *
+     ******************* Optimizations ********************/
+    bool is_fwd(pattern& pat) {
+        // return true if the last edge added to the pattern is a fwd edge
+        /*
+         * Compute the adjacency list size of the "2nd" entry of the last edge
+         * if len(adjlist) == 1 return true and false o/w
+         */
+        types::pat_edge_t last_edge = pat.get_last_edge();
+        types::graph_t gr = pat.get_adj();
+        types::pat_vertex_t des = last_edge.second;
+        return gr[des].size() == 1;
+    }
+
+    map<types::pat_vertex_t, int> min_khop_level(pattern& pat) {
+        // for which get where the comparison should begin
+        /*
+         * For each vertex in the pattern get the shortest distance to the
+         * forward vertex; the minimum khop level is the just the shortest
+         * distance
+         */
+        bool fwd = is_fwd(pat);
+        map<types::pat_vertex_t, int> minlevel;
+        types::pat_edge_t last_edge = pat.get_last_edge();
+        types::pat_vlist_t pat_vlist = pat.get_vertices();
+        tr(pat_vlist, it) {
+            if(fwd) {
+                minlevel[*it] = pat.sdist(*it, last_edge.second);
+            }
+            else {
+                int dist1 = pat.sdist(*it, last_edge.first);
+                int dist2 = pat.sdist(*it, last_edge.second);
+                minlevel[*it] = min(dist1, dist2);
+            }
+        }
+        return minlevel;
     }
 
     /***************************************** VERIFICATION *****************/

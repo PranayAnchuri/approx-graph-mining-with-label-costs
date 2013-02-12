@@ -39,6 +39,7 @@ namespace types {
   typedef double cost_t;
 
   typedef std::vector<pat_vertex_t> pat_vlist_t;
+  typedef std::set<pat_vertex_t> pat_set_vlist_t;
   typedef std::vector<std::pair<pat_vertex_t, pat_vertex_t> > pat_elist_t;
   typedef std::pair<pat_vertex_t, pat_vertex_t> pat_edge_t;
   // Pattern in the form of a graph 

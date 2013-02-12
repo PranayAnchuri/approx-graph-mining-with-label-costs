@@ -28,8 +28,10 @@ class pattern {
         void undo_fwd();
         inline void undo_back();
         types::pat_graph_t get_adj_list() const;
-    private:
+        int sdist(const types::pat_vertex_t& src, const types::pat_vertex_t& des);
+        types::pat_edge_t get_last_edge() { return pat_edges.back();}
         types::graph_t get_adj();
+    private:
         map<int, types::label_t> pat_vmap;
         types::pat_elist_t pat_edges;
         int pat_sup;
