@@ -3,6 +3,7 @@
 namespace LabelPruning{
     bool is_fwd(pattern& pat);
     map<types::pat_vertex_t, int> min_khop_level(pattern& pat);
+    map<types::pat_vertex_t, types::set_vlist_t> compute_groups(pattern& pat);
 
     RepEmbedding::RepEmbedding() {
         supfunc = &RepEmbedding::min_node_sup;
@@ -92,12 +93,21 @@ namespace LabelPruning{
          * Minimum level for each vertex at which the khop comparison
          * should begin
          */
-
         map<types::pat_vertex_t, int> levels = min_khop_level(pat);
+        /*
+         * Groups : compute orbits for the vertices in the pattern
+         */
+        map<types::pat_vertex_t, types::set_vlist_t> groups = compute_groups(pat);
+        //throw runtime_error("groups computed");
         bool fwd = is_fwd(pat);
         // TODO: try rearranging the for loops
         for(int level=0; level < maxlevel ; level++) {
             tr(embeds, it) {
+                /*
+                 * check if this vertex is leader of any particular group
+                 */
+                if(!present(groups, it->first))
+                    continue;
                 /*
                  * Should we compare the khop labels at this level
                  */
@@ -122,7 +132,10 @@ namespace LabelPruning{
                     MEASURE("nbrs", nbrs_match = match_nbrs(pat_adj[it->first], st,\
                                                     invalid, rep_it->first));
                     if(!nbrs_match) {
-                        invalid[pat_v].insert(rep_it->first);
+                        //invalid[pat_v].insert(rep_it->first);
+                        tr(groups[pat_v], vert) {
+                            invalid[*vert].insert(rep_it->first);
+                        }
                         CMEASURE("Nbr Pruning", 1);
                         continue;
                         //CMEASURE("MATCH", 1);
@@ -137,7 +150,10 @@ namespace LabelPruning{
                     //INFO(*logger, "S "<< pat_v << " D "<< rep_it->first<<" C "<<flowval << "Level " << level);
                     if( flowval < 0 || flowval > alpha){
                         // remove the vertex from the representative set
-                        invalid[pat_v].insert(rep_it->first);
+                        //invalid[pat_v].insert(rep_it->first);
+                        tr(groups[pat_v], vert) {
+                            invalid[*vert].insert(rep_it->first);
+                        }
                         CMEASURE("Flow Pruning", 1);
                         //CMEASURE("FLOW", 1);
                         continue;
@@ -290,6 +306,58 @@ namespace LabelPruning{
             }
         }
         return minlevel;
+    }
+    /*
+     * Compute orbits of the vertices in the pattern
+     * Returns a map where key is the vertex in the pattern
+     * and value is the set of vertices for which this vertex
+     * is responsible
+     */
+    map<types::pat_vertex_t, types::set_vlist_t> compute_groups(pattern& pat) {
+        types::graph_t gr = pat.get_adj();
+        set<types::pat_vertex_t> leafnodes;
+        // return this map
+        map<types::pat_vertex_t, types::set_vlist_t> ret;
+        tr(gr, patv) {
+            if(patv->second.size() == 1)
+                leafnodes.insert(patv->first);
+        }
+        tr(gr, patv) {
+            // divide the adjacency list into groups
+            types::set_vlist_t adjlist = patv->second;
+            types::set_vlist_t::const_iterator adjlist_it = adjlist.begin();
+            // groups : key is the pat label and value is list of vertices with
+            // same label
+            map<types::label_t, types::set_vlist_t> groups;
+            while(adjlist_it != adjlist.end()) {
+                if(!present(leafnodes, *adjlist_it)) {
+                    adjlist.erase(adjlist_it++);
+                }
+                else {
+                    types::label_t nbr_label = pat.get_label(*adjlist_it);
+                    groups[nbr_label].insert(*adjlist_it);
+                    ++adjlist_it;
+                }
+            }
+            // for each group compute the leader
+            tr(groups, grp) {
+                if(grp->second.size() <= 1)
+                    continue;
+                types::set_vlist_t::const_iterator grp_it = grp->second.begin();
+                types::pat_vertex_t leader = *grp_it;
+                grp_it++;
+                while(grp_it != grp->second.end()) {
+                    // put this vertex in the list for leader and delete this
+                    // vertex from the ret
+                    ret[leader].insert(*grp_it);
+                    ret.erase(*grp_it);
+                    ++grp_it;
+                }
+                ret[leader].insert(leader);
+            }
+            // now find the groups
+        }
+        return ret;
     }
 
     /***************************************** VERIFICATION *****************/
