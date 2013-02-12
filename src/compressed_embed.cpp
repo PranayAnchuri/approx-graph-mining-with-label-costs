@@ -94,14 +94,21 @@ namespace LabelPruning{
          */
 
         map<types::pat_vertex_t, int> levels = min_khop_level(pat);
+        bool fwd = is_fwd(pat);
         // TODO: try rearranging the for loops
         for(int level=0; level < maxlevel ; level++) {
             tr(embeds, it) {
                 /*
                  * Should we compare the khop labels at this level
                  */
+                if(fwd) {
+                    if(levels[it->first] != level)
+                        continue;
+                }
+                else {
                 if(levels[it->first] < level)
                     continue;
+                }
                 // key is the pattern vertex
                 if(!present(phops[it->first], level))
                     continue;
