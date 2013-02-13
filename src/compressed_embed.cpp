@@ -128,21 +128,6 @@ namespace LabelPruning{
                     // if the database label doesnt dominates pattern label
                     if(!present(dhops[rep_it->first], level))
                         continue;
-                    bool nbrs_match;
-                    MEASURE("nbrs", nbrs_match = match_nbrs(pat_adj[it->first], st,\
-                                                    invalid, rep_it->first));
-                    if(!nbrs_match) {
-                        //invalid[pat_v].insert(rep_it->first);
-                        tr(groups[pat_v], vert) {
-                            invalid[*vert].insert(rep_it->first);
-                        }
-                        CMEASURE("Nbr Pruning", 1);
-                        continue;
-                        //CMEASURE("MATCH", 1);
-                    }
-                    /*
-                     * Returns -1 if the capacity constraints are not met
-                     * total cost otherwise */
                     types::cost_t flowval;
                     MEASURE("Pat Hop", flowval = pat_hop.distance(dhops[rep_it->first][level],\
                             num_labels, st.simvals, st));
@@ -158,6 +143,21 @@ namespace LabelPruning{
                         //CMEASURE("FLOW", 1);
                         continue;
                     }
+                    bool nbrs_match;
+                    MEASURE("nbrs", nbrs_match = match_nbrs(pat_adj[it->first], st,\
+                                                    invalid, rep_it->first));
+                    if(!nbrs_match) {
+                        //invalid[pat_v].insert(rep_it->first);
+                        tr(groups[pat_v], vert) {
+                            invalid[*vert].insert(rep_it->first);
+                        }
+                        CMEASURE("Nbr Pruning", 1);
+                        continue;
+                        //CMEASURE("MATCH", 1);
+                    }
+                    /*
+                     * Returns -1 if the capacity constraints are not met
+                     * total cost otherwise */
 
                     /**** check if there is a 1-1 mapping between the neighbors of ****/
                 }
@@ -472,7 +472,7 @@ namespace LabelPruning{
         get_paths(paths, pat);
 
         vector<types::cost_t>& costvalues = st.simvals; // TODO : change simvals to costvals
-        INFO(*logger, "verifying " << pat.to_string());
+        INFO(*logger, "verifying \n" << pat.to_string());
 
         // 2) Store the true approximate embeddings that are enumerated
 

@@ -16,7 +16,7 @@ class Counter : public Measurement {
         Counter(int init);
         void add(int val=1);
         int get();
-        virtual std::string to_string();
+        virtual std::string to_string(bool detailed=false);
     private:
         int count;
         int multiple;

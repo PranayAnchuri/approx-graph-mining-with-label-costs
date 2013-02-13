@@ -16,7 +16,7 @@ int Counter::get() {
     return count;
 }
 
-std::string Counter::to_string() {
+std::string Counter::to_string(bool detailed) {
     std::stringstream ss;
     ss <<count;
     return ss.str();

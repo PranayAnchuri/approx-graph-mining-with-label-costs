@@ -6,5 +6,5 @@
 
 class Measurement {
     public:
-        virtual std::string to_string() =0;
+        virtual std::string to_string(bool detailed=false) =0;
 };

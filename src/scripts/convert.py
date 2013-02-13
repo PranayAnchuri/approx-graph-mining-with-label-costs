@@ -6,6 +6,23 @@ import sys
 import pdb
 import networkx as nx
 
+def read_db(db):
+# read the input graph and get a mapping for its vertices
+    count = 0
+    vmap = {} # key is the vertex id and the value is the new vid
+    f = open(db)
+    for line in f.readlines():
+        line = line.strip()
+        sp = line.split()
+        if sp[0].startswith("v"):
+            old = int(sp[1])
+            if old not in vmap:
+                vmap[old] = count
+                count += 1
+    return vmap
+
+
+
 def convert(db, sim, dbout, simout):
     s = open(sim)
     w = open(simout, 'w')
@@ -26,12 +43,18 @@ def convert(db, sim, dbout, simout):
     w.write('\n'.join(lines))
     w.close()
     # convert the graph
+    vmap = read_db(db)
     d = open(dbout, 'w')
     for line in open(db).readlines():
         line = line.strip()
         sp = line.split(" ")
         if sp[0] == 'v':
             sp[2] = str(labmap[sp[2]])
+            sp[1] = str(vmap[int(sp[1])])
+        if sp[0] == 'e':
+# get the modified vid
+            sp[1] = str( vmap[int(sp[1])])
+            sp[2] = str( vmap[int(sp[2])])
         d.write(' '.join(sp) + "\n")
     d.close()
 

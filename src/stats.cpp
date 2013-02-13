@@ -36,20 +36,25 @@ void Stats::inc(string param, const int& val) {
 
 std::string Stats::to_string() {
     // get the string representation of all the timers and the counters
-    stringstream ss;
-    tr(timers, it) {
-        ss << endl << it->first << delim << it->second.to_string();
+	stringstream ss;
+	tr(timers, it) {
+		if(!it->first.compare("Walk"))
+			ss << endl << it->first << delim << it->second.to_string(true);
+		else
+			ss << endl << it->first << delim << it->second.to_string(false);
     }
     tr(counters, it) {
         ss << endl << it->first << delim <<  it->second.to_string();
     }
-    tr(mem_usage, types) {
+    /*tr(mem_usage, types) {
         int s = accumulate(all(types->second), 0);
         ss << "\n" << types->first << "\tAvg\t" << s/float(types->second.size()) << "\t";
+	for(int i=0; i< types->second.size() ; i+= 10)
+		ss << types->second[i] << "\t";
         tr(types->second, mem) {
             ss << *mem << "\t";
-        } 
-    }
+        }
+    }*/
     return ss.str();
 }
 

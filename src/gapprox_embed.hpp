@@ -19,6 +19,7 @@ namespace GApprox {
         virtual Embedding* extend_back(Store& st, pattern& pat, types::pat_vertex_t src, \
                                             types::pat_vertex_t back);
         virtual inline void add_embedding(const types::gapprox_em_t em) { embeds.push_back(em);}
+	int get_num_iso() { return embeds.size();}
         private:
         types::gapprox_embed_t embeds;
         int sup_without_offsets();

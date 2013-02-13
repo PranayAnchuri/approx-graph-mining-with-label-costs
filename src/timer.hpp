@@ -24,7 +24,7 @@ class Timer : public Measurement {
         void stop();
         double time();
         void store(); // push the current time in to the vector
-        std::string to_string();
+        std::string to_string(bool detailed=false);
     private:
         struct timeval start_time;
         struct timeval stop_time;
