@@ -1,0 +1,385 @@
+% How the representative set is computed; pruning strategies and
+% verification step goes here.
+
+\section{Computing Representative Sets}
+ Representative vertex $v$ of a pattern vertex $u$ implies that there
+ exists an approximate subgraph isomorphism $\phi$ for which $\phi(u) = v$.
+ One way to interpret it is that the neighborhood of $u$ matches with
+ that of $v$.  By comparing the neighborhoods we can find 
+ vertices that are not valid representatives of $u$ without trying to
+ find an isomorphism exhaustively. Therefore, to compute the
+ representative sets we will start with a candidate 
+ representative set and iteratively
+ prune some of the vertices if the neighborhoods cannot be matched.
+ An example of candidate representative set is set of vertices $\vg$ of the 
+ database graph.
+  In this section, we will
+ describe different notions of neighborhood and show how they
+ help us in computing the representative
+ sets. \\
+The problem of checking whether a vertex $v \in R(u)$
+ involves solving
+ approximate subgraph isomorphism which is a NP complete
+ problem. The pruning methods therefore 
+ typically cannot prune all the invalid
+ candidate vertices. 
+ So, we use an exhaustive enumeration method to prune the remaining
+candidate representatives and obtain the exact set of representative
+vertices.
+
+ \subsection{\khop Label}
+ %Neighbors of a vertex in a graph denotes the set of vertices that are
+ %reachable via a single edge. 
+ \khop label 
+ is the set of vertices that are reachable via a simple
+ path $p$ of length $k$. 
+ Note that, we use the word label even though we refer to a set of vertices.
+ Formally, the \khop label of a vertex
+ $v$ in graph $G$, $\khopl{k}{v,G} = \{u | u \in G, \kpath{u}{v}{k}\}$.
+ We simply write it as $\khopl{k}{v}$ when the graph is evident from
+ the context. 
+For example, for pattern $P$ in
+Fig.~\ref{subfig:pattern}, the $0$-hop label of vertex $5$ is $h_0(5)
+ = \{5\}$, its $1$-hop label is the multiset $h_1(5) = \{2, 4, 6\}$ 
+ and its $2$-hop label $h_2(5) = \{1, 3\}$. The minimum 
+ cost of matching \khop labels
+ $\khopl{k}{u}$ and $\khopl{k}{v}$ is equal to 
+
+ \begin{equation}
+  \khopcost{k}{u}{v} = \text{min}\displaystyle\sum_{u' \in \khopl{k}{u}} \matij{C}{L(u')}{L(f(u'))}
+ \end{equation}
+
+where 
+$\matij{C}{L(u')}{L(f(u'))}$ is the cost of matching the vertex labels and
+$f$ is an injective function $f\!\!:\khopl{k}{u} \rightarrow \khopl{k}{v}$.
+In other words,
+it is the minimum total cost of matching the vertices present in the \khop labels.
+The following theorem places a upper bound on the minimum cost of matching
+the \khop labels of pattern vertex and its representative vertex.
+
+\begin{thm}
+Given any pattern vertex $u$, a representative vertex $v \in R(u)$ and cost
+threshold $\alpha$, the minimum cost of matching the \khop labels, 
+$\khopcost{k}{u}{v} \leq \alpha$ for all $k \geq 0$.
+
+\begin{myproof}
+Consider any approximate subgraph isomorphism $\phi$
+such that $\phi(u) = v$. It is enough if we can show an injective function
+$f\!\!:\khopl{k}{u} \rightarrow \khopl{k}{v}$ with a cost
+$\leq \alpha$. We will argue that the function $\phi$ on the restricted domain
+$\khopl{k}{u}$ is one such function $f$.
+First, we know that 
+$\sum\matij{C}{L(u)}{\phi(L(u)} \leq \alpha$, for all $u \in \vp$ since
+$\phi$ is an approximate subgraph isomorphism. Second, let 
+$\kpath{u}{u'}{k}$
+then $\phi(u') \in \khopl{k}{v}$ because for every edge $(u_1, u_2)$ on a 
+path between $u$ and $u'$ in $\pat$, $(\phi(u_1),\phi(u_2)) \in \eg$. 
+Therefore the minimum cost of matching the \khop labels is upper bounded
+by $\alpha$.
+\end{myproof}
+\label{thm:khop}
+\end{thm}
+
+Based on the above theorem, a vertex $v$ can be pruned from candidate
+representative set of $u$ if $\khopcost{k}{u}{v} > \alpha$ for any 
+$k \geq 0$. However, in practice, it enough to check the condition only
+for $k \leq |V_P|-1$ because $\khopl{k}{u}$ is the null set $\forall k \geq
+|V_P|$ and the condition is trivially satisfied.
+
+Figure~\ref{fig:ncexample} shows an example for the \khop label based
+pruning of the representative set where the
+threshold $\alpha = 0.5$. Consider vertex $2 \in \vp$ and vertex
+$20 \in \vg$, we have 
+$\khopcost{0}{2}{20} = 0$, since the cost of matching vertex labels 
+\matij{C}{C}{C} = 0, 
+as per the label matching matrix
+\M{C} in Fig.~\ref{subfig:match}. The \khop labels for $k=1,2,3$ and 
+the minimum of cost matching them are
+as shown in the table \ref{tab:khop220}, and it can be verified that
+the minimum cost is within the threshold $\alpha$.
+
+Thus far, we cannot prune node $20$ from candidate representative set.
+However, $\khopl{4}{2}
+= 4, 5 $ and $\khopl{4}{20} = 30, 60$ and the minimum cost of matching
+them is $0.6 > \alpha$.
+Thus, we conclude that $20
+\notin R(2)$. This small example illustrates that \khop labels can help
+prune the candidate representative sets.
+
+
+% Example for showing the incremental updates of the labels
+\begin{figure}[!ht]
+\captionsetup[subfloat]{captionskip=15pt}
+  \centering
+  \subfloat[Pattern $P$]{
+    \label{subfig:pattern}
+	\scalebox{0.9}{
+    % # 3 vertices and 2 edge pattern
+    \begin{pspicture}(0,0)(4,3)
+    \cnodeput[linecolor=black](0,2) {n1} {A}
+    \cnodeput[linecolor=black](0,1) {n2} {C}
+    \cnodeput[linecolor=black](1,0) {n3} {B}
+    \cnodeput[linecolor=black](2,2) {n4} {C}
+    \cnodeput[linecolor=black](2,1) {n5} {A}
+    \cnodeput[linecolor=black](2,0) {n6} {D}
+    %% Draw the edges of the pattern
+  \ncline{-}{n1}{n2}
+  \ncline{-}{n2}{n3}
+  \ncline{-}{n3}{n4}
+  \ncline{-}{n2}{n5}
+  \ncline{-}{n4}{n5}
+  \ncline{-}{n5}{n6}
+  \ncline{-}{n3}{n6}
+    \uput{.3cm}[90](n1){ {1} }
+    \uput{.3cm}[180](n2){ {2} }
+    \uput{.3cm}[270](n3){ {3} }
+    \uput{.3cm}[90](n4){ {4} }
+    \uput{.3cm}[0](n5){ {5} }
+    \uput{.3cm}[270](n6){ {6} }
+    \end{pspicture}
+	} }
+  \subfloat[Database Graph $G$]{
+    \label{subfig:database}
+	\scalebox{0.9}{
+    \begin{pspicture}(0,0)(2.5,2.5)
+    \cnodeput[linecolor=black](0,2) {N1} {A}
+    \cnodeput[linecolor=black](0,1) {N2} {C}
+    \cnodeput[linecolor=black](0,0) {N3} {D}
+    \cnodeput[linecolor=black](1,2) {N4} {B}
+    \cnodeput[linecolor=black](2.25,1) {N5} {B}
+    \cnodeput[linecolor=black](2,0) {N6} {A}
+    % vertex ids
+    \uput{.3cm}[90](N1){ {10} }
+    \uput{.3cm}[180](N2){ {20} }
+    \uput{.3cm}[270](N3){ {30} }
+    \uput{.3cm}[90](N4){ {40} }
+    \uput{.3cm}[0](N5){ {50} }
+    \uput{.3cm}[270](N6){ {60} }
+    % edges in the database
+  \ncline{-}{N1}{N2}
+  \ncline{-}{N2}{N3}
+  \ncline{-}{N4}{N5}
+  \ncline{-}{N5}{N6}
+  \ncline{-}{N3}{N4}
+  \ncline{-}{N2}{N5}
+  \ncline{-}{N2}{N6}
+    \end{pspicture}
+	} }
+  \newline
+\captionsetup[subfloat]{captionskip=5pt}
+\subfloat[Cost Matrix]{
+  \label{subfig:match}
+  % Table for the search space pruning
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    \Cs & A &  B & C & D \\
+    \hline
+    A & 0 & 0.7 & 0.6 & 0.1\\
+    \hline
+    B & 0.7 & 0 & 0.3 & 1\\
+    \hline
+    C & 0.6 & 0.3 & 0 & 0.8\\
+    \hline
+    D & 0.1 & 1 & 0.8 & 0\\
+    \hline
+  \end{tabular}
+  } 
+  \caption{Pattern \protect\subref{subfig:pattern}, 
+  database graph \protect\subref{subfig:database}, and binary cost
+  matrix \protect\subref{subfig:match}.
+  } 
+  \label{fig:ncexample}
+\end{figure}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        k & $\khopl{k}{20}$ & $\khopl{k}{20}$ & $\khopcost{k}{2}{20}$\\
+        \hline
+        1 & 1, 3, 5 & 10, 30, 50, 60 & 0 \\
+        2 & 4, 6 & 40, 50, 60 & 0.4 \\
+        3 & 3, 5 & 40, 30, 50 & 0.1\\
+        \hline
+    \end{tabular}
+    \caption{\khop label of vertices $2$ and $20$.}
+    \label{tab:khop220}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        k & $h_k(3)$ & $h_k(50)$ & $\khopcost{k}{3}{50}$ \\
+        \hline
+        0 & 3 & 50 & $0$\\
+        1 & 2, 4, 6 & 20, 40, 60 & $0.4$ \\
+        2 & 1, 5 & 10, 20 , 30, 60 & 0\\
+        3 & 2, 4, 5 & 10, 20, 30, 40 & $0.3$ \\
+        4 & $1$ & $10, 40, 60$ & $0$ \\
+        \hline
+    \end{tabular}
+    \caption{\khop labels of vertices $3$ and $50$.}
+    \label{tab:khop350}
+\end{table}
+
+
+\smallskip\noindent{\bf Precomputing \khop labels for $G$:} The \khop
+labels of the database vertices are independent of the pattern. Thus, we
+can precompute the \khop labels for different values of $k$.
+
+
+One way to find the \khop label is by naively
+enumerating all the $k$ length paths.
+Hence, we compute the \khop labels only for small values of $k$ depending on the
+database size and density. 
+
+
+
+
+
+\subsection{Neighbor Concatenated Label} 
+In a given iteration of Neighbor concatenated label (\ncl) based pruning,
+the information regarding the candidates of a neighbor that were pruned 
+in the previous iteration is used along with the current \khop label to
+prune candidates in the current iteration. In contrast, the \khop label
+pruning strategy for a vertex $u$ works independently of the result of
+\khop label pruning of other vertices in the pattern. This leads us
+to the following recursive formulation of \ncl.
+
+The \ncl of a vertex in the ${k+1}^{th}$ iteration, $\nclab{k+1}{u}$ is
+defined as
+the tuple $(\{\nclab{k}{u'} | u' \in N(u)\},\xspace \khopl{k+1}{u})$.
+The first element(A) of the tuple is the \ncl of the neighbors of the
+vertex $u$ in the previous iteration and the second element(B) is exactly
+same as the \khop label defined in the previous section. We say that
+$\nclab{k+1}{v}$ dominates $\nclab{k+1}{v}$, denoted by 
+$\nclab{k+1}{u} = (A, B) \preceq \nclab{k+1}{v} = (A', B') $ 
+iff $\khopcost{k+1}{B}{B'} \leq \alpha$ and there exits an injective
+function $g\!\!:A\rightarrow A'$ such that $a \leq g(a)$ for 
+all $a \in A$. The base case $\nclab{0}{u} \preceq \nclab{0}{v}$ iif 
+$\khopcost{0}{u}{v} \leq \alpha$. For example, in Fig~\ref{fig:ncexample} 
+$\nclab{1}{2} \preceq \nclab{1}{20}$ because $\khopcost{1}{2}{20} \leq \alpha$
+and the injective function that maps neighbors $1, 3, 5$ of $2$ to neighbors
+$10, 50, 30$ of $20$ such that $\preceq$ relation is
+is satisified between every pair. The following theorem states that the \ncl of a pattern
+vertex $u$ is dominated by the \ncl of any of its representative vertex
+$v \in R(u)$.
+
+\begin{thm}
+Given any pattern vertex $u$, a representative vertex $v \in R(u)$ and cost
+threshold $\alpha$, $\nclab{k}{u} \preceq \nclab{k}{v}$ for all
+$k \geq 0$.
+\begin{myproof} Let $\phi$ be any approximate subgraph isomorphism
+such that $\phi(u) = v$.
+We prove the theorem by using the principle of mathematical induction on $k$.\\
+\textbf{Base case:} $\nclab{0}{u} \preceq \nclab{0}{v}$ is true because
+$v \in R(u)$. \\
+\textbf{Inductive Hypothesis:} Assume that $\nclab{k}{u} \preceq \nclab{k}{v}$
+holds true for all $u \in \pat$ and $v \in R(u)$. \\
+Now consider 
+$\nclab{k+1}{u} = (A, B)$  and $ \nclab{k+1}{v} = (A', B') $, from theorem
+\ref{thm:khop} we know that $\khopcost{k+1}{B}{B'} \leq \alpha$, for all
+$k \geq 0$. The injective function $\phi$ maps the elements $a \in A'$ to
+elements in $\phi(a)$ and $\phi(a) \in A'$ from the inductive hypothesis.
+The theorem follows from the definition of the \ncl label.
+\end{myproof}
+\end{thm}
+
+Based on the above theorem, a vertex $v$ can be pruned from candidate
+representative set of $u$ if $\nclab{k}{u} \not\preceq \nclab{k}{v}$
+for some $k \geq 0$. In Fig~\ref{fig:ncexample} , consider the vertices
+$3 \in \pat$ and $50 \in \db$. The \ncl labels, 
+$\nclab{0}{3} \preceq \nclab{0}{50}$ as $\matij{C}{B}{B} = 0 \leq \alpha$.
+Similarly it is also true for the pairs $(2, 20)$, $(4, 40)$ etc. It follows
+that $\nclab{1}{3} \preceq \nclab{1}{50}$ the neighbors can be mapped and
+the minimum cost of the \khop label is within the $\alpha$ threshold. But
+$\nclab{2}{3} \not\preceq \nclab{2}{50}$ because the \ncl label
+$\nclab{1}{6}$ is not dominated by the \ncl label
+of $20, 40$ or  $60$ in the previous iteration. Hence, the vertex $50$
+can be pruned from the candidate representative set of vertex $3$.
+Note that using the \khop label in the same example will not prune the
+vertex $50$ because the minimum cost of matching the \khop labels is within
+$\alpha$ as shown in table \ref{tab:khop350}. Therefore, \ncl label is more
+efficient compared to \khop label as it subsumes the latter label.
+
+\subsection{Label costs and dominance checking}
+Candidate representative vertices are pruned by checking for dominance between
+the \ncl labels which itself requires computing the cost between the \khop labels.
+Both these tasks involve finding an injective function that tries to optimize
+some objective function. These problems can be modelled as network flow problems
+for which there are many efficient algorithms. 
+
+\medskip{\textit{Computing \khop label cost}:} To compute the minimum
+matching cost between the \khop labels
+$\khopl{k}{u}$ and $\khopl{k}{v}$ we compute the maximum flow with minimum
+cost in the flow network $F$ defined as follows. $F$ contains two groups of
+vertices along with designated source and sink. One group contains a node for
+each label that appears on a vertex $u' \in \khopl{k}{u}$ and it is connected
+to src node with zero weight and the capacity is equal to the number of 
+vertices that have the same label. The other group contains nodes
+for labels that are present on $v' \in \khopl{k}{v}$ and are connected sink 
+node similar to the first group. The only other edges are those between the
+labels $l_u$ and $l_v$ with a weight of $\matij{C}{l_u}{l_v}$ and infinite 
+capacity. Give an example. The cost between the \khop labels is equal to
+minimum cost for maximum flow if the total flow is equal to $|\khopl{k}{u}|$ or 
+$\infty$ otherwise.
+
+\medskip{\textit{Dominance check}: } The \khop label part of the \ncl label can
+be compared using the above network flow formulation and the matching the recursive
+part of the \ncl label can be done using maximum bipartite matching. The \ncl label
+$\nclab{k}{v}$ dominates $\nclab{k}{u}$ if cost between the \khop labels is within
+$\alpha$ and the size of maximum bipartite matching is $N(u)$.
+
+\subsection{Precomputing database \khop labels}
+\begin{thm}
+$k$-reachable is not solvable in polynomial time unless $P=NP$.
+
+\begin{myproof}
+A Hamiltonian path is a path that covers each vertex exactly once.
+The problem of finding a Hamiltonian path is proven to be an NP-Complete
+problem \cite{npcomplete}.
+We will show that the Hamiltonian path problem can be solved in polynomial
+time if $k$-reachable is solvable in polynomial time.  
+Hence , $k$-reachable is not solvable unless P=
+NP. Assume that $k$-reachable is solvable in polynomial time. Given,
+an instance of Hamiltonian path problem, a simple path of length $n-1$
+can be constructed as follows. We first get a vertex $v$ that is $n-1$
+reachable from $u$.  The vertex $v$ is removed from the graph and the
+algorithm is run again to get a $n-2$ reachable vertex $v'$ such that
+$(v',v) \in \eg$. Such a vertex should exist because $v$ is reachable
+via a simple path. We continue this process for $n-1$ times. The set of
+vertices chose forms a Hamiltonian path.
+\end{myproof}
+\end{thm}
+
+\subsection{Candidate set verification}
+
+
+\begin{figure}[!h]
+    \centering
+\scalebox{0.6}{
+  \psset{unit=0.85in}
+  \newcommand\arc[4]{\ncline{#1}{#2}{#3}\ncput{\colorbox{gray!40}{#4}}}
+      \begin{pspicture}(-1,1)(4,3)
+        \cnodeput[doubleline=true](0,2){src}{s}
+        \cnodeput(1,3){n1}{A}
+        \cnodeput(1,1){n2}{B}
+        \cnodeput[doubleline=true](3,2){sink}{t}
+        \cnodeput(2,3){n4}{B}
+        \cnodeput(2,1){n5}{C}
+        \arc{->}{src}{n1}{$1,0$}
+        \arc{->}{src}{n2}{$1,0$}
+        %\arc{->}{n1}{n4}{$1$}
+        \ncline{->}{n1}{n4}\ncput[npos=0.3]{\colorbox{gray!40}{$1,0.2$}}
+        \ncline{->}{n1}{n5}\ncput[npos=0.3]{\colorbox{gray!40}{$1,0.6$}}
+        \ncline{->}{n2}{n4}\ncput[npos=0.3]{\colorbox{gray!40}{$1,0$}}
+        \ncline{->}{n2}{n5}\ncput[npos=0.3]{\colorbox{gray!40}{$1.0.4$}}
+        \arc{->}{n4}{sink}{$1,0$}
+        \arc{->}{n5}{sink}{$1,0$}
+        %\arc{->}{n6}{sink}{$1$}
+      \end{pspicture}
+    }
+    \caption{Flow network for $h_2(0)$ and $h_2(30)$}
+	\label{fig:Hflow}
+\end{figure}

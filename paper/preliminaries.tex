@@ -1,0 +1,165 @@
+\section{Preliminaries}
+
+An undirected labeled graph \db is represented as a tuple $ \db =
+(\vg,\eg,L) $ where $\vg$ is the set of vertices, $\eg$ is the set of
+edges and $L\!\!: \vg \rightarrow \Sigma $ is a function that maps
+vertices to their labels.  The neighbors of a vertex $v$ are given as $
+N(v) = \{ u | (u,v) \in \vg \} $, and its degree as $d(v) = |N(v)|$.  A
+{\em walk} in a graph $\db$ is a sequence of vertices $v_0,\ldots,v_k$
+such that $v_i \in \vg$ and $(v_i,v_{i+1}) \in \eg$. It covers the
+vertices $\cup_{i=0}^{k} \{v_i\}$ and the edges $\cup_{i=0}^{k-1}
+\{(v_i,v_{i+1})\}$.  A path is a walk without any repeated vertices,
+i.e., $v_i \ne v_j$ for $i \ne j$,and we say that $v_{k}$ is 
+{\em reachable} from $v_0$ in \khops.
+
+\smallskip\noindent{\bf Cost matrix:}
+We assume that there exists a cost function $cost: \Sigma \times \Sigma
+\to \setR$, where $cost(l_i,l_j)$ is the cost of matching the labels
+$l_i$ and $l_j$. The cost matrix \M{C} is a $|\Sigma| \times |\Sigma|$
+matrix where $\matij{C}{l_i}{l_j} = cost(l_i,l_j)$. For simplicity, we
+assume that $\matij{C}{l_i}{l_i} = 0 $ and $\matij{C}{l_i}{l_j} > 0$.
+The cost matrix is not required to be symmetric. 
+% Is it required to mention the binary version here ?
+In some application domains it is difficult to construct a meaningful cost
+matrix.  However, it may be easier to specify which labels are very
+similar to other labels, which leads to a binary cost matrix, where 
+$\matij{C}{l_i}{l_j} = 0$ iff $l_i$ and $l_j$ are highly similar, and 
+$\matij{C}{l_i}{l_j} = 1$ otherwise (alternatively, the cost may be
+$\infty$ if $l_i$ and $l_j$ are not similar). 
+
+\smallskip\noindent{\bf Approximate subgraph isomorphism:}
+A graph $S = (V_S,E_S,L)$ is a subgraph of \db, denoted $S \subseteq
+\db$, iff $V_S \subseteq \vg$, and $E_S \subseteq \eg$.  $S$ is an
+induced subgraph if $E_S = \eg \cap (V_S \times V_S)$.  Given a database
+graph $G$ and a pattern $P = (V_P,E_P,L)$, a function $\phi\!\!: V_P \to
+V_G$ is called an {\em unlabeled subgraph isomorphism} provided $\phi$
+is an injective (or one-to-one) mapping such that $\forall (u,v) \in
+E_P$, we have $(\phi(u),\phi(v)) \in \eg$. That is, $\phi$ preserves the
+topology of $P$ in $G$. Define the cost of the isomorphism as follows:
+$C(\phi) = \sum_{u \in \vp} \matij{C}{L(u)}{L(\phi(u))}$, that is, the
+sum of the costs of matching the node labels in $P$ to the corresponding
+node labels in $G$.  We say that $\phi$ is an {\em approximate subgraph
+isomorphism} from $P$ to $G$ provided its cost $C(\phi) \le \alpha$,
+where $\alpha$ is a user-specified threshold on the total cost. In this
+case we also call $P$ an approximate pattern in $G$. Note
+that if $\alpha = 0$, then $\phi$ is an exact subgraph isomorphism
+between $P$ and $G$.
+
+
+%%% Example graphs to illustrate the notation used in the paper
+\begin{figure}[!h]
+\vspace{-0.25in}
+\captionsetup[subfloat]{captionskip=15pt}
+  \subfloat[Database Graph $\db$] {
+    \label{subfig:ex_db}
+  \scalebox{0.9}{
+    \begin{pspicture}(-1,0)(3,3)
+      \putNode{1}{2}{n1}{A}{90}{1}
+      \putNode{0}{1}{n2}{A}{180}{2}
+      \putNode{1}{1}{n3}{B}{225}{3}
+      \putNode{2}{1}{n4}{A}{0}{4}
+      \putNode{0}{0}{n5}{C}{270}{5}
+      \putNode{1.5}{0}{n6}{C}{270}{6}
+
+      \ncline{-}{n1}{n2}
+      \ncline{-}{n1}{n3}
+      \ncline{-}{n1}{n4}
+      \ncline{-}{n2}{n3}
+      \ncline{-}{n3}{n4}
+      \ncline{-}{n3}{n6}
+      \ncline{-}{n4}{n6}
+      \ncline{-}{n2}{n5}
+    \end{pspicture}
+	}}
+  % Graph subgraph isomorphic to the database
+  \subfloat[Pattern $P$] {
+    \label{subfig:ex_sub}
+  \scalebox{0.9}{
+    \begin{pspicture}(0.5,1)(3,3)
+      \putNode{2}{3}{n1}{A}{90}{10}
+      \putNode{1}{2}{n2}{B}{180}{20}
+      \putNode{3}{2}{n3}{C}{0}{30}
+      \putNode{2}{1}{n4}{A}{0}{40}
+      \ncline{-}{n1}{n2}
+      \ncline{-}{n1}{n3}
+      \ncline{-}{n2}{n4}
+      \ncline{-}{n3}{n4}
+    \end{pspicture}
+	}}
+  \newline
+\captionsetup[subfloat]{captionskip=5pt}
+  \subfloat[Cost Matrix] {
+    \label{subfig:ex_match}
+    \begin{tabular}{|c|c|c|c|c|}
+      \hline
+      \M{C} & A &  B & C & D \\
+      \hline
+      A & $0$ & $0.2$ & $0.6$ & $0.1$ \\
+      \hline
+      B & $0.2$ & $0$ & $0.4$ & $0.5$ \\
+      \hline
+      C & $0.6$ & $0.4$ & $0$ & $0.2$ \\
+      \hline
+      D & $0.1$ & $0.5$ & $0.2$ & $0$ \\
+      \hline
+    \end{tabular}
+  }
+  % Approximately isomorphic
+  \subfloat[Approximate Embeddings] {
+      \label{subfig:ex_occur}
+      \begin{tabular}{|l|c|c|c|c|c|}
+		\hline
+		 & \multicolumn{5}{|c|}{$\phi$}\\ 
+        \hline
+		$P$ & $10$ & $20$ & $30$ & $40$ & cost \\
+        \hline
+        $\phi_1$ & $3$ & $1$ & $6$ & $4$ & $0.4$ \\
+        $\phi_2$ & $4$ & $1$ & $6$ & $3$ & $0.4$\\
+        \hline
+      \end{tabular}
+  }
+  % occurrences of the approx pattern
+  \caption{ \protect\subref{subfig:ex_db}: sample database graph $G$, 
+    \protect\subref{subfig:ex_sub}: approximate pattern $P$.
+	\protect\subref{subfig:ex_match}: cost matrix.
+	\protect\subref{subfig:ex_occur}: approximate embeddings 
+	of $P$ in $G$.
+  }
+  \label{fig:ex1}
+\end{figure}
+
+\smallskip\noindent{\bf Representative set and pattern support:}
+Given a node $u \in \vp$, its {\em representative set} in the database
+graph $G$ is the set 
+$$R(u) = \{ v \in \vg |\; \exists \phi, \text{ such
+that } C(\phi) \le \alpha \text{ and } \phi(u) = v \}$$ 
+That is, the representative set of $u$ comprises all nodes in $G$ that
+$u$ is mapped to in some approximate isomorphism.  Define the {\em
+support} of pattern $P$ in a database graph $G$ as 
+$$sup(P) = \min_{u \in
+\vp} \{ |R(u)| \}$$
+That is, the minimum cardinality over all
+representative set of nodes in $P$.  A pattern $P$ is called {\em
+frequent} if $sup(P) \geq minsup$, where $minsup$ is a user defined
+support threshold.  $P$ is {\em maximal} iff $P$ is frequent and there
+does not exist any supergraph of $P$ that is frequent in $G$.  
+
+\smallskip
+\noindent{\bf Problem Statement:} Given a database graph \db, minimum
+support $minsup$, maximum allowed cost $\alpha$, and an integer $k$, our
+goal is to mine $k$ maximal frequent approximate patterns.  Figure
+\ref{fig:ex1} shows an example database, a cost matrix, an approximate
+pattern, and its approximate subgraph isomorphism for $\alpha=0.5$.
+There are only two possible approximate isomorphisms from $P$ to $G$, as
+specified by $\phi_1$ and $\phi_2$. For example, for $\phi_1$, we have
+$\phi_1(10) \to 3$, $\phi_1(20) \to 1$, $\phi_1(30) \to 6$, and
+$\phi_1(40) \to 4$, as seen in Table~\ref{subfig:ex_occur}. 
+The cost of the isomorphism is 
+$C(\phi_1) = 0.4$, since 
+$C(L(10),L(3)) + C(L(20),L(1)) + C(L(30),L(6)) + C(L(40),L(4)) 
+= C(A,B) + C(B,A) + C(C,C)+ C(A,A) = 0.2+0.2+0+0 = 0.4$. 
+The representative
+set for node $10 \in \vp$ is $R(10) = \{3, 4\}$. However, the
+support of $P$ is $sup(P) = 1$, since node $20 \in \vp$ has only one
+mapping in $G$, namely $R(20) = \{1\}$.
+

@@ -1,0 +1,72 @@
+\section{Introduction}
+Graphs are a natural way to model many of the modern complex
+datasets that typically have interlinked entities connected with various
+relationships. Examples include different types of networks, such
+social, biological and technological networks. Tools for rapidly
+querying and mining graph data are therefore in high demand. Our focus
+is on graph pattern discovery methods that can simultaneously consider
+both the structure and content (e.g., node labels).
+
+Whereas frequent graph mining has long been a well studied problem, most
+of the prior work has focused on exact pattern discovery.
+Graph mining involves two main steps. The first step is to generate
+non-duplicate candidate patterns, and the second is to compute the
+frequency of each candidate pattern. The former task requires graph
+isomorphism testing, whereas the latter requires subgraph isomorphism
+checking, since we need to count all the occurrences of a smaller graph
+within a much larger graph (or a set of graphs). Many efficient methods
+have been proposed for mining exact labeled graph patterns, including
+both complete search and sampling based
+approaches~\cite{gSpan,HWP03,kuramochi2005ffp,FSG01,IWM03,2009-graphsampling}.
+These exact methods require that there be an exact match between the
+labels of nodes in the candidate pattern and in the database graph. This
+can potentially miss many patterns where nodes may share a high label
+similarity, but may not match exactly. This is specially true for more
+complex labels (e.g., text data), or in cases where the nodes represent
+some real-world objects (e.g., proteins, IT infrastructure nodes), where
+it may be possible to easily design a meaningful cost or distance matrix  between node ``labels''. Unfortunately, exact isomorphism
+based methods cannot leverage the rich information from the cost matrix.
+What is required is a new class of algorithms that can mine
+frequent approximate patterns via approximate subgraph isomorphism that
+satisfies some bound on the overall cost of the match between a candidate
+and the database graph(s). Only a few methods have tackled this
+problem~\cite{gapprox,JiaZH11,RAM2008}, but they typically enumerate all
+isomorphisms, and are therefore not scalable to large graphs due to the
+combinatorial explosion in the number of isomorphisms.
+
+In this paper we present a new approach to mine frequent approximate
+patterns in the presence of a cost matrix between the labels. In
+particular we make the following contributions:
+\begin{itemize}
+\item We propose a novel approach to effectively prune the space of
+  approximate labeled isomorphisms. Instead of enumerating all the
+  possible isomorphisms, we maintain a set of representatives (nodes in
+  the database that match a candidate pattern) that is linear in the
+  database and pattern size. Pruning is applied on this set to narrow
+  down the search to only viable mappings.
+\item We propose several iterative label updating methods that yield
+  derived cost matrices on the basis of which more effective 
+  pruning can be achieved. These are based on $k$-hop labels, neighbor
+  concatenated labels and a combination of the two.
+\item Our method handles both arbitrary as well as binary cost matrices.
+\item We place our work within the pattern sampling paradigm, 
+  thereby avoiding complete search, which can be practically 
+  infeasible in real-world
+  graphs, not to mention the information overload problem.
+\end{itemize}
+We study the effectiveness of the proposed methods on three real-world
+datasets. The first is a configuration management database graph, 
+where the nodes represents
+entities comprising the IT infrastructure and the link represents
+relationships between them; approximate mining yields a richer de-facto IT
+policies in the company. The second dataset is a graph dataset
+representing 3D protein structures; mined patterns represent approximate
+motifs. The last dataset comes from a protein interaction network, where
+the nodes are proteins and edges indicate whether they interact
+physically (i.e., they may bind together or they may be part of the
+same protein complex); the mined approximate patterns represent
+molecular subnetworks and molecular machines (the protein complexes)
+that take part in important cellular processes. We show that our
+proposed techniques are indeed scalable and fruitful, allowing us
+to mine interesting approximate graph patterns from 
+large real-world graphs.
