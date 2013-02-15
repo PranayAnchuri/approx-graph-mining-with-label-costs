@@ -195,14 +195,14 @@ prune the candidate representative sets.
     \centering
     \begin{tabular}{|c|c|c|c|}
         \hline
-        k & $\khopl{k}{20}$ & $\khopl{k}{20}$ & $\khopcost{k}{2}{20}$\\
+        k & $\khopl{k}{2}$ & $\khopl{k}{20}$ & $\khopcost{k}{2}{20}$\\
         \hline
         1 & 1, 3, 5 & 10, 30, 50, 60 & 0 \\
         2 & 4, 6 & 40, 50, 60 & 0.4 \\
         3 & 3, 5 & 40, 30, 50 & 0.1\\
         \hline
     \end{tabular}
-    \caption{\khop label of vertices $2$ and $20$.}
+    \caption{\khop label of vertices $2$ and $20$}
     \label{tab:khop220}
 \end{table}
 
@@ -310,10 +310,42 @@ efficient compared to \khop label as it subsumes the latter label.
 The pruning methods based on the \khop and the \ncl labels starts with a
 \CR and prune some of the candidate vertices
 based on the conditions described in theorems \ref{thm:khop} and \ref{thm:ncl}.
-The constraints imposed by the labels can be checked in polynomial time
-and they cannot prune all the invalid candidate representatives. These vertices
-are pruned by complete enumeration. After this step the candidate representative
-set is equal to the representative set.
+The verification step reduces \CR to \RS by pruning retaining only those vertices
+for which there exists an approximate subgraph isomorphism $\phi$ in which $\phi(u) = v$.
+
+Let $wp = u_0,\ldots, u_m$ be a walk in the pattern that covers each
+edge of the pattern atleast once starting from vertex $u$ i.e. $u_0 = u$.
+The following three conditions are satisfied iff the vertex $v$ is a
+representative of the vertex $u$. i) there exists a walk $w_d = v_0,\ldots, v_m$
+such that every $(v_i, v_{i+1})$ is such that $v_i \in R'(u_i)$ and
+$v_{i+1} \in R'(u_{i+1})$. ii) $v_i = v_j$ implies that $u_i = u_j$. iii) 
+$\sum\matij{C}{L(u_i)}{L(v_i)} \leq \alpha$ where $u_i \in \vp$. These 
+conditions can be verified by following the definition of approximate
+subgraph isomorphism. Using an example we will show how these conditions
+are verified.
+
+Consider checking whether the vertex $3$ is a valid representative of the 
+vertex $10$ in the pattern in the figure~\ref{fig:ex1} and let 
+$\alpha = 0.5$ . The walk $ w_p = 10, 20, 40, 30, 10$
+covers each edge of the pattern atleast once. Any Walk that satisfies the
+above three conditions should start mapping the vertex $10$ to $3$. The cost of 
+matching the labels of vertices $3$ and $10$ is $0.2$ from the cost matrix.
+We will cover the walk $w_p$ one edge at a time. For any $(u_i, u_{i+1})$ in the walk, 
+if $u_i$ and $u_{i+1}$ are mapped already then we verify that there is 
+an edge between the database vertices $v_i, v_{i+1}$ to which the pattern vertices are mapped.
+If however, $u_{i+1}$ is not mapped already then we map it to some vertex in $v_{i+1} = R'(u_{i+1})$
+and subtract the cost of this mapping from the remaining $\alpha$ cost.
+For example, in the first step we can map $20$ to $2$. The remaining
+cost is then $0.1$. In the next step $(20,30)$, the vertex $30$
+cannot be mapped to any vertex in the database without violating the three conditions.
+In such a case, we back track 1 step and choose a different mapping say $1$
+for the vertex $20$ which is the last vertex that was mapped. Proceeding this way, we can arrive
+at the mapping corresponding to $\phi_{1}$ as in table~\ref{subfig:ex_occur}.
+This isomorphism not only guarantees that $3 \in R(10)$, it also implies
+that the verfication check between the pairs $(20, 1), (30, 6)$ and $(40, 4)$
+can be avoided becuase of the approximate isomorphism $\phi_1$ that was found.
+
+
 
 \subsection{Label costs and dominance checking}
 Candidate representative vertices are pruned by checking for dominance between
@@ -339,9 +371,23 @@ that of $v'$. The only other edges are those between the
 vertices in different groups. Consider vertices corresponding to labels $l_u$
 and $l_v$ in the two groups respectively. The weight of the edge is $\matij{C}{l_u}{l_v}$
 and the infinite capacity.
-Give an example. The cost between the \khop labels is equal to
-minimum cost for maximum flow if the total flow is equal to $|\khopl{k}{u}|$ or 
-$\infty$ otherwise.
+The cost between the \khop labels is equal to
+minimum cost for maximum flow if the total flow is equal to $|\khopl{k}{u}|$ and 
+$\infty$ otherwise. \\
+Figure~\ref{fig:Hflow} shows the flow network required to compute the minimum
+cost of matching the \khop labels $\khopl{2}{2}$ and $\khopl{2}{20}$ as shown in
+table \ref{tab:khop220}. The vertices connected to the source, $s$ correspond to
+the graph labels of $\khopl{2}{2}$ and the vertices connected to the sink, $t$, 
+correspond to the graph labels of $\khopl{2}{20}$. The numbers in the box represent
+the capacity and the weight of the edges.
+Note that the number of vertices connected to the sink is only $2$ 
+is even though $|\khopl{2}{20}| = 3$ because the vertices $40$ and $50$
+have the common graph label $B$. Vertex corresponding to $B$ is therefore
+connected to $t$ with a capacity of $2$. The maximum flow in the network
+is $2$ and the minimum cost of sending $2$ units of flow $0.4$ is 
+achieved by pushing a unit flow along the paths $s, C, B, t$ and $a, D, A, t$.
+Therefore, the cost of matching the labels $\khopl{2}{2}$ and $\khopl{2}{20}$
+is $0.4$.
 
 \medskip{\textit{Dominance check}: } The \khop label part of the \ncl label can
 be compared using the above network flow formulation and matching the recursive
@@ -353,6 +399,19 @@ $a' \in A'$.
 The \ncl label
 $\nclab{k}{v}$ therefore dominates $\nclab{k}{u}$ if cost between the \khop labels is within
 $\alpha$ and the size of maximum bipartite matching is $|N(u)|$.
+
+\medskip{\textit{Optimization}: } Candidate pattern may contain groups of symmetric
+vertices that are indistinguishable with respect to the \khop label. In such a scenario, 
+the candidate representative sets of all these vertices are exactly the same. Utilizing the
+symmetry, we apply the pruning strategy only on one vertex per symmetry group and 
+replicate the results for all other vertices in the group. For example, the
+vertices $10$ and $40$ in figure~\ref{subfig:ex_sub} are symmetric and
+the representative sets $R'(10)$ and $R'(40)$ are exactly the same.
+In abstract algebra terms such  
+groups are called orbits of the graph and can be computed using nauty algorithm. Even though
+computing the orbits is expensive, we can avoid $ (|g|-1) \times |\CR|$ \khop label cost computations
+where $g$ is size of the orbit. Note that the payoff is zero if all the vertex orbits are of
+size $1$.
 
 \subsection{Precomputing database \khop labels}
 The \khop label of the database vertices is independent of the candidate pattern. Hence, even though
@@ -397,28 +456,28 @@ where $m$ is the number of vertices $v \in \khopl{k}{u}$, $L(v) = l$.
 
 \begin{figure}[!h]
     \centering
-\scalebox{0.6}{
+\scalebox{0.6}[0.6]{
   \psset{unit=0.85in}
   \newcommand\arc[4]{\ncline{#1}{#2}{#3}\ncput{\colorbox{gray!40}{#4}}}
-      \begin{pspicture}(-1,1)(4,3)
-        \cnodeput[doubleline=true](0,2){src}{s}
-        \cnodeput(1,3){n1}{A}
-        \cnodeput(1,1){n2}{B}
-        \cnodeput[doubleline=true](3,2){sink}{t}
-        \cnodeput(2,3){n4}{B}
-        \cnodeput(2,1){n5}{C}
+      \begin{pspicture}(0,1)(5,3)
+        \cnodeput[doubleline=true](1,2){src}{s}
+        \cnodeput(2,1){n1}{C}
+        \cnodeput(2,3){n2}{D}
+        \cnodeput[doubleline=true](5,2){sink}{t}
+        \cnodeput(4,1){n4}{B}
+        \cnodeput(4,3){n5}{A}
         \arc{->}{src}{n1}{$1,0$}
         \arc{->}{src}{n2}{$1,0$}
         %\arc{->}{n1}{n4}{$1$}
-        \ncline{->}{n1}{n4}\ncput[npos=0.3]{\colorbox{gray!40}{$1,0.2$}}
-        \ncline{->}{n1}{n5}\ncput[npos=0.3]{\colorbox{gray!40}{$1,0.6$}}
-        \ncline{->}{n2}{n4}\ncput[npos=0.3]{\colorbox{gray!40}{$1,0$}}
-        \ncline{->}{n2}{n5}\ncput[npos=0.3]{\colorbox{gray!40}{$1.0.4$}}
-        \arc{->}{n4}{sink}{$1,0$}
+        \ncline{->}{n1}{n4}\ncput[npos=0.5]{\colorbox{gray!40}{$\infty,0.1$}}
+        \ncline{->}{n1}{n5}\ncput[npos=0.3]{\colorbox{gray!40}{$\infty,1$}}
+        \ncline{->}{n2}{n4}\ncput[npos=0.3]{\colorbox{gray!40}{$\infty,0.6$}}
+        \ncline{->}{n2}{n5}\ncput[npos=0.5]{\colorbox{gray!40}{$\infty.0.3$}}
+        \arc{->}{n4}{sink}{$2,0$}
         \arc{->}{n5}{sink}{$1,0$}
         %\arc{->}{n6}{sink}{$1$}
       \end{pspicture}
     }
-    \caption{Flow network for $h_2(0)$ and $h_2(30)$}
+    \caption{Flow network for \khopl{2}{2} and \khopl{2}{20}}
 	\label{fig:Hflow}
 \end{figure}

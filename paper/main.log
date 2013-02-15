@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.4.28)  14 FEB 2013 21:30
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.4.28)  15 FEB 2013 03:27
 entering extended mode
  %&-line parsing enabled.
 **main.tex
@@ -1069,12 +1069,33 @@ mr/m/n/9 (\OML/cmm/m/it/9 v\OT1/cmr/m/n/9 ) = (\OML/cmm/m/it/9 A[]; B[]\OT1/cmr
 cmr/m/n/9 (\OML/cmm/m/it/9 B[]\OT1/cmr/m/n/9 )] \OMS/cmsy/m/n/9 ^^T
  []
 
-[4]
+[4] [5]
 
 LaTeX Warning: Citation `npcomplete' on page \thepage  undefined on input line 
-374.
+433.
 
-) (./mining.tex) (./optimizations.tex) (./results.tex [5]
+) (./mining.tex
+
+LaTeX Warning: Citation `2008-origami:sadm' on page \thepage  undefined on inpu
+t line 14.
+
+
+LaTeX Warning: Citation `2009-graphsampling' on page \thepage  undefined on inp
+ut line 14.
+
+
+LaTeX Warning: Citation `2011-icdm' on page \thepage  undefined on input line 1
+6.
+
+
+LaTeX Warning: Citation `gapprox' on page \thepage  undefined on input line 28.
+
+
+
+LaTeX Warning: Citation `2011-icdm' on page \thepage  undefined on input line 3
+2.
+
+) (./optimizations.tex) (./results.tex [6]
 File: ./vlfigures/ge.eps Graphic file (type eps)
  <./vlfigures/ge.eps>
 
@@ -1089,7 +1110,7 @@ Overfull \hbox (6.3265pt too wide) in paragraph at lines 202--203
  [][] 
  []
 
-[6]
+[7]
 LaTeX Font Info:    Try loading font information for T1+aett on input line 221.
 
  (/usr/share/texmf-texlive/tex/latex/ae/t1aett.fd
@@ -1109,15 +1130,16 @@ Overfull \hbox (3.30086pt too wide) in paragraph at lines 308--320
 sh-
  []
 
+[8]
 File: ./figures/1ysw.pat.eps Graphic file (type eps)
-<./figures/1ysw.pat.eps>
+ <./figures/1ysw.pat.eps>
 File: ./figures/1r2e.pat.eps Graphic file (type eps)
  <./figures/1r2e.pat.eps>
 File: ./figures/1ysw.eps Graphic file (type eps)
  <./figures/1ysw.eps>
 File: ./figures/1r2e.eps Graphic file (type eps)
 
-<./figures/1r2e.eps> [7]
+<./figures/1r2e.eps>
 Overfull \hbox (2.56609pt too wide) in paragraph at lines 360--360
 []\secfnt Protein-Protein In-ter-ac-tion Net-work (PPI) 
  []
@@ -1128,34 +1150,39 @@ LaTeX Warning: Citation `altschul90' on page \thepage  undefined on input line
 
 File: ./vlfigures/ppiwalks.eps Graphic file (type eps)
 <./vlfigures/ppiwalks.eps>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 File: ./figures/ppipat2.eps Graphic file (type eps)
- <./figures/ppipat2.eps>
+<./figures/ppipat2.eps>
 File: ./figures/ppipat1.eps Graphic file (type eps)
- <./figures/ppipat1.eps>)
-(./conclusions.tex
+ <./figures/ppipat1.eps>) (./conclusions.tex
 Overfull \hbox (14.12157pt too wide) in paragraph at lines 485--2
 \T1/aer/m/n/9 mined max-i-mal fre-quent ap-prox-i-mate pat-terns (us-ing $\OML/
 cmm/m/it/9 minsup \OT1/cmr/m/n/9 =
  []
 
-[8]
+
+Underfull \vbox (badness 1009) has occurred while \output is active []
+
+ [9]
 Overfull \hbox (4.12904pt too wide) in paragraph at lines 4--7
 \T1/aer/m/n/9 fre-quent sub-graph pat-terns from a sin-gle large graph database
 
  []
 
-) [9] (./main.aux)
+) [10] (./main.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 18410 strings out of 495062
- 346237 string characters out of 1182644
- 541336 words of memory out of 3000000
- 21122 multiletter control sequences out of 15000+50000
+ 18411 strings out of 495062
+ 346256 string characters out of 1182644
+ 541002 words of memory out of 3000000
+ 21123 multiletter control sequences out of 15000+50000
  50269 words of font info for 73 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  58i,13n,84p,450b,624s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on main.dvi (9 pages, 196228 bytes).
+Output written on main.dvi (10 pages, 206416 bytes).

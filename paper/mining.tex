@@ -1,2 +1,54 @@
 % describe the other modules required for the mining process
 \section{Mining Algorithm}
+
+In this section, we describe in detail the main steps involved in
+mining approximate patterns. 
+
+\subsection{Candidate Generation} 
+
+The search space of the frequent patterns forms a partial order, where
+we decide for each pattern, if its support $sup(P) \geq minsup$. Since
+$sup(P)$ is anti-monotonic, i.e., a supergraph cannot have higher support,
+we can prune the entire subtree under a pattern $P$ if it is not
+frequent.  However, complete enumeration is practically unfeasible in large
+real-world graphs~\cite{2008-origami:sadm,2009-graphsampling}, we
+therefore employ
+random walks \cite{2011-icdm} to enumerate $K$ patterns.  Each
+random walk starts with an empty pattern and repeatedly adds new edges
+(to new vertices) or connects two existing vertices in the pattern to
+generate a new candidate.  The support is computed to determine if the
+candidate pattern is frequent. A walk terminates when no extension is
+frequent, in which case the pattern is output, since it must be
+maximal. The algorithm terminates when $K$ walks have been done, or
+alternatively, when $K$ distinct maximal approximate
+patterns have been output. 
+
+\subsection{Support Computation}
+To compute the support of an approximate pattern $P$ in a database \db,
+existing algorithms (e.g., gApprox~\cite{gapprox}) maintain the list of
+all approximate isomorphisms of $P$, and then for each extension they
+check which of the existing isomorphisms can be extended. However, such an
+approach is inherently inefficient, since the number of isomorphisms can
+be exponentially large~\cite{2011-icdm}.  Thus, any approach that
+enumerates all the approximate isomorphisms scales very poorly as the size
+of the database graph increases, and is also highly dependent on the
+multiplicity of the labels (i.e., the number of neighbors with the same
+label) for nodes in the database.
+
+Our approach is entirely different. Instead of storing all isomorphisms
+for a pattern, we keep track of only the representative set for each
+node in the pattern.  Since the support of a pattern is bounded above by
+$N=|\vg|$ (which follows immediately from the fact that $R(u) \subseteq
+\vg$ for any $u \in \vp$), the total size of the representative set of a
+candidate cannot exceed $|\vp| \times N$ (practically, it will be much
+smaller).  Let $P'$ be an extension of a pattern $P$ obtained by adding
+one more edge. Let $R(u)$ be the representative set for a node $u$ in
+$P$, and let $R'(u)$ be the representative set for the same node in the
+extension $P'$. It is clear that $R'(u) \subseteq R(u) \subseteq \vg$.
+So our method tries to prune vertices from the new candidate
+representative set $R'(u)$. 
+Furthermore, we can also obtain an upper
+bound on the support of $P'$, since $sup(P') \le \min_{u \in V_{P'}}
+\{|R'(u)|\}$. Thus, if the upper bound itself is not frequent, we can
+also prune the pattern search space.
+
