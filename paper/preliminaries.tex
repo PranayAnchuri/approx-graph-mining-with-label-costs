@@ -134,7 +134,27 @@ graph $G$ is the set
 $$R(u) = \{ v \in \vg |\; \exists \phi, \text{ such
 that } C(\phi) \le \alpha \text{ and } \phi(u) = v \}$$ 
 That is, the representative set of $u$ comprises all nodes in $G$ that
-$u$ is mapped to in some approximate isomorphism.  Define the {\em
+$u$ is mapped to in some approximate isomorphism.  
+Figure
+\ref{fig:ex1} shows an example database, a cost matrix, an approximate
+pattern, and its approximate subgraph isomorphism for $\alpha=0.5$.
+There are only two possible approximate isomorphisms from $P$ to $G$, as
+specified by $\phi_1$ and $\phi_2$. For example, for $\phi_1$, we have
+$\phi_1(10) \to 3$, $\phi_1(20) \to 1$, $\phi_1(30) \to 6$, and
+$\phi_1(40) \to 4$, as seen in Table~\ref{subfig:ex_occur}. 
+The cost of the isomorphism is 
+$C(\phi_1) = 0.4$, since 
+$C(L(10),L(3)) + C(L(20),L(1)) + C(L(30),L(6)) + C(L(40),L(4)) 
+= C(A,B) + C(B,A) + C(C,C)+ C(A,A) = 0.2+0.2+0+0 = 0.4$. 
+The representative
+set for node $10 \in \vp$ is $R(10) = \{3, 4\}$. However, the
+support of $P$ is $sup(P) = 1$, since node $20 \in \vp$ has only one
+mapping in $G$, namely $R(20) = \{1\}$.
+
+
+%%%%%%%%% the definition of support is moved to a later section %%%%%%
+\if0
+Define the {\em
 support} of pattern $P$ in a database graph $G$ as 
 $$sup(P) = \min_{u \in
 \vp} \{ |R(u)| \}$$
@@ -162,4 +182,4 @@ The representative
 set for node $10 \in \vp$ is $R(10) = \{3, 4\}$. However, the
 support of $P$ is $sup(P) = 1$, since node $20 \in \vp$ has only one
 mapping in $G$, namely $R(20) = \{1\}$.
-
+\fi

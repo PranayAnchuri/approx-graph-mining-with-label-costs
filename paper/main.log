@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.4.28)  15 FEB 2013 03:27
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.4.28)  15 FEB 2013 14:01
 entering extended mode
  %&-line parsing enabled.
 **main.tex
@@ -926,10 +926,16 @@ Overfull \hbox (8.7089pt too wide) in paragraph at lines 73--127
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \vbox (badness 2503) has occurred while \output is active []
+Overfull \hbox (5.05078pt too wide) in paragraph at lines 135--153
+\OML/cmm/m/it/9 C\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 L\OT1/cmr/m/n/9 (20)\OML/cmm/m
+/it/9 ; L\OT1/cmr/m/n/9 (1)) + \OML/cmm/m/it/9 C\OT1/cmr/m/n/9 (\OML/cmm/m/it/9
+ L\OT1/cmr/m/n/9 (30)\OML/cmm/m/it/9 ; L\OT1/cmr/m/n/9 (6)) + \OML/cmm/m/it/9 C
+\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 L\OT1/cmr/m/n/9 (40)\OML/cmm/m/it/9 ; L\OT1/cmr
+/m/n/9 (4)) = \OML/cmm/m/it/9 C\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 A; B\OT1/cmr/m/n
+/9 ) +
+ []
 
-)
-(./relatedwork.tex
+) (./relatedwork.tex
 
 LaTeX Warning: Citation `IWM00' on page \thepage  undefined on input line 6.
 
@@ -969,7 +975,6 @@ e 26.
 LaTeX Warning: Citation `Gaddi2009' on page \thepage  undefined on input line 2
 8.
 
-[2]
 
 LaTeX Warning: Citation `gapprox' on page \thepage  undefined on input line 32.
 
@@ -998,6 +1003,7 @@ LaTeX Warning: Citation `SpeedUpFAS' on page \thepage  undefined on input line
 LaTeX Warning: Citation `RAM2008' on page \thepage  undefined on input line 53.
 
 
+[2]
 
 LaTeX Warning: Citation `TALE' on page \thepage  undefined on input line 60.
 
@@ -1026,10 +1032,6 @@ LaTeX Warning: Citation `RAM2008' on page \thepage  undefined on input line 81.
 
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
 LaTeX Warning: Citation `zampelli' on page \thepage  undefined on input line 88
 .
 
@@ -1045,19 +1047,16 @@ LaTeX Warning: Citation `shervashidzeNips' on page \thepage  undefined on input
 LaTeX Warning: Citation `weisfeiler' on page \thepage  undefined on input line 
 92.
 
-) (./representative.tex [3]
+) (./representative.tex
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [3]
 Overfull \hbox (45.91933pt too wide) in paragraph at lines 89--100
 \T1/aer/m/n/9 Con-sider ver-tex $\OT1/cmr/m/n/9 2 \OMS/cmsy/m/n/9 2 \OML/cmm/m/
 it/9 V[]$ \T1/aer/m/n/9 and ver-tex $\OT1/cmr/m/n/9 20 \OMS/cmsy/m/n/9 2 \OML/c
 mm/m/it/9 V[]$\T1/aer/m/n/9 , we have $\OML/cmm/m/it/9 C[]\OT1/cmr/m/n/9 [\OML/
 cmm/m/it/9 h[]\OT1/cmr/m/n/9 (2)][\OML/cmm/m/it/9 h[]\OT1/cmr/m/n/9 (20)] =
  []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 Overfull \hbox (38.21321pt too wide) in paragraph at lines 250--268
@@ -1072,30 +1071,28 @@ cmr/m/n/9 (\OML/cmm/m/it/9 B[]\OT1/cmr/m/n/9 )] \OMS/cmsy/m/n/9 ^^T
 [4] [5]
 
 LaTeX Warning: Citation `npcomplete' on page \thepage  undefined on input line 
-433.
+437.
 
 ) (./mining.tex
 
 LaTeX Warning: Citation `2008-origami:sadm' on page \thepage  undefined on inpu
-t line 14.
+t line 18.
 
 
 LaTeX Warning: Citation `2009-graphsampling' on page \thepage  undefined on inp
-ut line 14.
+ut line 18.
 
 
-LaTeX Warning: Citation `2011-icdm' on page \thepage  undefined on input line 1
-6.
+LaTeX Warning: Citation `2011-icdm' on page \thepage  undefined on input line 2
+4.
 
 
-LaTeX Warning: Citation `gapprox' on page \thepage  undefined on input line 28.
+Overfull \hbox (5.85661pt too wide) in paragraph at lines 42--53
+\T1/aer/m/n/9 func-tion helps prun-ing the oth-er-wise ex-po-nen-tial search sp
+ace.
+ []
 
-
-
-LaTeX Warning: Citation `2011-icdm' on page \thepage  undefined on input line 3
-2.
-
-) (./optimizations.tex) (./results.tex [6]
+) (./results.tex [6]
 File: ./vlfigures/ge.eps Graphic file (type eps)
  <./vlfigures/ge.eps>
 
@@ -1105,15 +1102,14 @@ LaTeX Warning: Citation `orbits' on page \thepage  undefined on input line 88.
 LaTeX Warning: Citation `Everett' on page \thepage  undefined on input line 93.
 
 
-
+[7]
 Overfull \hbox (6.3265pt too wide) in paragraph at lines 202--203
  [][] 
  []
 
-[7]
 LaTeX Font Info:    Try loading font information for T1+aett on input line 221.
 
- (/usr/share/texmf-texlive/tex/latex/ae/t1aett.fd
+(/usr/share/texmf-texlive/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
 
@@ -1150,22 +1146,17 @@ LaTeX Warning: Citation `altschul90' on page \thepage  undefined on input line
 
 File: ./vlfigures/ppiwalks.eps Graphic file (type eps)
 <./vlfigures/ppiwalks.eps>
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 File: ./figures/ppipat2.eps Graphic file (type eps)
-<./figures/ppipat2.eps>
+ <./figures/ppipat2.eps>
 File: ./figures/ppipat1.eps Graphic file (type eps)
- <./figures/ppipat1.eps>) (./conclusions.tex
+ <./figures/ppipat1.eps>)
+(./conclusions.tex
 Overfull \hbox (14.12157pt too wide) in paragraph at lines 485--2
 \T1/aer/m/n/9 mined max-i-mal fre-quent ap-prox-i-mate pat-terns (us-ing $\OML/
 cmm/m/it/9 minsup \OT1/cmr/m/n/9 =
  []
 
-
-Underfull \vbox (badness 1009) has occurred while \output is active []
-
- [9]
+[9]
 Overfull \hbox (4.12904pt too wide) in paragraph at lines 4--7
 \T1/aer/m/n/9 fre-quent sub-graph pat-terns from a sin-gle large graph database
 
@@ -1177,12 +1168,12 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 18411 strings out of 495062
- 346256 string characters out of 1182644
- 541002 words of memory out of 3000000
- 21123 multiletter control sequences out of 15000+50000
+ 18409 strings out of 495062
+ 346225 string characters out of 1182644
+ 530082 words of memory out of 3000000
+ 21124 multiletter control sequences out of 15000+50000
  50269 words of font info for 73 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  58i,13n,84p,450b,624s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on main.dvi (10 pages, 206416 bytes).
+Output written on main.dvi (10 pages, 207236 bytes).

@@ -1,9 +1,9 @@
-s How the representative set is computed; pruning strategies and
+%s How the representative set is computed; pruning strategies and
 % verification step goes here.
 
 \section{Computing Representative Sets}
- Representative vertex $v$ of a pattern vertex $u$ implies that there
- exists an approximate subgraph isomorphism $\phi$ for which $\phi(u) = v$.
+Representative vertex $v$ of a pattern vertex $u$ implies that there
+exists an approximate subgraph isomorphism $\phi$ for which $\phi(u) = v$.
  One way to interpret it is that the neighborhood of $u$ matches with
  that of $v$.  By comparing the neighborhoods we can find 
  vertices that are not valid representatives of $u$ without trying to
@@ -307,6 +307,7 @@ $\alpha$ as shown in table \ref{tab:khop350}. Therefore, \ncl label is more
 efficient compared to \khop label as it subsumes the latter label.
 
 \subsection{Candidate set verification}
+\label{sec:verification}
 The pruning methods based on the \khop and the \ncl labels starts with a
 \CR and prune some of the candidate vertices
 based on the conditions described in theorems \ref{thm:khop} and \ref{thm:ncl}.
@@ -344,6 +345,9 @@ at the mapping corresponding to $\phi_{1}$ as in table~\ref{subfig:ex_occur}.
 This isomorphism not only guarantees that $3 \in R(10)$, it also implies
 that the verfication check between the pairs $(20, 1), (30, 6)$ and $(40, 4)$
 can be avoided becuase of the approximate isomorphism $\phi_1$ that was found.
+The above procedure can extended to enumerate the complete
+set of isomorphisms just by not terminating the procedure once a matching walk
+is found.
 
 
 
@@ -451,6 +455,9 @@ $k \leq 6$ for all the vertices in the database graph. This is
 significantly less than the overall run time of the algorithm. Once 
 $\khopl{k}{u}$ is computed we store in memory only the tuples $(m, l)$
 where $m$ is the number of vertices $v \in \khopl{k}{u}$, $L(v) = l$.
+
+\subsection{Complexity}
+Memory and time complexity of the entire algorithm.
 
 
 
