@@ -1,4 +1,4 @@
-% How the representative set is computed; pruning strategies and
+s How the representative set is computed; pruning strategies and
 % verification step goes here.
 
 \section{Computing Representative Sets}
@@ -9,10 +9,10 @@
  vertices that are not valid representatives of $u$ without trying to
  find an isomorphism exhaustively. Therefore, to compute the
  representative sets we will start with a candidate 
- representative set and iteratively
+ representative set denoted by \CR  and iteratively
  prune some of the vertices if the neighborhoods cannot be matched.
- An example of candidate representative set is set of vertices $\vg$ of the 
- database graph.
+ The representative set is a superset of the candidate set $\CR \supseteq \RS$.
+ and $\vg \supseteq \RS$ is one such example.
   In this section, we will
  describe different notions of neighborhood and show how they
  help us in computing the representative
@@ -24,7 +24,7 @@ The problem of checking whether a vertex $v \in R(u)$
  typically cannot prune all the invalid
  candidate vertices. 
  So, we use an exhaustive enumeration method to prune the remaining
-candidate representatives and obtain the exact set of representative
+invalid vertices and obtain the set of representative
 vertices.
 
  \subsection{\khop Label}
@@ -32,7 +32,7 @@ vertices.
  %reachable via a single edge. 
  \khop label 
  is the set of vertices that are reachable via a simple
- path $p$ of length $k$. 
+ path of length $k$. 
  Note that, we use the word label even though we refer to a set of vertices.
  Formally, the \khop label of a vertex
  $v$ in graph $G$, $\khopl{k}{v,G} = \{u | u \in G, \kpath{u}{v}{k}\}$.
@@ -80,8 +80,8 @@ by $\alpha$.
 \label{thm:khop}
 \end{thm}
 
-Based on the above theorem, a vertex $v$ can be pruned from candidate
-representative set of $u$ if $\khopcost{k}{u}{v} > \alpha$ for any 
+Based on the above theorem, a vertex $v$ can be pruned from 
+\CR if $\khopcost{k}{u}{v} > \alpha$ for any 
 $k \geq 0$. However, in practice, it enough to check the condition only
 for $k \leq |V_P|-1$ because $\khopl{k}{u}$ is the null set $\forall k \geq
 |V_P|$ and the condition is trivially satisfied.
@@ -98,12 +98,12 @@ the minimum of cost matching them are
 as shown in the table \ref{tab:khop220}, and it can be verified that
 the minimum cost is within the threshold $\alpha$.
 
-Thus far, we cannot prune node $20$ from candidate representative set.
+Thus far, we cannot prune node $20$ from $R'(2)$.
 However, $\khopl{4}{2}
 = 4, 5 $ and $\khopl{4}{20} = 30, 60$ and the minimum cost of matching
 them is $0.6 > \alpha$.
 Thus, we conclude that $20
-\notin R(2)$. This small example illustrates that \khop labels can help
+\notin R'(2)$. This small example illustrates that \khop labels can help
 prune the candidate representative sets.
 
 
@@ -245,7 +245,7 @@ in the previous iteration is used along with the current \khop label to
 prune candidates in the current iteration. In contrast, the \khop label
 pruning strategy for a vertex $u$ works independently of the result of
 \khop label pruning of other vertices in the pattern. This leads us
-to the following recursive formulation of \ncl.
+to the following recursive formulation for \ncl.
 
 The \ncl of a vertex in the ${k+1}^{th}$ iteration, $\nclab{k+1}{u}$ is
 defined as
@@ -284,24 +284,36 @@ $k \geq 0$. The injective function $\phi$ maps the elements $a \in A'$ to
 elements in $\phi(a)$ and $\phi(a) \in A'$ from the inductive hypothesis.
 The theorem follows from the definition of the \ncl label.
 \end{myproof}
+\label{thm:ncl}
 \end{thm}
 
-Based on the above theorem, a vertex $v$ can be pruned from candidate
-representative set of $u$ if $\nclab{k}{u} \not\preceq \nclab{k}{v}$
+Based on the above theorem, a vertex $v$ can be pruned from 
+\CR if $\nclab{k}{u} \not\preceq \nclab{k}{v}$
 for some $k \geq 0$. In Fig~\ref{fig:ncexample} , consider the vertices
 $3 \in \pat$ and $50 \in \db$. The \ncl labels, 
 $\nclab{0}{3} \preceq \nclab{0}{50}$ as $\matij{C}{B}{B} = 0 \leq \alpha$.
 Similarly it is also true for the pairs $(2, 20)$, $(4, 40)$ etc. It follows
-that $\nclab{1}{3} \preceq \nclab{1}{50}$ the neighbors can be mapped and
+that $\nclab{1}{3} \preceq \nclab{1}{50}$ as the neighbors can be mapped and
 the minimum cost of the \khop label is within the $\alpha$ threshold. But
 $\nclab{2}{3} \not\preceq \nclab{2}{50}$ because the \ncl label
 $\nclab{1}{6}$ is not dominated by the \ncl label
-of $20, 40$ or  $60$ in the previous iteration. Hence, the vertex $50$
+of $20, 40$ or  $60$ in the previous iteration and so the
+there is no mapping between the neighbors of vertices $3$ and 
+$50$ in the current iteration. Hence, the vertex $50$
 can be pruned from the candidate representative set of vertex $3$.
 Note that using the \khop label in the same example will not prune the
 vertex $50$ because the minimum cost of matching the \khop labels is within
 $\alpha$ as shown in table \ref{tab:khop350}. Therefore, \ncl label is more
 efficient compared to \khop label as it subsumes the latter label.
+
+\subsection{Candidate set verification}
+The pruning methods based on the \khop and the \ncl labels starts with a
+\CR and prune some of the candidate vertices
+based on the conditions described in theorems \ref{thm:khop} and \ref{thm:ncl}.
+The constraints imposed by the labels can be checked in polynomial time
+and they cannot prune all the invalid candidate representatives. These vertices
+are pruned by complete enumeration. After this step the candidate representative
+set is equal to the representative set.
 
 \subsection{Label costs and dominance checking}
 Candidate representative vertices are pruned by checking for dominance between
@@ -314,46 +326,73 @@ for which there are many efficient algorithms.
 matching cost between the \khop labels
 $\khopl{k}{u}$ and $\khopl{k}{v}$ we compute the maximum flow with minimum
 cost in the flow network $F$ defined as follows. $F$ contains two groups of
-vertices along with designated source and sink. One group contains a node for
+vertices in addition to designated source and sink nodes. 
+First group contains a node for
 each label that appears on a vertex $u' \in \khopl{k}{u}$ and it is connected
-to src node with zero weight and the capacity is equal to the number of 
-vertices that have the same label. The other group contains nodes
+to src node with zero weight and the capacity is equal to the number of vertices
+in $\khopl{k}{u}$ that have the same vertex label as that of $u'$.
+The second group contains nodes
 for labels that are present on $v' \in \khopl{k}{v}$ and are connected sink 
-node similar to the first group. The only other edges are those between the
-labels $l_u$ and $l_v$ with a weight of $\matij{C}{l_u}{l_v}$ and infinite 
-capacity. Give an example. The cost between the \khop labels is equal to
+node with a weight of $0$ and a capacity equal to the 
+number of nodes in $\khopl{k}{v}$ that have the same label as
+that of $v'$. The only other edges are those between the
+vertices in different groups. Consider vertices corresponding to labels $l_u$
+and $l_v$ in the two groups respectively. The weight of the edge is $\matij{C}{l_u}{l_v}$
+and the infinite capacity.
+Give an example. The cost between the \khop labels is equal to
 minimum cost for maximum flow if the total flow is equal to $|\khopl{k}{u}|$ or 
 $\infty$ otherwise.
 
 \medskip{\textit{Dominance check}: } The \khop label part of the \ncl label can
-be compared using the above network flow formulation and the matching the recursive
-part of the \ncl label can be done using maximum bipartite matching. The \ncl label
-$\nclab{k}{v}$ dominates $\nclab{k}{u}$ if cost between the \khop labels is within
-$\alpha$ and the size of maximum bipartite matching is $N(u)$.
+be compared using the above network flow formulation and matching the recursive
+part of the \ncl label can be done using maximum bipartite matching. Consider 
+$\nclab{k+1}{u} = (A, B)$ and $\nclab{k+1}{v} = (A', B')$, the 
+exisitence of injective function between $A$ and $A'$ can be checked by computing 
+the maximum matching in a bipartite graph with edges $(a, a')$ where $a \in A$ and
+$a' \in A'$.
+The \ncl label
+$\nclab{k}{v}$ therefore dominates $\nclab{k}{u}$ if cost between the \khop labels is within
+$\alpha$ and the size of maximum bipartite matching is $|N(u)|$.
 
 \subsection{Precomputing database \khop labels}
+The \khop label of the database vertices is independent of the candidate pattern. Hence, even though
+computing the cost of matching the \khop labels using maximum flow is expensive, it
+can be amortized over all the candidate patterns  if we precompute the \khop labels of the
+database vertices. Also, to construct the flow network we only need the aggregate information
+about the number of vertices of a given database label ( TODO) 
+in the \khop label which can be stored in the main memory. 
+
 \begin{thm}
-$k$-reachable is not solvable in polynomial time unless $P=NP$.
+k-reachable (KR) : Given a graph $G$, $k$ and $u \in \vg$. Compute $\khopl{k}{u}$.
+k-reachable cannot be solved in polynomial time unless $P = NP$.
 
 \begin{myproof}
-A Hamiltonian path is a path that covers each vertex exactly once.
-The problem of finding a Hamiltonian path is proven to be an NP-Complete
-problem \cite{npcomplete}.
-We will show that the Hamiltonian path problem can be solved in polynomial
-time if $k$-reachable is solvable in polynomial time.  
-Hence , $k$-reachable is not solvable unless P=
-NP. Assume that $k$-reachable is solvable in polynomial time. Given,
-an instance of Hamiltonian path problem, a simple path of length $n-1$
-can be constructed as follows. We first get a vertex $v$ that is $n-1$
-reachable from $u$.  The vertex $v$ is removed from the graph and the
-algorithm is run again to get a $n-2$ reachable vertex $v'$ such that
-$(v',v) \in \eg$. Such a vertex should exist because $v$ is reachable
-via a simple path. We continue this process for $n-1$ times. The set of
-vertices chose forms a Hamiltonian path.
+We prove this by reducing hamiltonian path (HP) to KR.
+Hamiltonian Path : Given a graph $G$, is there a simple path of length
+$|\vg|-1$ i.e. is there a path that visits each and every vertex exactly
+once. The problem of finding a Hamiltonian path is proven to be an NP-Complete
+problem \cite{npcomplete}.\\
+Assume that algorithm $X(k)$ can compute KR in polynomial time. Let $|\vg| = n$ 
+and $u$ be starting vertex in HP if it exists.
+Given an instance of HP, we first get a vertex $v$, $\kpath{u}{v}{n-1}$ using
+$X(n-1)$. The vertex $v$ is removed from the graph and we find a vertex $v'$
+such that $\kpath{u}{v'}{n-2}$ and $(v', v) \in \eg$. We repeat this process
+$n-1$ times. If at any stage $X(j) = \{\}$ then we restart from a different starting
+vertex. The vertices selected in each iteration lie on a path of length $n-1$ if it exists.
 \end{myproof}
 \end{thm}
 
-\subsection{Candidate set verification}
+To compute \khop label of a vertex $u$, we check for each vertex $v$ whether
+$v \in \kpath{u}{v}{k}$ by enumerating all possible $k$ length
+paths until a path is found.
+This procedure is exponential, we therefore fix a maximum value $k_{max}$ and use
+the \khop label based pruning only for values of $k \leq k_{max}$.
+It only takes a couple of minutes to compute \khop label for 
+$k \leq 6$ for all the vertices in the database graph. This is 
+significantly less than the overall run time of the algorithm. Once 
+$\khopl{k}{u}$ is computed we store in memory only the tuples $(m, l)$
+where $m$ is the number of vertices $v \in \khopl{k}{u}$, $L(v) = l$.
+
 
 
 \begin{figure}[!h]
