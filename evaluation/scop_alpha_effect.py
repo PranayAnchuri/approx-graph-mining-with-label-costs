@@ -20,7 +20,7 @@ def process(inp, outfile):
     while lines:
         ret = read_two(lines)
         values.append((xvalues, ret[0], ret[1]) )
-    titles = [i for i in [0.01, 0.7, 1.0, 1.5]]
+    titles = [0.01, 0.7, 1.0, 1.5]
     mymultplot(values, [r'Number of random walks', r'Time in seconds',\
                         titles], outfile)
 
