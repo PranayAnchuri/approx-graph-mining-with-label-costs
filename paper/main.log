@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.4.28)  16 FEB 2013 04:44
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.4.28)  16 FEB 2013 05:16
 entering extended mode
  %&-line parsing enabled.
 **main.tex
@@ -1066,7 +1066,12 @@ ut line 18.
 LaTeX Warning: Citation `2011-icdm' on page \thepage  undefined on input line 2
 4.
 
-) (./results.tex [6]
+) (./results.tex
+Overfull \hbox (2.43504pt too wide) in paragraph at lines 13--23
+ [][] 
+ []
+
+[6]
 File: ./vlfigures/cmdbtiming.eps Graphic file (type eps)
  <./vlfigures/cmdbtiming.eps>
 
@@ -1149,12 +1154,12 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 18382 strings out of 495062
- 345750 string characters out of 1182644
+ 18384 strings out of 495062
+ 345766 string characters out of 1182644
  540665 words of memory out of 3000000
- 21100 multiletter control sequences out of 15000+50000
- 50269 words of font info for 73 fonts, out of 3000000 for 9000
+ 21101 multiletter control sequences out of 15000+50000
+ 51767 words of font info for 74 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  58i,13n,84p,450b,624s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on main.dvi (10 pages, 206248 bytes).
+Output written on main.dvi (10 pages, 206436 bytes).

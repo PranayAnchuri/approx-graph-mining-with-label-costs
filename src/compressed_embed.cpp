@@ -101,7 +101,7 @@ namespace LabelPruning{
         //throw runtime_error("groups computed");
         bool fwd = is_fwd(pat);
         // TODO: try rearranging the for loops
-        for(int level=0; level < maxlevel ; level++) {
+        for(int level=0; level < maxlevel && 0 ; level++) {
             tr(embeds, it) {
                 /*
                  * check if this vertex is leader of any particular group
