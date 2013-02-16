@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.4.28)  15 FEB 2013 23:53
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.4.28)  16 FEB 2013 04:44
 entering extended mode
  %&-line parsing enabled.
 **main.tex
@@ -1067,8 +1067,8 @@ LaTeX Warning: Citation `2011-icdm' on page \thepage  undefined on input line 2
 4.
 
 ) (./results.tex [6]
-File: ./vlfigures/ge.eps Graphic file (type eps)
- <./vlfigures/ge.eps>
+File: ./vlfigures/cmdbtiming.eps Graphic file (type eps)
+ <./vlfigures/cmdbtiming.eps>
 
 LaTeX Warning: Citation `orbits' on page \thepage  undefined on input line 88.
 
@@ -1092,10 +1092,11 @@ LaTeX Warning: Citation `HH92' on page \thepage  undefined on input line 246.
 
 File: ./vlfigures/5F20P.eps Graphic file (type eps)
 <./vlfigures/5F20P.eps>
-File: ./vlfigures/5F20P_ft.eps Graphic file (type eps)
- <./vlfigures/5F20P_ft.eps>
-File: ./figures/D5F20P_eff.eps Graphic file (type eps)
- <./figures/D5F20P_eff.eps>
+File: ./vlfigures/scop_minsup.eps Graphic file (type eps)
+ <./vlfigures/scop_minsup.eps>
+File: ./vlfigures/scop_effectiveness.eps Graphic file (type eps)
+
+<./vlfigures/scop_effectiveness.eps>
 Overfull \hbox (3.30086pt too wide) in paragraph at lines 308--320
 \T1/aer/m/n/9 bors) and k-hop la-bel (Hops) for dif-fer-ent val-ues of the thre
 sh-
@@ -1119,8 +1120,8 @@ Overfull \hbox (2.56609pt too wide) in paragraph at lines 360--360
 LaTeX Warning: Citation `altschul90' on page \thepage  undefined on input line 
 372.
 
-File: ./vlfigures/ppiwalks.eps Graphic file (type eps)
-<./vlfigures/ppiwalks.eps>
+File: ./vlfigures/ppi.eps Graphic file (type eps)
+<./vlfigures/ppi.eps>
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -1148,9 +1149,9 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 18381 strings out of 495062
- 345718 string characters out of 1182644
- 540664 words of memory out of 3000000
+ 18382 strings out of 495062
+ 345750 string characters out of 1182644
+ 540665 words of memory out of 3000000
  21100 multiletter control sequences out of 15000+50000
  50269 words of font info for 73 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
