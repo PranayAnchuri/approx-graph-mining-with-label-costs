@@ -1,0 +1,9 @@
+*.swo
+*.swp
+*.swn
+*.nfs*
+./trash/*
+*.o
+/data/proteins/*
+./dump/*
+./data/ppi/raw/*
