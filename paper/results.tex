@@ -10,13 +10,13 @@ optimization flag. The default number of random walks is $K=500$.
 
 \begin{table}[!h]
   \centering
-    \begin{tabular}{|c|c|c|c|}
+    \begin{tabular}{|c|c|c|c|c|}
       \hline
-      Dataset & $|V|$ & $|E|$ & $|\Sigma|$ \\
+      Dataset & $|V|$ & $|E|$ & $|\Sigma|$ & \small{Preprocessing time(sec)} \\
       \hline
-      CMDB & $10466$ & $15122$ & $84$ \\
-      SCOP & $39256$ & $154328$ & $20$ \\
-      PPI & $4950$ & $16515$ & $4950$ \\
+      CMDB & $10466$ & $15122$ & $84$ & $329.31$ \\
+      SCOP & $39256$ & $154328$ & $20$ & $17.377$ \\
+      PPI & $4950$ & $16515$ & $4950$ & $339.45 $\\
       %Synthetic & $2755$ & $5002$ & $60$ \\
 	  \hline
     \end{tabular}
@@ -61,7 +61,7 @@ $\matij{C}{l_1}{l_2} = 1 - sim(l_1,l_2)$.
 
 \begin{figure}[!ht]
   \centerline{
-    \includegraphics[width=2.5in]{ge.eps}
+    \includegraphics[width=2.5in]{cmdbtiming.eps}
 	}
     \caption{CMDB: Time for different values of
 	$minsup$}
@@ -271,7 +271,7 @@ the diagonal entries are $\matij{C}{i}{i} =0$.
 
 \begin{figure}[!ht]
   \centerline{
-    \includegraphics[width=2.5in]{5F20P_ft.eps}
+    \includegraphics[width=2.5in]{scop_minsup.eps}
 	}
 	\caption{SCOP: Effect of $minsup$}
     \label{fig:5F20P_ft}
@@ -299,7 +299,7 @@ depends on the regions of pattern space that the random walk explores.
 
 \begin{figure}[!ht]
   \centerline{
-    \includegraphics[width=2.5in]{D5F20P_eff.eps}
+    \includegraphics[width=2.5in]{scop_effectiveness.eps}
 	}
 	\caption{SCOP: Effectiveness of labels}
     \label{fig:D5F20P_eff}
@@ -379,7 +379,7 @@ set $\epsilon = 0.003$.
 
 \begin{figure}[!h]
 	\centerline{
-	\includegraphics[width=2.5in]{ppiwalks.eps}
+	\includegraphics[width=2.5in]{ppi.eps}
 	}
     \caption{PPI: Time for different values of $minsup$}
     \label{fig:ppiwalks}

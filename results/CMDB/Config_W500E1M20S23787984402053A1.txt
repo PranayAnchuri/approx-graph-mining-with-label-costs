@@ -1,0 +1,8 @@
+DB ../data/CMDB/gecmdb.txt
+SIM ../data/CMDB/gecmdb.sim
+HOPS ../data/CMDB/gecmdb.khops
+WALKS 500
+ALPHA 1
+SEED 23787984402053
+MINSUP 20
+ALGO 1

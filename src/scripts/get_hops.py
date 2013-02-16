@@ -162,4 +162,3 @@ if __name__=='__main__':
     gr.add_edge(1,4)
     hops = naive_hops(gr,5)
     '''
-    pdb.set_trace()

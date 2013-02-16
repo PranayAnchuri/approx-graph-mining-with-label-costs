@@ -1,2 +1,11 @@
 ./mine ../results/SCOP/Config_W500E1M15S23787984402053A1.txt ../results/SCOP/Log_W500E1M15S23787984402053A1.txt ../results/SCOP/Stat_W500E1M15S23787984402053A1.txt
 ./mine ../results/SCOP/Config_W500E1M15S23787984402053A0.txt ../results/SCOP/Log_W500E1M15S23787984402053A0.txt ../results/SCOP/Stat_W500E1M15S23787984402053A0.txt
+./mine ../results/SCOP_Complete/Config_W500E1M15S23787984402053A1.txt ../results/SCOP_Complete/Log_W500E1M15S23787984402053A1.txt ../results/SCOP_Complete/Stat_W500E1M15S23787984402053A1.txt
+./mine ../results/CMDB/Config_W500E1M20S23787984402053A1.txt ../results/CMDB/Log_W500E1M20S23787984402053A1.txt ../results/CMDB/Stat_W500E1M20S23787984402053A1.txt
+./mine ../results/CMDB/Config_W500E1M20S23787984402053A0.txt ../results/CMDB/Log_W500E1M20S23787984402053A0.txt ../results/CMDB/Stat_W500E1M20S23787984402053A0.txt
+./mine ../results/SCOP_Complete/Config_W500E1M15S23787984402053A1.txt ../results/SCOP_Complete/Log_W500E1M15S23787984402053A1.txt ../results/SCOP_Complete/Stat_W500E1M15S23787984402053A1.txt
+  File "runner.py", line 38
+    values = [DB, SIM, HOPS, walk, alpha, seed, minsup, algo,\MULTI, OFFSET]
+                                                                           ^
+SyntaxError: unexpected character after line continuation character
+./mine ../results/SCOP_Complete/Config_W500E1M15S23787984402053A1.txt ../results/SCOP_Complete/Log_W500E1M15S23787984402053A1.txt ../results/SCOP_Complete/Stat_W500E1M15S23787984402053A1.txt
