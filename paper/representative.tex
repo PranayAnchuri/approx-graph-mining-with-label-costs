@@ -3,7 +3,7 @@
 
 \section{Computing Representative Sets}
 Representative vertex $v$ of a pattern vertex $u$ implies that there
-exists an approximate subgraph isomorphism $\phi$ for which $\phi(u) = v$.
+exists an isomorphism $\phi$ for which $\phi(u) = v$.
  One way to interpret it is that the neighborhood of $u$ matches with
  that of $v$.  By comparing the neighborhoods we can find 
  vertices that are not valid representatives of $u$ without trying to
@@ -11,28 +11,29 @@ exists an approximate subgraph isomorphism $\phi$ for which $\phi(u) = v$.
  representative sets we will start with a candidate 
  representative set denoted by \CR  and iteratively
  prune some of the vertices if the neighborhoods cannot be matched.
- The representative set is a superset of the candidate set $\CR \supseteq \RS$.
+ The candidate set is a superset of the representative set, $\CR \supseteq \RS$.
  and $\vg \supseteq \RS$ is one such example.
   In this section, we will
  describe different notions of neighborhood and show how they
  help us in computing the representative
- sets. \\
+ sets.
+
 The problem of checking whether a vertex $v \in R(u)$
  involves solving
- approximate subgraph isomorphism which is a NP complete
- problem. The pruning methods therefore 
- typically cannot prune all the invalid
- candidate vertices. 
- So, we use an exhaustive enumeration method to prune the remaining
-invalid vertices and obtain the set of representative
-vertices.
+ isomorphism which is a NP complete
+ problem. The pruning methods typically
+ do not prune all the invalid vertices. 
+ So, we use an exhaustive enumeration method to prune these 
+invalid vertices and reduce \CR to \RS.
 
  \subsection{\khop Label}
  %Neighbors of a vertex in a graph denotes the set of vertices that are
  %reachable via a single edge. 
  \khop label 
- is the set of vertices that are reachable via a simple
+ is defined as the set of vertices that are reachable via a simple
  path of length $k$. 
+ In other words, k-hop label contains all vertices that are 
+ reachable from $u$ by visiting each vertex at most once.
  Note that, we use the word label even though we refer to a set of vertices.
  Formally, the \khop label of a vertex
  $v$ in graph $G$, $\khopl{k}{v,G} = \{u | u \in G, \kpath{u}{v}{k}\}$.
@@ -43,19 +44,21 @@ Fig.~\ref{subfig:pattern}, the $0$-hop label of vertex $5$ is $h_0(5)
  = \{5\}$, its $1$-hop label is the multiset $h_1(5) = \{2, 4, 6\}$ 
  and its $2$-hop label $h_2(5) = \{1, 3\}$. The minimum 
  cost of matching \khop labels
- $\khopl{k}{u}$ and $\khopl{k}{v}$ is equal to 
+ $\khopl{k}{u}$ and $\khopl{k}{v}$ is 
 
  \begin{equation}
   \khopcost{k}{u}{v} = \text{min}\displaystyle\sum_{u' \in \khopl{k}{u}} \matij{C}{L(u')}{L(f(u'))}
  \end{equation}
 
-where 
-$\matij{C}{L(u')}{L(f(u'))}$ is the cost of matching the vertex labels and
-$f$ is an injective function $f\!\!:\khopl{k}{u} \rightarrow \khopl{k}{v}$.
-In other words,
-it is the minimum total cost of matching the vertices present in the \khop labels.
-The following theorem places a upper bound on the minimum cost of matching
-the \khop labels of pattern vertex and its representative vertex.
+ where the minimization is over all injective functions
+ $f\!\!:\khopl{k}{u} \rightarrow \khopl{k}{v}$ and 
+$\matij{C}{L(u')}{L(f(u'))}$ is the cost of matching the vertex labels.
+In other words, it is the minimum
+ total cost of matching the vertices present in the k-hop labels. 
+ The following theorem places a upper bound on the
+ minimum cost of matching the k-hop labels of pattern vertex
+ and its representative vertex.
+
 
 \begin{thm}
 Given any pattern vertex $u$, a representative vertex $v \in R(u)$ and cost
@@ -63,14 +66,14 @@ threshold $\alpha$, the minimum cost of matching the \khop labels,
 $\khopcost{k}{u}{v} \leq \alpha$ for all $k \geq 0$.
 
 \begin{myproof}
-Consider any approximate subgraph isomorphism $\phi$
+Consider any isomorphism $\phi$
 such that $\phi(u) = v$. It is enough if we can show an injective function
 $f\!\!:\khopl{k}{u} \rightarrow \khopl{k}{v}$ with a cost
 $\leq \alpha$. We will argue that the function $\phi$ on the restricted domain
 $\khopl{k}{u}$ is one such function $f$.
 First, we know that 
 $\sum\matij{C}{L(u)}{\phi(L(u)} \leq \alpha$, for all $u \in \vp$ since
-$\phi$ is an approximate subgraph isomorphism. Second, let 
+$\phi$ is an isomorphism. Second, let 
 $\kpath{u}{u'}{k}$
 then $\phi(u') \in \khopl{k}{v}$ because for every edge $(u_1, u_2)$ on a 
 path between $u$ and $u'$ in $\pat$, $(\phi(u_1),\phi(u_2)) \in \eg$. 
@@ -80,8 +83,8 @@ by $\alpha$.
 \label{thm:khop}
 \end{thm}
 
-Based on the above theorem, a vertex $v$ can be pruned from 
-\CR if $\khopcost{k}{u}{v} > \alpha$ for any 
+Based on the above theorem, a vertex $v$ is an invalid vertex
+if $\khopcost{k}{u}{v} > \alpha$ for any 
 $k \geq 0$. However, in practice, it enough to check the condition only
 for $k \leq |V_P|-1$ because $\khopl{k}{u}$ is the null set $\forall k \geq
 |V_P|$ and the condition is trivially satisfied.
@@ -89,11 +92,11 @@ for $k \leq |V_P|-1$ because $\khopl{k}{u}$ is the null set $\forall k \geq
 Figure~\ref{fig:ncexample} shows an example for the \khop label based
 pruning of the representative set where the
 threshold $\alpha = 0.5$. Consider vertex $2 \in \vp$ and vertex
-$20 \in \vg$, we have 
+$20 \in \vg$, we have, 
 $\khopcost{0}{2}{20} = 0$, since the cost of matching vertex labels 
-\matij{C}{C}{C} = 0, 
+$\matij{C}{C}{C} = 0$ , 
 as per the label matching matrix
-\M{C} in Fig.~\ref{subfig:match}. The \khop labels for $k=1,2,3$ and 
+$C$ in Fig.~\ref{subfig:match}. The \khop labels for $k=1,2,3$ and 
 the minimum of cost matching them are
 as shown in the table \ref{tab:khop220}, and it can be verified that
 the minimum cost is within the threshold $\alpha$.
@@ -103,7 +106,7 @@ However, $\khopl{4}{2}
 = 4, 5 $ and $\khopl{4}{20} = 30, 60$ and the minimum cost of matching
 them is $0.6 > \alpha$.
 Thus, we conclude that $20
-\notin R'(2)$. This small example illustrates that \khop labels can help
+\notin R'(2)$. This example illustrates that \khop labels can help
 prune the candidate representative sets.
 
 
@@ -172,7 +175,7 @@ prune the candidate representative sets.
   % Table for the search space pruning
   \begin{tabular}{|c|c|c|c|c|}
     \hline
-    \Cs & A &  B & C & D \\
+    $C$ & A &  B & C & D \\
     \hline
     A & 0 & 0.7 & 0.6 & 0.1\\
     \hline
@@ -224,19 +227,6 @@ prune the candidate representative sets.
 \end{table}
 
 
-\smallskip\noindent{\bf Precomputing \khop labels for $G$:} The \khop
-labels of the database vertices are independent of the pattern. Thus, we
-can precompute the \khop labels for different values of $k$.
-
-
-One way to find the \khop label is by naively
-enumerating all the $k$ length paths.
-Hence, we compute the \khop labels only for small values of $k$ depending on the
-database size and density. 
-
-
-
-
 
 \subsection{Neighbor Concatenated Label} 
 In a given iteration of Neighbor concatenated label (\ncl) based pruning,
@@ -254,25 +244,29 @@ The first element(A) of the tuple is the \ncl of the neighbors of the
 vertex $u$ in the previous iteration and the second element(B) is exactly
 same as the \khop label defined in the previous section. We say that
 $\nclab{k+1}{v}$ dominates $\nclab{k+1}{v}$, denoted by 
-$\nclab{k+1}{u} = (A, B) \preceq \nclab{k+1}{v} = (A', B') $ 
-iff $\khopcost{k+1}{B}{B'} \leq \alpha$ and there exits an injective
+$\nclab{k+1}{u} = (A, B) \preceq \nclab{k+1}{v} = (A', B') $, 
+i) iff $\khopcost{k+1}{B}{B'} \leq \alpha$ i.e., the minimum cost 
+of matching the \khop labels is within $\alpha$
+ii) there exits an injective
 function $g\!\!:A\rightarrow A'$ such that $a \leq g(a)$ for 
-all $a \in A$. The base case $\nclab{0}{u} \preceq \nclab{0}{v}$ iif 
+all $a \in A$ i.e., there is a one to one mapping between the \ncl labels
+(in the previous iteration, $k$) of neighbors of $u$ and $v$.
+The base case $\nclab{0}{u} \preceq \nclab{0}{v}$ iff 
 $\khopcost{0}{u}{v} \leq \alpha$. For example, in Fig~\ref{fig:ncexample} 
 $\nclab{1}{2} \preceq \nclab{1}{20}$ because $\khopcost{1}{2}{20} \leq \alpha$
-and the injective function that maps neighbors $1, 3, 5$ of $2$ to neighbors
-$10, 50, 30$ of $20$ such that $\preceq$ relation is
-is satisified between every pair. The following theorem states that the \ncl of a pattern
-vertex $u$ is dominated by the \ncl of any of its representative vertex
-$v \in R(u)$.
+injective function maps neighbors $1, 3, 5$ of $2$ to neighbors
+$10, 50, 30$ of $20$ respectively and  relation 
+is satisiﬁed between the \ncl labels of every pair. The following theorem
+states that the \ncl of a pattern vertex $u$ is dominated by the
+\ncl of any of its representative vertex $v \in  R(u)$.
 
 \begin{thm}
 Given any pattern vertex $u$, a representative vertex $v \in R(u)$ and cost
 threshold $\alpha$, $\nclab{k}{u} \preceq \nclab{k}{v}$ for all
 $k \geq 0$.
-\begin{myproof} Let $\phi$ be any approximate subgraph isomorphism
+\begin{myproof} Let $\phi$ be any isomorphism
 such that $\phi(u) = v$.
-We prove the theorem by using the principle of mathematical induction on $k$.\\
+We prove the theorem by using induction on $k$.\\
 \textbf{Base case:} $\nclab{0}{u} \preceq \nclab{0}{v}$ is true because
 $v \in R(u)$. \\
 \textbf{Inductive Hypothesis:} Assume that $\nclab{k}{u} \preceq \nclab{k}{v}$
@@ -280,9 +274,10 @@ holds true for all $u \in \pat$ and $v \in R(u)$. \\
 Now consider 
 $\nclab{k+1}{u} = (A, B)$  and $ \nclab{k+1}{v} = (A', B') $, from theorem
 \ref{thm:khop} we know that $\khopcost{k+1}{B}{B'} \leq \alpha$, for all
-$k \geq 0$. The injective function $\phi$ maps the elements $a \in A'$ to
-elements in $\phi(a)$ and $\phi(a) \in A'$ from the inductive hypothesis.
-The theorem follows from the definition of the \ncl label.
+$k \geq 0$. Let $u'$ be a neighbor of $u$ and let $v' \in \phi(u)$
+, then from the inductive hypothesis $\nclab{k}{u'} \preceq \nclab{k}{v'}$.
+Therefore, the function $\phi$ maps the elements $a \in A$ to $\phi(a) \in A'$.
+The theorem follows from the definition of the NL label.
 \end{myproof}
 \label{thm:ncl}
 \end{thm}
@@ -293,11 +288,12 @@ for some $k \geq 0$. In Fig~\ref{fig:ncexample} , consider the vertices
 $3 \in \pat$ and $50 \in \db$. The \ncl labels, 
 $\nclab{0}{3} \preceq \nclab{0}{50}$ as $\matij{C}{B}{B} = 0 \leq \alpha$.
 Similarly it is also true for the pairs $(2, 20)$, $(4, 40)$ etc. It follows
-that $\nclab{1}{3} \preceq \nclab{1}{50}$ as the neighbors can be mapped and
-the minimum cost of the \khop label is within the $\alpha$ threshold. But
+that $\nclab{1}{3} \preceq \nclab{1}{50}$ as the neighbors $2, 4, 6$ can be mapped to
+$20, 40, 60$ respectively and  the minimum cost of the \khop label 
+is $0.4$ which is less than the $\alpha$ threshold. But
 $\nclab{2}{3} \not\preceq \nclab{2}{50}$ because the \ncl label
 $\nclab{1}{6}$ is not dominated by the \ncl label
-of $20, 40$ or  $60$ in the previous iteration and so the
+of $20, 40$ or  $60$ in the previous iteration. So, 
 there is no mapping between the neighbors of vertices $3$ and 
 $50$ in the current iteration. Hence, the vertex $50$
 can be pruned from the candidate representative set of vertex $3$.
@@ -308,13 +304,13 @@ efficient compared to \khop label as it subsumes the latter label.
 
 \subsection{Candidate set verification}
 \label{sec:verification}
-The pruning methods based on the \khop and the \ncl labels starts with a
+The pruning methods based on the \khop and the \ncl labels start with a
 \CR and prune some of the candidate vertices
 based on the conditions described in theorems \ref{thm:khop} and \ref{thm:ncl}.
-The verification step reduces \CR to \RS by pruning retaining only those vertices
-for which there exists an approximate subgraph isomorphism $\phi$ in which $\phi(u) = v$.
+The verification step reduces \CR to \RS by retaining only those vertices
+for which there exists an isomorphism $\phi$ in which $\phi(u) = v$.
 
-Let $wp = u_0,\ldots, u_m$ be a walk in the pattern that covers each
+Let $w_p = u_0,\ldots, u_m$ be a walk in the pattern that covers each
 edge of the pattern atleast once starting from vertex $u$ i.e. $u_0 = u$.
 The following three conditions are satisfied iff the vertex $v$ is a
 representative of the vertex $u$. i) there exists a walk $w_d = v_0,\ldots, v_m$
@@ -323,39 +319,40 @@ $v_{i+1} \in R'(u_{i+1})$. ii) $v_i = v_j$ implies that $u_i = u_j$. iii)
 $\sum\matij{C}{L(u_i)}{L(v_i)} \leq \alpha$ where $u_i \in \vp$. These 
 conditions can be verified by following the definition of approximate
 subgraph isomorphism. Using an example we will show how these conditions
-are verified.
+can be used to check whether $v \in R(u)$.
 
 Consider checking whether the vertex $3$ is a valid representative of the 
 vertex $10$ in the pattern in the figure~\ref{fig:ex1} and let 
 $\alpha = 0.5$ . The walk $ w_p = 10, 20, 40, 30, 10$
-covers each edge of the pattern atleast once. Any Walk that satisfies the
+covers each edge of the pattern atleast once. A Walk that satisfies the
 above three conditions should start mapping the vertex $10$ to $3$. The cost of 
-matching the labels of vertices $3$ and $10$ is $0.2$ from the cost matrix.
-We will cover the walk $w_p$ one edge at a time. For any $(u_i, u_{i+1})$ in the walk, 
-if $u_i$ and $u_{i+1}$ are mapped already then we verify that there is 
+matching the labels of vertices $3$ and $10$ equals $0.2$ and is subtracted
+from the cost matrix.
+We will cover the walk $w_p$ one edge at a time. For any $(u_i, u_{i+1}) \in w_p$, 
+if $u_i$ and $u_{i+1}$ are mapped, then we verify that there is 
 an edge between the database vertices $v_i, v_{i+1}$ to which the pattern vertices are mapped.
-If however, $u_{i+1}$ is not mapped already then we map it to some vertex in $v_{i+1} = R'(u_{i+1})$
+If however, $u_{i+1}$ is not mapped then we map it to some vertex in $v_{i+1} = R'(u_{i+1})$
 and subtract the cost of this mapping from the remaining $\alpha$ cost.
 For example, in the first step we can map $20$ to $2$. The remaining
-cost is then $0.1$. In the next step $(20,30)$, the vertex $30$
-cannot be mapped to any vertex in the database without violating the three conditions.
-In such a case, we back track 1 step and choose a different mapping say $1$
+cost is then $0.3 - 0.2 = 0.1$. In the next step $(20,30)$, the vertex $30$
+cannot be mapped to any vertex in the database without violating the third
+condition.
+In such a case, we back track one step and choose a different mapping say $1$
 for the vertex $20$ which is the last vertex that was mapped. Proceeding this way, we can arrive
-at the mapping corresponding to $\phi_{1}$ as in table~\ref{subfig:ex_occur}.
+at the mapping corresponding to $\phi_{1}$ as in Table~\ref{subfig:ex_occur}.
 This isomorphism not only guarantees that $3 \in R(10)$, it also implies
-that the verfication check between the pairs $(20, 1), (30, 6)$ and $(40, 4)$
-can be avoided becuase of the approximate isomorphism $\phi_1$ that was found.
+that the verification check between the pairs $(20, 1), (30, 6)$ and $(40, 4)$
+can be avoided because of the approximate isomorphism $\phi_1$ that was found.
 The above procedure can extended to enumerate the complete
-set of isomorphisms just by not terminating the procedure once a matching walk
-is found.
+set of isomorphisms.
 
 
 
 \subsection{Label costs and dominance checking}
 Candidate representative vertices are pruned by checking for dominance between
-the \ncl labels which itself requires computing the cost between the \khop labels.
+the \ncl labels which requires computing the cost between the \khop labels.
 Both these tasks involve finding an injective function that tries to optimize
-some objective function. These problems can be modelled as network flow problems
+some objective function. These problems can be modeled as network flow problems
 for which there are many efficient algorithms. 
 
 \medskip{\textit{Computing \khop label cost}:} To compute the minimum
@@ -380,13 +377,13 @@ minimum cost for maximum flow if the total flow is equal to $|\khopl{k}{u}|$ and
 $\infty$ otherwise. \\
 Figure~\ref{fig:Hflow} shows the flow network required to compute the minimum
 cost of matching the \khop labels $\khopl{2}{2}$ and $\khopl{2}{20}$ as shown in
-table \ref{tab:khop220}. The vertices connected to the source, $s$ correspond to
+Table \ref{tab:khop220}. The vertices connected to the source, $s$ correspond to
 the graph labels of $\khopl{2}{2}$ and the vertices connected to the sink, $t$, 
-correspond to the graph labels of $\khopl{2}{20}$. The numbers in the box represent
+correspond to the graph labels of $\khopl{2}{20}$. The numbers on the edges represent
 the capacity and the weight of the edges.
 Note that the number of vertices connected to the sink is only $2$ 
 is even though $|\khopl{2}{20}| = 3$ because the vertices $40$ and $50$
-have the common graph label $B$. Vertex corresponding to $B$ is therefore
+have the common graph label $B$. The vertex corresponding to $B$ is therefore
 connected to $t$ with a capacity of $2$. The maximum flow in the network
 is $2$ and the minimum cost of sending $2$ units of flow $0.4$ is 
 achieved by pushing a unit flow along the paths $s, C, B, t$ and $a, D, A, t$.
@@ -397,14 +394,14 @@ is $0.4$.
 be compared using the above network flow formulation and matching the recursive
 part of the \ncl label can be done using maximum bipartite matching. Consider 
 $\nclab{k+1}{u} = (A, B)$ and $\nclab{k+1}{v} = (A', B')$, the 
-exisitence of injective function between $A$ and $A'$ can be checked by computing 
+existence of injective function between $A$ and $A'$ can be checked by computing 
 the maximum matching in a bipartite graph with edges $(a, a')$ where $a \in A$ and
 $a' \in A'$.
 The \ncl label
-$\nclab{k}{v}$ therefore dominates $\nclab{k}{u}$ if cost between the \khop labels is within
+$\nclab{k}{v}$ therefore dominates $\nclab{k}{u}$ if the cost between the \khop labels is within
 $\alpha$ and the size of maximum bipartite matching is $|N(u)|$.
 
-\medskip{\textit{Optimization}: } Candidate pattern may contain groups of symmetric
+\medskip{\textit{Optimization}: } The candidate pattern may contain groups of symmetric
 vertices that are indistinguishable with respect to the \khop label. In such a scenario, 
 the candidate representative sets of all these vertices are exactly the same. Utilizing the
 symmetry, we apply the pruning strategy only on one vertex per symmetry group and 
@@ -414,7 +411,7 @@ the representative sets $R'(10)$ and $R'(40)$ are exactly the same.
 In abstract algebra terms such  
 groups are called orbits of the graph and can be computed using nauty algorithm. Even though
 computing the orbits is expensive, we can avoid $ (|g|-1) \times |\CR|$ \khop label cost computations
-where $g$ is size of the orbit. Note that the payoff is zero if all the vertex orbits are of
+where $g$ is the size of the orbit. Note that the payoff is zero if all the vertex orbits are of
 size $1$.
 
 \subsection{Precomputing database \khop labels}
@@ -436,7 +433,7 @@ $|\vg|-1$ i.e. is there a path that visits each and every vertex exactly
 once. The problem of finding a Hamiltonian path is proven to be an NP-Complete
 problem \cite{npcomplete}.\\
 Assume that algorithm $X(k)$ can compute KR in polynomial time. Let $|\vg| = n$ 
-and $u$ be starting vertex in HP if it exists.
+and $u$ be the starting vertex in HP if it exists.
 Given an instance of HP, we first get a vertex $v$, $\kpath{u}{v}{n-1}$ using
 $X(n-1)$. The vertex $v$ is removed from the graph and we find a vertex $v'$
 such that $\kpath{u}{v'}{n-2}$ and $(v', v) \in \eg$. We repeat this process
@@ -450,7 +447,7 @@ $v \in \kpath{u}{v}{k}$ by enumerating all possible $k$ length
 paths until a path is found.
 This procedure is exponential, we therefore fix a maximum value $k_{max}$ and use
 the \khop label based pruning only for values of $k \leq k_{max}$.
-It only takes a couple of minutes to compute \khop label for 
+It only takes a couple of minutes to compute the \khop label for 
 $k \leq 6$ for all the vertices in the database graph. This is 
 significantly less than the overall run time of the algorithm. Once 
 $\khopl{k}{u}$ is computed we store in memory only the tuples $(m, l)$

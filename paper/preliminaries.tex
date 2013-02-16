@@ -4,28 +4,23 @@ An undirected labeled graph \db is represented as a tuple $ \db =
 (\vg,\eg,L) $ where $\vg$ is the set of vertices, $\eg$ is the set of
 edges and $L\!\!: \vg \rightarrow \Sigma $ is a function that maps
 vertices to their labels.  The neighbors of a vertex $v$ are given as $
-N(v) = \{ u | (u,v) \in \vg \} $, and its degree as $d(v) = |N(v)|$.  A
-{\em walk} in a graph $\db$ is a sequence of vertices $v_0,\ldots,v_k$
-such that $v_i \in \vg$ and $(v_i,v_{i+1}) \in \eg$. It covers the
-vertices $\cup_{i=0}^{k} \{v_i\}$ and the edges $\cup_{i=0}^{k-1}
-\{(v_i,v_{i+1})\}$.  A path is a walk without any repeated vertices,
-i.e., $v_i \ne v_j$ for $i \ne j$,and we say that $v_{k}$ is 
-{\em reachable} from $v_0$ in \khops.
+N(v) = \{ u | (u,v) \in \vg \} $.  A
+{\em path} in a graph $\db$ is a sequence of vertices $v_0,\ldots,v_k$
+such that $v_i \in \vg$, $(v_i,v_{i+1}) \in \eg$ and $v_i \neq v_j$.
+We use $\kpath{u}{v}{k}$ if there is a $k$ edge path
+between $u$ and $v$.
+%It covers the vertices $\cup_{i=0}^{k} \{v_i\}$ and the edges $\cup_{i=0}^{k-1}
+%\{(v_i,v_{i+1})\}$.  
+A path is called a walk if the vertices
+are allowed to repeat. [ can we define this when required ?]
 
 \smallskip\noindent{\bf Cost matrix:}
-We assume that there exists a cost function $cost: \Sigma \times \Sigma
-\to \setR$, where $cost(l_i,l_j)$ is the cost of matching the labels
-$l_i$ and $l_j$. The cost matrix \M{C} is a $|\Sigma| \times |\Sigma|$
-matrix where $\matij{C}{l_i}{l_j} = cost(l_i,l_j)$. For simplicity, we
-assume that $\matij{C}{l_i}{l_i} = 0 $ and $\matij{C}{l_i}{l_j} > 0$.
-The cost matrix is not required to be symmetric. 
-% Is it required to mention the binary version here ?
-In some application domains it is difficult to construct a meaningful cost
-matrix.  However, it may be easier to specify which labels are very
-similar to other labels, which leads to a binary cost matrix, where 
-$\matij{C}{l_i}{l_j} = 0$ iff $l_i$ and $l_j$ are highly similar, and 
-$\matij{C}{l_i}{l_j} = 1$ otherwise (alternatively, the cost may be
-$\infty$ if $l_i$ and $l_j$ are not similar). 
+We assume that there is a cost matrix 
+$C\!\!:\Sigma^{2} \rightarrow \mathbb{R}_{\geq 0} $. 
+The entry $\matij{C}{l_i}{l_j}$
+denotes the cost of matching the labels $l_i$ and $l_j$. Although it is 
+not required by the algorithm, $C$ is usually symmetric and the diagonal
+entries are $0$
 
 \smallskip\noindent{\bf Approximate subgraph isomorphism:}
 A graph $S = (V_S,E_S,L)$ is a subgraph of \db, denoted $S \subseteq
@@ -42,8 +37,10 @@ node labels in $G$.  We say that $\phi$ is an {\em approximate subgraph
 isomorphism} from $P$ to $G$ provided its cost $C(\phi) \le \alpha$,
 where $\alpha$ is a user-specified threshold on the total cost. In this
 case we also call $P$ an approximate pattern in $G$. Note
-that if $\alpha = 0$, then $\phi$ is an exact subgraph isomorphism
-between $P$ and $G$.
+that if $\alpha = 0$, then $\phi$ is an unlabeled subgraph isomorphism
+between $P$ and $G$. From now on, \textit{isomorphism}
+refers to \textit{approximate subgraph isomorphism} unless specified
+otherwise.
 
 
 %%% Example graphs to illustrate the notation used in the paper
@@ -169,8 +166,8 @@ does not exist any supergraph of $P$ that is frequent in $G$.
 support $minsup$, maximum allowed cost $\alpha$, and an integer $k$, our
 goal is to mine $k$ maximal frequent approximate patterns.  Figure
 \ref{fig:ex1} shows an example database, a cost matrix, an approximate
-pattern, and its approximate subgraph isomorphism for $\alpha=0.5$.
-There are only two possible approximate isomorphisms from $P$ to $G$, as
+pattern, and its isomorphisms for $\alpha=0.5$.
+There are only two possible isomorphisms from $P$ to $G$, as
 specified by $\phi_1$ and $\phi_2$. For example, for $\phi_1$, we have
 $\phi_1(10) \to 3$, $\phi_1(20) \to 1$, $\phi_1(30) \to 6$, and
 $\phi_1(40) \to 4$, as seen in Table~\ref{subfig:ex_occur}. 

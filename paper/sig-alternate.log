@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.4.28)  13 FEB 2013 12:45
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.4.28)  15 FEB 2013 18:13
 entering extended mode
  %&-line parsing enabled.
 **sig-alternate.tex
@@ -178,8 +178,7 @@ LaTeX Font Info:    Try loading font information for T1+aer on input line 100.
 
 (/usr/share/texmf-texlive/tex/latex/ae/t1aer.fd
 File: t1aer.fd 1997/11/16 Font definitions for T1/aer.
-)))
-No file sig-alternate.aux.
+))) (./sig-alternate.aux)
 \openout1 = `sig-alternate.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
@@ -195,6 +194,7 @@ LaTeX Font Info:    ... okay on input line 50.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 50.
 LaTeX Font Info:    ... okay on input line 50.
 LaTeX Font Info:    Try loading font information for U+msa on input line 161.
+
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
@@ -295,14 +295,148 @@ Type  H <return>  for immediate help.
                                                   
 l.406 \epsfig{file=fly.eps}
                            
-? X
- 
+? C
+Type <return> to proceed, S to scroll future error messages,
+R to run without stopping, Q to run quietly,
+I to insert something, E to edit your file,
+1 or ... or 9 to ignore the next 1 to 9 tokens of input,
+H for help, X to quit.
+? q
+OK, entering \batchmode...
+
+! LaTeX Error: Cannot determine size of graphic in fly.eps (no BoundingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.406 \epsfig{file=fly.eps}
+                           
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+File: fly.eps Graphic file (type eps)
+ <fly.eps>
+
+LaTeX Warning: File `fly.eps' not found on input line 412.
+
+
+! LaTeX Error: File `fly.eps' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.412 \epsfig{file=fly.eps, height=1in, width=1in}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: Cannot determine size of graphic in fly.eps (no BoundingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.412 \epsfig{file=fly.eps, height=1in, width=1in}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+File: fly.eps Graphic file (type eps)
+ <fly.eps>
+
+LaTeX Font Warning: Font shape `T1/aett/bx/n' undefined
+(Font)              using `T1/aett/m/n' instead on input line 414.
+
+
+LaTeX Warning: File `flies.eps' not found on input line 427.
+
+
+! LaTeX Error: File `flies.eps' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.427 \epsfig{file=flies.eps}
+                             
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: Cannot determine size of graphic in flies.eps (no BoundingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.427 \epsfig{file=flies.eps}
+                             
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+File: flies.eps Graphic file (type eps)
+ <flies.eps>
+
+LaTeX Warning: File `rosette.ps' not found on input line 439.
+
+
+! LaTeX Error: File `rosette.ps' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.439 ...{file=rosette.ps, height=1in, width=1in,}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: Cannot determine size of graphic in rosette.ps (no BoundingBox).
+
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.439 ...{file=rosette.ps, height=1in, width=1in,}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+File: rosette.ps Graphic file (type eps)
+ <rosette.ps>
+\c@theorem=\count108
+\c@definition=\count109
+
+Overfull \hbox (15.60826pt too wide) detected at line 495
+\OML/cmm/m/it/9 l \OT1/cmr/m/n/9 = [] \OML/cmm/m/it/9 f\OT1/cmr/m/n/9 (\OML/cmm
+/m/it/9 x\OT1/cmr/m/n/9 ) = [] [] = [] \OML/cmm/m/it/9 g\OT1/cmr/m/n/9 (\OML/cm
+m/m/it/9 x\OT1/cmr/m/n/9 ) \OMS/cmsy/m/n/9 ^^A [] [] \OT1/cmr/m/n/9 = 0 \OMS/cm
+sy/m/n/9 ^^A \OML/cmm/m/it/9 L \OT1/cmr/m/n/9 = 0\OML/cmm/m/it/9 ;
+ []
+
+
+LaTeX Warning: Citation `salas:calculus' on page \thepage  undefined on input l
+ine 505.
+
+ [3]
+No file sig-alternate.bbl.
+ [4] (./sig-alternate.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ ) 
 Here is how much of TeX's memory you used:
- 1831 strings out of 495062
- 20201 string characters out of 1182644
+ 1860 strings out of 495062
+ 20389 string characters out of 1182644
  80312 words of memory out of 3000000
- 5000 multiletter control sequences out of 15000+50000
- 43426 words of font info for 54 fonts, out of 3000000 for 9000
+ 5021 multiletter control sequences out of 15000+50000
+ 45086 words of font info for 55 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  39i,12n,26p,454b,314s stack positions out of 5000i,500n,10000p,200000b,50000s
-Output written on sig-alternate.dvi (2 pages, 16968 bytes).
+
+Output written on sig-alternate.dvi (4 pages, 28224 bytes).

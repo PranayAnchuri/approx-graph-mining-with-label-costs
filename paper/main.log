@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.4.28)  15 FEB 2013 14:01
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.4.28)  15 FEB 2013 23:53
 entering extended mode
  %&-line parsing enabled.
 **main.tex
@@ -292,11 +292,7 @@ Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 (/usr/share/texmf-texlive/tex/latex/tools/xspace.sty
 Package: xspace 2006/05/08 v1.12 Space after command names (DPC,MH)
 )
-(/usr/share/texmf-texlive/tex/latex/setspace/setspace.sty
-Package: setspace 2000/12/01 6.7 Contributed and Supported LaTeX2e package
-
-Package: `setspace' 6.7 <2000/12/01>
-) (/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
 (/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
 (/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
 (/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-common.tex
@@ -918,7 +914,7 @@ Overfull \hbox (10.01591pt too wide) in paragraph at lines 52--56
 
 
 ]
-Overfull \hbox (8.7089pt too wide) in paragraph at lines 73--127
+Overfull \hbox (8.7089pt too wide) in paragraph at lines 70--124
 [][] 
  []
 
@@ -926,7 +922,7 @@ Overfull \hbox (8.7089pt too wide) in paragraph at lines 73--127
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Overfull \hbox (5.05078pt too wide) in paragraph at lines 135--153
+Overfull \hbox (5.05078pt too wide) in paragraph at lines 132--150
 \OML/cmm/m/it/9 C\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 L\OT1/cmr/m/n/9 (20)\OML/cmm/m
 /it/9 ; L\OT1/cmr/m/n/9 (1)) + \OML/cmm/m/it/9 C\OT1/cmr/m/n/9 (\OML/cmm/m/it/9
  L\OT1/cmr/m/n/9 (30)\OML/cmm/m/it/9 ; L\OT1/cmr/m/n/9 (6)) + \OML/cmm/m/it/9 C
@@ -1047,33 +1043,17 @@ LaTeX Warning: Citation `shervashidzeNips' on page \thepage  undefined on input
 LaTeX Warning: Citation `weisfeiler' on page \thepage  undefined on input line 
 92.
 
-) (./representative.tex
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [3]
-Overfull \hbox (45.91933pt too wide) in paragraph at lines 89--100
-\T1/aer/m/n/9 Con-sider ver-tex $\OT1/cmr/m/n/9 2 \OMS/cmsy/m/n/9 2 \OML/cmm/m/
-it/9 V[]$ \T1/aer/m/n/9 and ver-tex $\OT1/cmr/m/n/9 20 \OMS/cmsy/m/n/9 2 \OML/c
-mm/m/it/9 V[]$\T1/aer/m/n/9 , we have $\OML/cmm/m/it/9 C[]\OT1/cmr/m/n/9 [\OML/
-cmm/m/it/9 h[]\OT1/cmr/m/n/9 (2)][\OML/cmm/m/it/9 h[]\OT1/cmr/m/n/9 (20)] =
+) (./representative.tex [3]
+Underfull \hbox (badness 10000) in paragraph at lines 170--170
+[]\T1/aer/m/n/9 (b) |Database
  []
 
-
-Overfull \hbox (38.21321pt too wide) in paragraph at lines 250--268
-\OML/cmm/m/it/9 ^^Q[]\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 u\OT1/cmr/m/n/9 ) = (\OML/
-cmm/m/it/9 A; B\OT1/cmr/m/n/9 ) \OMS/cmsy/m/n/9 ^^V \OML/cmm/m/it/9 ^^Q[]\OT1/c
-mr/m/n/9 (\OML/cmm/m/it/9 v\OT1/cmr/m/n/9 ) = (\OML/cmm/m/it/9 A[]; B[]\OT1/cmr
-/m/n/9 )$ \T1/aer/m/n/9 iff $\OML/cmm/m/it/9 C[]\OT1/cmr/m/n/9 [\OML/cmm/m/it/9
- h[]\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 B\OT1/cmr/m/n/9 )][\OML/cmm/m/it/9 h[]\OT1/
-cmr/m/n/9 (\OML/cmm/m/it/9 B[]\OT1/cmr/m/n/9 )] \OMS/cmsy/m/n/9 ^^T
- []
-
-[4] [5]
+[4]
 
 LaTeX Warning: Citation `npcomplete' on page \thepage  undefined on input line 
-437.
+434.
 
-) (./mining.tex
+[5]) (./mining.tex
 
 LaTeX Warning: Citation `2008-origami:sadm' on page \thepage  undefined on inpu
 t line 18.
@@ -1086,12 +1066,6 @@ ut line 18.
 LaTeX Warning: Citation `2011-icdm' on page \thepage  undefined on input line 2
 4.
 
-
-Overfull \hbox (5.85661pt too wide) in paragraph at lines 42--53
-\T1/aer/m/n/9 func-tion helps prun-ing the oth-er-wise ex-po-nen-tial search sp
-ace.
- []
-
 ) (./results.tex [6]
 File: ./vlfigures/ge.eps Graphic file (type eps)
  <./vlfigures/ge.eps>
@@ -1102,14 +1076,15 @@ LaTeX Warning: Citation `orbits' on page \thepage  undefined on input line 88.
 LaTeX Warning: Citation `Everett' on page \thepage  undefined on input line 93.
 
 
-[7]
+
 Overfull \hbox (6.3265pt too wide) in paragraph at lines 202--203
  [][] 
  []
 
+[7]
 LaTeX Font Info:    Try loading font information for T1+aett on input line 221.
 
-(/usr/share/texmf-texlive/tex/latex/ae/t1aett.fd
+ (/usr/share/texmf-texlive/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
 
@@ -1146,17 +1121,22 @@ LaTeX Warning: Citation `altschul90' on page \thepage  undefined on input line
 
 File: ./vlfigures/ppiwalks.eps Graphic file (type eps)
 <./vlfigures/ppiwalks.eps>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 File: ./figures/ppipat2.eps Graphic file (type eps)
- <./figures/ppipat2.eps>
+<./figures/ppipat2.eps>
 File: ./figures/ppipat1.eps Graphic file (type eps)
- <./figures/ppipat1.eps>)
-(./conclusions.tex
+ <./figures/ppipat1.eps>) (./conclusions.tex
 Overfull \hbox (14.12157pt too wide) in paragraph at lines 485--2
 \T1/aer/m/n/9 mined max-i-mal fre-quent ap-prox-i-mate pat-terns (us-ing $\OML/
 cmm/m/it/9 minsup \OT1/cmr/m/n/9 =
  []
 
-[9]
+
+Underfull \vbox (badness 1009) has occurred while \output is active []
+
+ [9]
 Overfull \hbox (4.12904pt too wide) in paragraph at lines 4--7
 \T1/aer/m/n/9 fre-quent sub-graph pat-terns from a sin-gle large graph database
 
@@ -1168,12 +1148,12 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 18409 strings out of 495062
- 346225 string characters out of 1182644
- 530082 words of memory out of 3000000
- 21124 multiletter control sequences out of 15000+50000
+ 18381 strings out of 495062
+ 345718 string characters out of 1182644
+ 540664 words of memory out of 3000000
+ 21100 multiletter control sequences out of 15000+50000
  50269 words of font info for 73 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  58i,13n,84p,450b,624s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on main.dvi (10 pages, 207236 bytes).
+Output written on main.dvi (10 pages, 206248 bytes).
