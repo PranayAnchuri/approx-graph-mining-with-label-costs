@@ -10,6 +10,9 @@ from pylab import *
 
 rc('text', usetex=True)
 rc('font', family='serif')
+font = {'family' : 'normal',\
+                        'size'   : 18}
+matplotlib.rc('font', **font)
 w = 0.15
 xlocations = np.array([1,1.5]) +w
 def f(li):
@@ -42,11 +45,11 @@ def decor(vals):
     xlocations = np.array([0,1.0]) +w
     print xlocations
     pylab.gca().set_xticks(xlocations+w)
-    pylab.gca().set_xticklabels([r'Threshold = $0.5$',\
-        "Threshold = $0.75$"])
+    pylab.gca().set_xticklabels([r'$\alpha = 0.5$',\
+        r'$\alpha = 0.75$'])
 
 colors = ['0.2','0.5','0.95']
-labels = ["Verification","k-hop Label", "NL Label"]
+labels = ["Verification","NL Label", "k-hop Label"]
 ct75 = [224.455,127.965,293.40]
 kt75 = [653.14,368.848]
 ct5 =  [13.7157,35.5394,119.847]

@@ -10,6 +10,9 @@ from pylab import *
 
 rc('text', usetex=True)
 rc('font', family='serif')
+font = {'family' : 'normal',\
+                        'size'   : 18}
+matplotlib.rc('font', **font)
 
 print 'Usage : python scop_minsup.py scop_minsup/scop_minsup.eps'
 
@@ -40,7 +43,7 @@ xlocations = np.array([1,1.5,2,2.5]) +w
 #xlocations = np.array([1,1.5]) +w
 colors = ['0.2','0.5','0.8']
 oL = list()
-labels = [r'Verification', r'k-hop matching', r'NL matching']
+labels = [r'Verification', r'k-hop Label', r'NL Label']
 index=0
 for x,d in zip(xlocations, data):
     for c,value in zip(colors, sorted(d,reverse=True)):
