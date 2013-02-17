@@ -8,6 +8,7 @@ Ubuntu Linux 10.04. The code was written in C++ and
 compiled using g++ version $4.4$ with -O3
 optimization flag. The default number of random walks is $K=500$.
 
+\begin{comment}
 \begin{table}[!h]
   \centering
     \begin{tabular}{|c|c|c|c|c|}
@@ -23,7 +24,43 @@ optimization flag. The default number of random walks is $K=500$.
     \caption{Dataset Properties}
 	\label{tab:db}
 \end{table}
+\end{comment}
 
+
+\begin{figure}[!h]
+\centering
+\subfloat[Dataset Statistics] {
+	\label{subfig:dataset}	
+	\begin{tabular}{|c|c|c|c|c|}
+	\hline
+		Dataset & $|V|$ & $|E|$ & $|\Sigma|$ & \small{Preprocessing time(sec)} \\
+		\hline
+		CMDB & $10466$ & $15122$ & $84$ & $329.31$ \\
+		SCOP & $39256$ & $154328$ & $20$ & $17.377$ \\
+		PPI & $4950$ & $16515$ & $4950$ & $339.45 $\\
+		%Synthetic & $2755$ & $5002$ & $60$ \\
+		\hline
+		\end{tabular}
+} \\
+\subfloat[Maximal Pattern Statistics] {
+	\label{subfig:maxpat_stats}
+	\begin{tabular}{|c|c|c|c|}
+	\hline
+		Dataset & $|V|$ & $|E|$ & Degree\\
+		\hline
+		CMDB & $11$ & $12.24$ & $2.223$\\
+		SCOP & $5.965$ & $6.725$ & $2.225$\\
+		PPI & $6.453$ & $5.956$ & $1.655$\\
+		%Synthetic & $2755$ & $5002$ & $60$ \\
+		\hline
+		\end{tabular}
+}
+  \caption{ \protect\subref{subfig:dataset}: Input graph statistics, 
+    \protect\subref{subfig:maxpat_stats}: Maximal pattern statistics (the numbers
+    shown are average values).
+  }
+  \label{fig:stats}
+\end{figure}
 
 \subsection{Configuration Management Database\\ (CMDB)} 
 

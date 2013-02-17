@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.12.9)  16 FEB 2013 16:01
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.4.28)  17 FEB 2013 03:39
 entering extended mode
  %&-line parsing enabled.
 **main.tex
@@ -1067,33 +1067,41 @@ LaTeX Warning: Citation `2011-icdm' on page \thepage  undefined on input line 2
 4.
 
 ) (./results.tex
-Overfull \hbox (2.43504pt too wide) in paragraph at lines 13--23
+Overfull \hbox (8.59077pt too wide) in paragraph at lines 44--44
  [][] 
  []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: Reference `tab:db' on page \thepage  undefined on input line 78.
+
 
 [6]
 File: ./vlfigures/ge.eps Graphic file (type eps)
  <./vlfigures/ge.eps>
 
-LaTeX Warning: Citation `orbits' on page \thepage  undefined on input line 88.
-
-
-LaTeX Warning: Citation `Everett' on page \thepage  undefined on input line 93.
+LaTeX Warning: Citation `orbits' on page \thepage  undefined on input line 125.
 
 
 
-Overfull \hbox (6.3265pt too wide) in paragraph at lines 202--203
+LaTeX Warning: Citation `Everett' on page \thepage  undefined on input line 130
+.
+
+
+Overfull \hbox (6.3265pt too wide) in paragraph at lines 239--240
  [][] 
  []
 
 [7]
-LaTeX Font Info:    Try loading font information for T1+aett on input line 221.
+LaTeX Font Info:    Try loading font information for T1+aett on input line 258.
 
  (/usr/share/texmf-texlive/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
 
-LaTeX Warning: Citation `HH92' on page \thepage  undefined on input line 246.
+LaTeX Warning: Citation `HH92' on page \thepage  undefined on input line 283.
 
 File: ./vlfigures/5F20P.eps Graphic file (type eps)
 <./vlfigures/5F20P.eps>
@@ -1102,47 +1110,51 @@ File: ./vlfigures/scop_minsup.eps Graphic file (type eps)
 File: ./vlfigures/scop_effectiveness.eps Graphic file (type eps)
 
 <./vlfigures/scop_effectiveness.eps>
-Overfull \hbox (3.30086pt too wide) in paragraph at lines 308--320
+Overfull \hbox (4.29951pt too wide) in paragraph at lines 345--357
+[]\T1/aer/m/n/9 Figure 10[] com-pares the ef-fec-tive-ness of the CL la-bel (Ne
+igh-
+ []
+
+
+Overfull \hbox (3.30086pt too wide) in paragraph at lines 345--357
 \T1/aer/m/n/9 bors) and k-hop la-bel (Hops) for dif-fer-ent val-ues of the thre
 sh-
  []
 
-[8]
 File: ./figures/1ysw.pat.eps Graphic file (type eps)
- <./figures/1ysw.pat.eps>
+<./figures/1ysw.pat.eps>
 File: ./figures/1r2e.pat.eps Graphic file (type eps)
  <./figures/1r2e.pat.eps>
 File: ./figures/1ysw.eps Graphic file (type eps)
  <./figures/1ysw.eps>
 File: ./figures/1r2e.eps Graphic file (type eps)
 
-<./figures/1r2e.eps>
-Overfull \hbox (2.56609pt too wide) in paragraph at lines 360--360
+<./figures/1r2e.eps> [8]
+Overfull \hbox (2.56609pt too wide) in paragraph at lines 397--397
 []\secfnt Protein-Protein In-ter-ac-tion Net-work (PPI) 
  []
 
 
+LaTeX Warning: Reference `tab:db' on page \thepage  undefined on input line 400
+.
+
+
 LaTeX Warning: Citation `altschul90' on page \thepage  undefined on input line 
-372.
+409.
 
 File: ./vlfigures/ppi.eps Graphic file (type eps)
 <./vlfigures/ppi.eps>
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 File: ./figures/ppipat2.eps Graphic file (type eps)
-<./figures/ppipat2.eps>
+ <./figures/ppipat2.eps>
 File: ./figures/ppipat1.eps Graphic file (type eps)
- <./figures/ppipat1.eps>) (./conclusions.tex
-Overfull \hbox (14.12157pt too wide) in paragraph at lines 485--2
+ <./figures/ppipat1.eps>)
+(./conclusions.tex
+Overfull \hbox (14.12157pt too wide) in paragraph at lines 522--2
 \T1/aer/m/n/9 mined max-i-mal fre-quent ap-prox-i-mate pat-terns (us-ing $\OML/
 cmm/m/it/9 minsup \OT1/cmr/m/n/9 =
  []
 
-
-Underfull \vbox (badness 1009) has occurred while \output is active []
-
- [9]
+[9]
 Overfull \hbox (4.12904pt too wide) in paragraph at lines 4--7
 \T1/aer/m/n/9 fre-quent sub-graph pat-terns from a sin-gle large graph database
 
@@ -1154,12 +1166,12 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 18383 strings out of 495062
- 345748 string characters out of 1182644
- 540658 words of memory out of 3000000
- 21101 multiletter control sequences out of 15000+50000
+ 18388 strings out of 495062
+ 345841 string characters out of 1182644
+ 541251 words of memory out of 3000000
+ 21106 multiletter control sequences out of 15000+50000
  51767 words of font info for 74 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  58i,13n,84p,450b,624s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on main.dvi (10 pages, 206428 bytes).
+Output written on main.dvi (10 pages, 207280 bytes).
