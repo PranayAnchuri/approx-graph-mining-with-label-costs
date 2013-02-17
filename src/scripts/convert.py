@@ -5,6 +5,7 @@
 import sys
 import pdb
 import networkx as nx
+import pdb
 
 def read_db(db):
 # read the input graph and get a mapping for its vertices
@@ -13,12 +14,17 @@ def read_db(db):
     f = open(db)
     for line in f.readlines():
         line = line.strip()
+        print line
         sp = line.split()
-        if sp[0].startswith("v"):
-            old = int(sp[1])
-            if old not in vmap:
-                vmap[old] = count
-                count += 1
+        try:
+            if sp[0].startswith("v"):
+                old = int(sp[1])
+                if old not in vmap:
+                    vmap[old] = count
+                    count += 1
+        except Exception:
+            pass
+
     return vmap
 
 
@@ -47,6 +53,8 @@ def convert(db, sim, dbout, simout):
     d = open(dbout, 'w')
     for line in open(db).readlines():
         line = line.strip()
+        if not line:
+            continue
         sp = line.split(" ")
         if sp[0] == 'v':
             sp[2] = str(labmap[sp[2]])

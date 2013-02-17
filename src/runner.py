@@ -18,8 +18,8 @@ OFFSET = "../data/SCOP/5F20P/5F20P.off"
 WALKS = [500]
 ALPHA  = [1]
 MINSUP  = [15]
-SEED  = [23787984402053]
-ALGO = [1] # 1 is compressed label and 0 is complete enumeration
+SEED  = [1729]
+ALGO = [0] # 1 is compressed label and 0 is complete enumeration
 
 
 for walk in WALKS:

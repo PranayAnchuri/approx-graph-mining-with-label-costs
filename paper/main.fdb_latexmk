@@ -1,9 +1,9 @@
 # Fdb version 3
-["dvips"] 1361090364 "main.dvi" "main.ps" "main" 
-  "main.dvi" 1361090364 207280 f05e4598e8136f4065e3a4381909f803 "latex"
+["dvips"] 1361093454 "main.dvi" "main.ps" "main" 
+  "main.dvi" 1361093454 205068 9a419e856337b7d9b7e48864b91c1c10 "latex"
   (generated)
   "main.ps"
-["latex"] 1361090364 "main.tex" "main.dvi" "main" 
+["latex"] 1361093454 "main.tex" "main.dvi" "main" 
   "./figures/1r2e.eps" 1361009666 305488 a03d3012f8571417b143c70b7d1df789 ""
   "./figures/1r2e.pat.eps" 1361009666 8489 04312ea5ced864739e13986bf964941e ""
   "./figures/1ysw.eps" 1361009666 335024 e58df0997ff0c4d2489941cd9bbc892b ""
@@ -162,13 +162,13 @@
   "conclusions.tex" 1360779043 1928 d7518ad5b997e39c8e3f56fc081fd708 ""
   "header.tex" 1360971611 2721 93317fe5eff7ca4bd192a7c231a86d4c ""
   "introduction.tex" 1360778192 4452 060d42a4d85a28dfd8107f2c6029850f ""
-  "main.aux" 1361090364 9330 0dce946dd0acda9270d93dbe2595c243 ""
+  "main.aux" 1361093454 9293 5a36ea83b314275e0fcc52ed582fc89c ""
   "main.tex" 1361009510 854 5254e8f71c5f59d6d31b640f54944255 ""
   "mining.tex" 1360987491 5888 b3f7507f5d8358defb2d9f51fe504109 ""
   "preliminaries.tex" 1360967928 7251 8c3cd419120808ebe4a206033f4c72e2 ""
   "relatedwork.tex" 1360778484 5761 db8614e822c976dbed0e977d140a58d0 ""
   "representative.tex" 1360990515 22422 8fced0ef709acc2493d370f5c99d6aeb ""
-  "results.tex" 1361090363 21901 7e6757e2b252e548bb062355ed68d3f0 ""
+  "results.tex" 1361093430 21992 107d5b53f60b261271c40beaed43dc5b ""
   "sig-alternate.cls" 1337784302 59744 8230a5fbf2c386a55d2f105c064c7f85 ""
   (generated)
   "main.log"

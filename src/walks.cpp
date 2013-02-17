@@ -78,6 +78,7 @@ namespace rwalk {
         st.stat->push_mem("Physical Memory", physical);
         st.stat->push_mem("Virtual Memory", virt);
         st.add_max_pat(pat);
+	INFO(*stat_logger, pat.to_string());
     }
 
     Embedding* fwd_extension(Janitor& jtr, pattern& pat, Embedding* embeds, Store& st) {
@@ -85,7 +86,7 @@ namespace rwalk {
          * the labels with which the extensions are tried from a given vertex
          * in the pattern
          */
-        if(pat.get_pat_size() > 5)
+        if(pat.get_pat_size() > 8)
             return 0;
         if(!embeds)
             throw std::runtime_error(" Embedding is null");
@@ -138,7 +139,7 @@ namespace rwalk {
     }
 
     Embedding* back_extension(Janitor& jtr, pattern& pat, Embedding* embeds, Store& st) {
-        if(pat.get_pat_size() > 5)
+        if(pat.get_pat_size() > 8)
             return 0;
         types::pat_elist_t pat_edges;
         st.myran.myshuffle(pat_edges);

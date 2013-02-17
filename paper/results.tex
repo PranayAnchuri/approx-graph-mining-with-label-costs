@@ -84,8 +84,9 @@ hierarchy which can be obtained from HP's UCMDB. In the absence of
 domain knowledge, one way to obtain a cost matrix is by assigning low
 costs for pairs of labels that share many ancestors in the hierarchy and
 high costs otherwise. The algorithm is general in that it doesn't depend
-on how the label matching costs are assigned or the range of these
-values.  Consider any two labels $l_1$, $l_2$ and their corresponding
+on how the label matching costs are assigned, the range of these
+values or whether the cost matrix is symmetric
+.  Consider any two labels $l_1$, $l_2$ and their corresponding
 paths $p_1$, $p_2$ to the root node in the hierarchy.  We first define
 the similarity between the labels to be proportional to the number of
 common labels in $p_1 \cap p_2$, as follows
@@ -114,6 +115,8 @@ minimum support, the random walk in the search space goes through the
 nodes that have a large number of embeddings and it takes more time to
 enumerate a single pattern.
 
+%%%%%%%% Orbits idea explained as an optimization in the mining section
+\begin{comment}
 The running time results above include a particular optimization that we
 applied for CMDB graphs, given the large multiplicities of the different
 labels. For such graphs, the 
@@ -138,7 +141,7 @@ An example of CAL is set of all vertices labeled ``9 $\times$ process'' in
 figure \ref{fig:gepatsB}; here 9 is the multiplicity of that label. 
 CAL sets have to be computed once for every
 candidate and this step had negligible impact on the overall run time. 
-
+\end{comment}
 
 \begin{figure}[!h]
     \centerline{
@@ -248,7 +251,7 @@ Both the methods terminated the random walk with the maximal pattern
 shown in Figure~\ref{fig:geex}.  
 However, the total time taken to enumerate the pattern
 without using any derived label is $18306$ secs whereas by using the
-\combined label the total time reduced to only $15.5776$ secs. The huge
+\ncl label the total time reduced to only $15.5776$ secs. The huge
 difference between the times arises due to the multiplicity effect in
 $CMDB$ graphs.  
 
@@ -342,17 +345,17 @@ depends on the regions of pattern space that the random walk explores.
     \label{fig:D5F20P_eff}
 \end{figure}
 
-Figure~\ref{fig:D5F20P_eff} compares the effectiveness of the \combined
-label (Neighbors) and \khop label (Hops) for different values of the
+Figure~\ref{fig:D5F20P_eff} compares the effectiveness of the \ncl
+label and \khop label for different values of the
 threshold $\alpha$ on the SCOP dataset.  For each value of $\alpha$, the
-left bar shows the time with \combined label, whereas the right bar
-shows the time using only the \khop label.  The \combined label clearly
+left bar shows the time with \ncl label, whereas the right bar
+shows the time using only the \khop label.  The \ncl label clearly
 reduces the time taken. In fact, it reduces the time for both the \khop
-matching and the pattern verification steps, since \combined is very
+matching and the pattern verification steps, since \ncl is very
 effective in pruning the representative set.  This effect is best seen
 for $\alpha = 0.75$, where the total time for the enumeration reduces
 even though matching the neighbors takes more time compared to \khop
-matching.  This shows the effectiveness of the \combined label versus
+matching.  This shows the effectiveness of the \ncl label versus
 \khop label in isolation.
 
 \begin{figure}[!ht]

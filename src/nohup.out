@@ -9,3 +9,7 @@
                                                                            ^
 SyntaxError: unexpected character after line continuation character
 ./mine ../results/SCOP_Complete/Config_W500E1M15S23787984402053A1.txt ../results/SCOP_Complete/Log_W500E1M15S23787984402053A1.txt ../results/SCOP_Complete/Stat_W500E1M15S23787984402053A1.txt
+./mine ../results/SCOP_Complete/Config_W500E1M15S1729A0.txt ../results/SCOP_Complete/Log_W500E1M15S1729A0.txt ../results/SCOP_Complete/Stat_W500E1M15S1729A0.txt
+./mine ../results/SCOP_Complete/Config_W500E1M15S1729A0.txt ../results/SCOP_Complete/Log_W500E1M15S1729A0.txt ../results/SCOP_Complete/Stat_W500E1M15S1729A0.txt
+./mine ../results/SCOP_Complete/Config_W500E1M15S1729A1.txt ../results/SCOP_Complete/Log_W500E1M15S1729A1.txt ../results/SCOP_Complete/Stat_W500E1M15S1729A1.txt
+./mine ../results/SCOP_Complete/Config_W500E1M15S1729A0.txt ../results/SCOP_Complete/Log_W500E1M15S1729A0.txt ../results/SCOP_Complete/Stat_W500E1M15S1729A0.txt
