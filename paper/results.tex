@@ -215,7 +215,16 @@ patterns from the real world CMDB graph. Both these patterns show
 typical ``default'' 
 configurations of the IT infrastructure in this company. They show the
 connection between some services running on an NT server, and also the
-web/ftp services.
+web/ftp services. The node with label \textit{9 $\times$ process} 
+in figure \ref{fig:gepatsB} indicates that there are nine nodes 
+in the maximal pattern with label \textit{process} all of which
+are connected to a common node. This is an example where the run time
+for computing the representative sets is significantly reduced by
+the optmization proposed in section \ref{sec:labelcheck}. All of the nine
+nodes belongs to the same orbit and hence their representative sets are
+identical.
+
+
 
 
 \begin{figure}
@@ -244,6 +253,8 @@ web/ftp services.
     \label{fig:geex}
 \end{figure}
 
+
+
 To show the effectiveness of the pruning based on labels, we compared
 the time taken to enumerate a single maximal pattern in $CMDB$ database.
 We compared the time with and without label-based pruning.
@@ -254,6 +265,9 @@ without using any derived label is $18306$ secs whereas by using the
 \ncl label the total time reduced to only $15.5776$ secs. The huge
 difference between the times arises due to the multiplicity effect in
 $CMDB$ graphs.  
+
+
+%%% compare the performance of gapprox, label pruning and no pruning
 
 
 
@@ -311,6 +325,14 @@ the diagonal entries are $\matij{C}{i}{i} =0$.
 
 \begin{figure}[!ht]
   \centerline{
+    \includegraphics[width=2.5in]{runtime_compare.eps}
+	}
+    \caption{SCOP: Runtime comparison}
+    \label{fig:runtime}
+\end{figure}
+
+\begin{figure}[!ht]
+  \centerline{
     \includegraphics[width=2.5in]{scop_minsup.eps}
 	}
 	\caption{SCOP: Effect of $minsup$}
@@ -328,6 +350,24 @@ expected, the time increases as the values of $\alpha$ increases, since
 the number of isomorphisms clearly increases for a more relaxed (larger)
 cost threshold.  When $\alpha = 0.01$, the patterns are exact as
 $\matij{C}{i}{j} > \alpha$ $,\forall i \neq j$.
+
+Figure \ref{fig:runtime} compares the time taken to mine $500$
+maximal patterns from the SCOP dataset using the \ncl label algorithm
+and two naive isomorphism enumerating algorithms. 
+The value of $minsup$ is $15$ and
+the threshold $\alpha$ is chosen as $0.7$.
+The \textit{no pruning}
+algorithm computes the representative sets from the candidate representative
+sets directly using the verification procedure described in
+section \ref{sec:verification}. The \textit{gApprox} algorithm is based on
+\cite{gapprox} and stores all isomorphisms during the course of enumerating
+a maximal pattern. For each candidate pattern, it computes the isomorphisms
+from the isomorphisms of the frequent pattern from which the candidate 
+pattern is generated. It can be see that, the run time for the \ncl based 
+algorithm is significantly less compared to the naive enumeration algorithms 
+as it prunes invalid candidates without performing an expensive verification
+procedure or storing potentially an expensive number of isomorphims.
+
 
 Figure \ref{fig:5F20P_ft} shows the time taken for $K=500$ random walks
 for various values of $minsup$, but with a fixed $\alpha = 0.7$. The bar
