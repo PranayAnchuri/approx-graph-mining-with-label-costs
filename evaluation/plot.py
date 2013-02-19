@@ -25,8 +25,7 @@ styles = markers + [
         r'$\clubsuit$',
         r'$\checkmark$']
 
-font = {'family' : 'normal',\
-                        'size'   : 18}
+font = {'size'   : 18}
 matplotlib.rc('font', **font)
 def verify(values):
     '''Returns true if the input to the plot function can be parsed and the 
@@ -42,8 +41,9 @@ Requires :
     2) outfile : file to which the output is saved
     3) labels : xlabel, ylabel and the title
 '''
-def prune_vals(xvalues, yvalues, step=3):
+def prune_vals(xvalues, yvalues, step=4):
     if len(xvalues) != len(yvalues):
+        pdb.set_trace()
         raise "values cannot be pruned"
     cmn_len = len(xvalues)
     return [xvalues[i] for i in range(0, cmn_len, step)], \
@@ -105,4 +105,4 @@ def mysave(labels, outfile):
         plt.title(labels[2])
     except IndexError:
         print 'labels not set'
-    plt.savefig(outfile, dpi=1000)
+    plt.savefig(outfile, dpi=500)

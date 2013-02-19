@@ -34,14 +34,14 @@ be employed.
 
 
 \subsection{Support Computation} \label{sec:support} The support of a pattern is
-an anti-monotonic function on the set of isomorphisms of the pattern. The
+an anti-monotonic function on the set of isomorphims of the pattern. The
 anti-monotonicity means that the support of a pattern cannot be greater than the
 support of any of its subgraph. Therefore, if a candidate pattern is found to be
 infrequent we can prune the entire sub tree under it from the search space.
 This helps in pruning the otherwise exponential search space. 
 
 When mining from a database of graphs, a function as simple as the total number
-of graphs having at least one isomorphism is anti-monotonic. This approach cannot
+of graphs having atleast one isomorphism is anti-monotonic. This approach cannot
 be used when mining from a single graph as it leads to a binary support function
 which is not very informative. On the other hand, counting the number of
 isomorphisms is not anti-monotonic because a graph can have more isomorphisms
@@ -52,15 +52,15 @@ vertex disjoint isomorphisms. However, this requires computing the maximum
 independent set (MIS) of graph where each node represents an isomorphism.
 This is called the MIS support of the pattern.
 Clearly, it is not feasible when the input graphs are large and patterns have
-large number of isomorphisms. An easy upper bound on the MIS support is the size
+large number of isomorphims. An easy upper bound on the MIS support is the size
 of the smallest representative set of a vertex in the pattern.  Define the {\em
 support} of pattern $P$ in a database graph $G$ as $$sup(P) = \min_{u \in \vp}
 \{ |R(u)| \}$$ That is, the minimum cardinality over all representative sets of
 vertices in $P$.  The size of representative sets constructed from the disjoint
-isomorphisms is equal to the MIS support. Hence, $sup(P)$ is at least as large
+isomorphisms is equal to the MIS support. Hence, $sup(P)$ is atleast as large
 MIS support.  Other upper bounds for the MIS value have been proposed in gApprox
 and CMDB-Miner algorithms. The support function used in gApprox can be computed
-from the representative sets by enumerating the isomorphisms as described in the
+from the representative sets by enumerating the isomorphims as described in the
 Section~\ref{sec:verification}.  The support function used by the CMDB-Miner
 algorithm can also be used by constructing an appropriate flow network on the
 representative sets.

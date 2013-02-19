@@ -14,7 +14,7 @@ def process(inpfile, outfile):
     while lines:
         values.append(read_two(lines))
     myplot(values, [r'Number of random walks', r'Time in seconds',
-                    r'Time for random walks in PPI dataset'], outfile)
+                    r'Time for random walks on PPI dataset'], outfile)
 
 if __name__ == '__main__':
     print 'Usage: python  python ppi_timing.py ppi_timing/ppi.stats ppi_timing/ppi.png'

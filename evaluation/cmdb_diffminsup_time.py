@@ -14,7 +14,7 @@ def process(inpfile, outfile):
     while lines:
         values.append(read_two(lines))
     myplot(values, [r'Number of random walks', r'Time in seconds',\
-                    r'Time for random walks in CMDB dataset'], outfile)
+                    r'Time for random walks on CMDB dataset'], outfile)
 
 if __name__ == '__main__':
     print 'Usage: python cmdb_diffminsup_time.py cmdb_diffminsup_time/l1ge.stats2 cmdb_diffminsup_time/cmdbtiming.png'

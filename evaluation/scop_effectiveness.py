@@ -49,11 +49,12 @@ def decor(vals):
         r'$\alpha = 0.75$'])
 
 colors = ['0.2','0.5','0.95']
-labels = ["Verification","NL Label", "k-hop Label"]
-ct75 = [224.455,127.965,293.40]
-kt75 = [653.14,368.848]
-ct5 =  [13.7157,35.5394,119.847]
-kt5 =  [250.757, 36.3393]
+#labels = ["NL Label", "Verification", "k-hop label"]
+labels = ["NL label", "Verification", "khop Label"]
+ct75 = [293.40, 127.965,224.455]
+kt75 = [368.848, 653.14]
+ct5 =  [119.847,35.5394, 13.71757]
+kt5 =  [36.3393, 250.757]
 plot_bar([ct5,ct75],colors,labels)
 plot_bar([kt5,kt75], colors[1:], [],w)
 decor([ct5,ct75])

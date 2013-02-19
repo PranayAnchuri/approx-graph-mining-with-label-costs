@@ -56,7 +56,7 @@ for x,d in zip(xlocations, data):
         oL.extend(b)
 plt.legend(loc=2,prop={'size':11})
 plt.ylabel(r'Time in seconds')
-plt.title(r'Time for random walks in SCOP dataset')
+plt.title(r'Time for random walks on SCOP dataset')
 pylab.gca().set_xticks(xlocations+w/2)
 pylab.gca().set_xticklabels([r'minsup=$10$',\
 r'minsup=$20$',r'minsup=$25$',r'minsup=$40$'])
