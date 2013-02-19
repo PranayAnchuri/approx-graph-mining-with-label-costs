@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.12.9)  19 FEB 2013 00:10
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.12.9)  19 FEB 2013 00:39
 entering extended mode
  %&-line parsing enabled.
 **main.tex
@@ -1054,12 +1054,12 @@ LaTeX Warning: Citation `chinesepostman' on page \thepage  undefined on input l
 ine 276.
 
 
-LaTeX Warning: Citation `nauty' on page \thepage  undefined on input line 368.
+LaTeX Warning: Citation `nauty' on page \thepage  undefined on input line 370.
 
 [5]
 
 LaTeX Warning: Citation `npcomplete' on page \thepage  undefined on input line 
-392.
+394.
 
 ) (./mining.tex
 
@@ -1088,11 +1088,7 @@ Overfull \hbox (8.59077pt too wide) in paragraph at lines 44--44
 LaTeX Warning: Reference `tab:db' on page \thepage  undefined on input line 78.
 
 
-
-Underfull \vbox (badness 1571) has occurred while \output is active []
-
 File: ./vlfigures/ge.eps Graphic file (type eps)
-
 <./vlfigures/ge.eps> [7]
 Overfull \hbox (6.3265pt too wide) in paragraph at lines 251--252
  [][] 
@@ -1168,10 +1164,10 @@ LaTeX Warning: There were undefined references.
 Here is how much of TeX's memory you used:
  18394 strings out of 495062
  345948 string characters out of 1182644
- 528517 words of memory out of 3000000
+ 528679 words of memory out of 3000000
  21111 multiletter control sequences out of 15000+50000
  51767 words of font info for 74 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  58i,13n,84p,450b,624s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on main.dvi (10 pages, 208580 bytes).
+Output written on main.dvi (10 pages, 208876 bytes).

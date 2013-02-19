@@ -63,8 +63,8 @@ prune these invalid vertices and reduce \CR to \RS.
     of matching the \khop labels is upper bounded by $\alpha$.  \end{myproof}
     \label{thm:khop} \end{thm}
 
-Based on the above theorem, a vertex $v$ is an invalid vertex if
-$\khopcost{k}{u}{v} > \alpha$ for any $k \geq 0$. However, in practice, it
+Based on the above theorem, a vertex $v$ is not a representative vertex of $u$
+if $\khopcost{k}{u}{v} > \alpha$ for any $k \geq 0$. However, in practice, it
 enough to check the condition only for $k \leq |V_P|-1$ because $\khopl{k}{u}$
 is the null set $\forall k \geq |V_P|$ and the condition is trivially satisfied.
 
@@ -266,22 +266,22 @@ methods based on the \khop and the \ncl labels start with a \CR and prune some
 of the candidate vertices based on the conditions described in theorems
 \ref{thm:khop} and \ref{thm:ncl}.  The verification step reduces \CR to \RS by
 retaining only those vertices for which there exists an isomorphism $\phi$ in
-which $\phi(u) = v$.  It does this by checking if the pattern $P$ can be
+which $\phi(u) = v$.  Informally, it does this by checking if the pattern $P$ can be
 embedded at $v$ such that total cost of label mismatch is at most $\alpha$.
 
 
 Let $w_p = u_0,\ldots, u_m$ be a walk in the pattern that covers each edge of
-the pattern at least once starting from vertex $u$ i.e. $u_0 = u$. Finding a path
-that covers each edge at least once is a special case of the Chinese postman
-problem \cite{chinesepostman} where the distance between pair of vertices is
-one. The following three conditions are satisfied iff the vertex $v$ is a
-representative of the vertex $u$. i) there exists a walk $w_d = v_0,\ldots, v_m$
-such that $v_i \in R(u_i)$ and $v_{i+1} \in R(u_{i+1})$, $\forall (v_i, v_{i+1})
-\in w_d$.  ii) $v_i = v_j$ implies that $u_i = u_j$. iii)
-$\sum\matij{C}{L(u_i)}{L(v_i)} \leq \alpha$ where $u_i \in \vp$. These
-conditions can be verified by following the definition of approximate subgraph
-isomorphism. Using an example we will show how these conditions can be used to
-check definitely whether $v \in R(u)$.
+the pattern at least once starting from vertex $u$ i.e. $u_0 = u$. Finding a
+path that covers each edge at least once is a special case of the Chinese
+postman problem \cite{chinesepostman} where the distance between pair of
+vertices is one. The following three conditions are satisfied iff the vertex $v$
+represents the vertex $u$. i) there exists a walk $w_d = v_0,\ldots, v_m$,
+$\forall (v_i, v_{i+1}) \in w_d$, $v_i \in R(u_i)$ and $v_{i+1} \in R(u_{i+1})$.
+ii) $v_i = v_j$ implies that $u_i = u_j$. iii) $\sum\matij{C}{L(u_i)}{L(v_i)}
+\leq \alpha$ where $u_i \in \vp$. Unlike the \ncl label, 
+these conditions are necessary and sufficient and can be verified by following
+the definition of isomorphism. Using an example we will
+show how these conditions can be used to check definitely whether $v \in R(u)$.
 
 Consider checking whether the vertex $30$ is a valid representative of the vertex
 $1$ in the pattern in the figure~\ref{subfig:ex_sub} and let $\alpha = 0.5$ . The
@@ -295,7 +295,7 @@ w_p$, if $u_i$ and $u_{i+1}$ are mapped, then we verify that there is an edge
 between the database vertices $v_i$ and $v_{i+1}$ to which the pattern vertices
 are mapped.  If however, $u_{i+1}$ is not mapped then we map it to some vertex
 $v_{i+1} \in R'(u_{i+1})$ and subtract the cost of this mapping from the
-remaining $\alpha$ cost.  For example, in the first step we can map $2$ to $20$.
+remaining $\alpha$ cost.  For example, in the first step $(1,2)$ we can map $2$ to $20$.
 The remaining cost is then $0.3 - 0.2 = 0.1$. In the next step $(2,3)$, the
 vertex $3$ cannot be mapped to any vertex in the database without violating the
 third condition.  In such a case, we back track one step and choose a different
@@ -313,7 +313,7 @@ complete set of isomorphisms.
 Candidate representative vertices are pruned by checking for dominance 
 relation between the \ncl labels of pattern vertex and that of candidate
 vertex in the database. Comparing the \ncl labels requires i) computing the
-cost between \khop labels ii) matching the neighbors of pattern vertex 
+cost of matching the \khop labels ii) matching the neighbors of pattern vertex 
 with neighbors of the candidate vertex. First problem can be formulated
 as a minimum cost maximum flow in a network and the second as maximum matching
 in a bipartite graph.
@@ -322,7 +322,7 @@ in a bipartite graph.
 cost between the \khop labels $\khopl{k}{u}$ and $\khopl{k}{v}$, we compute the
 maximum flow with minimum cost in a flow network $F$ defined as follows.  Each
 edge in $F$ is associated with a maximum capacity and the cost for sending a
-unit flow across that edge.  The network contains a vertex for each label $l_u =
+unit flow across it.  The network contains a vertex for each label $l_u =
 L(u')$ where $v' \in h_k(u)$ and a vertex for each label $l_v = L(v')$ where $v'
 \in h_k(v)$. There is a directed between between source vertex ($s$) and each
 $l_u$ with a zero cost and a capacity equal to the multiplicity of the $l_u$
@@ -335,7 +335,9 @@ $|\khopl{k}{u}|$ and $\infty$ otherwise.  \\ Figure~\ref{fig:Hflow} shows the
 flow network required to compute the minimum cost of matching the \khop labels
 $\khopl{2}{2} = 4,6 $ and $\khopl{2}{20} = 40, 50, 60$ as shown in Table
 \ref{tab:khop220}. The labels of vertices in the \khop labels are $C,D$ and $B,
-B, A$ respectively. There is an edge from $s$ to each of $C, D$ with zero cost
+B, A$ respectively. The capacity of the edge betweenn $B$ and $t$ is two because 
+both the vertices $40$ and $50$ have the same label $B$.
+There is an edge from $s$ to each of $C, D$ with zero cost
 and maximum capacity of one.  Similarly, there is an edge from each of $A, B$ to
 the sink vertex $t$ with zero cost and maximum capacity of one and two
 respectively. There is an edge from $C, D$ to each of $A, B$ with cost equal to
@@ -359,11 +361,11 @@ bipartite matching is $|N(u)|$.
 \medskip{\textit{Optimization}: } The candidate pattern may contain groups of
 symmetric vertices that are indistinguishable with respect to the \khop label.
 In such a scenario, the candidate representative sets of all these vertices are
-exactly the same. Utilizing the symmetry, we apply the pruning label strategy only on
+exactly the same. Utilizing the symmetry, we can apply the pruning label strategy only on
 one vertex per symmetry group and replicate the results for all other vertices
 in the group. For example, the vertices $10$ and $40$ in
-figure~\ref{subfig:ex_sub} are symmetric and the representative sets $R'(10)$
-and $R'(40)$ are exactly the same.  In abstract algebra terms such  groups are
+figure~\ref{subfig:ex_sub} are symmetric and the representative sets $R(10)$
+and $R(40)$ are exactly the same.  In abstract algebra terms such  groups are
 called orbits of the graph and can be computed using nauty algorithm
 \cite{nauty}. 
 Even
@@ -398,7 +400,8 @@ expensive.
     then we restart from a different starting vertex. The vertices selected in
     each iteration lie on a path of length $n-1$ if it exists. If there is
     polynomial time algorithm for KR then HP could be solved in polynomial time
-    by reducing it to KR. Hence, KR cannot be solved in polynomial time unless
+    by reducing it to KR. Therefore, $KR$ is atleast as hard as $HP$.
+    So, KR cannot be solved in polynomial time unless
     P = NP.
 \end{myproof}
 \end{thm}
@@ -410,8 +413,8 @@ $k_{max}$ and use the \khop label based pruning only for values of $k \leq
 k_{max}$.  It only takes a couple of minutes to compute the \khop label for $k
 \leq 6$ for all the vertices in the database graph. This is significantly less
 than the overall run time of the algorithm. Once $\khopl{k}{u}$ is computed we
-store in memory only the tuples $(m, l)$ where $m$ is the number of vertices $v
-\in \khopl{k}{u}$, $L(v) = l$. The total amount of main memory required to store
+store in memory only the tuples $(m, l)$ where $m$ is the number of vertices $u'
+\in \khopl{k}{u}$, $L(u') = l$. The total amount of main memory required to store
 the precomputed \khop labels is O($|\vg| \times |\Sigma| \times k_max$).
 
 \subsection{Complexity} Memory and time complexity of the entire algorithm.

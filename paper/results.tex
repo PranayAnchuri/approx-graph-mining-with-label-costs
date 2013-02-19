@@ -68,7 +68,7 @@ A CMDB is used to manage and query the IT infrastructure of an
 organization. It stores information about the so-called configuration
 items (CIs) -- servers, software, running processes, storage systems,
 printers, routers, etc. As such it can be considered to be a single
-large multi-attributed graph, where the nodes represent the various CIs
+large multi-attributed graph, where the vertices represent the various CIs
 and the edges represent the connections between the CIs (e.g., the
 processes on a particular server, along with starting and ending times).
 Mining such graphs is challenging because they are large, complex,
@@ -87,7 +87,7 @@ high costs otherwise. The algorithm is general in that it doesn't depend
 on how the label matching costs are assigned, the range of these
 values or whether the cost matrix is symmetric
 .  Consider any two labels $l_1$, $l_2$ and their corresponding
-paths $p_1$, $p_2$ to the root node in the hierarchy.  We first define
+paths $p_1$, $p_2$ to the root vertex in the hierarchy.  We first define
 the similarity between the labels to be proportional to the number of
 common labels in $p_1 \cap p_2$, as follows
 \begin{equation*}
@@ -112,7 +112,7 @@ time for random walks for different values of $minsup$ and $\alpha =
 0.5$. Interesting, and somewhat counter-intuitively, the time increases
 for higher minimum support values.  The reason is that with higher
 minimum support, the random walk in the search space goes through the
-nodes that have a large number of embeddings and it takes more time to
+vertices that have a large number of embeddings and it takes more time to
 enumerate a single pattern.
 
 %%%%%%%% Orbits idea explained as an optimization in the mining section
@@ -256,7 +256,7 @@ identical.
 
 
 To show the effectiveness of the pruning based on labels, we compared
-the time taken to enumerate a single maximal pattern in $CMDB$ database.
+the time taken to enumerate a single maximal pattern in CMDB database.
 We compared the time with and without label-based pruning.
 Both the methods terminated the random walk with the maximal pattern
 shown in Figure~\ref{fig:geex}.  
@@ -264,7 +264,7 @@ However, the total time taken to enumerate the pattern
 without using any derived label is $18306$ secs whereas by using the
 \ncl label the total time reduced to only $15.5776$ secs. The huge
 difference between the times arises due to the multiplicity effect in
-$CMDB$ graphs.  
+CMDB graphs.  
 
 
 %%% compare the performance of gapprox, label pruning and no pruning
