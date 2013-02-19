@@ -369,20 +369,20 @@ called orbits of the graph and can be computed using nauty algorithm
 Even
 though computing the orbits is expensive, we can avoid $ (|g|-1) \times |\CR|$
 \ncl label cost computations where $g$ is the size of an orbit. Note that
-we find the orbits for the pattern vertex which is usually very small compared
+we find the orbits only for the pattern which is usually very small compared
 to the database graph.
 %Note that the payoff is zero if all the vertex orbits are of size $1$.
 
 \subsection{Precomputing database \khop labels} The \khop label of the database
-vertices is independent of the candidate pattern. Hence, even though computing
-the cost of matching the \khop labels using maximum flow is expensive, it can be
-amortized over all the candidate patterns  if we precompute the \khop labels of
-the database vertices. Also, to construct the flow network we only need the
-aggregate information about the number of vertices of a given database label (
-TODO) in the \khop label which can be stored in the main memory. 
+vertices is independent of the candidate pattern.
+Also, the flow network to compute the cost of matching the \khop labels requires
+only the aggregate information about the number of vertices of a given label.
+Hence, we can precompute the \khop label of the database vertices and store them
+in the memory. The following theorem proves that computing \khop label is
+expensive.
 
 \begin{thm} k-reachable (KR) : Given a graph $G$, $k$ and $u \in \vg$. Compute
-    $\khopl{k}{u}$.  k-reachable cannot be solved in polynomial time unless $P =
+    $\khopl{k}{u}$.  KR cannot be solved in polynomial time unless $P =
     NP$.
 
 \begin{myproof} We prove this by reducing hamiltonian path (HP) to KR.
@@ -396,7 +396,11 @@ TODO) in the \khop label which can be stored in the main memory.
     graph and we find a vertex $v'$ such that $\kpath{u}{v'}{n-2}$ and $(v', v)
     \in \eg$. We repeat this process $n-1$ times. If at any stage $X(j) = \{\}$
     then we restart from a different starting vertex. The vertices selected in
-    each iteration lie on a path of length $n-1$ if it exists.  \end{myproof}
+    each iteration lie on a path of length $n-1$ if it exists. If there is
+    polynomial time algorithm for KR then HP could be solved in polynomial time
+    by reducing it to KR. Hence, KR cannot be solved in polynomial time unless
+    P = NP.
+\end{myproof}
 \end{thm}
 
 To compute \khop label of a vertex $u$, we check for each vertex $v$ whether $v
@@ -407,7 +411,8 @@ k_{max}$.  It only takes a couple of minutes to compute the \khop label for $k
 \leq 6$ for all the vertices in the database graph. This is significantly less
 than the overall run time of the algorithm. Once $\khopl{k}{u}$ is computed we
 store in memory only the tuples $(m, l)$ where $m$ is the number of vertices $v
-\in \khopl{k}{u}$, $L(v) = l$.
+\in \khopl{k}{u}$, $L(v) = l$. The total amount of main memory required to store
+the precomputed \khop labels is O($|\vg| \times |\Sigma| \times k_max$).
 
 \subsection{Complexity} Memory and time complexity of the entire algorithm.
 

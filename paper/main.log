@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.12.9)  18 FEB 2013 13:34
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.12.9)  18 FEB 2013 18:41
 entering extended mode
  %&-line parsing enabled.
 **main.tex
@@ -1072,7 +1072,7 @@ ut line 18.
 
 
 LaTeX Warning: Citation `2011-icdm' on page \thepage  undefined on input line 2
-4.
+2.
 
 [6]) (./results.tex
 Overfull \hbox (8.59077pt too wide) in paragraph at lines 44--44
@@ -1083,16 +1083,19 @@ Overfull \hbox (8.59077pt too wide) in paragraph at lines 44--44
 LaTeX Warning: Reference `tab:db' on page \thepage  undefined on input line 78.
 
 
+
+Underfull \vbox (badness 1571) has occurred while \output is active []
+
 File: ./vlfigures/ge.eps Graphic file (type eps)
-<./vlfigures/ge.eps>
+
+<./vlfigures/ge.eps> [7]
 Overfull \hbox (6.3265pt too wide) in paragraph at lines 251--252
  [][] 
  []
 
-[7]
 LaTeX Font Info:    Try loading font information for T1+aett on input line 275.
 
- (/usr/share/texmf-texlive/tex/latex/ae/t1aett.fd
+(/usr/share/texmf-texlive/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
 
@@ -1104,14 +1107,13 @@ File: ./vlfigures/runtime_compare.eps Graphic file (type eps)
  <./vlfigures/runtime_compare.eps>
 File: ./vlfigures/scop_minsup.eps Graphic file (type eps)
 
-<./vlfigures/scop_minsup.eps>
+<./vlfigures/scop_minsup.eps> [8]
 
 LaTeX Warning: Citation `gapprox' on page \thepage  undefined on input line 363
 .
 
-[8]
 File: ./vlfigures/scop_effectiveness.eps Graphic file (type eps)
- <./vlfigures/scop_effectiveness.eps>
+<./vlfigures/scop_effectiveness.eps>
 File: ./figures/1ysw.pat.eps Graphic file (type eps)
  <./figures/1ysw.pat.eps>
 File: ./figures/1r2e.pat.eps Graphic file (type eps)
@@ -1134,18 +1136,20 @@ LaTeX Warning: Citation `altschul90' on page \thepage  undefined on input line
 452.
 
 File: ./vlfigures/ppi.eps Graphic file (type eps)
-<./vlfigures/ppi.eps> [9]
+<./vlfigures/ppi.eps>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 File: ./figures/ppipat2.eps Graphic file (type eps)
- <./figures/ppipat2.eps>
+<./figures/ppipat2.eps>
 File: ./figures/ppipat1.eps Graphic file (type eps)
- <./figures/ppipat1.eps>)
-(./conclusions.tex
+ <./figures/ppipat1.eps>) (./conclusions.tex
 Overfull \hbox (14.12157pt too wide) in paragraph at lines 565--2
 \T1/aer/m/n/9 mined max-i-mal fre-quent ap-prox-i-mate pat-terns (us-ing $\OML/
 cmm/m/it/9 minsup \OT1/cmr/m/n/9 =
  []
 
-
+[9]
 Overfull \hbox (4.12904pt too wide) in paragraph at lines 4--7
 \T1/aer/m/n/9 fre-quent sub-graph pat-terns from a sin-gle large graph database
 
@@ -1157,12 +1161,12 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 18393 strings out of 495062
- 345935 string characters out of 1182644
- 541112 words of memory out of 3000000
- 21110 multiletter control sequences out of 15000+50000
+ 18394 strings out of 495062
+ 345948 string characters out of 1182644
+ 528519 words of memory out of 3000000
+ 21111 multiletter control sequences out of 15000+50000
  51767 words of font info for 74 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  58i,13n,84p,450b,624s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on main.dvi (10 pages, 208280 bytes).
+Output written on main.dvi (10 pages, 208568 bytes).
