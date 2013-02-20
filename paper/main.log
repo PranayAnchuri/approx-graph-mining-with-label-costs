@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.12.9)  20 FEB 2013 13:57
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.12.9)  20 FEB 2013 15:34
 entering extended mode
  %&-line parsing enabled.
 **main.tex
@@ -646,19 +646,22 @@ File: pgflibraryshapes.multipart.code.tex 2010/01/07 v2.10 (rcs-revision 1.2)
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryposit
 ioning.code.tex
 File: tikzlibrarypositioning.code.tex 2008/10/06 v2.10 (rcs-revision 1.7)
+) (/usr/share/texmf-texlive/tex/latex/multirow/multirow.sty
+\bigstrutjot=\dimen184
 )
 \c@copyrightbox=\count141
- (/usr/share/texmf-texlive/tex/latex/pstricks/pstricks.sty
+
+(/usr/share/texmf-texlive/tex/latex/pstricks/pstricks.sty
 Package: pstricks 2008/11/26 v0.40 LaTeX wrapper for `PSTricks' (RN,HV)
 
 (/usr/share/texmf-texlive/tex/generic/pstricks/pstricks.tex
 `PSTricks' v1.29  <2009/05/19> (tvz)
-\pst@dima=\dimen184
-\pst@dimb=\dimen185
-\pst@dimc=\dimen186
-\pst@dimd=\dimen187
-\pst@dimg=\dimen188
-\pst@dimh=\dimen189
+\pst@dima=\dimen185
+\pst@dimb=\dimen186
+\pst@dimc=\dimen187
+\pst@dimd=\dimen188
+\pst@dimg=\dimen189
+\pst@dimh=\dimen190
 \pst@hbox=\box62
 \pst@boxg=\box63
 \pst@cnta=\count142
@@ -669,16 +672,16 @@ Package: pstricks 2008/11/26 v0.40 LaTeX wrapper for `PSTricks' (RN,HV)
 \pst@cnth=\count147
 \pst@toks=\toks55
 (/usr/share/texmf-texlive/tex/generic/pstricks/pstricks.con)
-\psunit=\dimen190
-\psxunit=\dimen191
-\psyunit=\dimen192
-\pslinewidth=\dimen193
+\psunit=\dimen191
+\psxunit=\dimen192
+\psyunit=\dimen193
+\pslinewidth=\dimen194
 \pst@customdefs=\toks56
-\pslinearc=\dimen194
+\pslinearc=\dimen195
 \everypsbox=\toks57
-\psframesep=\dimen195
-\pslabelsep=\dimen196
-\pst@shift=\dimen197
+\psframesep=\dimen196
+\pslabelsep=\dimen197
+\pst@shift=\dimen198
 \theoverlaybox=\box64
 )
 File: pstricks.tex 2009/05/19 v1.29 `PSTricks' (tvz,hv)
@@ -746,39 +749,39 @@ hv)
 )
 (/usr/share/texmf-texlive/tex/generic/pst-math/pst-math.tex
 `pst-math' v0.23 , (CJ,hv)) `pstricks-add' v3.35, 2009/10/12 (dr,hv)
-\pst@dimm=\dimen198
-\pst@dimn=\dimen199
-\pst@dimo=\dimen200
-\pst@dimp=\dimen201
+\pst@dimm=\dimen199
+\pst@dimn=\dimen200
+\pst@dimo=\dimen201
+\pst@dimp=\dimen202
 \pst@cntm=\count163
 \pst@cntn=\count164
 \pst@cnto=\count165
 \pst@cntp=\count166
 \@zero=\count167
-\pstRadUnit=\dimen202
-\pstRadUnitInv=\dimen203
-\pshooklength=\dimen204
-\pshookwidth=\dimen205
+\pstRadUnit=\dimen203
+\pstRadUnitInv=\dimen204
+\pshooklength=\dimen205
+\pshookwidth=\dimen206
 \@digitcounter=\count168
-\psk@subticksize=\dimen206
-\pst@xticksizeA=\dimen207
-\pst@xticksizeB=\dimen208
-\pst@xticksizeC=\dimen209
-\pst@yticksizeA=\dimen210
-\pst@yticksizeB=\dimen211
-\pst@yticksizeC=\dimen212
-\psk@llx=\dimen213
-\psk@lly=\dimen214
-\psk@urx=\dimen215
-\psk@ury=\dimen216
-\pst@xunit=\dimen217
-\pst@yunit=\dimen218
+\psk@subticksize=\dimen207
+\pst@xticksizeA=\dimen208
+\pst@xticksizeB=\dimen209
+\pst@xticksizeC=\dimen210
+\pst@yticksizeA=\dimen211
+\pst@yticksizeB=\dimen212
+\pst@yticksizeC=\dimen213
+\psk@llx=\dimen214
+\psk@lly=\dimen215
+\psk@urx=\dimen216
+\psk@ury=\dimen217
+\pst@xunit=\dimen218
+\pst@yunit=\dimen219
 \linecnt=\count169
-\chart@ColorIndex=\dimen219
-\chart@ColorStep=\dimen220
-\pst@chartHeight=\dimen221
-\pst@chartStackDepth=\dimen222
-\pst@chartStackWidth=\dimen223
+\chart@ColorIndex=\dimen220
+\chart@ColorStep=\dimen221
+\pst@chartHeight=\dimen222
+\pst@chartStackDepth=\dimen223
+\pst@chartStackWidth=\dimen224
 \chart@Toggle=\count170
 )
 File: pstricks-add.tex 2009/10/12 v3.35 `PSTricks-add' (hv)
@@ -821,9 +824,9 @@ subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
 \skiplength=\skip64
 \algomargin=\skip65
 \skipalgocfslide=\skip66
-\algowidth=\dimen224
-\inoutsize=\dimen225
-\inoutline=\dimen226
+\algowidth=\dimen225
+\inoutsize=\dimen226
+\inoutline=\dimen227
 \algocf@inoutbox=\box67
 \algocf@inputbox=\box68
 \AlCapSkip=\skip67
@@ -990,40 +993,50 @@ File: ./figures/ppipat2.eps Graphic file (type eps)
  <./figures/ppipat2.eps>
 File: ./figures/ppipat1.eps Graphic file (type eps)
  <./figures/ppipat1.eps>)
-(./relatedwork.tex
-Overfull \hbox (14.12157pt too wide) in paragraph at lines 565--1
+(./tabdata.tex
+Overfull \hbox (14.12157pt too wide) in paragraph at lines 565--16
 \T1/aer/m/n/9 mined max-i-mal fre-quent ap-prox-i-mate pat-terns (us-ing $\OML/
 cmm/m/it/9 minsup \OT1/cmr/m/n/9 =
  []
 
 [9]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+) (./relatedwork.tex [10]) (./conclusions.tex
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [10])
-(./conclusions.tex
+
 Overfull \hbox (4.12904pt too wide) in paragraph at lines 5--8
 \T1/aer/m/n/9 fre-quent sub-graph pat-terns from a sin-gle large graph database
 
  []
 
-) (./main.bbl
+) (./main.bbl [11]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [11])
-[12
-
-] (./main.aux)
+) [12]
+(./main.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 18403 strings out of 495062
- 346067 string characters out of 1182644
- 539952 words of memory out of 3000000
- 21117 multiletter control sequences out of 15000+50000
+ 18424 strings out of 495062
+ 346455 string characters out of 1182644
+ 540392 words of memory out of 3000000
+ 21131 multiletter control sequences out of 15000+50000
  51767 words of font info for 74 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  58i,13n,84p,450b,624s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on main.dvi (12 pages, 221440 bytes).
+Output written on main.dvi (12 pages, 225844 bytes).

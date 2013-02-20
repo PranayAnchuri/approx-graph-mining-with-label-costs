@@ -1,0 +1,102 @@
+%%% time for random walks in cmdb dataset
+\begin{figure}[!h]
+\centering
+\label{tab:ge}
+\begin{tabular}{|c|c|c|}
+        \hline
+        minsup & Time & Avg Time \\
+		\hline
+        20 & 2 & 3\\
+        15 & 2 & 3\\
+        10 & 2 & 3\\
+		\hline
+    \end{tabular}
+    \caption{Time for random walks in CMDB dataset}
+\end{figure}
+
+%% effect of alpha on scop dataset
+\begin{figure}[!h]
+\centering
+\label{tab:scop_alpha}
+\begin{tabular}{|c|c|c|c|c|}
+        \hline
+    & \multicolumn{2}{|c|}{\ncl pruning} & \multicolumn{2}{|c|}{no pruning} \\
+		\hline
+        $\alpha$ & Time & Avg Time & Time & Avg Time\\
+		\hline
+        0.01 & 1 & 2 & 3 & 4\\
+        \hline
+    \end{tabular}
+    \caption{Time for random walks as threshold $\alpha$ changes.}
+\end{figure}
+
+%% runtime comparison on SCOP dataset
+\begin{figure}[!h]
+\centering
+\label{tab:scop_algo_compare}
+\begin{tabular}{|c|c|c|}
+        \hline
+        Algorithm & Time & Avg Time \\
+		\hline
+        NL Pruning & 1 & 2 \\
+        no Pruning & 1 & 2 \\
+        gApprox & 1 & 2 \\
+        \hline
+    \end{tabular}
+    \caption{Comparing run times of different algorithms}.
+\end{figure}
+
+%% SCOP effect of minsup
+\begin{figure}[!h]
+\centering
+\label{tab:scop_minsup}
+\begin{tabular}{|c|c|c|c|}
+        \hline
+        minsup & \khop label & \ncl label & Verification \\
+		\hline
+        10 & 1 & 2 & 3 \\
+        20 & 1 & 2 & 3 \\
+        25 & 1 & 2 & 3 \\
+        40 & 1 & 2 & 3 \\
+        \hline
+    \end{tabular}
+    \caption{Time for different steps in the algorithm}
+\end{figure}
+
+%%  relative effectiveness of labels
+\begin{figure}[!h]
+\centering
+\label{tab:scop_label_eff}
+\begin{tabular}{|c|c|c|c|c|}
+    \hline
+    $\alpha$ & \khop label & \ncl label & Verification & Total \\
+    \hline
+    \multirow{2}{*}{$0.5$}
+  & $1$ & $2$ & $3$ & $4$ \\
+  \cline{2-5}
+               &10 & & 30 & $40$ \\
+    \hline
+    \multirow{2}{*}{$0.75$}
+  & $1$ & $2$ & $3$ & $4$ \\
+  \cline{2-5}
+               &$10$ & & $30$ & $40$ \\
+               \hline
+    \end{tabular}
+    \caption{Relative effectiveness of the labels}
+\end{figure}
+
+%% time for walks in ppi
+\begin{figure}[!h]
+\centering
+\label{tab:ppi}
+\begin{tabular}{|c|c|c|}
+        \hline
+        minsup & Time & Avg Time \\
+		\hline
+        20 & 2 & 3\\
+        15 & 2 & 3\\
+        10 & 2 & 3\\
+		\hline
+    \end{tabular}
+    \caption{Time for random walks in PPI Dataset}
+\end{figure}
