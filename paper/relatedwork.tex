@@ -1,4 +1,5 @@
 \section{Related Work} 
+\label{sec:relatedwork}
 
 In the past, many algorithms have been proposed to mine subgraphs from a
 given database of graphs. These algorithms can be mainly divided in to
@@ -28,7 +29,7 @@ algorithm to extract frequent patterns from dense graphs. It uses
 $GADDI$ index proposed in \cite{Gaddi2009} to efficiently extract the
 isomorphisms of a subgraph. 
 
-There has not been much work in approximate subgraph
+There been little work in approximate subgraph
 mining.  In \cite{gapprox}, they proposed $gApprox$ to mine approximate
 frequent subgraphs.  The degree of approximation between a pattern and its
 isomorphism includes label mismatches and missing edges. The search space
@@ -90,8 +91,8 @@ isomorphism \cite{zampelli} and computing graph kernels
 Our methods to prune representative sets are somewhat similar to
 the wiesfieler lehman kernel to test isomorphism between two graphs
 $G_1$ and $G_2$ \cite{weisfeiler}, where after every iteration the labels are
-sorted and renamed with a different string in such a way that the pair
-wise relationship is maintained. $G_1$ is not isomorphic to $G_2$ 
+sorted and renamed with a different string in such a way that the pairwise
+relationship is maintained. $G_1$ is not isomorphic to $G_2$ 
 if the label set of the graphs differ. The specifics of how and what
 information we update is different, and also we use the information for
 subgraph isomorphism instead of graph isomorphism.

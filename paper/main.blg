@@ -1,0 +1,65 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: main.aux
+The style file: abbrv.bst
+Database file #1: ./references/relevant.bib
+A bad cross reference---entry "RAM2008"
+refers to entry "DBLP:conf/ssdbm/2008", which doesn't exist
+A bad cross reference---entry "TALE"
+refers to entry "DBLP:conf/icde/2008", which doesn't exist
+A bad cross reference---entry "yan.icde:2006"
+refers to entry "DBLP:conf/icde/2006", which doesn't exist
+A bad cross reference---entry "shervashidzeNips"
+refers to entry "DBLP:conf/nips/2009", which doesn't exist
+Warning--I didn't find a database entry for "IWM03"
+Warning--I didn't find a database entry for "npcomplete"
+Warning--I didn't find a database entry for "HH92"
+Warning--I didn't find a database entry for "altschul90"
+Warning--I didn't find a database entry for "DBLP:conf/icde/2006"
+Warning--I didn't find a database entry for "DBLP:conf/icde/2008"
+Warning--I didn't find a database entry for "DBLP:conf/nips/2009"
+Warning--I didn't find a database entry for "DBLP:conf/ssdbm/2008"
+Warning--empty booktitle in SpeedUpFAS
+Warning--empty booktitle in ImageFAS
+Warning--there's a number but no volume in weisfeiler
+You've used 27 entries,
+            2118 wiz_defined-function locations,
+            688 strings with 8749 characters,
+and the built_in function-call counts, 10571 in all, are:
+= -- 1034
+> -- 490
+< -- 13
++ -- 194
+- -- 164
+* -- 729
+:= -- 1654
+add.period$ -- 87
+call.type$ -- 27
+change.case$ -- 163
+chr.to.int$ -- 0
+cite$ -- 30
+duplicate$ -- 435
+empty$ -- 854
+format.name$ -- 164
+if$ -- 2308
+int.to.chr$ -- 0
+int.to.str$ -- 27
+missing$ -- 26
+newline$ -- 137
+num.names$ -- 54
+pop$ -- 195
+preamble$ -- 1
+purify$ -- 136
+quote$ -- 0
+skip$ -- 326
+stack$ -- 0
+substring$ -- 638
+swap$ -- 138
+text.length$ -- 13
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 108
+warning$ -- 3
+while$ -- 92
+width$ -- 29
+write$ -- 302
+(There were 4 error messages)

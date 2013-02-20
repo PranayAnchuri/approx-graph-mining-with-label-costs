@@ -1,5 +1,6 @@
 % describe the other modules required for the mining process
 \section{Mining Algorithm}
+\label{sec:mining}
  The mining algorithm involves candidate generation, support computation in
  addition to finding the set of isomorphisms.  Representative sets of vertices
  described in the previous section are a compact view of all the isomorphisms of
@@ -49,7 +50,7 @@ compared to its sub graph.
 
 An anti-monotonic support function for a single graph is the maximum number of
 vertex disjoint isomorphisms. However, this requires computing the maximum
-independent set (MIS) of graph where each node represents an isomorphism.
+independent set (MIS) of graph where each vertex represents an isomorphism.
 This is called the MIS support of the pattern.
 Clearly, it is not feasible when the input graphs are large and patterns have
 large number of isomorphisms. An easy upper bound on the MIS support is the size

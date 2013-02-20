@@ -4,9 +4,10 @@ An undirected labeled graph \db is represented as a tuple $ \db =
 (\vg,\eg,L) $ where $\vg$ is the set of vertices, $\eg$ is the set of
 edges and $L\!\!: \vg \rightarrow \Sigma $ is a function that maps
 vertices to their labels.  The neighbors of a vertex $v$ are given as $
-N(v) = \{ u | (u,v) \in \vg \} $.  A
+N(v) = \{ u | (u,v) \in \eg \} $.  A
 {\em path} in a graph $\db$ is a sequence of vertices $v_0,\ldots,v_k$
-such that $v_i \in \vg$, $(v_i,v_{i+1}) \in \eg$ and $v_i \neq v_j$.
+such that $v_i \in \vg$, $(v_i,v_{i+1}) \in \eg$ and $v_i \neq v_j$ for
+$i \neq j$.
 We use $\kpath{u}{v}{k}$ if there is a $k$ edge path
 between $u$ and $v$.
 %It covers the vertices $\cup_{i=0}^{k} \{v_i\}$ and the edges $\cup_{i=0}^{k-1}
@@ -148,9 +149,29 @@ set for node $1 \in \vp$ is $R(1) = \{30, 40\}$. However, the
 support of $P$ is $sup(P) = 1$, since node $2 \in \vp$ has only one
 mapping in $G$, namely $R(2) = \{10\}$.
 
-\subsection{Outline}
-Motivate the reason for computing the representative set and outline
-the rest of the paper.
+%%%% Define a frequent pattern
+
+\subsection{Outline} The two main steps in approximate graph mining are
+candidate generation and support computation. With candidate generation the
+search space of the frequent patterns is explored. For each candidate that is
+generated, we can check whether it is frequent by computing its support.
+
+Given a pattern with $k$ vertices, the maximum number of possible isomorphisms
+are $k \times {|\vg| \choose k} $.  It is therefore infeasible to either
+enumerate or store the complete set of isomorphisms. Computing and storing the
+representative sets is a compromise that will enable us to decide efficiently if
+a candidate is frequent.
+
+
+The rest of the paper is structured as follows. In section
+\ref{sec:representative} we propose methods for computing the representative
+sets. In section, \ref{sec:mining} we describe how the idea of representative
+sets can be combined with different candidate generation and support computation
+mechanisms to yield mining algorithms with different properties. In section
+\ref{sec:results}, we present detailed experimental results to show that the
+proposed methods can be used to mine interesting and useful frequent patterns
+from three real world datasets.  We discuss the related work in section
+\ref{sec:relatedwork} and conclude in section \ref{sec:conclusions}
 
 
 %%%%%%%%% the definition of support is moved to a later section %%%%%%
