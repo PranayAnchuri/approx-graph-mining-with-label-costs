@@ -71,6 +71,28 @@ generation and support computation to produce different versions of the
 approximate graph mining algorithm even though the isomorphisms are stored as
 representatives.
 
+\subsection{Complexity}
+\medskip{\textit{Space Complexity} :} At given stage of the mining process,
+we need to store the candidate representative sets and the precomputed 
+\khop labels. For a pattern with $m$ vertices, the total amount of memory
+is O($m \times |\vg| + k_{max} \times ( |\Sigma| * |\vg|)$). The first term
+correponds to the representative sets and the second to the precomputed
+\khop labels. $k_{max}$ is the maximum value of $k$ for which we compute \khop
+labels.
+
+\medskip{\textit{Time Complexity} : } The cost of matching the \khop labels
+requires $|\khopl{k}{u}|$ augmentations in the flow network $F$ which is an
+upper bound on the min cost assuming the cost of each edge is at most one. Each
+augmentation involves cycle detection which takes O($|\Sigma|^3$) because the
+number of vertices in $F$ is O($|\Sigma|$).  The time for the bipartite matching
+in a graph is proportional to the number of vertices and the edges in it.
+Since, we try to match the neighbors of pattern and candidate vertex the number
+of vertices is bounded by the maximum degree $d_{max}$ of the pattern and
+candidate vertices. Therefore, the total time for each dominance check is
+O($|\khopl{k}{u}| \times |\Sigma|^3 + d_{max}^{3}$).  The number of dominance
+checks performed to per candidate are O($k_{max} \times n_g \times |\vg|$) where
+$n_g$ is the number of orbit groups in the pattern vertex. 
+
 %%%%%%%%%%%%%%%%%%%%%%%% Comment%%%%%%%%%%%%%%%%%%%%%%%%%%
 \if0
 To compute the support of an approximate pattern $P$ in a database \db,

@@ -330,8 +330,9 @@ L(u')$ where $v' \in h_k(u)$ and a vertex for each label $l_v = L(v')$ where $v'
 $l_u$ with a zero cost and a capacity equal to the multiplicity of the $l_u$
 i.e., the number of vertices in $h_k(u)$ that have the label $l_u$. Similarly
 there is a directed edge between $l_v$ and the sink node ($t$). In addition,
-there is a directed edge from $l_u$ to $l_v$ with a infinite capacity and a cost
-equal to $\matij{C}{l_u}{l_v}$. The cost between the \khop labels is equal to
+there is a directed edge from $l_u$ to $l_v$ with a cost
+equal to $\matij{C}{l_u}{l_v}$ and a capacity equal to the
+multiplicity of $l_u$. The cost between the \khop labels is equal to
 the minimum cost for maximum flow if the maximum flow is equal to
 $|\khopl{k}{u}|$ and $\infty$ otherwise.  \\ Figure~\ref{fig:Hflow} shows the
 flow network required to compute the minimum cost of matching the \khop labels
@@ -419,7 +420,6 @@ store in memory only the tuples $(m, l)$ where $m$ is the number of vertices $u'
 \in \khopl{k}{u}$, $L(u') = l$. The total amount of main memory required to store
 the precomputed \khop labels is O($|\vg| \times |\Sigma| \times k_max$).
 
-\subsection{Complexity} Memory and time complexity of the entire algorithm.
 
 
 
@@ -438,10 +438,10 @@ the precomputed \khop labels is O($|\vg| \times |\Sigma| \times k_max$).
         \arc{->}{src}{n1}{$1,0$}
         \arc{->}{src}{n2}{$1,0$}
         %\arc{->}{n1}{n4}{$1$}
-        \ncline{->}{n1}{n4}\ncput[npos=0.5]{\colorbox{gray!40}{$\infty,0.1$}}
-        \ncline{->}{n1}{n5}\ncput[npos=0.3]{\colorbox{gray!40}{$\infty,1$}}
-        \ncline{->}{n2}{n4}\ncput[npos=0.3]{\colorbox{gray!40}{$\infty,0.6$}}
-        \ncline{->}{n2}{n5}\ncput[npos=0.5]{\colorbox{gray!40}{$\infty.0.3$}}
+        \ncline{->}{n1}{n4}\ncput[npos=0.5]{\colorbox{gray!40}{$1,0.1$}}
+        \ncline{->}{n1}{n5}\ncput[npos=0.3]{\colorbox{gray!40}{$1,1$}}
+        \ncline{->}{n2}{n4}\ncput[npos=0.3]{\colorbox{gray!40}{$1,0.6$}}
+        \ncline{->}{n2}{n5}\ncput[npos=0.5]{\colorbox{gray!40}{$1,0.3$}}
         \arc{->}{n4}{sink}{$2,0$}
         \arc{->}{n5}{sink}{$1,0$}
         %\arc{->}{n6}{sink}{$1$}
