@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.12.9)  20 FEB 2013 04:30
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.12.9)  20 FEB 2013 13:57
 entering extended mode
  %&-line parsing enabled.
 **main.tex
@@ -885,7 +885,7 @@ Overfull \hbox (10.01591pt too wide) in paragraph at lines 52--56
 
 
 ]
-Overfull \hbox (8.7089pt too wide) in paragraph at lines 71--125
+Overfull \hbox (8.7089pt too wide) in paragraph at lines 74--128
 [][] 
  []
 
@@ -893,7 +893,7 @@ Overfull \hbox (8.7089pt too wide) in paragraph at lines 71--125
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Overfull \hbox (5.05078pt too wide) in paragraph at lines 133--151
+Overfull \hbox (5.05078pt too wide) in paragraph at lines 136--154
 \OML/cmm/m/it/9 C\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 L\OT1/cmr/m/n/9 (2)\OML/cmm/m/
 it/9 ; L\OT1/cmr/m/n/9 (10)) + \OML/cmm/m/it/9 C\OT1/cmr/m/n/9 (\OML/cmm/m/it/9
  L\OT1/cmr/m/n/9 (3)\OML/cmm/m/it/9 ; L\OT1/cmr/m/n/9 (60)) + \OML/cmm/m/it/9 C
@@ -905,7 +905,7 @@ m/n/9 (40)) = \OML/cmm/m/it/9 C\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 A; B\OT1/cmr/m/n
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 160.
+(amsmath)                 on input line 163.
 
 ) (./representative.tex [2]
 Underfull \hbox (badness 10000) in paragraph at lines 145--145
@@ -918,7 +918,7 @@ LaTeX Warning: Citation `npcomplete' on page \thepage  undefined on input line
 397.
 
 ) (./mining.tex [5]
-Overfull \hbox (4.47122pt too wide) in paragraph at lines 37--43
+Overfull \hbox (4.47122pt too wide) in paragraph at lines 47--53
 \T1/aer/m/n/9 the set of iso-mor-phisms of the pat-tern. The anti-monotonicity
  []
 
@@ -934,6 +934,10 @@ LaTeX Warning: Reference `tab:db' on page \thepage  undefined on input line 79.
 [6]
 File: ./vlfigures/ge.eps Graphic file (type eps)
  <./vlfigures/ge.eps>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
 Overfull \hbox (6.3265pt too wide) in paragraph at lines 252--253
  [][] 
  []
@@ -942,13 +946,12 @@ LaTeX Font Info:    Try loading font information for T1+aett on input line 276.
 
 (/usr/share/texmf-texlive/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
-)
+) [7]
 
 LaTeX Warning: Citation `HH92' on page \thepage  undefined on input line 301.
 
-[7]
 File: ./vlfigures/5F20P.eps Graphic file (type eps)
- <./vlfigures/5F20P.eps>
+<./vlfigures/5F20P.eps>
 File: ./vlfigures/runtime_compare.eps Graphic file (type eps)
  <./vlfigures/runtime_compare.eps>
 File: ./vlfigures/scop_minsup.eps Graphic file (type eps)
@@ -956,6 +959,9 @@ File: ./vlfigures/scop_minsup.eps Graphic file (type eps)
 <./vlfigures/scop_minsup.eps>
 File: ./vlfigures/scop_effectiveness.eps Graphic file (type eps)
  <./vlfigures/scop_effectiveness.eps>
+Underfull \vbox (badness 1043) has occurred while \output is active []
+
+ [8]
 File: ./figures/1ysw.pat.eps Graphic file (type eps)
 
 <./figures/1ysw.pat.eps>
@@ -965,7 +971,7 @@ File: ./figures/1ysw.eps Graphic file (type eps)
  <./figures/1ysw.eps>
 File: ./figures/1r2e.eps Graphic file (type eps)
 
-<./figures/1r2e.eps> [8]
+<./figures/1r2e.eps>
 Overfull \hbox (2.56609pt too wide) in paragraph at lines 440--440
 []\secfnt Protein-Protein In-ter-ac-tion Net-work (PPI) 
  []
@@ -980,22 +986,21 @@ LaTeX Warning: Citation `altschul90' on page \thepage  undefined on input line
 
 File: ./vlfigures/ppi.eps Graphic file (type eps)
 <./vlfigures/ppi.eps>
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 File: ./figures/ppipat2.eps Graphic file (type eps)
-<./figures/ppipat2.eps>
+ <./figures/ppipat2.eps>
 File: ./figures/ppipat1.eps Graphic file (type eps)
- <./figures/ppipat1.eps>) (./relatedwork.tex
+ <./figures/ppipat1.eps>)
+(./relatedwork.tex
 Overfull \hbox (14.12157pt too wide) in paragraph at lines 565--1
 \T1/aer/m/n/9 mined max-i-mal fre-quent ap-prox-i-mate pat-terns (us-ing $\OML/
 cmm/m/it/9 minsup \OT1/cmr/m/n/9 =
  []
 
-[9]) (./conclusions.tex
+[9]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [10]
+ [10])
+(./conclusions.tex
 Overfull \hbox (4.12904pt too wide) in paragraph at lines 5--8
 \T1/aer/m/n/9 fre-quent sub-graph pat-terns from a sin-gle large graph database
 
@@ -1015,10 +1020,10 @@ LaTeX Warning: There were undefined references.
 Here is how much of TeX's memory you used:
  18403 strings out of 495062
  346067 string characters out of 1182644
- 539760 words of memory out of 3000000
+ 539952 words of memory out of 3000000
  21117 multiletter control sequences out of 15000+50000
  51767 words of font info for 74 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  58i,13n,84p,450b,624s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on main.dvi (12 pages, 220088 bytes).
+Output written on main.dvi (12 pages, 221440 bytes).

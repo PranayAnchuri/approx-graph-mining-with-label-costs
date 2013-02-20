@@ -23,12 +23,22 @@ In our experiments we employed the random walk strategy proposed in
 \cite{2011-icdm} to mine exact patterns from a single large graph. Each random
 walk starts with an empty pattern and repeatedly adds new edges (to new
 vertices) or connects two existing vertices in the pattern to generate a new
-candidate.  For each candidate we decide,  if it is frequent according
-to the support function that we will describe in section~\ref{sec:support}. If the
-pattern is frequent we continue the walk by adding more edges. Otherwise, we
-delete the last edge added to the pattern and try a different extension if it
-exists. If no extension leads to a frequent pattern we terminate the current
-walk.  The algorithm terminates when $K$ walks have been done, or when $K$
+candidate. At any stage of the walk let $Q$ be the current frequent pattern.
+A candidate pattern $P$ is generated from $Q$ either by adding a new vertex 
+with label $l$ or by connecting two existing vertices $u, v \in V_Q$.
+For any vertex $u$, if $u \in V_P \cap V_Q$ then the candidate representative set 
+$R'(u)$ in $P$ is same as representative set $R(u)$ verified for $Q$. Otherwise
+$u \in V_P \setminus V_Q$ and the candidate representative set is $R'(u) = \{ v
+| v \in \vg, \matij{C}{L(u)}{L(v)} \leq \alpha \} $ i.e., we start with the
+current representatives if the vertex is already present otherwise it is the set
+of vertices in $\db$ whose label matching cost is within $\alpha$. Using the
+label pruning and verification mechanism we compute the representatives of $P$.
+Then we decide if the pattern is frequent using the support function that we
+will define in section~\ref{sec:support}. If the candidate pattern $P$ is
+frequent, then we continute the walk by extending $P$. Otherwise, we  try
+another extension from $Q$. If no extension of $Q$ leads to a frequent pattern
+then $Q$ is a maximal and we terminate the current random walk.
+The algorithm terminates when $K$ walks have been done, or when $K$
 distinct maximal approximate patterns have been output. But, if the application
 requires a complete set of maximal patterns an ordered exploration of the search
 space may be employed.
