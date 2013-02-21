@@ -22,7 +22,7 @@ $K=500$.
       %Synthetic & $2755$ & $5002$ & $60$ \\
 	  \hline
     \end{tabular}
-    \caption{Dataset Properties}
+    \caption{Dataset Properties. Preprocessing time is for computing the \khop labels of database vertices for $k \leq 6$.}
 	\label{tab:db}
 \end{table}
 \end{comment}
@@ -126,8 +126,8 @@ for $K=500$ random walks for different values of $minsup$ and $\alpha =
 0.5$. Somewhat counter-intuitively, the time
 increases for higher minimum support values.  This may be explained by
 the fact that the CMDB dataset contains many smaller subgraphs with
-low support (with few embeddings) and relatively fewer large subgraphs 
-with high support (with many embeddings).
+low support (with few isomorphims) and relatively fewer large subgraphs 
+with high support (with many isomorphisms).
 Thus, when we lower the minimum support, the random edge extensions
 converge to smaller maximal patterns, whereas for high minimum support,
 many of the random extensions are infrequent, forcing the method to go
@@ -371,6 +371,26 @@ the diagonal entries are $\matij{C}{i}{i} =0$.
 \label{tab:scop_algo_compare}
 \end{table}
 
+%% relative number of checks in scop dataset
+\begin{table}[!h]
+\centering
+\begin{tabular}{|c|c|c|c|}
+	\hline
+	minsup & neighbor checks & \khop checks & Verify checks \\
+	\hline
+	$10$ & $1$ & $1$ & $1$ \\ 
+	$20$ & $1.14$ & $1.41$ & $0.03$ \\
+	$25$ & $0.97$ & $1.42$ & $0.87$ \\
+	$40$ & $0.89$ & $2.13$ & $1.52$ \\
+	\hline
+	\end{tabular}
+	\caption{SCOP : Relative number of matching neighbors, \khop distance and verification computations performed
+	for different values of minsup.}
+	\label{tab:scop_relative}
+	\end{table}
+
+
+
 
 
 %\begin{figure}[!ht]
@@ -392,14 +412,14 @@ the diagonal entries are $\matij{C}{i}{i} =0$.
 %% SCOP effect of minsup
 \begin{table}[!h]
 \centering
-\begin{tabular}{|c|c|c|c|}
+\begin{tabular}{|c|c|c|c|c|}
         \hline
-        minsup & \khop label & \ncl label & Verification \\
+        minsup & \khop label & \ncl label & Verification & Total\\
 		\hline
-    $10$& $377.10$&$378.99$&$629.804$\\
-    $20$& $476.10$&$489.59$&$1188.25$\\
-    $25$& $462.52$&$513.25$&$1055.28$\\
-    $40$& $461.30$&$625.52$&$1148.42$\\
+    $10$& $377.10$&$378.99$&$629.804$ & $1796.61$ \\
+    $20$& $476.10$&$489.59$&$1188.25$ & $2689.54$\\
+    $25$& $462.52$&$513.25$&$1055.28$ & $2572.33$\\
+    $40$& $461.30$&$625.52$&$1148.42$ & $2818.81$\\
         \hline
     \end{tabular}
 	\caption{SCOP: Time for Different Steps vs.\  $minsup$}
@@ -423,7 +443,7 @@ $\matij{C}{i}{j} > \alpha$ $,\forall i \neq j$.
 
 Table \ref{tab:scop_algo_compare} compares the time taken to mine $500$
 maximal patterns from the SCOP dataset using the \ncl label algorithm
-and two other algorithms, with $minsup=15$ and $\alpha=0.7$.  The
+and two other algorithms, with $minsup=20$ and $\alpha=1.0$.  The
 \textit{no pruning} algorithm computes the representative sets from the
 candidate representative sets directly using the verification procedure
 described in section \ref{sec:verification}. The \textit{gApprox}
@@ -432,11 +452,11 @@ the course of enumerating a maximal pattern. It can be see
 that the run time for the \ncl based algorithm is significantly less
 as it prunes invalid
 candidates without performing an expensive verification procedure or
-storing an extensive number of isomorphisms.
+storing a large number of isomorphisms.
 
 
 Table \ref{tab:scop_minsup} shows the time taken for $K=500$ random walks
-for various values of $minsup$, with $\alpha = 0.7$. The
+for various values of $minsup$, with $\alpha = 1.0$. The
 table shows the time spent in \khop matching, \ncl matching
 and pattern verification steps. In general, the time
 increases as $minsup$ increases because the representative sets
@@ -572,6 +592,23 @@ set $\epsilon = 0.003$.
 \label{tab:ppi}
 \end{table}
 
+%% relative number of checks in ppi
+\begin{table}[!h]
+\centering
+\begin{tabular}{|c|c|c|}
+	\hline
+	minsup & neighbor checks & Verify checks \\
+	\hline
+	$3$ & $1$ & $1$ \\ 
+	$5$ & $0.61$ & $0.11$ \\
+	%$7$ & $0.56$ & $0.10$ \\
+	$10$ & $0.43$ & $0.08$ \\
+	\hline
+	\end{tabular}
+	\caption{PPI : Relative number of matching neighbors, and verification computations performed
+	for different values of minsup.}
+	\label{tab:ppi_relative}
+	\end{table}
 
 \smallskip\noindent{\textit{Results}:} Table \ref{tab:ppi} shows the
 time for $K=500$ random walks in the yeast PPI network for different

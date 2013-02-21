@@ -1,0 +1,148 @@
+\begin{thebibliography}{10}
+
+\bibitem{SpeedUpFAS}
+N.~Acosta-Mendoza, A.~G. Alonso, and J.~E. Medina-Pagola.
+\newblock On speeding up frequent approximate subgraph mining.
+\newblock In {\em LNCS Vol.\ 7441}, 2012.
+
+\bibitem{altschul90}
+S.~F. Altschul, W.~Gish, W.~Miller, E.~W. Myers, and D.~J. Lipman.
+\newblock A basic local alignment search tool.
+\newblock {\em Journal of Molecular Biology}, 215(3):403--10, 1990.
+
+\bibitem{2011-icdm}
+P.~Anchuri, M.~J. Zaki, O.~Barkol, R.~Bergman, Y.~Felder, S.~Golan, and
+  A.~Sityon.
+\newblock Infrastructure pattern discovery in configuration management
+  databases via large sparse graph mining.
+\newblock In {\em 11th IEEE International Conference on Data Mining}, December
+  2011.
+
+\bibitem{2012-kais}
+P.~Anchuri, M.~J. Zaki, O.~Barkol, R.~Bergman, Y.~Felder, S.~Golan, and
+  A.~Sityon.
+\newblock Graph mining for discovering infrastructure patterns in configuration
+  management databases.
+\newblock {\em Knowledge and Information Systems}, 33(3):491--522, Dec. 2012.
+
+\bibitem{BerettiIndexing}
+S.~Berretti, A.~Del~Bimbo, and E.~Vicario.
+\newblock Efficient matching and indexing of graph models in content-based
+  retrieval.
+\newblock {\em IEEE Trans. Pattern Anal. Mach. Intell.}, 23(10):1089--1105,
+  Oct. 2001.
+
+\bibitem{borgelt2002mmf}
+C.~Borgelt and M.~Berthold.
+\newblock {Mining molecular fragments: Finding relevant substructures of
+  molecules}.
+\newblock {\em ICDM Conference}, 2002.
+
+\bibitem{2008-origami:sadm}
+V.~Chaoji, M.~A. Hasan, S.~Salem, J.~Besson, and M.~J. Zaki.
+\newblock {ORIGAMI: A Novel and Effective Approach for Mining Representative
+  Orthogonal Graph Patterns}.
+\newblock {\em Statistical Analysis and Data Mining}, 1(2):67--84, June 2008.
+
+\bibitem{gapprox}
+C.~Chen, X.~Yan, F.~Zhu, and J.~Han.
+\newblock {gApprox}: Mining frequent approximate patterns from a massive
+  network.
+\newblock In {\em ICDM Conference}, 2007.
+
+\bibitem{chinesepostman}
+J.~Edmonds and E.~L. Johnson.
+\newblock Matching, euler tours and the chinese postman.
+\newblock {\em Mathematical programming}, 5(1):88--124, 1973.
+
+\bibitem{fiedler2007support}
+M.~Fiedler and C.~Borgelt.
+\newblock Support computation for mining frequent subgraphs in a single graph.
+\newblock In {\em 5th International Workshop on Mining and Learning with
+  Graphs}, 2007.
+
+\bibitem{RandomMatching}
+M.~Gori, M.~Maggini, and L.~Sarti.
+\newblock Exact and approximate graph matching using random walks.
+\newblock {\em IEEE Trans.\ on Pattern Analysis and Machine Intelligence},
+  27(7):1100--1111, july 2005.
+
+\bibitem{2009-graphsampling}
+M.~A. Hasan and M.~J. Zaki.
+\newblock Output space sampling for graph patterns.
+\newblock {\em Proceedings of the VLDB Endowment}, 2(1):730--741, 2009.
+
+\bibitem{HH92}
+S.~Henikoff and J.~Henikoff.
+\newblock Amino acid substitution matrices from protein blocks.
+\newblock {\em Proc. Natl. Acad. Sci. USA}, 89:10915--10919, 2002.
+
+\bibitem{HWP03}
+J.~Huan, W.~Wang, and J.~Prins.
+\newblock Efficient mining of frequent subgraphs in the presence of
+  isomorphism.
+\newblock In {\em ICDM Conference}, 2003.
+
+\bibitem{IWM03}
+A.~Inokuchi, T.~Washio, and H.~Motoda.
+\newblock Complete mining of frequent patterns from graphs: Mining graph data.
+\newblock {\em Machine Learning}, 50(3):321--354, 2003.
+
+\bibitem{JiaZH11}
+Y.~Jia, J.~Zhang, and J.~Huan.
+\newblock An efficient graph-mining method for complicated and noisy data with
+  real-world applications.
+\newblock {\em Knowl. Inf. Syst.}, 28(2):423--447, 2011.
+
+\bibitem{npcomplete}
+R.~Karp.
+\newblock Reducibility among combinatorial problems.
+\newblock In R.~Miller and J.~Thatcher, editors, {\em Complexity of Computer
+  Computations}, pages 85--103. Plenum Press, 1972.
+
+\bibitem{FSG01}
+M.~Kuramochi and G.~Karypis.
+\newblock Frequent subgraph discovery.
+\newblock In {\em ICDM Conference}, 2001.
+
+\bibitem{kuramochi2005ffp}
+M.~Kuramochi and G.~Karypis.
+\newblock {Finding Frequent Patterns in a Large Sparse Graph}.
+\newblock {\em Data Mining and Knowledge Discovery}, 11(3):243--271, 2005.
+
+\bibitem{li2010dessin}
+S.~Li, S.~Zhang, and J.~Yang.
+\newblock Dessin: mining dense subgraph patterns in a single graph.
+\newblock In {\em SSDBM Conference}, 2010.
+
+\bibitem{nauty}
+B.~D. McKay.
+\newblock Practical graph isomorphism.
+\newblock {\em Congressus Numerantium}, 30:45--87, 1981.
+
+\bibitem{TALE}
+Y.~Tian and J.~M. Patel.
+\newblock Tale: A tool for approximate large graph matching.
+\newblock In {\em ICDE Conference}, 2008.
+
+\bibitem{gSpan}
+X.~Yan and J.~Han.
+\newblock {gSpan}: Graph-based substructure pattern mining.
+\newblock In {\em ICDM Conference}, 2002.
+
+\bibitem{yan.icde:2006}
+X.~Yan, F.~Zhu, J.~Han, and P.~S. Yu.
+\newblock Searching substructures with superimposed distance.
+\newblock In {\em ICDE Conference}, 2006.
+
+\bibitem{Gaddi2009}
+S.~Zhang, S.~Li, and J.~Yang.
+\newblock Gaddi: distance index based subgraph matching in biological networks.
+\newblock In {\em EDBT Conference}, 2009.
+
+\bibitem{RAM2008}
+S.~Zhang and J.~Yang.
+\newblock Ram: Randomized approximate graph mining.
+\newblock In {\em SSDBM Conference}, 2008.
+
+\end{thebibliography}

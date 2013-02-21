@@ -14,7 +14,7 @@
 
 The search space of the frequent patterns forms a partial order.  It can be
 explored in a depth first or breadth first order but doing so requires computing
-canonical code to avoid duplicates. Since, the search space is exponential,
+canonical code to avoid the duplicates. Since, the search space is exponential,
 sampling methods have gained traction in recent
 times~\cite{2008-origami:sadm,2009-graphsampling} . 
 
@@ -62,18 +62,19 @@ An anti-monotonic support function for a single graph is the maximum number of
 vertex disjoint isomorphisms. However, this requires computing the maximum
 independent set (MIS) of graph where each vertex represents an isomorphism.
 This is called the MIS support of the pattern.
-Clearly, it is not feasible when the input graphs are large and patterns have
+Clearly, it is not feasible to compute the MIS support
+when the input graphs are large and patterns have
 large number of isomorphisms. An easy upper bound on the MIS support is the size
 of the smallest representative set of a vertex in the pattern.  Define the {\em
 support} of pattern $P$ in a database graph $G$ as $$sup(P) = \min_{u \in \vp}
 \{ |R(u)| \}$$ That is, the minimum cardinality over all representative sets of
 vertices in $P$.  The size of representative sets constructed from the disjoint
 isomorphisms is equal to the MIS support. Hence, $sup(P)$ is at least as large
-MIS support.  Other upper bounds for the MIS value have been proposed in gApprox
-and CMDB-Miner algorithms. The support function used in gApprox can be computed
+MIS support.  Other upper bounds for the MIS value have been proposed in gApprox \cite{gapprox}
+and CMDB-Miner \cite{2011-icdm} algorithms. The support function used in gApprox can be computed
 from the representative sets by enumerating the isomorphisms as described in the
 Section~\ref{sec:verification}.  The support function used by the CMDB-Miner
-algorithm can also be used by constructing an appropriate flow network on the
+algorithm can also be used by constructing the appropriate flow network on the
 representative sets.
 
 In conclusion, we can mix and match different techniques for candidate
@@ -82,7 +83,7 @@ approximate graph mining algorithm even though the isomorphisms are stored as
 representatives.
 
 \subsection{Complexity}
-\medskip{\textit{Space Complexity} :} At given stage of the mining process,
+\medskip{\textit{Space Complexity} :} At any given stage of the mining process,
 we need to store the candidate representative sets and the precomputed 
 \khop labels. For a pattern with $m$ vertices, the total amount of memory
 is O($m \times |\vg| + k_{max} \times ( |\Sigma| * |\vg|)$). The first term
@@ -91,12 +92,12 @@ correponds to the representative sets and the second to the precomputed
 labels.
 
 \medskip{\textit{Time Complexity} : } The cost of matching the \khop labels
-requires $|\khopl{k}{u}|$ augmentations in the flow network $F$ which is an
-upper bound on the min cost assuming the cost of each edge is at most one. Each
+requires atmost $|\khopl{k}{u}|$ augmentations in the flow network $F$ which is an
+upper bound on the min cost assuming the cost on each edge is at most one. Each
 augmentation involves cycle detection which takes O($|\Sigma|^3$) because the
 number of vertices in $F$ is O($|\Sigma|$).  The time for the bipartite matching
 in a graph is proportional to the number of vertices and the edges in it.
-Since, we try to match the neighbors of pattern and candidate vertex the number
+Since, we try to match the neighbors of pattern and candidate vertex,  the number
 of vertices is bounded by the maximum degree $d_{max}$ of the pattern and
 candidate vertices. Therefore, the total time for each dominance check is
 O($|\khopl{k}{u}| \times |\Sigma|^3 + d_{max}^{3}$).  The number of dominance
