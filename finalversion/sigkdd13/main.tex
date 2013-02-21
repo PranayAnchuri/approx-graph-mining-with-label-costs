@@ -1,0 +1,40 @@
+\documentclass{sig-alternate}
+
+\input{header.tex}
+\begin{document}
+
+\title{\Large Approximate Graph Mining with Label
+Costs~\titlenote{This work was supported in part by an HP
+Innovation Award and NSF Award CCF-1240646.}}
+
+\numberofauthors{2} 
+\author{
+\alignauthor
+Pranay Anchuri, Mohammed J. Zaki\\
+\affaddr{CS Department, RPI, Troy NY, USA}\\
+\email{ \{anchupa,zaki\}@cs.rpi.edu }
+\and
+\alignauthor
+Omer Barkol, Shahar Golan, Moshe Shamy\\
+\affaddr{HP Labs, Haifa, Israel}\\
+\email{\{omer.barkol, shahar.golan, moshe.shamy\}@hp.com}
+}
+\maketitle
+
+\setstretch{0.9}
+\input{abstract.tex}
+\input{introduction.tex}
+\input{preliminaries.tex}
+% section on derived labels
+\input{representative.tex}
+% section on cand generation, support etd
+\input{mining.tex}
+\input{results.tex}
+\input{relatedwork.tex}
+\input{conclusions.tex}
+
+\small
+\bibliographystyle{abbrv}
+\bibliography{./references/relevant}  % sigproc.bib is the name of the Bibliography in this case
+
+\end{document}

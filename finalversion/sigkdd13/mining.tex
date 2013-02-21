@@ -1,0 +1,135 @@
+% describe the other modules required for the mining process
+\section{Mining Algorithm}
+\label{sec:mining}
+ The mining algorithm involves candidate generation, support computation in
+ addition to finding the set of isomorphisms.  Representative sets of vertices
+ described in the previous section are a compact view of all the isomorphisms of
+ the pattern in the input graph. In this section, we will show how the
+ representative sets can be used in conjunction with different candidate
+ generation and support computation techniques to yield approximate graph mining
+ algorithm with different properties.
+
+
+\subsection{Candidate Generation} 
+
+The search space of the frequent patterns forms a partial order.  It can be
+explored in a depth first or breadth first order but doing so requires computing
+canonical code to avoid duplicates. Since, the search space is exponential,
+sampling methods have gained traction in recent
+times~\cite{2008-origami:sadm,2009-graphsampling} . 
+
+
+In our experiments we employed the random walk strategy proposed in
+\cite{2012-kais} to mine exact patterns from a single large graph. Each random
+walk starts with an empty pattern and repeatedly adds new edges (to new
+vertices) or connects two existing vertices in the pattern to generate a new
+candidate. At any stage of the walk let $Q$ be the current frequent pattern.  A
+candidate pattern $P$ is generated from $Q$ either by adding a new vertex with
+label $l$ or by connecting two existing vertices $u, v \in V_Q$.  For any vertex
+$u$, if $u \in V_P \cap V_Q$ then the candidate representative set $R'(u)$ in
+$P$ is same as representative set $R(u)$ verified for $Q$. Otherwise $u \in V_P
+\setminus V_Q$ and the candidate representative set is $R'(u) = \{ v | v \in
+\vg, \matij{C}{L(u)}{L(v)} \leq \alpha \} $ i.e., we start with the current
+representatives if the vertex is already present otherwise it is the set of
+vertices in $\db$ whose label matching cost is within $\alpha$. Using the label
+pruning and verification mechanism we compute the representatives of $P$.  Then
+we decide if the pattern is frequent using the support function that we will
+define in section~\ref{sec:support}. If the candidate pattern $P$ is frequent,
+then we continute the walk by extending $P$. Otherwise, we  try another
+extension from $Q$. If no extension of $Q$ leads to a frequent pattern then $Q$
+is a maximal and we terminate the current random walk.  The algorithm terminates
+when $K$ walks have been done, or when $K$ distinct maximal approximate patterns
+have been output. But, if the application requires a complete set of maximal
+patterns an ordered exploration of the search space may be employed.
+
+
+
+\subsection{Support Computation} \label{sec:support} The support of a pattern is
+an anti-monotonic function on the set of isomorphisms of the pattern. The
+anti-monotonicity means that the support of a pattern cannot be greater than the
+support of any of its subgraph. Therefore, if a candidate pattern is found to be
+infrequent we can prune the entire sub tree under it from the search space.
+This helps in pruning the otherwise exponential search space. 
+
+When mining from a database of graphs, a function as simple as the total number
+of graphs having at least one isomorphism is anti-monotonic. This approach cannot
+be used when mining from a single graph as it leads to a binary support function
+which is not very informative. On the other hand, counting the number of
+isomorphisms is not anti-monotonic because a graph can have more isomorphisms
+compared to its sub graph.
+
+An anti-monotonic support function for a single graph is the maximum number of
+vertex disjoint isomorphisms. However, this requires computing the maximum
+independent set (MIS) of graph where each vertex represents an isomorphism.
+This is called the MIS support of the pattern.
+Clearly, it is not feasible when the input graphs are large and patterns have
+large number of isomorphisms. An easy upper bound on the MIS support is the size
+of the smallest representative set of a vertex in the pattern.  Define the {\em
+support} of pattern $P$ in a database graph $G$ as $$sup(P) = \min_{u \in \vp}
+\{ |R(u)| \}$$ That is, the minimum cardinality over all representative sets of
+vertices in $P$.  The size of representative sets constructed from the disjoint
+isomorphisms is equal to the MIS support. Hence, $sup(P)$ is at least as large
+MIS support.  Other upper bounds for the MIS value have been proposed in gApprox
+and CMDB-Miner algorithms. The support function used in gApprox can be computed
+from the representative sets by enumerating the isomorphisms as described in the
+Section~\ref{sec:verification}.  The support function used by the CMDB-Miner
+algorithm can also be used by constructing an appropriate flow network on the
+representative sets.
+
+In conclusion, we can mix and match different techniques for candidate
+generation and support computation to produce different versions of the
+approximate graph mining algorithm even though the isomorphisms are stored as
+representatives.
+
+\subsection{Complexity}
+\medskip{\textit{Space Complexity} :} At given stage of the mining process,
+we need to store the candidate representative sets and the precomputed 
+\khop labels. For a pattern with $m$ vertices, the total amount of memory
+is O($m \times |\vg| + k_{max} \times ( |\Sigma| * |\vg|)$). The first term
+correponds to the representative sets and the second to the precomputed
+\khop labels. $k_{max}$ is the maximum value of $k$ for which we compute \khop
+labels.
+
+\medskip{\textit{Time Complexity} : } The cost of matching the \khop labels
+requires $|\khopl{k}{u}|$ augmentations in the flow network $F$ which is an
+upper bound on the min cost assuming the cost of each edge is at most one. Each
+augmentation involves cycle detection which takes O($|\Sigma|^3$) because the
+number of vertices in $F$ is O($|\Sigma|$).  The time for the bipartite matching
+in a graph is proportional to the number of vertices and the edges in it.
+Since, we try to match the neighbors of pattern and candidate vertex the number
+of vertices is bounded by the maximum degree $d_{max}$ of the pattern and
+candidate vertices. Therefore, the total time for each dominance check is
+O($|\khopl{k}{u}| \times |\Sigma|^3 + d_{max}^{3}$).  The number of dominance
+checks performed to per candidate are O($k_{max} \times n_g \times |\vg|$) where
+$n_g$ is the number of orbit groups in the pattern vertex. 
+
+%%%%%%%%%%%%%%%%%%%%%%%% Comment%%%%%%%%%%%%%%%%%%%%%%%%%%
+\if0
+To compute the support of an approximate pattern $P$ in a database \db,
+existing algorithms (e.g., gApprox~\cite{gapprox}) maintain the list of
+all approximate isomorphisms of $P$, and then for each extension they
+check which of the existing isomorphisms can be extended. However, such an
+approach is inherently inefficient, since the number of isomorphisms can
+be exponentially large~\cite{2012-kais}.  Thus, any approach that
+enumerates all the approximate isomorphisms scales very poorly as the size
+of the database graph increases, and is also highly dependent on the
+multiplicity of the labels (i.e., the number of neighbors with the same
+label) for nodes in the database.
+
+Our approach is entirely different. Instead of storing all isomorphisms
+for a pattern, we keep track of only the representative set for each
+node in the pattern.  Since the support of a pattern is bounded above by
+$N=|\vg|$ (which follows immediately from the fact that $R(u) \subseteq
+\vg$ for any $u \in \vp$), the total size of the representative set of a
+candidate cannot exceed $|\vp| \times N$ (practically, it will be much
+smaller).  Let $P'$ be an extension of a pattern $P$ obtained by adding
+one more edge. Let $R(u)$ be the representative set for a node $u$ in
+$P$, and let $R'(u)$ be the representative set for the same node in the
+extension $P'$. It is clear that $R'(u) \subseteq R(u) \subseteq \vg$.
+So our method tries to prune vertices from the new candidate
+representative set $R'(u)$. 
+Furthermore, we can also obtain an upper
+bound on the support of $P'$, since $sup(P') \le \min_{u \in V_{P'}}
+\{|R'(u)|\}$. Thus, if the upper bound itself is not frequent, we can
+also prune the pattern search space.
+\fi

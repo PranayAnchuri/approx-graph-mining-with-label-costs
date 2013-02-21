@@ -1,0 +1,102 @@
+% describe the other modules required for the mining process
+\section{Mining Algorithm}
+ The mining algorithm involves candidate generation, support computation
+ in addition to finding the set of approximate subgraph isomorphisms.
+ Representative sets of vertices described in the previous section are a view
+ of all the isomorphisms of the pattern in the input graph. In this section,
+ we will show how the representative sets can be used in conjunction
+ with different candidate generation and support computation techniques
+ to yield approximate graph mining with different properties.
+
+
+\subsection{Candidate Generation} 
+
+The search space of the frequent patterns forms a partial order.  It can be
+explored in a depth first or breadth first order but doing so requires computing
+canonical code to avoid duplicates. Since, the search space is exponential,
+sampling methods have gained traction in recent
+times~\cite{2008-origami:sadm,2009-graphsampling} . 
+
+
+In our experiments we employed the random walk strategy proposed in
+\cite{2011-icdm} to mine exact patterns from a single large graph. Each random
+walk starts with an empty pattern and repeatedly adds new edges (to new
+vertices) or connects two existing vertices in the pattern to generate a new
+candidate.  For each candidate pattern we decide,  if it is frequent according
+to the support function that we describe in section~\ref{sec:support}. If the
+pattern is frequent we continue the walk by adding more edges. Otherwise, we
+delete the last edge added to the pattern and try a different extension if it
+exists. If no extension leads to a frequent pattern we terminate the current walk.  The
+algorithm terminates when $K$ walks have been done, or when $K$ distinct maximal
+approximate patterns have been output. But, if the application requires a
+complete set of maximal patterns an ordered exploration of the search space may
+be employed.
+
+
+\subsection{Support Computation} \label{sec:support} The support of a pattern is
+an anti-monotonic function on the set of isomorphims of the pattern. The
+anti-monotonicity means that the support of a pattern cannot be greater than the
+support of any of its subgraph. Therefore, if a candidate pattern is found to be
+infrequent we can prune the entire sub tree under it from the search space.
+This helps in pruning the otherwise exponential search space. 
+
+When mining from a database of graphs, a function as simple as the total number
+of graphs having atleast one isomorphism is anti-monotonic. This approach cannot
+be used when mining from a single graph as it leads to a binary support function
+which is not very informative. On the other hand, counting the number of
+isomorphisms is not anti-monotonic because a graph can have more isomorphisms
+compared to its sub graph.
+
+An anti-monotonic support function for a single graph is the maximum number of
+vertex disjoint isomorphisms. However, this requires computing the maximum
+independent set (MIS) of graph where each node represents an isomorphism.
+This is called the MIS support of the pattern.
+Clearly, it is not feasible when the input graphs are large and patterns have
+large number of isomorphims. An easy upper bound on the MIS support is the size
+of the smallest representative set of a vertex in the pattern.  Define the {\em
+support} of pattern $P$ in a database graph $G$ as $$sup(P) = \min_{u \in \vp}
+\{ |R(u)| \}$$ That is, the minimum cardinality over all representative sets of
+vertices in $P$.  The size of representative sets constructed from the disjoint
+isomorphisms is equal to the MIS support. Hence, $sup(P)$ is atleast as large
+MIS support.  Other upper bounds for the MIS value have been proposed in gApprox
+and CMDB-Miner algorithms. The support function used in gApprox can be computed
+from the representative sets by enumerating the isomorphims as described in the
+Section~\ref{sec:verification}.  The support function used by the CMDB-Miner
+algorithm can also be used by constructing an appropriate flow network on the
+representative sets.
+
+In conclusion, we can mix and match different techniques for candidate
+generation and support computation to produce different versions of the
+approximate graph mining algorithm even though the isomorphisms are stored as
+representatives.
+
+%%%%%%%%%%%%%%%%%%%%%%%% Comment%%%%%%%%%%%%%%%%%%%%%%%%%%
+\if0
+To compute the support of an approximate pattern $P$ in a database \db,
+existing algorithms (e.g., gApprox~\cite{gapprox}) maintain the list of
+all approximate isomorphisms of $P$, and then for each extension they
+check which of the existing isomorphisms can be extended. However, such an
+approach is inherently inefficient, since the number of isomorphisms can
+be exponentially large~\cite{2011-icdm}.  Thus, any approach that
+enumerates all the approximate isomorphisms scales very poorly as the size
+of the database graph increases, and is also highly dependent on the
+multiplicity of the labels (i.e., the number of neighbors with the same
+label) for nodes in the database.
+
+Our approach is entirely different. Instead of storing all isomorphisms
+for a pattern, we keep track of only the representative set for each
+node in the pattern.  Since the support of a pattern is bounded above by
+$N=|\vg|$ (which follows immediately from the fact that $R(u) \subseteq
+\vg$ for any $u \in \vp$), the total size of the representative set of a
+candidate cannot exceed $|\vp| \times N$ (practically, it will be much
+smaller).  Let $P'$ be an extension of a pattern $P$ obtained by adding
+one more edge. Let $R(u)$ be the representative set for a node $u$ in
+$P$, and let $R'(u)$ be the representative set for the same node in the
+extension $P'$. It is clear that $R'(u) \subseteq R(u) \subseteq \vg$.
+So our method tries to prune vertices from the new candidate
+representative set $R'(u)$. 
+Furthermore, we can also obtain an upper
+bound on the support of $P'$, since $sup(P') \le \min_{u \in V_{P'}}
+\{|R'(u)|\}$. Thus, if the upper bound itself is not frequent, we can
+also prune the pattern search space.
+\fi

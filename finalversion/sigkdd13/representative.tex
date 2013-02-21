@@ -1,0 +1,452 @@
+%s How the representative set is computed; pruning strategies and verification
+%step goes here.
+
+\section{Computing Representative Sets} 
+\label{sec:representative}
+Representative vertex $v$ of a pattern
+vertex $u$ implies that there exists an isomorphism $\phi$ for which $\phi(u) =
+v$.  One way to interpret it is that the neighborhood of $u$ matches with that
+of $v$.  By comparing the neighborhoods we can find vertices that are not valid
+representatives of $u$ without trying to find an isomorphism exhaustively.
+Therefore, to compute the representative sets we will start with a candidate
+representative set denoted by \CR  and iteratively prune some of the vertices if
+the neighborhoods cannot be matched.  The candidate set is a super set of the
+representative set, $\CR \supseteq \RS$.  An example of candidate set, $ \CR =
+\{v| v \in \vg, \matij{C}{L(u)}{L(v)} \leq \alpha \}$ i.e., the isomorphisms of
+the single vertex pattern with label $L(u)$.  In this section, we will describe
+different notions of neighborhood and show how they help us in computing the
+representative sets of vertices in a pattern.
+
+The problem of checking whether a vertex $v \in R(u)$ involves solving
+isomorphism which is a NP complete problem. The pruning methods typically do not
+prune all the invalid vertices.  So, we use an exhaustive enumeration method to
+prune these invalid vertices and reduce \CR to \RS.
+
+ \subsection{\khop Label}
+ %Neighbors of a vertex in a graph denotes the set of vertices that are
+ %reachable via a single edge. 
+ \khop label is defined as the set of vertices that are reachable via a simple
+ path of length $k$.  In other words, k-hop label contains all vertices that are
+ reachable in k-hops starting from $u$ and by visiting each vertex at most once.
+ Note that, we use the word label even though we refer to a set of vertices.
+ Formally, the \khop label of a vertex $u$ in graph $G$, $\khopl{k}{u,G} = \{v |
+ v \in G, \kpath{u}{v}{k}\}$.  We simply write it as $\khopl{k}{u}$ when the
+ graph is evident from the context.  For example, for pattern $P$ in
+ Fig.~\ref{subfig:pattern}, the $0$-hop label of vertex $5$ is $h_0(5) = \{5\}$,
+ its $1$-hop label is the multiset $h_1(5) = 2, 4, 6$ (we omit the set notation
+ for convenience) and its $2$-hop label $h_2(5) = 1, 3$. The minimum cost of
+ matching \khop labels $\khopl{k}{u}$ and $\khopl{k}{v}$ is 
+
+ \begin{equation} \label{eq:khop} \khopcost{k}{u}{v} =
+     \text{min}\displaystyle\sum_{u' \in \khopl{k}{u}}
+     \matij{C}{L(u')}{L(f(u'))} \end{equation}
+
+ where the minimization is over all injective functions $f\!\!:\khopl{k}{u}
+ \rightarrow \khopl{k}{v}$ and $\matij{C}{L(u')}{L(f(u'))}$ is the cost of
+ matching the vertex labels.  In other words, it is the minimum total cost of
+ matching the vertices present in the k-hop labels.  The following theorem
+ places a upper bound on the minimum cost of matching the k-hop labels of
+ pattern vertex and any of its representative vertices.
+
+
+\begin{thm} Given any pattern vertex $u$, a representative vertex $v \in R(u)$
+    and cost threshold $\alpha$, the minimum cost of matching the \khop labels,
+    $\khopcost{k}{u}{v} \leq \alpha$ for all $k \geq 0$.
+
+\begin{myproof} Consider any isomorphism $\phi$ such that $\phi(u) = v$. It is
+    enough if we can show an injective function $f\!\!:\khopl{k}{u} \rightarrow
+    \khopl{k}{v}$ with a cost ( as defined in equation \ref{eq:khop}) $\leq
+    \alpha$. We will argue that the function $\phi$ on the restricted domain
+    $\khopl{k}{u}$ is one such function $f$.  First, we know that
+    $\sum\matij{C}{L(u)}{\phi(L(u)} \leq \alpha$, $u \in \vp$, since $\phi$ is
+    an isomorphism. Second, let $\kpath{u}{u'}{k}$ then $\phi(u') \in
+    \khopl{k}{v}$ because for every edge $(u_1, u_2)$ on a path between $u$ and
+    $u'$ in $\pat$, $(\phi(u_1),\phi(u_2)) \in \eg$.  Therefore the minimum cost
+    of matching the \khop labels is upper bounded by $\alpha$.  \end{myproof}
+    \label{thm:khop} \end{thm}
+
+Based on the above theorem, a vertex $v$ is not a representative vertex of $u$
+if $\khopcost{k}{u}{v} > \alpha$ for any $k \geq 0$. However, in practice, it
+enough to check the condition only for $k \leq |V_P|-1$ because $\khopl{k}{u}$
+is the null set $\forall k \geq |V_P|$ and the condition is trivially satisfied.
+
+Figure~\ref{fig:ncexample} shows an example for the \khop label based pruning of
+the candidate representative set where the threshold $\alpha = 0.5$. Consider
+vertex $2 \in \vp$ and vertex $20 \in \vg$, we have, $\khopcost{0}{2}{20} = 0$,
+since the cost of matching vertex labels $\matij{C}{L(2)}{L(20)} = 0$ , as per
+the label matching matrix $C$ in Fig.~\ref{subfig:match}. The \khop labels for
+$k=1,2,3$ and the minimum of cost matching them are as shown in the table
+\ref{tab:khop220}, and it can be verified that the minimum cost is within the
+threshold $\alpha$.
+
+Thus far, we cannot prune node $20$ from $R'(2)$.  However, $\khopl{4}{2} = 4, 5
+$ and $\khopl{4}{20} = 30, 60$ and the minimum cost of matching them is $0.6 >
+\alpha$.  Thus, we conclude that $20 \notin R'(2)$. This example illustrates
+that \khop labels can help prune the candidate representative sets.
+
+
+% Example for showing the incremental updates of the labels
+\begin{figure}[!ht]
+\captionsetup[subfloat]{captionskip=15pt}
+  \centering
+  \subfloat[Pattern $P$]{
+    \label{subfig:pattern}
+	\scalebox{0.9}{
+    % # 3 vertices and 2 edge pattern
+    \begin{pspicture}(0,0)(4,3)
+    \cnodeput[linecolor=black](0,2) {n1} {A}
+    \cnodeput[linecolor=black](0,1) {n2} {C}
+    \cnodeput[linecolor=black](1,0) {n3} {B}
+    \cnodeput[linecolor=black](2,2) {n4} {C}
+    \cnodeput[linecolor=black](2,1) {n5} {A}
+    \cnodeput[linecolor=black](2,0) {n6} {D}
+    %% Draw the edges of the pattern
+  \ncline{-}{n1}{n2}
+  \ncline{-}{n2}{n3}
+  \ncline{-}{n3}{n4}
+  \ncline{-}{n2}{n5}
+  \ncline{-}{n4}{n5}
+  \ncline{-}{n5}{n6}
+  \ncline{-}{n3}{n6}
+    \uput{.3cm}[90](n1){ {1} }
+    \uput{.3cm}[180](n2){ {2} }
+    \uput{.3cm}[270](n3){ {3} }
+    \uput{.3cm}[90](n4){ {4} }
+    \uput{.3cm}[0](n5){ {5} }
+    \uput{.3cm}[270](n6){ {6} }
+    \end{pspicture}
+	} }
+  \subfloat[Database Graph $G$]{
+    \label{subfig:database}
+	\scalebox{0.9}{
+    \begin{pspicture}(0,0)(2.5,2.5)
+    \cnodeput[linecolor=black](0,2) {N1} {A}
+    \cnodeput[linecolor=black](0,1) {N2} {C}
+    \cnodeput[linecolor=black](0,0) {N3} {D}
+    \cnodeput[linecolor=black](1,2) {N4} {B}
+    \cnodeput[linecolor=black](2.25,1) {N5} {B}
+    \cnodeput[linecolor=black](2,0) {N6} {A}
+    % vertex ids
+    \uput{.3cm}[90](N1){ {10} }
+    \uput{.3cm}[180](N2){ {20} }
+    \uput{.3cm}[270](N3){ {30} }
+    \uput{.3cm}[90](N4){ {40} }
+    \uput{.3cm}[0](N5){ {50} }
+    \uput{.3cm}[270](N6){ {60} }
+    % edges in the database
+  \ncline{-}{N1}{N2}
+  \ncline{-}{N2}{N3}
+  \ncline{-}{N4}{N5}
+  \ncline{-}{N5}{N6}
+  \ncline{-}{N3}{N4}
+  \ncline{-}{N2}{N5}
+  \ncline{-}{N2}{N6}
+    \end{pspicture}
+	} }
+  \newline
+\captionsetup[subfloat]{captionskip=5pt}
+\subfloat[Cost Matrix]{
+  \label{subfig:match}
+  % Table for the search space pruning
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    $C$ & A &  B & C & D \\
+    \hline
+    A & 0 & 0.7 & 0.6 & 0.1\\
+    \hline
+    B & 0.7 & 0 & 0.3 & 1\\
+    \hline
+    C & 0.6 & 0.3 & 0 & 0.8\\
+    \hline
+    D & 0.1 & 1 & 0.8 & 0\\
+    \hline
+  \end{tabular}
+  } 
+  \caption{Pattern \protect\subref{subfig:pattern}, 
+  database graph \protect\subref{subfig:database}, and cost
+  matrix \protect\subref{subfig:match}.
+  } 
+  \label{fig:ncexample}
+\end{figure}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        k & $\khopl{k}{2}$ & $\khopl{k}{20}$ & $\khopcost{k}{2}{20}$\\
+        \hline
+        1 & 1, 3, 5 & 10, 30, 50, 60 & 0 \\
+        2 & 4, 6 & 40, 50, 60 & 0.4 \\
+        3 & 3, 5 & 40, 30, 50 & 0.1\\
+        \hline
+    \end{tabular}
+    \caption{\khop label of vertices $2$ and $20$}
+    \label{tab:khop220}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        k & $h_k(3)$ & $h_k(50)$ & $\khopcost{k}{3}{50}$ \\
+        \hline
+        0 & 3 & 50 & $0$\\
+        1 & 2, 4, 6 & 20, 40, 60 & $0.4$ \\
+        2 & 1, 5 & 10, 20 , 30, 60 & 0\\
+        3 & 2, 4, 5 & 10, 20, 30, 40 & $0.3$ \\
+        4 & $1$ & $10, 40, 60$ & $0$ \\
+        \hline
+    \end{tabular}
+    \caption{\khop labels of vertices $3$ and $50$.}
+    \label{tab:khop350}
+\end{table}
+
+
+
+\subsection{Neighbor Concatenated Label} In Neighbor concatenated label (\ncl) ,
+the information regarding the candidates of a neighbor that were pruned in the
+previous iteration is used along with the current \khop label to prune
+candidates in the current iteration. In contrast, the \khop label pruning
+strategy for a vertex $u$ works independently of the result of \khop label
+pruning of other vertices in the pattern. This leads us to the following
+recursive formulation for \ncl.
+
+The \ncl of a vertex in the ${k+1}^{th}$ iteration, $\nclab{k+1}{u}$, is defined
+as the tuple $(\{\nclab{k}{u'} | u' \in N(u)\},\xspace \khopl{k+1}{u})$.  The
+first element(A) of the tuple is the \ncl of the neighbors of the vertex $u$ in
+the previous iteration and the second element(B) is exactly same as the \khop
+label defined in the previous section. We say that $\nclab{k+1}{v}$ dominates
+$\nclab{k+1}{u}$, denoted by $\nclab{k+1}{u} = (A, B) \preceq \nclab{k+1}{v} =
+(A', B') $, i) iff $\khopcost{k+1}{B}{B'} \leq \alpha$ i.e., the minimum cost of
+matching the \khop labels is within $\alpha$ ii) there exits an injective
+function $g\!\!:A\rightarrow A'$ such that $a \preceq g(a)$ for all $a \in A$
+i.e., there is a one to one mapping between the \ncl labels (in the previous
+iteration, $k$) of neighbors of $u$ and $v$.  The base case $\nclab{0}{u}
+\preceq \nclab{0}{v}$ iff $\matij{C}{L(u)}{L(v)} \leq \alpha$. For example, in
+Fig~\ref{fig:ncexample} $\nclab{1}{2} \preceq \nclab{1}{20}$ because
+$\khopcost{1}{2}{20} \leq \alpha$ and the \ncl labels of vertices $1, 3, 5$ are
+dominated by the \ncl labels of vertices $10, 50, 30$ respectively.  The
+following theorem states that the \ncl of a pattern vertex $u$ is dominated by
+the \ncl of any of its representative vertex $v \in  R(u)$.
+
+\begin{thm} Given any pattern vertex $u$, a representative vertex $v \in R(u)$
+    and cost threshold $\alpha$, $\nclab{k}{u} \preceq \nclab{k}{v}$ for all $k
+    \geq 0$.  \begin{myproof} Let $\phi$ be any isomorphism such that $\phi(u) =
+        v$.  We prove the theorem by using induction on $k$.\\ \textbf{Base
+        case:} $\nclab{0}{u} \preceq \nclab{0}{v} \iff \matij{C}{L(u)}{L(v)}
+        \leq \alpha$ is true because $v \in R(u)$. \\ \textbf{Inductive
+        Hypothesis:} Assume that $\nclab{k}{u} \preceq \nclab{k}{v}$ holds true
+        for all $u \in \pat$ and $v \in R(u)$. \\ Now consider $\nclab{k+1}{u} =
+        (A, B)$  and $ \nclab{k+1}{v} = (A', B') $, from theorem \ref{thm:khop}
+        we know that $\khopcost{k+1}{B}{B'} \leq \alpha$, for all $k \geq 0$.
+        Let $u'$ be a neighbor of $u$ and let $v' \in \phi(u')$ , then from the
+        inductive hypothesis $\nclab{k}{u'} \preceq \nclab{k}{v'}$.  Therefore,
+        the injective function $\phi$ maps the elements $a \in A$ to $\phi(a)
+        \in A'$.  The theorem follows from the definition of the NL label.
+    \end{myproof} \label{thm:ncl} \end{thm}
+
+Based on the above theorem, a vertex $v$ can be pruned from \CR if $\nclab{k}{u}
+\not\preceq \nclab{k}{v}$ for some $k \geq 0$. In Fig~\ref{fig:ncexample} ,
+consider the vertices $3 \in \pat$ , $50 \in \db$ and let $\alpha = 0.5$. The
+\ncl labels, $\nclab{0}{3} \preceq \nclab{0}{50}$ as $\matij{C}{B}{B} = 0 \leq
+\alpha$.  Similarly it is also true for the pairs $(2, 20)$, $(4, 40)$ etc. It
+follows that $\nclab{1}{3} \preceq \nclab{1}{50}$ as the neighbors $2, 4, 6$ can
+be mapped to $20, 40, 60$ respectively and  the minimum cost of the matching the
+$1$-hop label is $0.4$ which is less than the $\alpha$ threshold. But
+$\nclab{2}{3} \not\preceq \nclab{2}{50}$ because the \ncl label $\nclab{1}{6}$
+is not dominated by the \ncl label of $20, 40$ or  $60$ in the previous
+iteration. So, there is no mapping between the neighbors of vertices $3$ and
+$50$ in the current iteration. Hence, the vertex $50$ can be pruned from the
+candidate representative set of vertex $3$.  Note that using the \khop label in
+the same example will not prune the vertex $50$ because the minimum cost of
+matching the \khop labels is within $\alpha$ as shown in table
+\ref{tab:khop350}. Therefore, \ncl label is more efficient compared to \khop
+label as it subsumes the latter label.
+
+\subsection{Candidate set verification} \label{sec:verification} The pruning
+methods based on the \khop and the \ncl labels start with a \CR and prune some
+of the candidate vertices based on the conditions described in theorems
+\ref{thm:khop} and \ref{thm:ncl}.  The verification step reduces \CR to \RS by
+retaining only those vertices for which there exists an isomorphism $\phi$ in
+which $\phi(u) = v$.  Informally, it does this by checking if the pattern $P$ can be
+embedded at $v$ such that total cost of label mismatch is at most $\alpha$.
+
+
+Let $w_p = u_0,\ldots, u_m$ be a walk in the pattern that covers each edge of
+the pattern at least once starting from vertex $u$ i.e. $u_0 = u$. Finding a
+path that covers each edge at least once is a special case of the Chinese
+postman problem \cite{chinesepostman} where the distance between pair of
+vertices is one. The following three conditions are satisfied iff the vertex $v$
+represents the vertex $u$. i) there exists a walk $w_d = v_0,\ldots, v_m$,
+$\forall (v_i, v_{i+1}) \in w_d$, $v_i \in R(u_i)$ and $v_{i+1} \in R(u_{i+1})$.
+ii) $v_i = v_j$ implies that $u_i = u_j$. iii) $\sum\matij{C}{L(u_i)}{L(v_i)}
+\leq \alpha$ where $u_i \in \vp$. Unlike the \ncl label, 
+these conditions are necessary and sufficient and can be verified by following
+the definition of isomorphism. Using an example we will
+show how these conditions can be used to check definitely whether $v \in R(u)$.
+
+Consider checking whether the vertex $30$ is a valid representative of the vertex
+$1$ in the pattern in the figure~\ref{subfig:ex_sub} and let $\alpha = 0.5$ . The
+walk $ w_p = 1, 2, 4, 3, 1$ covers each edge of the pattern at least once. A
+walk $w_d$, in the database in the figure~\ref{subfig:ex_db}, 
+that satisfies the above three conditions should start by mapping the
+vertex $1$ to $30$. The total cost of matching the labels till now is $0.2$ and
+the budget available for matching other vertices in $P$ is $0.5 - 0.2 = 0.3$.
+We will cover the walk $w_p$ one edge at a time. For any $(u_i, u_{i+1}) \in
+w_p$, if $u_i$ and $u_{i+1}$ are mapped, then we verify that there is an edge
+between the database vertices $v_i$ and $v_{i+1}$ to which the pattern vertices
+are mapped.  If however, $u_{i+1}$ is not mapped then we map it to some vertex
+$v_{i+1} \in R'(u_{i+1})$ and subtract the cost of this mapping from the
+remaining $\alpha$ cost.  For example, in the first step $(1,2)$ we can map $2$ to $20$.
+The remaining cost is then $0.3 - 0.2 = 0.1$. In the next step $(2,3)$, the
+vertex $3$ cannot be mapped to any vertex in the database without violating the
+third condition.  In such a case, we back track one step and choose a different
+mapping say $10$ for the vertex $2$ which is the last vertex that was mapped.
+Proceeding this way, we can arrive at the mapping corresponding to $\phi_{1}$ as
+in table~\ref{subfig:ex_occur}.  This isomorphism not only guarantees that $30
+\in R(1)$, it also implies that the verification check between the pairs $(2,
+10), (3, 60)$ and $(4, 40)$ can be avoided because of the approximate isomorphism
+$\phi_1$ that was found.  The above procedure can extended to enumerate the
+complete set of isomorphisms.
+
+
+
+\subsection{Label costs and dominance checking} \label{sec:labelcheck} 
+Candidate representative vertices are pruned by checking for dominance 
+relation between the \ncl labels of pattern vertex and that of candidate
+vertex in the database. Comparing the \ncl labels requires i) computing the
+cost of matching the \khop labels ii) matching the neighbors of pattern vertex 
+with neighbors of the candidate vertex. First problem can be formulated
+as a minimum cost maximum flow in a network and the second as maximum matching
+in a bipartite graph.
+
+\medskip{\textit{Computing \khop label cost}:} To compute the minimum matching
+cost between the \khop labels $\khopl{k}{u}$ and $\khopl{k}{v}$, we compute the
+maximum flow with minimum cost in a flow network $F$ defined as follows.  Each
+edge in $F$ is associated with a maximum capacity and the cost for sending a
+unit flow across it.  The network contains a vertex for each label $l_u =
+L(u')$ where $v' \in h_k(u)$ and a vertex for each label $l_v = L(v')$ where $v'
+\in h_k(v)$. There is a directed between between source vertex ($s$) and each
+$l_u$ with a zero cost and a capacity equal to the multiplicity of the $l_u$
+i.e., the number of vertices in $h_k(u)$ that have the label $l_u$. Similarly
+there is a directed edge between $l_v$ and the sink node ($t$). In addition,
+there is a directed edge from $l_u$ to $l_v$ with a cost
+equal to $\matij{C}{l_u}{l_v}$ and a capacity equal to the
+multiplicity of $l_u$. The cost between the \khop labels is equal to
+the minimum cost for maximum flow if the maximum flow is equal to
+$|\khopl{k}{u}|$ and $\infty$ otherwise.  \\ Figure~\ref{fig:Hflow} shows the
+flow network required to compute the minimum cost of matching the \khop labels
+$\khopl{2}{2} = 4,6 $ and $\khopl{2}{20} = 40, 50, 60$ as shown in Table
+\ref{tab:khop220}. The labels of vertices in the \khop labels are $C,D$ and $B,
+B, A$ respectively. The capacity of the edge betweenn $B$ and $t$ is two because 
+both the vertices $40$ and $50$ have the same label $B$.
+There is an edge from $s$ to each of $C, D$ with zero cost
+and maximum capacity of one.  Similarly, there is an edge from each of $A, B$ to
+the sink vertex $t$ with zero cost and maximum capacity of one and two
+respectively. There is an edge from $C, D$ to each of $A, B$ with cost equal to
+the corresponding entry in the cost matrix $C$. The maximum flow in the network
+is two and the minimum cost of sending two units of flow $0.4$ is achieved by
+pushing a unit flow along the paths $s, C, B, t$ and $a, D, A, t$.  Therefore,
+the cost of matching the labels $\khopl{2}{2}$ and $\khopl{2}{20}$ is $0.4$. It
+implies that the vertex $4$ with label $C$ can be matched to either $40$ or $50$
+and the vertex $6$ to $60$.
+
+\medskip{\textit{Dominance check}: } Consider the 
+\ncl labels $\nclab{k+1}{u} = (A, B)$ and  $\nclab{k+1}{v} = (A', B')$, the cost matching
+$B$ and $B'$ can be computed using the above the network formulation.
+Finding an injective function $f\!\!:A \rightarrow A'$ such that $a \preceq
+f(a)$ , is equivalent to find a matching of size $|N(u)|$ in the bipartite graph
+with edges $(a, a')$, for all $a \in A$ and $a \preceq a'$.
+The \ncl label $\nclab{k}{v}$ therefore dominates $\nclab{k}{u}$ if the
+cost between the \khop labels is within $\alpha$ and the size of maximum
+bipartite matching is $|N(u)|$.
+
+\medskip{\textit{Optimization}: } The candidate pattern may contain groups of
+symmetric vertices that are indistinguishable with respect to the \khop label.
+In such a scenario, the candidate representative sets of all these vertices are
+exactly the same. Utilizing the symmetry, we can apply the pruning label strategy only on
+one vertex per symmetry group and replicate the results for all other vertices
+in the group. For example, the vertices $10$ and $40$ in
+figure~\ref{subfig:ex_sub} are symmetric and the representative sets $R(10)$
+and $R(40)$ are exactly the same.  In abstract algebra terms such  groups are
+called orbits of the graph and can be computed using nauty algorithm
+\cite{nauty}. 
+Even
+though computing the orbits is expensive, we can avoid $ (|g|-1) \times |\CR|$
+\ncl label cost computations where $g$ is the size of an orbit. Note that
+we find the orbits only for the pattern which is usually very small compared
+to the database graph.
+%Note that the payoff is zero if all the vertex orbits are of size $1$.
+
+\subsection{Precomputing database \khop labels} The \khop label of the database
+vertices is independent of the candidate pattern.
+Also, the flow network to compute the cost of matching the \khop labels requires
+only the aggregate information about the number of vertices of a given label.
+Hence, we can precompute the \khop label of the database vertices and store them
+in the memory. The following theorem proves that computing \khop label is
+expensive.
+
+\begin{thm} k-reachable (KR) : Given a graph $G$, $k$ and $u \in \vg$. Compute
+    $\khopl{k}{u}$.  KR cannot be solved in polynomial time unless $P =
+    NP$.
+
+\begin{myproof} We prove this by reducing Hamiltonian path (HP) to KR.
+    Hamiltonian Path : Given a graph $G$, is there a simple path of length
+    $|\vg|-1$ i.e. is there a path that visits each and every vertex exactly
+    once. The problem of finding a Hamiltonian path is 
+    NP-Complete.\\ Assume that algorithm $X(k)$ can
+    compute KR in polynomial time. Let $|\vg| = n$ and $u$ be the starting
+    vertex in HP if it exists.  Given an instance of HP, we first get a vertex
+    $v$, $\kpath{u}{v}{n-1}$ using $X(n-1)$. The vertex $v$ is removed from the
+    graph and we find a vertex $v'$ such that $\kpath{u}{v'}{n-2}$ and $(v', v)
+    \in \eg$. We repeat this process $n-1$ times. If at any stage $X(j) = \{\}$
+    then we restart from a different starting vertex. The vertices selected in
+    each iteration lie on a path of length $n-1$ if it exists. If there is
+    polynomial time algorithm for KR then HP could be solved in polynomial time
+    by reducing it to KR. Therefore, $KR$ is atleast as hard as $HP$.
+    So, KR cannot be solved in polynomial time unless
+    P = NP.
+\end{myproof}
+\end{thm}
+
+To compute \khop label of a vertex $u$, we check for each vertex $v$ whether $v
+\in \kpath{u}{v}{k}$ by enumerating all possible $k$ length paths until a path
+is found.  This procedure is exponential, we therefore fix a maximum value
+$k_{max}$ and use the \khop label based pruning only for values of $k \leq
+k_{max}$.  It only takes a couple of minutes to compute the \khop label for $k
+\leq 6$ for all the vertices in the database graph. This is significantly less
+than the overall run time of the algorithm. Once $\khopl{k}{u}$ is computed we
+store in memory only the tuples $(m, l)$ where $m$ is the number of vertices $u'
+\in \khopl{k}{u}$, $L(u') = l$. The total amount of main memory required to store
+the precomputed \khop labels is O($|\vg| \times |\Sigma| \times k_max$).
+
+
+
+
+\begin{figure}[!h]
+    \centering
+\scalebox{0.6}[0.6]{
+  \psset{unit=0.85in}
+  \newcommand\arc[4]{\ncline{#1}{#2}{#3}\ncput{\colorbox{gray!40}{#4}}}
+      \begin{pspicture}(0,1)(5,3)
+        \cnodeput[doubleline=true](1,2){src}{s}
+        \cnodeput(2,1){n1}{C}
+        \cnodeput(2,3){n2}{D}
+        \cnodeput[doubleline=true](5,2){sink}{t}
+        \cnodeput(4,1){n4}{B}
+        \cnodeput(4,3){n5}{A}
+        \arc{->}{src}{n1}{$1,0$}
+        \arc{->}{src}{n2}{$1,0$}
+        %\arc{->}{n1}{n4}{$1$}
+        \ncline{->}{n1}{n4}\ncput[npos=0.5]{\colorbox{gray!40}{$1,0.1$}}
+        \ncline{->}{n1}{n5}\ncput[npos=0.3]{\colorbox{gray!40}{$1,1$}}
+        \ncline{->}{n2}{n4}\ncput[npos=0.3]{\colorbox{gray!40}{$1,0.6$}}
+        \ncline{->}{n2}{n5}\ncput[npos=0.5]{\colorbox{gray!40}{$1,0.3$}}
+        \arc{->}{n4}{sink}{$2,0$}
+        \arc{->}{n5}{sink}{$1,0$}
+        %\arc{->}{n6}{sink}{$1$}
+      \end{pspicture}
+    }
+    \caption{Flow network for \khopl{2}{2} and \khopl{2}{20}}
+	\label{fig:Hflow}
+\end{figure}
