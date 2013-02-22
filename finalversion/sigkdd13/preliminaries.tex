@@ -17,8 +17,8 @@ are allowed to repeat.
 
 \smallskip\noindent{\bf Cost matrix:}
 We assume that there is a cost matrix 
-$\mathcal{C}\!\!:\Sigma^{2} \rightarrow \mathbb{R}_{\geq 0} $. 
-The entry $\matij{C}{l_i}{l_j}$
+$\costmat{C} \!\!:\Sigma^{2} \rightarrow \mathbb{R}_{\geq 0} $. 
+The entry $\labcost{C}{l_i}{l_j}$
 denotes the cost of matching the labels $l_i$ and $l_j$. Although it is 
 not required by the algorithm, $\mathcal{C}$ is usually symmetric and the diagonal
 entries are $0$
@@ -31,7 +31,7 @@ V_G$ is called an {\em unlabeled subgraph isomorphism} provided $\phi$
 is an injective (or one-to-one) mapping such that $\forall (u,v) \in
 E_P$, we have $(\phi(u),\phi(v)) \in \eg$. That is, $\phi$ preserves the
 topology of $P$ in $G$. Define the cost of the isomorphism as follows:
-$\mathcal{C}(\phi) = \sum_{u \in \vp} \matij{C}{L(u)}{L(\phi(u))}$, that is, the
+$\isocost{C}{\phi} = \sum_{u \in \vp} \labcost{C}{L(u)}{L(\phi(u))}$, that is, the
 sum of the costs of matching the node labels in $P$ to the corresponding
 node labels in $G$.  We say that $\phi$ is an {\em approximate subgraph
 isomorphism} from $P$ to $G$ provided its cost $C(\phi) \le \alpha$,
@@ -89,7 +89,7 @@ otherwise.
     \label{subfig:ex_match}
     \begin{tabular}{|c|c|c|c|c|}
       \hline
-      \M{C} & A &  B & C & D \\
+      \costmat{C} & A &  B & C & D \\
       \hline
       A & $0$ & $0.2$ & $0.6$ & $0.1$ \\
       \hline

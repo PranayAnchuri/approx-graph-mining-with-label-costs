@@ -29,7 +29,7 @@ label $l$ or by connecting two existing vertices $u, v \in V_Q$.  For any vertex
 $u$, if $u \in V_P \cap V_Q$ then the candidate representative set $R'(u)$ in
 $P$ is same as representative set $R(u)$ verified for $Q$. Otherwise $u \in V_P
 \setminus V_Q$ and the candidate representative set is $R'(u) = \{ v | v \in
-\vg, \matij{C}{L(u)}{L(v)} \leq \alpha \} $ i.e., we start with the current
+\vg, \labcost{C}{L(u)}{L(v)} \leq \alpha \} $ i.e., we start with the current
 representatives if the vertex is already present otherwise it is the set of
 vertices in $\db$ whose label matching cost is within $\alpha$. Using the label
 pruning and verification mechanism we compute the representatives of $P$.  Then

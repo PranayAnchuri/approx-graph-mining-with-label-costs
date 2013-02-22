@@ -94,7 +94,7 @@ follows
 $sim(l_1,l_2) =  \frac{|p_1 \cap p_2|}{2}
   \left(\frac{1}{|p_1|} + \frac{1}{|p_2|}\right)$.
 The cost of matching the labels is then 
-$\matij{C}{l_1}{l_2} = 1 - sim(l_1,l_2)$.
+$\labcost{C}{l_1}{l_2} = 1 - sim(l_1,l_2)$.
 
 %%% time for random walks in cmdb dataset
 \begin{table}[!h]
@@ -316,7 +316,7 @@ Since there are 20 different amino acids, we need a $20 \times 20$ cost
 matrix. BLOSUM62~\cite{HH92} is a commonly used substitution matrix for aligning protein
 sequences.  The $i,j$ entry in BLOSUM denotes the log-odd score
 of substituting the amino acids $a_i$ and $a_j$, defined as:
-    $\matij{B}_{ij} = \frac{1}{\lambda} 
+$\labcost{B}{i}{j} = \frac{1}{\lambda} 
 	\log\frac{p_{ij}}{f_i \cdot f_j}$,
 where $p_{ij}$ denotes the probability that  $a_i$ can be
 substituted by $a_j$; 
@@ -324,8 +324,8 @@ $f_i$, $f_j$ denote the prior probabilities for observing the
 amino acids; and $\lambda$ is a constant. We compute $f_i$ and $f_j$
 from the database, and then reconstruct $p_{ij}=f_if_j e^{\lambda
 B_{ij}}$. Next, we define the pair-wise amino acid cost matrix as
-$\matij{C}{i}{j} = 1-\frac{p_{ij}}{p_{ii}}$, which ensures that
-the diagonal entries are $\matij{C}{i}{i} =0$.
+$\labcost{C}{i}{j} = 1-\frac{p_{ij}}{p_{ii}}$, which ensures that
+the diagonal entries are $\labcost{C}{i}{i} =0$.
 
 %\begin{figure}[!ht]
 %	\centerline{
@@ -439,7 +439,7 @@ walks reduces significantly (by over 100\%).  As expected, the time
 increases as the values of $\alpha$ increases, since the number of
 isomorphisms clearly increases for a more relaxed (larger) cost
 threshold.  When $\alpha = 0.01$, the patterns are exact as
-$\matij{C}{i}{j} > \alpha$ $,\forall i \neq j$.
+$\labcost{C}{i}{j} > \alpha$ $,\forall i \neq j$.
 
 Table \ref{tab:scop_algo_compare} compares the time taken to mine $500$
 maximal patterns from the SCOP dataset using the \ncl label algorithm
@@ -564,7 +564,7 @@ Sequence similarity is obtained via the BLAST alignment
 score~\cite{altschul90}, that returns the expected value (E-value) of
 the match. A low E-value implies high similarity, thus we create a
 binary cost matrix between the proteins by setting
-$\matij{C}{p_i}{p_j} =0$ iff the proteins $p_i$ and $p_j$ have high
+$\labcost{C}{p_i}{p_j} =0$ iff the proteins $p_i$ and $p_j$ have high
 similarity, i.e., iff {\em E-value}$(p_i, p_j) \le \epsilon$. We empirically 
 set $\epsilon = 0.003$.
 
@@ -618,7 +618,7 @@ the PPI graph is that we do not utilize the \khop labels.  The
 complexity of matching the \khop labels depends on the number of
 literals in the \khop label.  As each label (protein) is unique in the
 PPI graph, the number of literals in the \khop label of a vertex $v$ in
-a PPI network is equal to the number of vertices reachable in \khops.
+a PPI network is equal to the number of vertices reachable in $k$ hops.
 This increases the run time for the \khop label matching.  Therefore,
 for mining PPI networks we use only the \ncl labels.
 
@@ -714,7 +714,7 @@ are labeled with their DIP identifiers (e.g., DIP-2818N); the last
 number in the label is just a sequential node id.  It is worth
 emphasizing that exact subgraph isomorphism would not yield any patterns
 in this dataset, since each label is unique. However, since we allow a
-protein to be replaced by a similar protein via the cost matrix \Cs,
+protein to be replaced by a similar protein via the cost matrix \costmat{C},
 we obtain interesting approximate patterns. 
 %MJZ -- be consistent with C and M for the cost matrix
 To judge the quality of the

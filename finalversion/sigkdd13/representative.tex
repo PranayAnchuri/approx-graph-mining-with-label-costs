@@ -12,7 +12,7 @@ Therefore, to compute the representative sets we will start with a candidate
 representative set denoted by \CR  and iteratively prune some of the vertices if
 the neighborhoods cannot be matched.  The candidate set is a super set of the
 representative set, $\CR \supseteq \RS$.  An example of candidate set, $ \CR =
-\{v| v \in \vg, \matij{C}{L(u)}{L(v)} \leq \alpha \}$ i.e., the isomorphisms of
+\{v| v \in \vg, \labcost{C}{L(u)}{L(v)} \leq \alpha \}$ i.e., the isomorphisms of
 the single vertex pattern with label $L(u)$.  In this section, we will describe
 different notions of neighborhood and show how they help us in computing the
 representative sets of vertices in a pattern.
@@ -42,10 +42,10 @@ prune these invalid vertices and reduce \CR to \RS.
 
  \begin{equation} \label{eq:khop} \khopcost{k}{u}{v} =
      \text{min}\displaystyle\sum_{u' \in \khopl{k}{u}}
-     \matij{C}{L(u')}{L(f(u'))} \end{equation}
+     \labcost{C}{L(u')}{L(f(u'))} \end{equation}
 
  where the minimization is over all injective functions $f\!\!:\khopl{k}{u}
- \rightarrow \khopl{k}{v}$ and $\matij{C}{L(u')}{L(f(u'))}$ is the cost of
+ \rightarrow \khopl{k}{v}$ and $\labcost{C}{L(u')}{L(f(u'))}$ is the cost of
  matching the vertex labels.  In other words, it is the minimum total cost of
  matching the vertices present in the k-hop labels.  The following theorem
  places an upper bound on the minimum cost of matching the k-hop labels of
@@ -63,7 +63,7 @@ Given any pattern vertex $u$, a representative vertex $v \in R(u)$
     \khopl{k}{v}$ with a cost ( as defined in equation \ref{eq:khop}) $\leq
     \alpha$. We will argue that the function $\phi$ on the restricted domain
     $\khopl{k}{u}$ is one such function $f$.  First, we know that
-    $\sum\matij{C}{L(u)}{\phi(L(u)} \leq \alpha$, $u \in \vp$, since $\phi$ is
+    $\sum\labcost{C}{L(u)}{\phi(L(u)} \leq \alpha$, $u \in \vp$, since $\phi$ is
     an isomorphism. Second, let $\kpath{u}{u'}{k}$ then $\phi(u') \in
     \khopl{k}{v}$ because for every edge $(u_1, u_2)$ on a path between $u$ and
     $u'$ in $\pat$, $(\phi(u_1),\phi(u_2)) \in \eg$.  Therefore the cost
@@ -80,7 +80,7 @@ is the null set $\forall k \geq |V_P|$ and the condition is trivially satisfied.
 Figure~\ref{fig:ncexample} shows an example for the \khop label based pruning of
 the candidate representative set where the threshold $\alpha = 0.5$. Consider
 vertex $2 \in \vp$ and vertex $20 \in \vg$, we have, $\khopcost{0}{2}{20} = 0$,
-since the cost of matching vertex labels $\matij{C}{L(2)}{L(20)} = 0$ , as per
+since the cost of matching vertex labels $\labcost{C}{L(2)}{L(20)} = 0$ , as per
 the label matching matrix $C$ in Fig.~\ref{subfig:match}. The \khop labels for
 $k=1,2,3$ and the minimum of cost matching them are as shown in the table
 \ref{tab:khop220}, and it can be verified that the minimum cost is within the
@@ -157,7 +157,7 @@ that \khop labels can help prune the candidate representative sets.
   % Table for the search space pruning
   \begin{tabular}{|c|c|c|c|c|}
     \hline
-    $C$ & A &  B & C & D \\
+    \costmat{C} & A &  B & C & D \\
     \hline
     A & 0 & 0.7 & 0.6 & 0.1\\
     \hline
@@ -229,7 +229,7 @@ matching the (k+1)-hop labels is within $\alpha$ ii) there exits an injective
 function $g\!\!:A\rightarrow A'$ such that $a \preceq g(a)$ for all $a \in A$
 i.e., there is a one to one mapping between the \ncl labels (of the previous
 iteration, $k$) of neighbors of $u$ and $v$.  The base case $\nclab{0}{u}
-\preceq \nclab{0}{v}$ iff $\matij{C}{L(u)}{L(v)} \leq \alpha$. For example, in
+\preceq \nclab{0}{v}$ iff $\labcost{C}{L(u)}{L(v)} \leq \alpha$. For example, in
 Fig~\ref{fig:ncexample} $\nclab{1}{2} \preceq \nclab{1}{20}$ because
 $\khopcost{1}{2}{20} \leq \alpha$ and the \ncl labels of vertices $1, 3, 5$ are
 dominated by the \ncl labels of vertices $10, 50, 30$ respectively.  The
@@ -240,7 +240,7 @@ the \ncl of any of its representative vertex $v \in  R(u)$.
     and cost threshold $\alpha$, $\nclab{k}{u} \preceq \nclab{k}{v}$ for all $k
     \geq 0$.  \begin{myproof} Let $\phi$ be any isomorphism such that $\phi(u) =
         v$.  We prove the theorem by using induction on $k$.\\ \textbf{Base
-        case:} $\nclab{0}{u} \preceq \nclab{0}{v} \iff \matij{C}{L(u)}{L(v)}
+        case:} $\nclab{0}{u} \preceq \nclab{0}{v} \iff \labcost{C}{L(u)}{L(v)}
         \leq \alpha$ is true because $v \in R(u)$. \\ \textbf{Inductive
         Hypothesis:} Assume that $\nclab{k}{u} \preceq \nclab{k}{v}$ holds true
         for all $u \in \pat$ and $v \in R(u)$. \\ Now consider $\nclab{k+1}{u} =
@@ -257,7 +257,7 @@ the \ncl of any of its representative vertex $v \in  R(u)$.
 Based on the above theorem, a vertex $v$ can be pruned from \CR if $\nclab{k}{u}
 \not\preceq \nclab{k}{v}$ for some $k \geq 0$. In Fig~\ref{fig:ncexample} ,
 consider the vertices $3 \in \pat$ , $50 \in \db$ and let $\alpha = 0.5$. The
-\ncl labels, $\nclab{0}{3} \preceq \nclab{0}{50}$ as $\matij{C}{B}{B} = 0 \leq
+\ncl labels, $\nclab{0}{3} \preceq \nclab{0}{50}$ as $\labcost{C}{B}{B} = 0 \leq
 \alpha$.  Similarly it is also true for the pairs $(2, 20)$, $(4, 40)$ etc. It
 follows that $\nclab{1}{3} \preceq \nclab{1}{50}$ as the neighbors $2, 4, 6$ can
 be mapped to $20, 40, 60$ respectively and  the minimum cost of the matching the
@@ -280,43 +280,40 @@ retaining only those vertices $v$ for which there exists an isomorphism $\phi$ i
 which $\phi(u) = v$.  Informally, it does this by checking if the pattern $P$ can be
 embedded at $v$ such that total cost of label mismatch is at most $\alpha$.
 
+A vertex $v \in R(u)$ iff for any walk $w_p = (u_0=u), u_1,\ldots,u_m$ that covers all
+the edges in pattern $P$ there exists atleast one walk $w_d = (v_0=v), v_1,\ldots,
+v_m$ in the database $G$ and satisfying the following three conditions: i) 
+$u_i = u_j \implies v_i = v_j$ ii) $(v_i, v_{i+1}) \in \eg$
+iii) $\sum\labcost{C}{L(u_i)}{L(v_i)} \leq \alpha$.
+Unlike the \ncl label condition, the above conditions are necessary and
+sufficient and can be verified by following the definition of isomorphism.
 
-Let $w_p = u_0,\ldots, u_m$ be a walk in the pattern that covers each edge of
-the pattern at least once starting from vertex $u$ i.e. $u_0 = u$. Finding a
-path that covers each edge at least once is a special case of the Chinese
-postman problem \cite{chinesepostman} where the distance between every pair of
-vertices is one. The following three conditions are satisfied iff the vertex $v$
-represents the vertex $u$. i) there exists a walk $w_d = v_0,\ldots, v_m$,
-$\forall (v_i, v_{i+1}) \in w_d$, $v_i \in R(u_i)$ and $v_{i+1} \in R(u_{i+1})$.
-ii) $v_i = v_j$ implies that $u_i = u_j$. iii) $\sum\matij{C}{L(u_i)}{L(v_i)}
-\leq \alpha$ where $u_i \in \vp$. Unlike the \ncl label, 
-these conditions are necessary and sufficient and can be verified by following
-the definition of isomorphism. Using an example we will
-show how these conditions can be used to check definitely whether $v \in R(u)$.
+Now, to check whether $v \in R(u)$, we first map $u$ to $v$ and subtract the cost of
+$\labcost{C}{L(u)}{L(v)}$ from the threshold $\alpha$. We then try to map the
+remaining vertices in $P$ by following $w_p$ one edge at a time. In any step
+$(u_i, u_{i+1})$, if $u_i$ and $u_{i+1}$ are mapped to $x$ and $y$ respectively
+then we ensure that $(x, y) \in \eg$
+(condition ii). If on the other hand, $u_{i+1}$ is not mapped then we map it
+to some vertex in $y \in R'(u_{i+1})$ and subtract the cost
+$\labcost{C}{L(u_{i+1})}{L(y)}$ from the remaining $\alpha$ threshold. We back
+track if the remaining threshold is less than $0$. The vertex $v \in R(u)$, if we
+can complete the walk $w_p$ satisfying the above three conditions.
 
 Consider checking whether the vertex $30 \in R(1)$ 
-in the pattern in the figure~\ref{subfig:ex_sub} and let $\alpha = 0.5$ . The
-walk $ w_p = 1, 2, 4, 3, 1$ covers each edge of the pattern at least once. A
-walk $w_d$, in the database in the figure~\ref{subfig:ex_db}, 
-that satisfies the above three conditions should start by mapping the
-vertex $1$ to $30$. The total cost of matching these labels is $0.2$ and
-the budget available for matching other vertices in $P$ is $0.5 - 0.2 = 0.3$.
-We will cover the walk $w_p$ one edge at a time. For any $(u_i, u_{i+1}) \in
-w_p$, if $u_i$ and $u_{i+1}$ are already mapped, then we verify that there is an edge
-between the database vertices $v_i$ and $v_{i+1}$ to which the pattern vertices
-are mapped.  If however, $u_{i+1}$ is not mapped then we map it to some vertex
-$v_{i+1} \in R'(u_{i+1})$ and subtract the cost of this mapping from the
-remaining $\alpha$ cost.  For example, in the first step $(1,2)$ we can map $2$ to $20$.
-The remaining cost is then $0.3 - 0.2 = 0.1$. In the next step $(2,3)$, the
-vertex $3$ cannot be mapped to any vertex in the database without violating the
-third condition.  In such a case, we back track one step and choose a different
-mapping say $10$ for the vertex $2$ which is the last vertex that was mapped.
-Proceeding this way, we can arrive at the mapping corresponding to $\phi_{1}$ as
-in table~\ref{subfig:ex_occur}.  This isomorphism not only guarantees that $30
-\in R(1)$, it also implies that the verification check between the pairs $(2,
-10), (3, 60)$ and $(4, 40)$ can be avoided because of the approximate isomorphism
-$\phi_1$ that was found.  The above procedure can extended to enumerate the
-complete set of isomorphisms.
+in the pattern in the figure~\ref{subfig:ex_sub} and let $\alpha = 0.5$. The
+sequence $w_p = 1, 2, 4, 3, 1$ is a walk in the pattern that covers all the edges.
+In general, finding a walk that covers all the edges in a graph is a special
+case of Chinese postman problem \cite{chinesepostman}. We first map $1$ to $30$
+an subtract the cost $\labcost{C}{L(1)}{L(30)} = 0.2$ from $0.5$. In the first
+step $(1,2)$, since $2$ is not mapped we map it some vertex, say $20$. The cost
+of the mapping is $0.2$ and the remaining threshold is $0.3 -0.2 = 0.1$. It can
+be verified that these mappings cannot complete the walk $w_p$. So we backtrack 
+and map $2$ to another vertex say $10$. The walk can be completed with the
+mappings as in $\phi_1$ in Table~\ref{subfig:ex_occur} and the remaining cost is 
+$0.1$. The mappings of the pattern vertices not only implies that $30 \in R(1)$,
+it also tells us that $10, 60, 40$ represent vertices $2, 3, 4$ respectively.
+The above procedure can be easily extended to enumerate all the isomorphims of the
+pattern.
 
 
 
@@ -340,7 +337,7 @@ $l_u$ with zero cost and a capacity equal to the multiplicity of the $l_u$
 i.e., the number of vertices in $h_k(u)$ that have the label $l_u$. Similarly
 there is a directed edge between $l_v$ and the sink node ($t$). In addition,
 there is a directed edge from $l_u$ to $l_v$ with a cost
-equal to $\matij{C}{l_u}{l_v}$ and a capacity equal to the
+equal to $\labcost{C}{l_u}{l_v}$ and a capacity equal to the
 multiplicity of $l_u$. The cost between the \khop labels is equal to
 the minimum cost for maximum flow if the maximum flow is equal to
 $|\khopl{k}{u}|$ and $\infty$ otherwise.
