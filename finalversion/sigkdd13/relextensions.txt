@@ -1,0 +1,47 @@
+####### Relative number of fwd extension, fwd success, back extensions and
+back success
+PPI : Base is minsup = 3
+SCOP : Base is minsup = 10
+pranay@kilimanjaro:~/Projects/vldb13/src$ python
+Python 2.7.3 (default, Apr 20 2012, 22:39:59) 
+[GCC 4.6.3] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> def ppi(x):
+...     return x[0]/54.56, x[1]/0.34, x[2]/0.85, x[3]/0.25
+... 
+>>> minsup=5
+>>> ppi([22.83, 0.116, 0.161, 0.22])
+(0.41843841642228735, 0.3411764705882353, 0.18941176470588236, 0.88)
+>>> minsup=10
+>>> ppi([10.20, 0.73, 0.75, 0.9])
+(0.18695014662756596, 2.1470588235294117, 0.8823529411764706, 3.6)
+>>> 
+>>> 
+>>> dataset = SCOP
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'SCOP' is not defined
+>>> dataset = "SCOP"
+>>> def scop(x):
+...     return x[0]/4.89. x[1]/0.57, x[2]/0.67, x[3]/0.44
+... 
+>>> minsup = 20
+>>> scop([6.24, 0.27, 0.44, 0.17])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 2, in scop
+AttributeError: 'float' object has no attribute 'x'
+>>> def scop(x):
+...     return x[0]/4.89, x[1]/0.57, x[2]/0.67, x[3]/0.44
+... 
+>>> minsup = 20
+>>> scop([6.24, 0.27, 0.44, 0.17])
+(1.276073619631902, 0.4736842105263159, 0.6567164179104478, 0.3863636363636364)
+>>> minsup = 25
+>>> scop([6.48, 0.27, 0.44, 0.17])
+(1.325153374233129, 0.4736842105263159, 0.6567164179104478, 0.3863636363636364)
+>>> minsup=40
+>>> scop([5.6, 0.23, 0.32, 0.10])
+(1.1451942740286298, 0.4035087719298246, 0.47761194029850745, 0.2272727272727273)
+>>> 
+
