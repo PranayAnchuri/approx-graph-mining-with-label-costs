@@ -1,33 +1,44 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2012.4.28)  21 FEB 2013 17:25
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2013.2.21)  22 FEB 2013 03:32
 entering extended mode
+ restricted \write18 enabled.
  %&-line parsing enabled.
 **main.tex
 (./main.tex
-LaTeX2e <2009/09/24>
-Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
-yphenation, loaded.
-(./sig-alternate.cls (/usr/share/texmf-texlive/tex/latex/graphics/epsfig.sty
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, ge
+rman-x-2012-05-30, ngerman-x-2012-05-30, afrikaans, ancientgreek, ibycus, arabi
+c, armenian, basque, bulgarian, catalan, pinyin, coptic, croatian, czech, danis
+h, dutch, ukenglish, usenglishmax, esperanto, estonian, ethiopic, farsi, finnis
+h, french, friulan, galician, german, ngerman, swissgerman, monogreek, greek, h
+ungarian, icelandic, assamese, bengali, gujarati, hindi, kannada, malayalam, ma
+rathi, oriya, panjabi, tamil, telugu, indonesian, interlingua, irish, italian, 
+kurmanji, latin, latvian, lithuanian, mongolian, mongolianlmc, bokmal, nynorsk,
+ polish, portuguese, romanian, romansh, russian, sanskrit, serbian, serbianc, s
+lovak, slovenian, spanish, swedish, turkish, turkmen, ukrainian, uppersorbian, 
+welsh, loaded.
+(./sig-alternate.cls
+(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/epsfig.sty
 Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
 
-(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
+(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
+(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(/etc/texmf/tex/latex/config/graphics.cfg
-File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
+(/usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
 Package graphics Info: Driver file: dvips.def on input line 91.
 
-(/usr/share/texmf-texlive/tex/latex/graphics/dvips.def
+(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/dvips.def
 File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
 ))
 \Gin@req@height=\dimen102
@@ -36,35 +47,35 @@ File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
 \epsfxsize=\dimen104
 \epsfysize=\dimen105
 )
-(/usr/share/texmf-texlive/tex/latex/amsfonts/amssymb.sty
-Package: amssymb 2009/06/22 v3.00
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
-(/usr/share/texmf-texlive/tex/latex/amsfonts/amsfonts.sty
-Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \@emptytoks=\toks15
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
-(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
-(/usr/share/texmf-texlive/tex/latex/amsmath/amsmath.sty
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2000/07/18 v2.13 AMS math features
 \@mathmargin=\skip41
 
 For additional information on amsmath, use the `?' option.
-(/usr/share/texmf-texlive/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01
 
-(/usr/share/texmf-texlive/tex/latex/amsmath/amsgen.sty
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks16
 \ex@=\dimen106
 ))
-(/usr/share/texmf-texlive/tex/latex/amsmath/amsbsy.sty
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen107
 )
-(/usr/share/texmf-texlive/tex/latex/amsmath/amsopn.sty
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count79
@@ -135,7 +146,7 @@ Questions on the style, SIGS policies, etc. to Adrienne Griscti griscti@acm.org
 \titleboxnoteflag=\count99
 Document Class: sig-alternate 2012/05/23 - V2.5 - based on acmproc.cls V1.3 <No
 v. 30 '99>
-(/usr/share/texmf-texlive/tex/latex/base/latexsym.sty
+(/usr/local/texlive/2012/texmf-dist/tex/latex/base/latexsym.sty
 Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
 \symlasy=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
@@ -167,47 +178,48 @@ LaTeX Info: Redefining \cite on input line 1211.
 \acmcopyr=\toks33
 \boilerplate=\toks34
 \copyrightetc=\toks35
-(/usr/share/texmf-texlive/tex/latex/base/fontenc.sty
+(/usr/local/texlive/2012/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
-(/usr/share/texmf-texlive/tex/latex/base/t1enc.def
+(/usr/local/texlive/2012/texmf-dist/tex/latex/base/t1enc.def
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
 )
 LaTeX Font Info:    Try loading font information for T1+aer on input line 100.
 
-(/usr/share/texmf-texlive/tex/latex/ae/t1aer.fd
+(/usr/local/texlive/2012/texmf-dist/tex/latex/ae/t1aer.fd
 File: t1aer.fd 1997/11/16 Font definitions for T1/aer.
-))) (./header.tex
-(/usr/share/texmf-texlive/tex/latex/preprint/balance.sty
-Package: balance 1999/02/23 4.3 (PWD)
-\oldvsize=\dimen123
-)
-(/usr/share/texmf-texlive/tex/latex/base/fontenc.sty
+)))
+(/usr/local/texlive/2012/texmf-dist/tex/latex/etex-pkg/etex.sty
+Package: etex 1998/03/26 v2.0 eTeX basic definition package (PEB)
+\et@xins=\count108
+) (./header.tex
+(/usr/local/texlive/2012/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
-(/usr/share/texmf-texlive/tex/latex/base/t1enc.def
+(/usr/local/texlive/2012/texmf-dist/tex/latex/base/t1enc.def
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
 ))
-(/usr/share/texmf-texlive/tex/latex/subfig/subfig.sty
+(/usr/local/texlive/2012/texmf-dist/tex/latex/subfig/subfig.sty
 Package: subfig 2005/06/28 ver: 1.3 subfig package
 
-(/usr/share/texmf-texlive/tex/latex/caption/caption.sty
-Package: caption 2009/10/09 v3.1k Customizing captions (AR)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2013/02/03 v3.3-65 Customizing captions (AR)
 
-(/usr/share/texmf-texlive/tex/latex/caption/caption3.sty
-Package: caption3 2009/10/09 v3.1k caption3 kernel (AR)
-\captionmargin=\dimen124
-\captionmargin@=\dimen125
-\captionwidth=\dimen126
+(/usr/local/texlive/2012/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2013/02/03 v1.5-62 caption3 kernel (AR)
+\captionmargin=\dimen123
+\captionmargin@=\dimen124
+\captionwidth=\dimen125
+\caption@tempdima=\dimen126
 \caption@indent=\dimen127
 \caption@parindent=\dimen128
 \caption@hangindent=\dimen129
 \abovecaptionskip=\skip44
 \belowcaptionskip=\skip45
 Package caption Info: Unknown document class (or package),
-(caption)             standard defaults will be used on input line 1068.
+(caption)             standard defaults will be used.
 )
 
 Package caption Warning: Unsupported document class (or package) detected,
@@ -217,36 +229,36 @@ See the caption package documentation for explanation.
 Package caption Info: \@makecaption = \long macro:#1#2-> \vskip 10pt \setbox \@
 tempboxa \hbox {\textbf {#1: #2}} \ifdim \wd \@tempboxa >\hsize \textbf {#1: #2
 }\par \else \hbox to\hsize {\hfil \box \@tempboxa \hfil } \fi .
-\c@ContinuedFloat=\count108
+\c@ContinuedFloat=\count109
 )
-\c@KVtest=\count109
+\c@KVtest=\count110
 \sf@farskip=\skip46
 \sf@captopadj=\dimen130
 \sf@capskip=\skip47
 \sf@nearskip=\skip48
-\c@subfigure=\count110
-\c@subfigure@save=\count111
-\c@lofdepth=\count112
-\c@subtable=\count113
-\c@subtable@save=\count114
-\c@lotdepth=\count115
+\c@subfigure=\count111
+\c@subfigure@save=\count112
+\c@lofdepth=\count113
+\c@subtable=\count114
+\c@subtable@save=\count115
+\c@lotdepth=\count116
 \sf@top=\skip49
 \sf@bottom=\skip50
-) (/usr/share/texmf-texlive/tex/latex/float/float.sty
+) (/usr/local/texlive/2012/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count116
+\c@float@type=\count117
 \float@exts=\toks36
 \float@box=\box30
 \@float@everytoks=\toks37
 \@floatcapt=\box31
 )
-(/usr/share/texmf-texlive/tex/latex/cite/cite.sty
-LaTeX Info: Redefining \cite on input line 285.
-LaTeX Info: Redefining \nocite on input line 356.
-Package: cite 2009/08/29  v 5.2
+(/usr/local/texlive/2012/texmf-dist/tex/latex/cite/cite.sty
+LaTeX Info: Redefining \cite on input line 302.
+LaTeX Info: Redefining \nocite on input line 373.
+Package: cite 2010/09/10  v 5.3
 )
-(/usr/share/texmf-texlive/tex/latex/amscls/amsthm.sty
-Package: amsthm 2004/08/06 v2.20
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amscls/amsthm.sty
+Package: amsthm 2009/07/02 v2.20.1
 \thm@style=\toks38
 \thm@bodyfont=\toks39
 \thm@headfont=\toks40
@@ -256,114 +268,138 @@ Package: amsthm 2004/08/06 v2.20
 \thm@postskip=\skip52
 \thm@headsep=\skip53
 \dth@everypar=\toks43
-LaTeX Info: Redefining \qed on input line 283.
+LaTeX Info: Redefining \qed on input line 244.
 )
-(/usr/share/texmf-texlive/tex/latex/tools/verbatim.sty
+(/usr/local/texlive/2012/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
 \every@verbatim=\toks44
 \verbatim@line=\toks45
 \verbatim@in@stream=\read1
 )
-(/usr/share/texmf-texlive/tex/latex/ltxmisc/url.sty
+(/usr/local/texlive/2012/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip11
 Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
-(/usr/share/texmf-texlive/tex/latex/pbox/pbox.sty
-Package: pbox 2003/04/06 v1.0 Dynamic parboxes
-
-(/usr/share/texmf-texlive/tex/latex/tools/calc.sty
-Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count117
-\calc@Bcount=\count118
-\calc@Adimen=\dimen131
-\calc@Bdimen=\dimen132
-\calc@Askip=\skip54
-\calc@Bskip=\skip55
-LaTeX Info: Redefining \setlength on input line 76.
-LaTeX Info: Redefining \addtolength on input line 77.
-\calc@Ccount=\count119
-\calc@Cskip=\skip56
+(/usr/local/texlive/2012/texmf-dist/tex/latex/tools/xspace.sty
+Package: xspace 2009/10/20 v1.13 Space after command names (DPC,MH)
 )
-(/usr/share/texmf-texlive/tex/latex/base/ifthen.sty
-Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/setspace/setspace.sty
+Package: setspace 2011/12/19 v6.7a set line spacing
 )
-\pb@xlen=\skip57
+(/usr/local/texlive/2012/texmf-dist/tex/latex/multirow/multirow.sty
+\bigstrutjot=\dimen131
 )
-(/usr/share/texmf-texlive/tex/latex/tools/xspace.sty
-Package: xspace 2006/05/08 v1.12 Space after command names (DPC,MH)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/caption/newfloat.sty
+Package: newfloat 2013/02/03 v1.0-62 Defining new floating environments (AR)
 )
-(/usr/share/texmf-texlive/tex/latex/setspace/setspace.sty
-Package: setspace 2000/12/01 6.7 Contributed and Supported LaTeX2e package
+Package newfloat Info: New float `copyrightbox' with options `' on input line 1
+8.
+\c@copyrightbox=\count118
+Package newfloat Info: float type `copyrightbox'=4 on input line 18.
+\c@locopyrightboxdepth=\count119
 
-Package: `setspace' 6.7 <2000/12/01>
-) (/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-common.tex
-\pgfutil@everybye=\toks46
-)
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box32
+(/usr/local/texlive/2012/texmf-dist/tex/latex/pstricks/pstricks.sty
+Package: pstricks 2012/08/24 v0.53 LaTeX wrapper for `PSTricks' (RN,HV)
 
-(/usr/share/texmf-texlive/tex/latex/ms/everyshi.sty
-Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
-))
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfrcs.code.tex
-Package: pgfrcs 2010/10/25 v2.10 (rcs-revision 1.24)
-))
-Package: pgf 2008/01/15 v2.10 (rcs-revision 1.12)
+(/usr/local/texlive/2012/texmf-dist/tex/generic/pstricks/pstricks.tex
+(/usr/local/texlive/2012/texmf-dist/tex/generic/xkeyval/pst-xkey.tex
+File: pst-xkey.tex 2005/11/25 v1.6 PSTricks specialization of xkeyval (HA)
 
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
-(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
-Package: pgfsys 2010/06/30 v2.10 (rcs-revision 1.37)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2012/10/14 v2.6b package option processing (HA)
 
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks47
-\pgfkeys@temptoks=\toks48
-
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
-\pgfkeys@tmptoks=\toks49
-))
-\pgf@x=\dimen133
-\pgf@y=\dimen134
-\pgf@xa=\dimen135
-\pgf@ya=\dimen136
-\pgf@xb=\dimen137
-\pgf@yb=\dimen138
-\pgf@xc=\dimen139
-\pgf@yc=\dimen140
-\w@pgf@writea=\write3
-\r@pgf@reada=\read2
-\c@pgf@counta=\count120
-\c@pgf@countb=\count121
-\c@pgf@countc=\count122
-\c@pgf@countd=\count123
-
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgf.cfg
-File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
-)
-Package pgfsys Info: Driver file for pgf: pgfsys-dvips.def on input line 900.
-
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-dvips.def
-File: pgfsys-dvips.def 2008/04/03  (rcs-revision 1.20)
-
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-common-postscript.def
-File: pgfsys-common-postscript.def 2008/10/01  (rcs-revision 1.22)
-\pgf@objectcount=\count124
+(/usr/local/texlive/2012/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+\XKV@toks=\toks46
+\XKV@tempa@toks=\toks47
+\XKV@depth=\count120
+File: xkeyval.tex 2012/10/14 v2.6b key=value parser (HA)
 )))
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
-File: pgfsyssoftpath.code.tex 2008/07/18  (rcs-revision 1.7)
-\pgfsyssoftpath@smallbuffer@items=\count125
-\pgfsyssoftpath@bigbuffer@items=\count126
+(/usr/local/texlive/2012/texmf-dist/tex/generic/pstricks/pst-fp.tex
+`pst-fp' v0.05, 2010/01/17 (hv)
+\pstFP@xs=\count121
+\pstFP@xia=\count122
+\pstFP@xib=\count123
+\pstFP@xfa=\count124
+\pstFP@xfb=\count125
+\pstFP@rega=\count126
+\pstFP@regb=\count127
+\pstFP@regs=\count128
+\pstFP@times=\count129
 )
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
-File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
+(/usr/local/texlive/2012/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
+x
+\pgfutil@everybye=\toks48
+)
+(/usr/local/texlive/2012/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks49
+\pgfkeys@temptoks=\toks50
+
+(/usr/local/texlive/2012/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.c
+ode.tex
+\pgfkeys@tmptoks=\toks51
 ))
-(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/local/texlive/2012/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+\pgffor@iter=\dimen132
+\pgffor@skip=\dimen133
+\pgffor@stack=\toks52
+\pgffor@toks=\toks53
+)
+\psLoopIndex=\count130
+
+`PSTricks' v2.35  <2012/12/21> (tvz)
+\pst@dima=\dimen134
+\pst@dimb=\dimen135
+\pst@dimc=\dimen136
+\pst@dimd=\dimen137
+\pst@dimg=\dimen138
+\pst@dimh=\dimen139
+\pst@dimm=\dimen140
+\pst@dimn=\dimen141
+\pst@dimo=\dimen142
+\pst@dimp=\dimen143
+\pst@hbox=\box32
+\pst@ibox=\box33
+\pst@boxg=\box34
+\pst@cnta=\count131
+\pst@cntb=\count132
+\pst@cntc=\count133
+\pst@cntd=\count134
+\pst@cntg=\count135
+\pst@cnth=\count136
+\pst@cntm=\count137
+\pst@cntn=\count138
+\pst@cnto=\count139
+\pst@cntp=\count140
+\@zero=\count141
+\pst@toks=\toks54
+(/usr/local/texlive/2012/texmf-dist/tex/generic/pstricks/pstricks.con)
+\psunit=\dimen144
+\psxunit=\dimen145
+\psyunit=\dimen146
+\pst@C@@rType=\count142
+\pslinewidth=\dimen147
+\psk@startLW=\dimen148
+\psk@endLW=\dimen149
+\pst@customdefs=\toks55
+\pslinearc=\dimen150
+\pst@symbolStep=\dimen151
+\pst@symbolWidth=\dimen152
+\pst@symbolLinewidth=\dimen153
+\everypsbox=\toks56
+\psframesep=\dimen154
+\pslabelsep=\dimen155
+\pst@shift=\dimen156
+\theoverlaybox=\box35
+)
+File: pstricks.tex 2012/12/21 v2.35 `PSTricks' (tvz,hv)
+
+(/usr/local/texlive/2012/texmf-dist/tex/generic/pstricks/pst-fp.tex)
+File: pst-fp.tex 2012/12/21 v2.35 `PST-fp' (hv)
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
 
-(/etc/texmf/tex/latex/config/color.cfg
+(/usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package xcolor Info: Driver file: dvips.def on input line 225.
@@ -375,474 +411,133 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
-)
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
-Package: pgfcore 2010/04/11 v2.10 (rcs-revision 1.7)
-
-(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathutil.code.tex)
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen141
-\pgfmath@count=\count127
-\pgfmath@box=\box33
-\pgfmath@toks=\toks50
-\pgfmath@stack@operand=\toks51
-\pgfmath@stack@operation=\toks52
-)
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex)
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex)
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.random.code.tex)
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex)
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.base.code.tex)
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.round.code.tex)
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex)))
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count128
 ))
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
-File: pgfcorepoints.code.tex 2010/04/09  (rcs-revision 1.20)
-\pgf@picminx=\dimen142
-\pgf@picmaxx=\dimen143
-\pgf@picminy=\dimen144
-\pgf@picmaxy=\dimen145
-\pgf@pathminx=\dimen146
-\pgf@pathmaxx=\dimen147
-\pgf@pathminy=\dimen148
-\pgf@pathmaxy=\dimen149
-\pgf@xx=\dimen150
-\pgf@xy=\dimen151
-\pgf@yx=\dimen152
-\pgf@yy=\dimen153
-\pgf@zx=\dimen154
-\pgf@zy=\dimen155
-)
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
-File: pgfcorepathconstruct.code.tex 2010/08/03  (rcs-revision 1.24)
-\pgf@path@lastx=\dimen156
-\pgf@path@lasty=\dimen157
-)
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
-File: pgfcorepathusage.code.tex 2008/04/22  (rcs-revision 1.12)
-\pgf@shorten@end@additional=\dimen158
-\pgf@shorten@start@additional=\dimen159
-)
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
-File: pgfcorescopes.code.tex 2010/09/08  (rcs-revision 1.34)
-\pgfpic=\box34
-\pgf@hbox=\box35
-\pgf@layerbox@main=\box36
-\pgf@picture@serial@count=\count129
-)
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
-File: pgfcoregraphicstate.code.tex 2008/04/22  (rcs-revision 1.9)
-\pgflinewidth=\dimen160
-)
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
-File: pgfcoretransformations.code.tex 2009/06/10  (rcs-revision 1.11)
-\pgf@pt@x=\dimen161
-\pgf@pt@y=\dimen162
-\pgf@pt@temp=\dimen163
-)
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
-File: pgfcorequick.code.tex 2008/10/09  (rcs-revision 1.3)
-)
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
-File: pgfcoreobjects.code.tex 2006/10/11  (rcs-revision 1.2)
-)
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
-File: pgfcorepathprocessing.code.tex 2008/10/09  (rcs-revision 1.8)
-)
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
-File: pgfcorearrows.code.tex 2008/04/23  (rcs-revision 1.11)
-)
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
-File: pgfcoreshade.code.tex 2008/11/23  (rcs-revision 1.13)
-\pgf@max=\dimen164
-\pgf@sys@shading@range@num=\count130
-)
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
-File: pgfcoreimage.code.tex 2010/03/25  (rcs-revision 1.16)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/pst-plot/pst-plot.sty
+Package: pst-plot 2011/06/05 v1.00 LaTeX wrapper for `pst-plot' (HV)
 
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
-File: pgfcoreexternal.code.tex 2010/09/01  (rcs-revision 1.17)
-\pgfexternal@startupbox=\box37
-))
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
-File: pgfcorelayers.code.tex 2010/08/27  (rcs-revision 1.2)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/xkeyval/pst-xkey.sty
+Package: pst-xkey 2005/11/25 v1.6 package wrapper for pst-xkey.tex (HA)
 )
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
-File: pgfcoretransparency.code.tex 2008/01/17  (rcs-revision 1.2)
-)
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
-File: pgfcorepatterns.code.tex 2009/07/02  (rcs-revision 1.3)
-)))
-(/usr/share/texmf/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
-File: pgfmoduleshapes.code.tex 2010/09/09  (rcs-revision 1.13)
-\pgfnodeparttextbox=\box38
-)
-(/usr/share/texmf/tex/generic/pgf/modules/pgfmoduleplot.code.tex
-File: pgfmoduleplot.code.tex 2010/10/22  (rcs-revision 1.8)
-)
-(/usr/share/texmf/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
-Package: pgfcomp-version-0-65 2007/07/03 v2.10 (rcs-revision 1.7)
-\pgf@nodesepstart=\dimen165
-\pgf@nodesepend=\dimen166
-)
-(/usr/share/texmf/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
-Package: pgfcomp-version-1-18 2007/07/23 v2.10 (rcs-revision 1.1)
-))
-(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex))
-(/usr/share/texmf/tex/generic/pgf/utilities/pgffor.code.tex
-Package: pgffor 2010/03/23 v2.10 (rcs-revision 1.18)
-\pgffor@iter=\dimen167
-\pgffor@skip=\dimen168
-\pgffor@stack=\toks53
-\pgffor@toks=\toks54
-))
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
-Package: tikz 2010/10/13 v2.10 (rcs-revision 1.76)
-
-(/usr/share/texmf/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
-File: pgflibraryplothandlers.code.tex 2010/05/31 v2.10 (rcs-revision 1.15)
-\pgf@plot@mark@count=\count131
-\pgfplotmarksize=\dimen169
-)
-\tikz@lastx=\dimen170
-\tikz@lasty=\dimen171
-\tikz@lastxsaved=\dimen172
-\tikz@lastysaved=\dimen173
-\tikzleveldistance=\dimen174
-\tikzsiblingdistance=\dimen175
-\tikz@figbox=\box39
-\tikz@tempbox=\box40
-\tikztreelevel=\count132
-\tikznumberofchildren=\count133
-\tikznumberofcurrentchild=\count134
-\tikz@fig@count=\count135
-
-(/usr/share/texmf/tex/generic/pgf/modules/pgfmodulematrix.code.tex
-File: pgfmodulematrix.code.tex 2010/08/24  (rcs-revision 1.4)
-\pgfmatrixcurrentrow=\count136
-\pgfmatrixcurrentcolumn=\count137
-\pgf@matrix@numberofcolumns=\count138
-)
-\tikz@expandcount=\count139
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
-hs.code.tex
-File: tikzlibrarytopaths.code.tex 2008/06/17 v2.10 (rcs-revision 1.2)
-)))
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarysnake
-s.code.tex
-File: tikzlibrarysnakes.code.tex 2008/02/05 v2.10 (rcs-revision 1.6)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/multido/multido.sty
+Package: multido 2004/05/17 package wrapper for PSTricks `multido.tex', (HV/RN)
 
 
-Package tikz Warning: Snakes have been superseded by decorations. Please use th
-e decoration libraries instead of the snakes library on input line 14.
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecor
-ations.pathmorphing.code.tex
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecor
-ations.code.tex
-(/usr/share/texmf/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
-\pgfdecoratedcompleteddistance=\dimen176
-\pgfdecoratedremainingdistance=\dimen177
-\pgfdecoratedinputsegmentcompleteddistance=\dimen178
-\pgfdecoratedinputsegmentremainingdistance=\dimen179
-\pgf@decorate@distancetomove=\dimen180
-\pgf@decorate@repeatstate=\count140
-\pgfdecorationsegmentamplitude=\dimen181
-\pgfdecorationsegmentlength=\dimen182
+(/usr/local/texlive/2012/texmf-dist/tex/generic/multido/multido.tex
+ v1.42, 2010/05/14 <tvz>
+\multido@count=\count143
+\multidocount=\count144
+\multido@stuff=\toks57
 )
-\tikz@lib@dec@box=\box41
+File: multido.tex 2010/05/14 v1.42 `multido' (tvz,hv)
 )
-(/usr/share/texmf/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.p
-athmorphing.code.tex))
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecor
-ations.pathreplacing.code.tex
-(/usr/share/texmf/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.p
-athreplacing.code.tex))
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecor
-ations.shapes.code.tex
-(/usr/share/texmf/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.s
-hapes.code.tex)))
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryarrow
-s.code.tex
-File: tikzlibraryarrows.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
+Package: pst-plot 2011/04/13 package wrapper for pst-plot.tex (hv)
 
-(/usr/share/texmf/tex/generic/pgf/libraries/pgflibraryarrows.code.tex
-File: pgflibraryarrows.code.tex 2008/10/27 v2.10 (rcs-revision 1.9)
-\arrowsize=\dimen183
-))
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshape
-s.code.tex
-File: tikzlibraryshapes.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshape
-s.geometric.code.tex
-File: tikzlibraryshapes.geometric.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
-
-(/usr/share/texmf/tex/generic/pgf/libraries/shapes/pgflibraryshapes.geometric.c
-ode.tex
-File: pgflibraryshapes.geometric.code.tex 2008/06/26 v2.10 (rcs-revision 1.1)
-))
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshape
-s.misc.code.tex
-File: tikzlibraryshapes.misc.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
-
-(/usr/share/texmf/tex/generic/pgf/libraries/shapes/pgflibraryshapes.misc.code.t
-ex
-File: pgflibraryshapes.misc.code.tex 2008/10/07 v2.10 (rcs-revision 1.3)
-))
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshape
-s.symbols.code.tex
-File: tikzlibraryshapes.symbols.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
-
-(/usr/share/texmf/tex/generic/pgf/libraries/shapes/pgflibraryshapes.symbols.cod
-e.tex
-File: pgflibraryshapes.symbols.code.tex 2009/10/27 v2.10 (rcs-revision 1.3)
-))
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshape
-s.arrows.code.tex
-File: tikzlibraryshapes.arrows.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
-
-(/usr/share/texmf/tex/generic/pgf/libraries/shapes/pgflibraryshapes.arrows.code
-.tex
-File: pgflibraryshapes.arrows.code.tex 2008/06/26 v2.10 (rcs-revision 1.1)
-))
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshape
-s.callouts.code.tex
-(/usr/share/texmf/tex/generic/pgf/libraries/shapes/pgflibraryshapes.callouts.co
-de.tex))
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshape
-s.multipart.code.tex
-File: tikzlibraryshapes.multipart.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
-
-(/usr/share/texmf/tex/generic/pgf/libraries/shapes/pgflibraryshapes.multipart.c
-ode.tex
-File: pgflibraryshapes.multipart.code.tex 2010/01/07 v2.10 (rcs-revision 1.2)
-\pgfnodepartlowerbox=\box42
-\pgfnodeparttwobox=\box43
-\pgfnodepartthreebox=\box44
-\pgfnodepartfourbox=\box45
-\pgfnodeparttwentybox=\box46
-\pgfnodepartnineteenbox=\box47
-\pgfnodeparteighteenbox=\box48
-\pgfnodepartseventeenbox=\box49
-\pgfnodepartsixteenbox=\box50
-\pgfnodepartfifteenbox=\box51
-\pgfnodepartfourteenbox=\box52
-\pgfnodepartthirteenbox=\box53
-\pgfnodeparttwelvebox=\box54
-\pgfnodepartelevenbox=\box55
-\pgfnodeparttenbox=\box56
-\pgfnodepartninebox=\box57
-\pgfnodeparteightbox=\box58
-\pgfnodepartsevenbox=\box59
-\pgfnodepartsixbox=\box60
-\pgfnodepartfivebox=\box61
-)))
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryposit
-ioning.code.tex
-File: tikzlibrarypositioning.code.tex 2008/10/06 v2.10 (rcs-revision 1.7)
-) (/usr/share/texmf-texlive/tex/latex/multirow/multirow.sty
-\bigstrutjot=\dimen184
+(/usr/local/texlive/2012/texmf-dist/tex/generic/pst-plot/pst-plot.tex
+ v1.44, 2013/01/03 (tvz,hv)
+\pstRadUnit=\dimen157
+\pstRadUnitInv=\dimen158
+\pst@linecnt=\count145
+\psxlabelsep=\dimen159
+\psylabelsep=\dimen160
+\psk@subticksize=\dimen161
+\pst@xticksizeA=\dimen162
+\pst@xticksizeB=\dimen163
+\pst@xticksizeC=\dimen164
+\pst@yticksizeA=\dimen165
+\pst@yticksizeB=\dimen166
+\pst@yticksizeC=\dimen167
+\@digitcounter=\count146
+\psk@llx=\dimen168
+\psk@lly=\dimen169
+\psk@urx=\dimen170
+\psk@ury=\dimen171
+\pst@xunit=\dimen172
+\pst@yunit=\dimen173
 )
-\c@copyrightbox=\count141
-
-(/usr/share/texmf-texlive/tex/latex/pstricks/pstricks.sty
-Package: pstricks 2008/11/26 v0.40 LaTeX wrapper for `PSTricks' (RN,HV)
-
-(/usr/share/texmf-texlive/tex/generic/pstricks/pstricks.tex
-`PSTricks' v1.29  <2009/05/19> (tvz)
-\pst@dima=\dimen185
-\pst@dimb=\dimen186
-\pst@dimc=\dimen187
-\pst@dimd=\dimen188
-\pst@dimg=\dimen189
-\pst@dimh=\dimen190
-\pst@hbox=\box62
-\pst@boxg=\box63
-\pst@cnta=\count142
-\pst@cntb=\count143
-\pst@cntc=\count144
-\pst@cntd=\count145
-\pst@cntg=\count146
-\pst@cnth=\count147
-\pst@toks=\toks55
-(/usr/share/texmf-texlive/tex/generic/pstricks/pstricks.con)
-\psunit=\dimen191
-\psxunit=\dimen192
-\psyunit=\dimen193
-\pslinewidth=\dimen194
-\pst@customdefs=\toks56
-\pslinearc=\dimen195
-\everypsbox=\toks57
-\psframesep=\dimen196
-\pslabelsep=\dimen197
-\pst@shift=\dimen198
-\theoverlaybox=\box64
+File: pst-plot.tex 2013/01/03 1.44 `pst-plot' (tvz,hv)
 )
-File: pstricks.tex 2009/05/19 v1.29 `PSTricks' (tvz,hv)
-)
-(/usr/share/texmf-texlive/tex/latex/pstricks/pst-plot.sty
-Package: pst-plot 2004/07/15 package wrapper for pst-plot.tex
+(/usr/local/texlive/2012/texmf-dist/tex/latex/pst-node/pst-node.sty
+Package: pst-node 2012/09/18 v1.01 LaTeX wrapper for `pst-node' (HV)
+Package: pst-node 2010/04/22 package wrapper for pst-node.tex
 
-(/usr/share/texmf-texlive/tex/generic/pstricks/pst-plot.tex
-(/usr/share/texmf-texlive/tex/generic/multido/multido.tex
- v1.41, 2004/05/18 <tvz>
-\multido@count=\count148
-\multidocount=\count149
-\multido@stuff=\toks58
-)  v1.04, 2009/06/08)
-File: pst-plot.tex 2009/06/08 1.04 `pst-plot' (tvz)
+(/usr/local/texlive/2012/texmf-dist/tex/generic/pst-node/pst-node.tex
+ v1.25, 2012/09/21
+\psrow=\count147
+\pscol=\count148
+\psmatrixcnt=\count149
+\psrowsep=\skip54
+\pscolsep=\skip55
+\pst@args=\count150
+\num@pts=\count151
+\pst@argcnt=\count152
 )
-(/usr/share/texmf-texlive/tex/latex/pstricks/pst-node.sty
-Package: pst-node 2006/01/01 package wrapper for pst-node.tex
-
-(/usr/share/texmf-texlive/tex/generic/pstricks/pst-node.tex  v1.01, 2008/11/26
-\psrow=\count150
-\pscol=\count151
-\psmatrixcnt=\count152
-\psrowsep=\skip58
-\pscolsep=\skip59
+File: pst-node.tex 2012/09/21 1.25 `pst-node' (tvz,hv)
 )
-File: pst-node.tex 2008/11/26 1.01 `pst-node' (tvz)
-) (/usr/share/texmf-texlive/tex/latex/pst-grad/pst-grad.sty
+(/usr/local/texlive/2012/texmf-dist/tex/latex/pst-grad/pst-grad.sty
 Package: pst-grad 2004/07/15 package wrapper for pst-grad.tex (hv)
 
-(/usr/share/texmf-texlive/tex/generic/pst-grad/pst-grad.tex
-(/usr/share/texmf-texlive/tex/generic/xkeyval/pst-xkey.tex
-File: pst-xkey.tex 2005/11/25 v1.6 PSTricks specialization of xkeyval (HA)
-
-(/usr/share/texmf-texlive/tex/latex/xkeyval/xkeyval.sty
-Package: xkeyval 2008/08/13 v2.6a package option processing (HA)
-
-(/usr/share/texmf-texlive/tex/generic/xkeyval/xkeyval.tex
-\XKV@toks=\toks59
-\XKV@tempa@toks=\toks60
-\XKV@depth=\count153
-File: xkeyval.tex 2008/08/13 v2.6a key=value parser (HA)
-)))
+(/usr/local/texlive/2012/texmf-dist/tex/generic/pst-grad/pst-grad.tex
 `pst-grad' v1.06, 2006/11/27 (tvz,dg,hv))
 File: pst-grad.tex 2006/11/27 1.06 `pst-grad' (tvz)
 )
-(/usr/share/texmf-texlive/tex/latex/pstricks-add/pstricks-add.sty
-Package: pstricks-add 2009/03/17 v. 0.13 package wrapper for pstricks-add.tex (
+(/usr/local/texlive/2012/texmf-dist/tex/latex/pstricks-add/pstricks-add.sty
+(/usr/local/texlive/2012/texmf-dist/tex/latex/pst-3d/pst-3d.sty
+Package: pst-3d 2009/07/28 package wrapper for pst-3d.tex (hv)
+
+(/usr/local/texlive/2012/texmf-dist/tex/generic/pst-3d/pst-3d.tex
+`PST-3d' v1.11, 2010/02/14 (tvz))
+File: pst-3d.tex 2010/02/14 v1.11 `PST-3d' (hv)
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/pst-math/pst-math.sty
+Package: pst-math 2009/01/20 package wrapper for PSTricks pst-math.tex
+
+(/usr/local/texlive/2012/texmf-dist/tex/generic/pst-math/pst-math.tex
+`pst-math' v0.62 , (CJ,hv))
+File: pst-math.tex 2010/10/20 v0.62 `PST-math' (hv)
+)
+Package: pstricks-add 2010/02/11 v. 0.14 package wrapper for pstricks-add.tex (
 hv)
 
-(/usr/share/texmf-texlive/tex/generic/pstricks-add/pstricks-add.tex
-(/usr/share/texmf-texlive/tex/generic/pst-3d/pst-3d.tex
-`PST-3d' v1.00, 2005/09/03 (tvz))
-(/usr/share/texmf-texlive/tex/generic/pstricks-add/pst-fp.tex
-`pst-fp' v0.02, 2009/04/02 (hv)
-\pstFP@xs=\count154
-\pstFP@xia=\count155
-\pstFP@xib=\count156
-\pstFP@xfa=\count157
-\pstFP@xfb=\count158
-\pstFP@rega=\count159
-\pstFP@regb=\count160
-\pstFP@regs=\count161
-\pstFP@times=\count162
+(/usr/local/texlive/2012/texmf-dist/tex/generic/pstricks-add/pstricks-add.tex
+`pstricks-add' v3.60, 2013/01/01 (dr,hv)
+\psparallelogramsep=\dimen174
+\pshooklength=\dimen175
+\pshookwidth=\dimen176
+\pst@cntC=\count153
+\chart@ColorIndex=\dimen177
+\chart@ColorStep=\dimen178
+\pst@chartHeight=\dimen179
+\pst@chartStackDepth=\dimen180
+\pst@chartStackWidth=\dimen181
+\chart@Toggle=\count154
+\psVectorCtr=\count155
 )
-(/usr/share/texmf-texlive/tex/generic/pst-math/pst-math.tex
-`pst-math' v0.23 , (CJ,hv)) `pstricks-add' v3.35, 2009/10/12 (dr,hv)
-\pst@dimm=\dimen199
-\pst@dimn=\dimen200
-\pst@dimo=\dimen201
-\pst@dimp=\dimen202
-\pst@cntm=\count163
-\pst@cntn=\count164
-\pst@cnto=\count165
-\pst@cntp=\count166
-\@zero=\count167
-\pstRadUnit=\dimen203
-\pstRadUnitInv=\dimen204
-\pshooklength=\dimen205
-\pshookwidth=\dimen206
-\@digitcounter=\count168
-\psk@subticksize=\dimen207
-\pst@xticksizeA=\dimen208
-\pst@xticksizeB=\dimen209
-\pst@xticksizeC=\dimen210
-\pst@yticksizeA=\dimen211
-\pst@yticksizeB=\dimen212
-\pst@yticksizeC=\dimen213
-\psk@llx=\dimen214
-\psk@lly=\dimen215
-\psk@urx=\dimen216
-\psk@ury=\dimen217
-\pst@xunit=\dimen218
-\pst@yunit=\dimen219
-\linecnt=\count169
-\chart@ColorIndex=\dimen220
-\chart@ColorStep=\dimen221
-\pst@chartHeight=\dimen222
-\pst@chartStackDepth=\dimen223
-\pst@chartStackWidth=\dimen224
-\chart@Toggle=\count170
+File: pstricks-add.tex 2013/01/01 v3.60 `PSTricks-add' (hv)
 )
-File: pstricks-add.tex 2009/10/12 v3.35 `PSTricks-add' (hv)
-)
-(/usr/share/texmf-texlive/tex/latex/pst-tree/pst-tree.sty
+(/usr/local/texlive/2012/texmf-dist/tex/latex/pst-tree/pst-tree.sty
 Package: pst-tree 2009/01/25 package wrapper for pst-tree.tex
 
-(/usr/share/texmf-texlive/tex/generic/pst-tree/pst-tree.tex
- v1.11, 2009/09/17(tvz,dg,hv)
-\pstree@rootbox=\box65
-\pstree@box=\box66
-\psnodecnt=\count171
-\pstreelevel=\count172
-\pstreecnt=\count173
-\pstree@cnt=\count174
-\pstree@stop=\count175
+(/usr/local/texlive/2012/texmf-dist/tex/generic/pst-tree/pst-tree.tex
+ v1.12, 2011/02/28(tvz,dg,hv)
+\pstree@rootbox=\box36
+\pstree@box=\box37
+\psnodecnt=\count156
+\pstreelevel=\count157
+\pstreecnt=\count158
+\pstree@cnt=\count159
+\pstree@stop=\count160
 )
-File: pst-tree.tex 2009/09/17 1.11 `pst-tree' (tvz,hv)
+File: pst-tree.tex 2011/02/28 1.12 `pst-tree' (tvz,hv)
 )
-(/usr/share/texmf-texlive/tex/latex/pst-slpe/pst-slpe.sty
+(/usr/local/texlive/2012/texmf-dist/tex/latex/pst-slpe/pst-slpe.sty
 Package: pst-slpe 2005/03/05 package wrapper for `pst-slpe.tex'
 
-(/usr/share/texmf-texlive/tex/generic/pst-slpe/pst-slpe.tex  v1.3, 2008/09/20)
-File: pst-slpe.tex 2008/09/20 v1.3 `pst-slpe' (mg,hv)
-) (/usr/share/texmf-texlive/tex/latex/algorithm2e/algorithm2e.sty
-Package: algorithm2e 2005/10/04 v3.9 algorithms environments
-\c@AlgoLine=\count176
-
-********************************************************
-Package `algorithm2e' Release 3.9 -- october 04 2005 --
-- algorithm2e-announce@lirmm.fr mailing list for announcement about releases
-- algorithm2e-discussion@lirmm.fr mailing list for discussion about package
-subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
-- Author: Christophe Fiorio (fiorio@lirmm.fr)
-********************************************************
-\skiptotal=\skip60
-\skiprule=\skip61
-\skiphlne=\skip62
-\skiptext=\skip63
-\skiplength=\skip64
-\algomargin=\skip65
-\skipalgocfslide=\skip66
-\algowidth=\dimen225
-\inoutsize=\dimen226
-\inoutline=\dimen227
-\algocf@inoutbox=\box67
-\algocf@inputbox=\box68
-\AlCapSkip=\skip67
-\AlCapHSkip=\skip68
-\algocf@capbox=\box69
-\c@algocfline=\count177
-\c@algocf=\count178
-\algocf@algoframe=\box70
-\algocf@algobox=\box71
+(/usr/local/texlive/2012/texmf-dist/tex/generic/pst-slpe/pst-slpe.tex
+ v1.31, 2011/10/25)
+File: pst-slpe.tex 2011/10/25 v1.31 `pst-slpe' (mg,hv)
 )
-\c@thm=\count179
-\c@lemma=\count180
+\c@thm=\count161
+\c@lemma=\count162
 ) (./main.aux
 
 LaTeX Warning: Label `thm:khop' multiply defined.
@@ -850,37 +545,34 @@ LaTeX Warning: Label `thm:khop' multiply defined.
 )
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
 Package caption Info: Begin \AtBeginDocument code.
-Package caption3 Info: subfig package 1.2 or 1.3 is loaded.
-LaTeX Info: Redefining \subref on input line 4.
+Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
- ABD: EveryShipout initializing macros
-LaTeX Font Info:    Try loading font information for U+msa on input line 26.
-
-(/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+LaTeX Font Info:    Try loading font information for U+msa on input line 27.
+ (/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 26.
+LaTeX Font Info:    Try loading font information for U+msb on input line 27.
 
-(/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 26.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 27.
 
-(/usr/share/texmf-texlive/tex/latex/base/ulasy.fd
+(/usr/local/texlive/2012/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 ) (./abstract.tex)
 (./introduction.tex
@@ -902,22 +594,30 @@ Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                 on input line 158.
 
 ) (./representative.tex [2]
+Underfull \hbox (badness 10000) in paragraph at lines 152--152
+[]\T1/aer/m/n/9 (b) |Database
+ []
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[3] [4]) (./mining.tex
+[3]
+Overfull \hbox (7.00624pt too wide) in paragraph at lines 283--290
+[]\T1/aer/m/n/9 A ver-tex $\OML/cmm/m/it/9 v \OMS/cmsy/m/n/9 2 \OML/cmm/m/it/9 
+R\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 u\OT1/cmr/m/n/9 )$ \T1/aer/m/n/9 iff for any w
+alk $\OML/cmm/m/it/9 w[] \OT1/cmr/m/n/9 = (\OML/cmm/m/it/9 u[] \OT1/cmr/m/n/9 =
+ \OML/cmm/m/it/9 u\OT1/cmr/m/n/9 )\OML/cmm/m/it/9 ; u[]; [] ; u[]$
+ []
+
+[4]) (./mining.tex
 Overfull \hbox (4.47122pt too wide) in paragraph at lines 47--53
 \T1/aer/m/n/9 the set of iso-mor-phisms of the pat-tern. The anti-monotonicity
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [5])
-(./results.tex
+[5]) (./results.tex
 Overfull \hbox (8.24965pt too wide) in paragraph at lines 124--136
 \T1/aer/m/n/9 edge ex-ten-sions con-verge to smaller max-i-mal pat-terns, where
 as
@@ -928,39 +628,30 @@ Overfull \hbox (6.3265pt too wide) in paragraph at lines 268--269
  [][] 
  []
 
-[6]
 LaTeX Font Info:    Try loading font information for T1+aett on input line 290.
 
- (/usr/share/texmf-texlive/tex/latex/ae/t1aett.fd
+(/usr/local/texlive/2012/texmf-dist/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
-)
+) [6]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[7]
 File: ./figures/1r2e.pat.eps Graphic file (type eps)
- <./figures/1r2e.pat.eps>
+<./figures/1r2e.pat.eps>
 File: ./figures/1r2e.eps Graphic file (type eps)
- <./figures/1r2e.eps>
+ <./figures/1r2e.eps> [7]
 Overfull \hbox (2.56609pt too wide) in paragraph at lines 551--551
 []\secfnt Protein-Protein In-ter-ac-tion Net-work (PPI) 
  []
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 File: ./figures/ppipat2.eps Graphic file (type eps)
-<./figures/ppipat2.eps>) (./relatedwork.tex [8]
+<./figures/ppipat2.eps>) (./relatedwork.tex [8]) (./conclusions.tex
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-)
-(./conclusions.tex
+
 Overfull \hbox (4.12904pt too wide) in paragraph at lines 5--8
 \T1/aer/m/n/9 fre-quent sub-graph pat-terns from a sin-gle large graph database
 
@@ -974,12 +665,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 18407 strings out of 495062
- 346314 string characters out of 1182644
- 527760 words of memory out of 3000000
- 21123 multiletter control sequences out of 15000+50000
- 50269 words of font info for 73 fonts, out of 3000000 for 9000
- 28 hyphenation exceptions out of 8191
- 58i,12n,84p,450b,502s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 8422 strings out of 493489
+ 129288 string characters out of 3141370
+ 291572 words of memory out of 3000000
+ 11518 multiletter control sequences out of 15000+200000
+ 49340 words of font info for 70 fonts, out of 3000000 for 9000
+ 957 hyphenation exceptions out of 8191
+ 46i,12n,84p,558b,510s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on main.dvi (10 pages, 205560 bytes).
+Output written on main.dvi (10 pages, 205112 bytes).
