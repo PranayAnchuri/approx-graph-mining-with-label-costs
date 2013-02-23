@@ -1,0 +1,105 @@
+%%% time for random walks in cmdb dataset
+\begin{figure}[!h]
+\centering
+\label{tab:ge}
+\begin{tabular}{|c|c|c|}
+        \hline
+        minsup & Time & Avg Time \\
+		\hline
+        $20$ & $7931.56$ & $15.86$\\
+        $15$ & $7147.11$ & $14.29422$\\
+        $10$ & $5604.35$ & $11.2087$\\
+		\hline
+    \end{tabular}
+    \caption{Time for random walks in CMDB dataset}
+\end{figure}
+
+%% effect of alpha on scop dataset
+\begin{figure}[!h]
+\centering
+\label{tab:scop_alpha}
+\begin{tabular}{|c|c|c|c|c|}
+        \hline
+    & \multicolumn{2}{|c|}{\ncl pruning} & \multicolumn{2}{|c|}{no pruning} \\
+		\hline
+        $\alpha$ & Time & Avg Time & Time & Avg Time\\
+		\hline
+        $0.01$ & $57.27$ & $0.11$ & $115.06$ & $0.23$\\
+        $0.7$ & $228.65$ & $0.45$ & $394.93$ & $0.76$\\
+        $1.0$ & $2689.54$ & $5.37$ & $5966.53$ & $11.93$\\
+        $1.5$ & $6376.93$ & $12.75$ & $12572.96$ & $25.14$\\
+        \hline
+    \end{tabular}
+    \caption{Time for random walks as threshold $\alpha$ changes on SCOP dataset.}
+\end{figure}
+
+%% runtime comparison on SCOP dataset
+\begin{figure}[!h]
+\centering
+\label{tab:scop_algo_compare}
+\begin{tabular}{|c|c|c|}
+        \hline
+        Algorithm & Time & Avg Time \\
+		\hline
+        NL Pruning & $2689.54$ & $5.37$ \\
+        no Pruning & $5966.53$ & $11.93$ \\
+        gApprox & $15653.2$ & $31.30$ \\
+        \hline
+    \end{tabular}
+    \caption{Comparing run times of different algorithms on SCOP dataset}.
+\end{figure}
+
+%% SCOP effect of minsup
+\begin{figure}[!h]
+\centering
+\label{tab:scop_minsup}
+\begin{tabular}{|c|c|c|c|}
+        \hline
+        minsup & \khop label & \ncl label & Verification \\
+		\hline
+    $10$& $377.10$&$378.99$&$629.804$\\
+    $20$& $476.10$&$489.59$&$1188.25$\\
+    $25$& $462.52$&$513.25$&$1055.28$\\
+    $40$& $461.30$&$625.52$&$1148.42$\\
+        \hline
+    \end{tabular}
+    \caption{Time for different steps in the algorithm on SCOP dataset}
+\end{figure}
+
+%%  relative effectiveness of labels
+\begin{figure}[!h]
+\centering
+\label{tab:scop_label_eff}
+\begin{tabular}{|c|c|c|c|c|}
+    \hline
+    $\alpha$ & \ncl label & \khop label & Verification & Total \\
+    \hline
+    \multirow{2}{*}{$0.5$}
+  & $119.84$ & $35.53$ & $13.71$ & $169.08$ \\
+  \cline{2-5}
+               & &$250.57$ & $36.33$ & $286.9$ \\
+    \hline
+    \multirow{2}{*}{$0.75$}
+  & $293.40$ & $127.96$ & $224.55$ & $645.91$ \\
+  \cline{2-5}
+               & &$368.84$ & $653.14$ & $1021.98$ \\
+               \hline
+    \end{tabular}
+    \caption{Relative effectiveness of the labels on SCOP dataset}
+\end{figure}
+
+%% time for walks in ppi
+\begin{figure}[!h]
+\centering
+\label{tab:ppi}
+\begin{tabular}{|c|c|c|}
+        \hline
+        minsup & Time & Avg Time \\
+		\hline
+        $3$ & $834.55$ & $1.67$ \\
+        $5$ & $377.56$ & $0.76$ \\
+        $10$ & $254.24$ & $0.51$ \\
+		\hline
+    \end{tabular}
+    \caption{Time for random walks in PPI Dataset }
+\end{figure}

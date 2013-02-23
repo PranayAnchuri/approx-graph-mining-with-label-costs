@@ -1,0 +1,42 @@
+\subsection{Candidate set verification} \label{sec:verification} The pruning
+methods based on the \khop and the \ncl labels start with a \CR and prune some
+of the candidate vertices based on the conditions described in theorems
+\ref{thm:khop} and \ref{thm:ncl}.  The verification step reduces \CR to \RS by
+retaining only those vertices $v$ for which there exists an isomorphism $\phi$ in
+which $\phi(u) = v$.  Informally, it does this by checking if the pattern $P$ can be
+embedded at $v$ such that total cost of label mismatch is at most $\alpha$.
+
+A vertex $v \in R(u)$ iff for any walk $w_p = (u_0=u), u_1,\ldots,u_m$ that covers all
+the edges in pattern $P$ there exists atleast one walk $w_d = (v_0=v), v_1,\ldots,
+v_m$ in the database $G$ and satisfying the following three conditions: i) 
+$u_i = u_j \implies v_i = v_j$ ii) $(v_i, v_{i+1}) \in \eg$
+iii) $\sum\matij{C}{L(u_i)}{L(v_i)} \leq \alpha$.
+Unlike the \ncl label condition, the above conditions are necessary and
+sufficient and can be verified by following the definition of isomorphism.
+
+Now, to check whether $v \in R(u)$, we first map $u$ to $v$ and subtract the cost of
+$\matij{C}{L(u)}{L(v)}$ from the threshold $\alpha$. We then try to map the
+remaining vertices in $P$ by following $w_p$ one edge at a time. In any step
+$(u_i, u_{i+1})$, if $u_i$ and $u_{i+1}$ are mapped to $x$ and $y$ respectively
+then we ensure that $(x, y) \in \eg$
+(condition ii). If on the other hand, $u_{i+1}$ is not mapped then we map it
+to some vertex in $y \in R'(u_{i+1})$ and subtract the cost
+$\matij{C}{L(u_{i+1})}{L(y)}$ from the remaining $\alpha$ threshold. We back
+track if the remaining threshold is less than $0$. The vertex $v \in R(u)$, if we
+can complete the walk $w_p$ satisfying the above three conditions.
+
+Consider checking whether the vertex $30 \in R(1)$ 
+in the pattern in the figure~\ref{subfig:ex_sub} and let $\alpha = 0.5$. The
+sequence $w_p = 1, 2, 4, 3, 1$ is a walk in the pattern that covers all the edges.
+In general, finding a walk that covers all the edges in a graph is a special
+case of Chinese postman problem \cite{chinesepostman}. We first map $1$ to $30$
+an subtract the cost $\matij{C}{L(1)}{L(30)} = 0.2$ from $0.5$. In the first
+step $(1,2)$, since $2$ is not mapped we map it some vertex, say $20$. The cost
+of the mapping is $0.2$ and the remaining threshold is $0.3 -0.2 = 0.1$. It can
+be verified that these mappings cannot complete the walk $w_p$. So we backtrack 
+and map $2$ to another vertex say $10$. The walk can be completed with the
+mappings as in $\phi_1$ in Table~\ref{subfig:ex_occur} and the remaining cost is 
+$0.1$. The mappings of the pattern vertices not only implies that $30 \in R(1)$,
+it also tells us that $10, 60, 40$ represent vertices $2, 3, 4$ respectively.
+The above procedure can be easily extended to enumerate all the isomorphims of the
+pattern.

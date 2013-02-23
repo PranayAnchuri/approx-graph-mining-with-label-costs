@@ -389,6 +389,24 @@ the diagonal entries are $\labcost{C}{i}{i} =0$.
 	\label{tab:scop_relative}
 	\end{table}
 
+%% relative number of fwd and back extensions in SCOP dataset
+\begin{table}[!h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        minsup & Fwd & Fwd Success & Back & Back Success \\
+        \hline
+        $10$ & $1$ & $1$ & $1$ & $1$ \\
+        $20$ & $1.27$ & $0.47$ & $0.65$ & $0.38$ \\
+        $25$ & $1.32$ & $0.43$ & $0.59$ & $0.29$ \\ 
+        $40$ & $1.14$ & $0.40$ & $0.47$ & $0.22$ \\
+        \hline
+    \end{tabular}
+    \caption{SCOP: Relative number of forward, back extensions that were
+    tried and number of extensions that were successful}
+    \label{tab:scop_ext_relative}
+\end{table}
+
 
 
 
@@ -609,6 +627,23 @@ set $\epsilon = 0.003$.
 	for different values of minsup.}
 	\label{tab:ppi_relative}
 	\end{table}
+
+%% relative number of fwd and back extensions that were tried
+\begin{table}[!h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        minsup & Fwd & Fwd Success & Back & Back Success \\
+        \hline
+        $3$ & $1$ & $1$ & $1$ & $1$ \\
+        $5$ & $0.41$ & $0.34$ & $0.18$ & $0.88$ \\ 
+        $10$ & $0.18$ & $2.14$ & $0.88$ & $3.6$ \\
+        \hline
+    \end{tabular}
+    \caption{PPI: Relative number of forward, back extensions that were
+    tried and number of extensions that were successful}
+    \label{tab:ppi_ext_relative}
+\end{table}
 
 \smallskip\noindent{\textit{Results}:} Table \ref{tab:ppi} shows the
 time for $K=500$ random walks in the yeast PPI network for different

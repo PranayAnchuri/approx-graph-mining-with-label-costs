@@ -23,7 +23,8 @@ def get_stats(grs):
     vsize = [len(i) for i in grs]
     esize = [len(i.edges()) for i in grs]
     avgdeg = [avg([deg[1] for deg in gr.degree_iter()]) for gr in grs]
-    return {'Avg Vsize': avg(vsize), 'Avg Esize':avg(esize), 'Avg Degree':avg(avgdeg)}
+    return {'Avg Vsize': avg(vsize), 'Avg Esize':avg(esize), 'Avg\
+            Degree':avg(avgdeg), 'Max Size': max(vsize), 'Max Edges':max(esize)}
 
 
 def is_graph_line(line):

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2013.2.21)  22 FEB 2013 03:32
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2013.2.21)  22 FEB 2013 09:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -639,38 +639,47 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[7]
 File: ./figures/1r2e.pat.eps Graphic file (type eps)
-<./figures/1r2e.pat.eps>
+ <./figures/1r2e.pat.eps>
 File: ./figures/1r2e.eps Graphic file (type eps)
- <./figures/1r2e.eps> [7]
-Overfull \hbox (2.56609pt too wide) in paragraph at lines 551--551
+ <./figures/1r2e.eps>
+Overfull \hbox (2.56609pt too wide) in paragraph at lines 569--569
 []\secfnt Protein-Protein In-ter-ac-tion Net-work (PPI) 
  []
 
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 File: ./figures/ppipat2.eps Graphic file (type eps)
 <./figures/ppipat2.eps>) (./relatedwork.tex [8]) (./conclusions.tex
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 Overfull \hbox (4.12904pt too wide) in paragraph at lines 5--8
 \T1/aer/m/n/9 fre-quent sub-graph pat-terns from a sin-gle large graph database
 
  []
 
-) (./main.bbl [9]) [10
+) (./main.bbl [9]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-] (./main.aux)
+) [10]
+(./main.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 8422 strings out of 493489
- 129288 string characters out of 3141370
- 291572 words of memory out of 3000000
- 11518 multiletter control sequences out of 15000+200000
+ 8424 strings out of 493489
+ 129333 string characters out of 3141370
+ 292590 words of memory out of 3000000
+ 11520 multiletter control sequences out of 15000+200000
  49340 words of font info for 70 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  46i,12n,84p,558b,510s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on main.dvi (10 pages, 205112 bytes).
+Output written on main.dvi (10 pages, 207252 bytes).

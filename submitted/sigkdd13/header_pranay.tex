@@ -1,0 +1,86 @@
+\usepackage{graphicx}
+\usepackage{balance}  % for  \balance command ON LAST PAGE  (only there!)
+\usepackage[T1]{fontenc}
+\usepackage{subfig,float}
+%\usepackage{subfloat}
+\usepackage{cite}
+\graphicspath{{./figures/}{./vlfigures/}}
+%graphicspath{{./vlfigures/}}
+\let\proof\relax 
+\let\endproof\relax
+\usepackage{amsmath}
+\usepackage{amsthm,amsfonts}
+\usepackage{amssymb}
+%\interdisplaylinepenalty=2500
+\usepackage{verbatim}
+\usepackage{url}
+\usepackage{pbox}
+\usepackage{xspace}
+\usepackage{setspace}
+\usepackage{tikz}
+\usetikzlibrary{snakes,arrows,shapes}
+\usetikzlibrary{positioning}
+\usepackage{multirow}
+\usepackage{caption}
+\DeclareCaptionType{copyrightbox}
+\usepackage{pstricks,pst-plot,pst-node,pst-grad,pstricks-add,pst-tree,pst-slpe}
+\makeatletter
+\newif\if@restonecol
+\makeatother
+\let\algorithm\relax
+\let\endalgorithm\relax
+\usepackage[linesnumbered,boxed,commentsnumbered]{algorithm2e}
+\gdef\balancecolumns
+{\vfill\eject
+\global\@colht=\textheight
+\global\ht\@cclv=\textheight
+}
+
+\newcommand*\Let[2]{\State #1 $\gets$ #2}
+%\algrenewcommand\alglinenumber[1]{
+    %{\sf\footnotesize\addfontfeatures{Colour=888888,Numbers=Monospaced}#1}}
+    %\algrenewcommand\algorithmicrequire{\textbf{Precondition:}}
+    %\algrenewcommand\algorithmicensure{\textbf{Postcondition:}}
+%%%%%%%%%%% new for algorithm
+%\floatname{algorithm}{Procedure}
+%\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+%\renewcommand{\algorithmicensure}{\textbf{Output:}}
+
+\newtheorem*{mydef}{Definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem*{myclaim}{Claim}
+\newtheorem*{myproof}{Proof}
+
+% Commands
+\newcommand{\pat}{P\xspace}
+\newcommand{\db}{G\xspace}
+\newcommand{\vg}{V_G\xspace}
+\newcommand{\eg}{E_G\xspace}
+\newcommand{\vp}{V_P\xspace}
+\newcommand{\ep}{E_P\xspace}
+\newcommand{\Approx}{\approx}
+\newcommand{\Sub}{\simeq}
+\newcommand{\Iso}{\cong}
+\newcommand{\khop}{k-hop\xspace}
+\newcommand{\khopl}[2]{\ensuremath{h_{#1}(#2)}}
+\newcommand{\nclab}[2]{\ensuremath{\eta_{#1}(#2)}}
+\newcommand{\khops}{k-hops\xspace}
+\newcommand{\ncl}{NL\xspace}
+\newcommand{\combined}{CL\xspace}
+\newcommand{\CR}{\ensuremath{R'(u)}\xspace}
+\newcommand{\RS}{\ensuremath{R(u)}\xspace}
+\newcommand{\cl}[2]{\ensuremath{C_{#2}(#1)}}
+\newcommand{\kpath}[3]{#1\stackrel{#3}{\longrightarrow}#2}
+%\newcommand{\khopcost}[3]{C_{#1}[\khopl{#1}{#2}][\khopl{#1}{#3}]}
+\newcommand{\khopcost}[3]{\mathcal{C}[\khopl{#1}{#2}][\khopl{#1}{#3}]}
+% equivalence between the sets
+\newcommand{\Meq}{\equiv}
+\newcommand{\lab}[2]{\ensuremath{L_{#2}(#1)}}
+\newcommand{\Cs}{$\mathbf{M}$\xspace}
+\newcommand{\M}[1]{$\mathcal{#1}$\xspace}
+\newcommand{\matij}[3]{\mathcal{#1}[#2][#3]}
+\newcommand{\setR}{{\mathord{\mathbb R}}}
+\newcommand{\ldist}{0.3cm}
+\newcommand{\putNode}[6]{\cnodeput[linecolor=black](#1,#2) {#3} {#4} \uput{\ldist}[#5](#3){ {#6} } }
+\makeatother

@@ -1,0 +1,561 @@
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=latex 2013.2.21)  23 FEB 2013 00:01
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**main.tex
+(./main.tex
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, ge
+rman-x-2012-05-30, ngerman-x-2012-05-30, afrikaans, ancientgreek, ibycus, arabi
+c, armenian, basque, bulgarian, catalan, pinyin, coptic, croatian, czech, danis
+h, dutch, ukenglish, usenglishmax, esperanto, estonian, ethiopic, farsi, finnis
+h, french, friulan, galician, german, ngerman, swissgerman, monogreek, greek, h
+ungarian, icelandic, assamese, bengali, gujarati, hindi, kannada, malayalam, ma
+rathi, oriya, panjabi, tamil, telugu, indonesian, interlingua, irish, italian, 
+kurmanji, latin, latvian, lithuanian, mongolian, mongolianlmc, bokmal, nynorsk,
+ polish, portuguese, romanian, romansh, russian, sanskrit, serbian, serbianc, s
+lovak, slovenian, spanish, swedish, turkish, turkmen, ukrainian, uppersorbian, 
+welsh, loaded.
+(./sig-alternate.cls
+(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/epsfig.sty
+Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: dvips.def on input line 91.
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/dvips.def
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+))
+\Gin@req@height=\dimen102
+\Gin@req@width=\dimen103
+)
+\epsfxsize=\dimen104
+\epsfysize=\dimen105
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks15
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip41
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks16
+\ex@=\dimen106
+))
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen107
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count79
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count80
+\leftroot@=\count81
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count82
+\DOTSCASE@=\count83
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen108
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count84
+\c@MaxMatrixCols=\count85
+\dotsspace@=\muskip10
+\c@parentequation=\count86
+\dspbrk@lvl=\count87
+\tag@help=\toks17
+\row@=\count88
+\column@=\count89
+\maxfields@=\count90
+\andhelp@=\toks18
+\eqnshift@=\dimen109
+\alignsep@=\dimen110
+\tagshift@=\dimen111
+\tagwidth@=\dimen112
+\totwidth@=\dimen113
+\lineht@=\dimen114
+\@envbody=\toks19
+\multlinegap=\skip42
+\multlinetaggap=\skip43
+\mathdisplay@stack=\toks20
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+Document Class 'sig-alternate' <23rd. May '12>. Modified by G.K.M. Tobin/Gerry 
+Murray
+Based in part upon document Style `acmconf' <22 May 89>. Hacked 4/91 by
+shivers@cs.cmu.edu, 4/93 by theobald@cs.mcgill.ca
+Excerpts were taken from (Journal Style) 'esub2acm.cls'.
+****** Bugs/comments/suggestions/technicalities to Gerry Murray -- murray@hq.ac
+m.org ******
+Questions on the style, SIGS policies, etc. to Adrienne Griscti griscti@acm.org
+
+\footheight=\dimen115
+\@maxsep=\dimen116
+\@dblmaxsep=\dimen117
+\aucount=\count91
+\originalaucount=\count92
+\auwidth=\dimen118
+\auskip=\dimen119
+\auskipcount=\count93
+\auskip=\dimen120
+\allauboxes=\dimen121
+\addauthors=\toks21
+\addauflag=\count94
+\subtitletext=\toks22
+\savesection=\count95
+\sectioncntr=\count96
+\c@figure=\count97
+\c@table=\count98
+\titleboxnotes=\toks23
+\titleboxnoteflag=\count99
+Document Class: sig-alternate 2012/05/23 - V2.5 - based on acmproc.cls V1.3 <No
+v. 30 '99>
+(/usr/local/texlive/2012/texmf-dist/tex/latex/base/latexsym.sty
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
+)
+\@acmtitlebox=\box28
+\titlenotecount=\count100
+\tntoks=\toks24
+\tntokstwo=\toks25
+\tntoksthree=\toks26
+\tntoksfour=\toks27
+\tntoksfive=\toks28
+\catcount=\count101
+\copyrightnotice=\toks29
+\conf=\toks30
+\confinfo=\toks31
+\c@part=\count102
+\c@section=\count103
+\c@subsection=\count104
+\c@subsubsection=\count105
+\c@paragraph=\count106
+
+Using 'Abbrev' bibliography style
+LaTeX Info: Redefining \cite on input line 1211.
+\bibindent=\dimen122
+\colcntr=\count107
+\saveb@x=\box29
+\copyrtyr=\toks32
+\acmcopyr=\toks33
+\boilerplate=\toks34
+\copyrightetc=\toks35
+(/usr/local/texlive/2012/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/base/t1enc.def
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+)
+LaTeX Font Info:    Try loading font information for T1+aer on input line 100.
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/ae/t1aer.fd
+File: t1aer.fd 1997/11/16 Font definitions for T1/aer.
+))) (./header.tex
+(/usr/local/texlive/2012/texmf-dist/tex/latex/preprint/balance.sty
+Package: balance 1999/02/23 4.3 (PWD)
+\oldvsize=\dimen123
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/base/t1enc.def
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+))
+(/usr/local/texlive/2012/texmf-dist/tex/latex/subfig/subfig.sty
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2013/02/03 v3.3-65 Customizing captions (AR)
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2013/02/03 v1.5-62 caption3 kernel (AR)
+\captionmargin=\dimen124
+\captionmargin@=\dimen125
+\captionwidth=\dimen126
+\caption@tempdima=\dimen127
+\caption@indent=\dimen128
+\caption@parindent=\dimen129
+\caption@hangindent=\dimen130
+\abovecaptionskip=\skip44
+\belowcaptionskip=\skip45
+Package caption Info: Unknown document class (or package),
+(caption)             standard defaults will be used.
+)
+
+Package caption Warning: Unsupported document class (or package) detected,
+(caption)                usage of the caption package is not recommended.
+See the caption package documentation for explanation.
+
+Package caption Info: \@makecaption = \long macro:#1#2-> \vskip 10pt \setbox \@
+tempboxa \hbox {\textbf {#1: #2}} \ifdim \wd \@tempboxa >\hsize \textbf {#1: #2
+}\par \else \hbox to\hsize {\hfil \box \@tempboxa \hfil } \fi .
+\c@ContinuedFloat=\count108
+)
+\c@KVtest=\count109
+\sf@farskip=\skip46
+\sf@captopadj=\dimen131
+\sf@capskip=\skip47
+\sf@nearskip=\skip48
+\c@subfigure=\count110
+\c@subfigure@save=\count111
+\c@lofdepth=\count112
+\c@subtable=\count113
+\c@subtable@save=\count114
+\c@lotdepth=\count115
+\sf@top=\skip49
+\sf@bottom=\skip50
+) (/usr/local/texlive/2012/texmf-dist/tex/latex/cite/cite.sty
+LaTeX Info: Redefining \cite on input line 302.
+LaTeX Info: Redefining \nocite on input line 373.
+Package: cite 2010/09/10  v 5.3
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks36
+\verbatim@line=\toks37
+\verbatim@in@stream=\read1
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip11
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/tools/xspace.sty
+Package: xspace 2009/10/20 v1.13 Space after command names (DPC,MH)
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/multirow/multirow.sty
+\bigstrutjot=\dimen132
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/pstricks/pstricks.sty
+Package: pstricks 2012/08/24 v0.53 LaTeX wrapper for `PSTricks' (RN,HV)
+
+(/usr/local/texlive/2012/texmf-dist/tex/generic/pstricks/pstricks.tex
+(/usr/local/texlive/2012/texmf-dist/tex/generic/xkeyval/pst-xkey.tex
+File: pst-xkey.tex 2005/11/25 v1.6 PSTricks specialization of xkeyval (HA)
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2012/10/14 v2.6b package option processing (HA)
+
+(/usr/local/texlive/2012/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+\XKV@toks=\toks38
+\XKV@tempa@toks=\toks39
+\XKV@depth=\count116
+File: xkeyval.tex 2012/10/14 v2.6b key=value parser (HA)
+)))
+(/usr/local/texlive/2012/texmf-dist/tex/generic/pstricks/pst-fp.tex
+`pst-fp' v0.05, 2010/01/17 (hv)
+\pstFP@xs=\count117
+\pstFP@xia=\count118
+\pstFP@xib=\count119
+\pstFP@xfa=\count120
+\pstFP@xfb=\count121
+\pstFP@rega=\count122
+\pstFP@regb=\count123
+\pstFP@regs=\count124
+\pstFP@times=\count125
+)
+(/usr/local/texlive/2012/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
+x
+\pgfutil@everybye=\toks40
+)
+(/usr/local/texlive/2012/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks41
+\pgfkeys@temptoks=\toks42
+
+(/usr/local/texlive/2012/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.c
+ode.tex
+\pgfkeys@tmptoks=\toks43
+))
+(/usr/local/texlive/2012/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+\pgffor@iter=\dimen133
+\pgffor@skip=\dimen134
+\pgffor@stack=\toks44
+\pgffor@toks=\toks45
+)
+\psLoopIndex=\count126
+
+`PSTricks' v2.35  <2012/12/21> (tvz)
+\pst@dima=\dimen135
+\pst@dimb=\dimen136
+\pst@dimc=\dimen137
+\pst@dimd=\dimen138
+\pst@dimg=\dimen139
+\pst@dimh=\dimen140
+\pst@dimm=\dimen141
+\pst@dimn=\dimen142
+\pst@dimo=\dimen143
+\pst@dimp=\dimen144
+\pst@hbox=\box30
+\pst@ibox=\box31
+\pst@boxg=\box32
+\pst@cnta=\count127
+\pst@cntb=\count128
+\pst@cntc=\count129
+\pst@cntd=\count130
+\pst@cntg=\count131
+\pst@cnth=\count132
+\pst@cntm=\count133
+\pst@cntn=\count134
+\pst@cnto=\count135
+\pst@cntp=\count136
+\@zero=\count137
+\pst@toks=\toks46
+(/usr/local/texlive/2012/texmf-dist/tex/generic/pstricks/pstricks.con)
+\psunit=\dimen145
+\psxunit=\dimen146
+\psyunit=\dimen147
+\pst@C@@rType=\count138
+\pslinewidth=\dimen148
+\psk@startLW=\dimen149
+\psk@endLW=\dimen150
+\pst@customdefs=\toks47
+\pslinearc=\dimen151
+\pst@symbolStep=\dimen152
+\pst@symbolWidth=\dimen153
+\pst@symbolLinewidth=\dimen154
+\everypsbox=\toks48
+\psframesep=\dimen155
+\pslabelsep=\dimen156
+\pst@shift=\dimen157
+\theoverlaybox=\box33
+)
+File: pstricks.tex 2012/12/21 v2.35 `PSTricks' (tvz,hv)
+
+(/usr/local/texlive/2012/texmf-dist/tex/generic/pstricks/pst-fp.tex)
+File: pst-fp.tex 2012/12/21 v2.35 `PST-fp' (hv)
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: dvips.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+))
+(/usr/local/texlive/2012/texmf-dist/tex/latex/pst-node/pst-node.sty
+Package: pst-node 2012/09/18 v1.01 LaTeX wrapper for `pst-node' (HV)
+Package: pst-node 2010/04/22 package wrapper for pst-node.tex
+
+(/usr/local/texlive/2012/texmf-dist/tex/generic/pst-node/pst-node.tex
+ v1.25, 2012/09/21
+\psrow=\count139
+\pscol=\count140
+\psmatrixcnt=\count141
+\psrowsep=\skip51
+\pscolsep=\skip52
+\pst@args=\count142
+\num@pts=\count143
+\pst@argcnt=\count144
+)
+File: pst-node.tex 2012/09/21 1.25 `pst-node' (tvz,hv)
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/pst-tree/pst-tree.sty
+Package: pst-tree 2009/01/25 package wrapper for pst-tree.tex
+
+(/usr/local/texlive/2012/texmf-dist/tex/generic/pst-tree/pst-tree.tex
+ v1.12, 2011/02/28(tvz,dg,hv)
+\pstree@rootbox=\box34
+\pstree@box=\box35
+\psnodecnt=\count145
+\pstreelevel=\count146
+\pstreecnt=\count147
+\pstree@cnt=\count148
+\pstree@stop=\count149
+)
+File: pst-tree.tex 2011/02/28 1.12 `pst-tree' (tvz,hv)
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amscls/amsthm.sty
+Package: amsthm 2009/07/02 v2.20.1
+\thm@style=\toks49
+\thm@bodyfont=\toks50
+\thm@headfont=\toks51
+\thm@notefont=\toks52
+\thm@headpunct=\toks53
+\thm@preskip=\skip53
+\thm@postskip=\skip54
+\thm@headsep=\skip55
+\dth@everypar=\toks54
+LaTeX Info: Redefining \qed on input line 244.
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/setspace/setspace.sty
+Package: setspace 2011/12/19 v6.7a set line spacing
+)
+\c@thm=\count150
+\c@lemma=\count151
+)
+(./main.aux
+
+LaTeX Warning: Label `thm:khop' multiply defined.
+
+)
+\openout1 = `main.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: subfig package v1.3 is loaded.
+Package caption Info: End \AtBeginDocument code.
+LaTeX Font Info:    Try loading font information for U+msa on input line 48.
+ (/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 48.
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for U+lasy on input line 48.
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/base/ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+) (./abstract.tex)
+(./introduction.tex) (./preliminaries.tex [1
+
+
+]
+Overfull \hbox (9.64856pt too wide) in paragraph at lines 64--118
+[][] 
+ []
+
+
+Overfull \hbox (2.0646pt too wide) in paragraph at lines 123--132
+\T1/aer/m/it/9 monotonic \T1/aer/m/n/9 func-tion $\OML/cmm/m/it/9 sup\OT1/cmr/m
+/n/9 (\OML/cmm/m/it/9 P; \OT1/cmr/m/n/9 ^^H)$\T1/aer/m/n/9 , i.e., $\OML/cmm/m/
+it/9 sup\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 P; \OT1/cmr/m/n/9 ^^H[]) \OMS/cmsy/m/n/
+9 ^^T \OML/cmm/m/it/9 sup\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 Q; \OT1/cmr/m/n/9 ^^H[
+])$
+ []
+
+
+Package amsmath Warning: Foreign command \atopwithdelims;
+(amsmath)                \frac or \genfrac should be used instead
+(amsmath)                 on input line 159.
+
+) (./representative.tex [2] [3]
+Overfull \hbox (5.87619pt too wide) in paragraph at lines 368--383
+\T1/aer/bx/n/9 Computing k-hop la-bel cost\T1/aer/m/n/9 : The min-i-mum cost of
+ match-
+ []
+
+) (./mining.tex
+Overfull \hbox (2.73392pt too wide) in paragraph at lines 5--15
+[]\T1/aer/m/n/9 Having de-scribed the key con-tri-bu-tions of la-bel based prun
+-
+ []
+
+[4]
+Overfull \hbox (4.47122pt too wide) in paragraph at lines 52--60
+\T1/aer/m/n/9 the set of iso-mor-phisms of the pat-tern. The anti-monotonicity
+ []
+
+) (./results.tex [5]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Overfull \hbox (6.3265pt too wide) in paragraph at lines 299--301
+ [][] 
+ []
+
+LaTeX Font Info:    Try loading font information for T1+aett on input line 324.
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/ae/t1aett.fd
+File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
+) [6]
+Overfull \hbox (1.88188pt too wide) in paragraph at lines 411--422
+ [][] 
+ []
+
+
+Overfull \hbox (1.92778pt too wide) in paragraph at lines 448--459
+ [][] 
+ []
+
+File: ./figures/1r2e.patB.eps Graphic file (type eps)
+<./figures/1r2e.patB.eps>
+File: ./figures/1r2e.eps Graphic file (type eps)
+ <./figures/1r2e.eps>
+Overfull \hbox (2.56609pt too wide) in paragraph at lines 613--613
+[]\secfnt Protein-Protein In-ter-ac-tion Net-work (PPI) 
+ []
+
+[7]
+File: ./figures/ppipat2B.eps Graphic file (type eps)
+ <./figures/ppipat2B.eps>) (./relatedwork.tex [8]) (./conclusions.tex
+Overfull \hbox (4.12904pt too wide) in paragraph at lines 5--8
+\T1/aer/m/n/9 fre-quent sub-graph pat-terns from a sin-gle large graph database
+
+ []
+
+) (./main.bbl) [9] (./main.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 6932 strings out of 493489
+ 100715 string characters out of 3141370
+ 205923 words of memory out of 3000000
+ 10085 multiletter control sequences out of 15000+200000
+ 51118 words of font info for 71 fonts, out of 3000000 for 9000
+ 957 hyphenation exceptions out of 8191
+ 46i,12n,84p,574b,503s stack positions out of 5000i,500n,10000p,200000b,50000s
+
+Output written on main.dvi (9 pages, 161672 bytes).

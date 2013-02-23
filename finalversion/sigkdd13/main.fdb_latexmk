@@ -1,17 +1,17 @@
 # Fdb version 3
-["bibtex main"] 1361528186 "main.aux" "main.bbl" "main" 1361529128
+["bibtex main"] 1361551283 "main.aux" "main.bbl" "main" 1361551284
   "./references/relevant.bib" 1361465241 17393 ab1d889e39befafdfddbbb1206910690 ""
   "/usr/local/texlive/2012/texmf-dist/bibtex/bst/base/abbrv.bst" 1292289607 20329 b5fed53e10044d0f8112183785c759b1 ""
-  "main.aux" 1361529128 9972 75c16c00abfeeca77b14e68a34de273d ""
+  "main.aux" 1361551284 10476 f36edfab856cf3053381cb61d0918ede ""
   "main.bcf" 0 -1 0 ""
   (generated)
   "main.bbl"
   "main.blg"
-["dvips"] 1361529128 "main.dvi" "main.ps" "main" 1361529128
-  "main.dvi" 1361529128 205112 e9e17d7e135274c503e757adca505108 "latex"
+["dvips"] 1361551284 "main.dvi" "main.ps" "main" 1361551284
+  "main.dvi" 1361551284 207252 a5748ed36ca59355bb906a82e887e35d "latex"
   (generated)
   "main.ps"
-["latex"] 1361529127 "main.tex" "main.dvi" "main" 1361529128
+["latex"] 1361551284 "main.tex" "main.dvi" "main" 1361551284
   "/usr/local/texlive/2012/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2012/texmf-dist/fonts/tfm/adobe/helvetic/phvb8t.tfm" 1136768653 6628 34c39492c0adc454c1c199922bba8363 ""
   "/usr/local/texlive/2012/texmf-dist/fonts/tfm/adobe/helvetic/phvbo8t.tfm" 1136768653 6880 fe6c7967f27585f6fa9876f3af14edd2 ""
@@ -129,14 +129,14 @@
   "figures/ppipat2.eps" 1361465241 7060 f921f9788c2d0300954df5cc6a61887f ""
   "header.tex" 1361527146 2069 84a021cb9916329fd4c16549a9228b68 ""
   "introduction.tex" 1361465241 4455 947e87a3572874d6fdee7573b7930a95 ""
-  "main.aux" 1361529128 9972 75c16c00abfeeca77b14e68a34de273d ""
-  "main.bbl" 1361528186 5074 2b33788cf83fe70a02e2a94c91d954ce "bibtex main"
+  "main.aux" 1361551284 10476 f36edfab856cf3053381cb61d0918ede ""
+  "main.bbl" 1361551284 5074 2b33788cf83fe70a02e2a94c91d954ce "bibtex main"
   "main.tex" 1361526986 1055 8d72869bdfb539339a0d73543713d6b9 ""
   "mining.tex" 1361527525 8296 72daf3c292bcb699516174f032aa93af ""
   "preliminaries.tex" 1361528148 8552 97d13eb5bdf85835dc278a2dbf30b046 ""
   "relatedwork.tex" 1361528319 5611 2b856dee1bd60dddaff624f1b2d11857 ""
   "representative.tex" 1361528223 23711 dbb0bb716a6b2e193231b1dd7c6a5ee6 ""
-  "results.tex" 1361528094 28025 4dc36a63a7c4356ac2d5a5aeff390f73 ""
+  "results.tex" 1361551282 29218 2db511129a1cc3adba14c4e21b5ece0f ""
   "sig-alternate.cls" 1361465242 59745 86f7d67dfefeca7718d26aa14a6ffe70 ""
   (generated)
   "main.log"

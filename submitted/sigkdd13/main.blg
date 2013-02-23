@@ -1,0 +1,57 @@
+This is BibTeX, Version 0.99d (TeX Live 2012)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: main.aux
+The style file: abbrv.bst
+Database file #1: ./references/relevant.bib
+Repeated entry---line 1033 of file ./references/relevant.bib
+ : @article{SpeedUpFAS
+ :                    ,
+I'm skipping whatever remains of this entry
+A bad cross reference---entry "RAM2008"
+refers to entry "DBLP:conf/ssdbm/2008", which doesn't exist
+A bad cross reference---entry "TALE"
+refers to entry "DBLP:conf/icde/2008", which doesn't exist
+Warning--I didn't find a database entry for "DBLP:conf/icde/2008"
+Warning--I didn't find a database entry for "DBLP:conf/ssdbm/2008"
+You've used 19 entries,
+            2118 wiz_defined-function locations,
+            617 strings with 6707 characters,
+and the built_in function-call counts, 6313 in all, are:
+= -- 571
+> -- 341
+< -- 0
++ -- 134
+- -- 114
+* -- 459
+:= -- 1073
+add.period$ -- 57
+call.type$ -- 19
+change.case$ -- 114
+chr.to.int$ -- 0
+cite$ -- 19
+duplicate$ -- 236
+empty$ -- 522
+format.name$ -- 114
+if$ -- 1305
+int.to.chr$ -- 0
+int.to.str$ -- 19
+missing$ -- 19
+newline$ -- 98
+num.names$ -- 38
+pop$ -- 130
+preamble$ -- 1
+purify$ -- 95
+quote$ -- 0
+skip$ -- 141
+stack$ -- 0
+substring$ -- 317
+swap$ -- 28
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 76
+warning$ -- 0
+while$ -- 50
+width$ -- 21
+write$ -- 202
+(There were 3 error messages)

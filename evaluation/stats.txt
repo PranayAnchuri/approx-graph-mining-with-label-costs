@@ -1,0 +1,19 @@
+
+ppi.pats
+Avg Vsize	6.45315487572
+Max Size	11
+Avg Esize	5.95602294455
+Avg            Degree	1.65553113765
+Max Edges	16
+D5F20P.pats
+Avg Vsize	5.965
+Max Size	11
+Avg Esize	6.725
+Avg            Degree	2.22301659452
+Max Edges	18
+l1ge.pats2
+Avg Vsize	11.0
+Max Size	11
+Avg Esize	12.2406666667
+Avg            Degree	2.22557575758
+Max Edges	15

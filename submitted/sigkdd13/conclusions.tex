@@ -1,0 +1,39 @@
+% conclusions and future work
+\section{Discussions and Conclusions}
+\label{sec:conclusions}
+
+We presented an effective approach to mine approximate frequent subgraph
+patterns from a single large graph database in the presence of
+a label cost matrix.
+
+There are two main parameters in our method: $K$, the number of random
+walks, and $\alpha$ the cost threshold. The value of $K$ is directly
+proportional to the number of maximal approximate patterns we desire,
+and is relatively easy to set.
+On the other hand, choosing an appropriate value of
+$\alpha$ is very important as it affects the quality of
+patterns mined. Depending on the application domain
+and the purpose of the graph mining, let $t$ be the number of
+vertices in the pattern for which we allow label mismatches
+in the subgraph isomorphism. One reasonable value of
+$\alpha$ is $t \times IMQ$ where $IMQ$ is the inter-quartile mean,
+i.e., the mean of the entries between the first quartile ( $25^{th}$
+percentile) and the third quartile ( $75^{th}$ percentile)
+of the entries in the cost matrix arranged in sorted order. 
+$t$ can be chosen by first
+enumerating maximal patterns with $\alpha = 0$ and then computing the 
+average size $m$ of the maximal patterns mined from the graph.
+The value of $t$ then is a fraction of the average size $m$.
+Care has to be taken not to choose a very large $\alpha$ as it leads to
+patterns of poor quality and also increases the run time 
+significantly as can be seen in Table \ref{tab:scop_alpha}.
+
+In terms of future work, we plan to increase the efficiency of our
+method by exploiting parallelism. Obviously different walks can be
+carried out in parallel. However, more interesting is the
+parallelization of the approximate isomorphism generation and
+label-based pruning steps, including verification. We also
+want to explore the idea of label based pruning for more
+general definitions of approximate isomorphism including 
+edge mismatches.
+

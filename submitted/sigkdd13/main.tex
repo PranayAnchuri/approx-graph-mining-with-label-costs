@@ -1,0 +1,68 @@
+\documentclass{sig-alternate}
+
+\input{header.tex}
+
+\makeatletter
+\def\@maketitle{\newpage
+ \null
+ \setbox\@acmtitlebox\vbox{%
+\baselineskip 20pt
+\vskip 2em                   % Vertical space above title.
+   \begin{center}
+    {\ttlfnt \@title\par}       % Title set in 18pt Helvetica (Arial) bold size.
+    \vskip 1.5em                % Vertical space after title.
+%This should be the subtitle.
+{\subttlfnt \the\subtitletext\par}\vskip 1.25em%\fi
+    {\baselineskip 16pt\aufnt   % each author set in \12 pt Arial, in a
+     \lineskip .5em             % tabular environment
+     \begin{tabular}[t]{c}\@author
+     \end{tabular}\par}
+    \vskip 1.5em               % Vertical space after author.
+   \end{center}}
+ \dimen0=\ht\@acmtitlebox
+% \advance\dimen0 by -12.75pc\relax % comment by Marco Daniel
+ \unvbox\@acmtitlebox
+ \ifdim\dimen0<0.0pt\relax\vskip-\dimen0\fi}
+\makeatother
+%\usepackage{etoolbox}
+%\patchcmd{\maketitle}{\@copyrightspace}{}{}{}
+
+
+\begin{document}
+
+\title{\Large Approximate Graph Mining with Label
+Costs~\titlenote{This work was supported in part by an HP
+Innovation Award and NSF Award CCF-1240646.\\~\vspace{-0.5in}}}
+
+\numberofauthors{1} 
+\author{
+\alignauthor
+Pranay Anchuri$^1$, Mohammed J. Zaki$^1$, Omer Barkol$^2$, Shahar
+Golan$^2$, Moshe Shamy$^3$\\
+\affaddr{$^1$CS Department, RPI, Troy NY, USA $\qquad$}
+\affaddr{$^2$HP Labs, Haifa, Israel $\qquad$}
+\affaddr{$^3$HP Software, Yahud, Israel}\\
+\email{ \{anchupa,zaki\}@cs.rpi.edu, 
+\{omer.barkol, shahar.golan, moshe.shamy\}@hp.com} 
+}
+\maketitle
+
+\setstretch{0.93}
+\input{abstract.tex}
+\input{introduction.tex}
+	\vspace{-0.05in}
+\input{preliminaries.tex}
+% section on derived labels
+\input{representative.tex}
+% section on cand generation, support etd
+\input{mining.tex}
+\input{results.tex}
+	\vspace{-0.05in}
+\input{relatedwork.tex}
+\input{conclusions.tex}
+
+\small
+\bibliographystyle{abbrv}
+\bibliography{./references/relevant}  % sigproc.bib is the name of the Bibliography in this case
+
+\end{document}
