@@ -1,0 +1,22 @@
+Build :
+
+make -f Mine.mk -j 4
+
+Clean :
+
+make -f Mine.mk clean
+
+Run :
+
+1) Preprocess the input graph to compute the k-hop labels for vertices in the pattern. To compute the k-hop labels, use
+the script get_hops from the scripts sub-directory.
+2) Edit or supply a new config file with appropriate path names and parameters for the program.
+3) Execute :
+
+./mine <config file> <log file> <stat file>
+
+Misc :
+
+1) OFFSET parameter is used when the input is a database of graphs instead
+of a single graph. All the representaties between the same set of
+consecutive offsets are considered similar.
