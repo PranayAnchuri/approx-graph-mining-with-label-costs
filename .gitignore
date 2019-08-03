@@ -7,3 +7,7 @@
 /data/proteins/*
 ./dump/*
 ./data/ppi/raw/*
+./paper/*
+./submitted/*
+*.tar.gz
+./finalversion/*
